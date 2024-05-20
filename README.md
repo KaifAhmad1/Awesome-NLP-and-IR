@@ -266,6 +266,19 @@ print(clean_text)
 ```
 Output: This simple example demonstrate removing stop words.
 ```
+- 4. **Removing Numerical Values:**  Eliminating digits and numbers that may not be relevant to the analysis.
+ ``` Python 
+import re
+def remove_numerical_values(text):
+    clean_text = re.sub(r'\d+', '', text)
+    clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+    return clean_text
+
+# Input
+text_with_numbers = "There are 123 apples and 45 oranges in 2024."
+clean_text = remove_numerical_values(text_with_numbers)
+print(clean_text)  
+ ```
 
 
 

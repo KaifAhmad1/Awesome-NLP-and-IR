@@ -34,7 +34,10 @@
   # Input
   text = "I'm learning NLP. It's fascinating! Don't you think so?"
   expanded_text = expand_contractions(text)
-  print(expanded_text)  # Output: "I am learning NLP. It is fascinating! Do not you think so?"  
+  print(expanded_text)  
+  ```
+  ```
+  Output: "I am learning NLP. It is fascinating! Do not you think so?"  
   ```
 - **Correcting Spelling Errors:** Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
 - 1. **Dictionary-based approaches:** Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.
@@ -51,11 +54,11 @@ corrected_sentence = str(blob.correct())
 print("Original sentence:", sentence)
 print("Corrected sentence:", corrected_sentence)
 
-"""
+```
+```
 Output:
 Original sentence: I havv a pbroblem wit my speling.
 Corrected sentence: I have a problem with my spelling.
-"""
 ```
 
 - **Deduplication / Duplicate Removal:**  Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
@@ -79,7 +82,8 @@ data_deduplicated = data.drop_duplicates(subset='text')
 print("\nDeduplicated DataFrame:")
 print(data_deduplicated)
 
-"""
+```
+```
 Output:
 Original DataFrame:
                             text
@@ -94,7 +98,6 @@ Deduplicated DataFrame:
 0     This is a sample sentence.
 2      Another example sentence.
 3  This is a different sentence.
-"""
  ```
 - 2. **Using Fuzzy Matching for Deduplication:** Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
      - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
@@ -115,11 +118,11 @@ choices = ["This is a sample sentence.", "This is a simple sentence.", "Totally 
 best_match = process.extractOne(string2, choices)
 print(f"Best match for '{string2}': {best_match}")
 
-"""
+```
+```
 Output:
 Similarity ratio between 'This is a sample sentence.' and 'This is a smaple sentnce.': 94
 Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
-"""
  ```
 - **Expanding Abbreviations and Acronyms:**  Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
 - 1. **Dictionary-Based Methods:** These methods involve using precompiled lists of abbreviations and their expansions. The dictionary can be curated manually or generated from various sources such as online databases or domain-specific corpora.
@@ -151,11 +154,10 @@ def expand_abbreviations(text, abbreviation_dict):
 text = "NLP and AI are subsets of ML."
 expanded_text = expand_abbreviations(text, abbreviation_dict)
 print(expanded_text)
-
-"""
+```
+```
 Output:
 Natural Language Processing and Artificial Intelligence are subsets of Machine Learning
-"""
 ```
  
 - **Stemming:** Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the `stem`, by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 

@@ -95,7 +95,7 @@ Deduplicated DataFrame:
 3  This is a different sentence.
 """
  ```
-- 1. **Using Fuzzy Matching for Deduplication:** Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
+- 2. **Using Fuzzy Matching for Deduplication:** Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
      - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
  ``` Python 
 from fuzzywuzzy import fuzz
@@ -120,6 +120,46 @@ Similarity ratio between 'This is a sample sentence.' and 'This is a smaple sent
 Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
 """
  ```
+- **Expanding Abbreviations and Acronyms:**  Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
+- 1. **Dictionary-Based Methods:** These methods involve using precompiled lists of abbreviations and their expansions. The dictionary can be curated manually or generated from various sources such as online databases or domain-specific corpora.
+- 2. **Rule-Based Methods:** These methods use linguistic rules and patterns to identify and expand abbreviations. For example, context-specific rules can be applied based on the position of the abbreviation in the text or its surrounding words.
+- 3. **Statistical Methods:** These methods rely on statistical models and machine learning algorithms to predict expansions based on large corpora. Techniques include: N-gram models, Hidden Markov Models (HMMs) and Conditional Random Fields(CRFs)
+      - **Simple Dictionary-based Implementation**
+``` Python
+abbreviation_dict = {
+    "NLP": "Natural Language Processing",
+    "AI": "Artificial Intelligence",
+    "ML": "Machine Learning",
+    "GPU": "Graphics Processing Unit",
+    "USA": "United States of America"
+}
+
+def expand_abbreviations(text, abbreviation_dict):
+    words = text.split()
+    expanded_words = []
+    for word in words:
+        clean_word = word.strip('.,!?')
+        if clean_word in abbreviation_dict:
+            # Append the expanded form from the dictionary
+            expanded_words.append(abbreviation_dict[clean_word])
+        else:
+            expanded_words.append(word)
+    return ' '.join(expanded_words)
+
+# Input
+text = "NLP and AI are subsets of ML."
+expanded_text = expand_abbreviations(text, abbreviation_dict)
+print(expanded_text)
+
+"""
+Output:
+Natural Language Processing and Artificial Intelligence are subsets of Machine Learning
+"""
+```
+ 
+
+
+
 
 
 

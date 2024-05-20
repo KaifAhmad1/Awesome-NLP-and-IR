@@ -179,11 +179,9 @@ word_snowball = 'Continuing'
 stem_snowball = snowball.stem(word_snowball)
 print(f"Original: {word_snowball}, Stemmed: {stem_snowball}")
 ```
-``` Python
-"""
+``` 
 Original: Dying, Stemmed: dy
 Original: Continuing, Stemmed: continu
-"""
 ```
 - **Lemmatization:** Lemmatization is another crucial text normalization technique in Natural Language Processing (NLP) that involves reducing words to their base or dictionary form, known as the "lemma." Unlike stemming, which simply chops off affixes to obtain the root form, lemmatization considers the context of the word and ensures that the resulting base form is a valid word in the language. Lemmatization algorithms rely on linguistic rules and lexical resources to map inflected words to their base or dictionary forms.
 - 1. **Rule-Based Lemmatization:** Rule-based lemmatization algorithms rely on linguistic rules and patterns to derive lemmas from inflected forms. These rules are often derived from linguistic knowledge and may vary based on language and context.
@@ -208,8 +206,10 @@ sentence = "The striped bats are hanging on their feet for best"
 lemmatized_sentence = lemmatize_sentence(sentence)
 print(lemmatized_sentence)
 ```
-
-
+```
+Output:
+The striped bat are hanging on their foot for best
+```
 
 
 

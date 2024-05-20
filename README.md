@@ -212,6 +212,49 @@ print(lemmatized_sentence)
 Output:
 The striped bat are hanging on their foot for best
 ```
+- **Noise Removing:** Noise removal in NLP involves eliminating irrelevant or unwanted elements, such as HTML tags, special characters, punctuation, stop words, and numerical values, from text data. This process aims to clean and standardize the data, making it more suitable for analysis or model training. The goal of noise removal is to clean the text data by stripping away these elements while preserving the meaningful content. This typically involves a series of preprocessing steps, which may include:
+- 1. **Stripping HTML Tags:** Removing HTML markup from text obtained from web sources.
+ ``` Python 
+from bs4 import BeautifulSoup
+
+def strip_html_tags(text):
+    soup = BeautifulSoup(text, "html.parser")
+    stripped_text = soup.get_text()
+    return stripped_text
+# Input
+html_text = "<p>This is <b>HTML</b> text.</p>"
+clean_text = strip_html_tags(html_text)
+print(clean_text)  # Output: This is HTML text.
+  ```
+```
+This is HTML text.
+```
+- 2. **Removing Special Characters:** Eliminating non-alphanumeric characters, punctuation marks, and symbols.
+``` Python 
+import re
+def remove_special_characters(text):
+    # Remove non-alphanumeric characters and symbols
+    clean_text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    # Remove extra whitespaces
+    clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+    return clean_text
+
+# Input:
+text_with_special_characters = "This is a text with special characters: @#$%^&*()_+"
+clean_text = remove_special_characters(text_with_special_characters)
+print(clean_text)
+```
+```
+This is a text with special characters
+```
+  
+
+
+
+
+
+
+
 
 
 

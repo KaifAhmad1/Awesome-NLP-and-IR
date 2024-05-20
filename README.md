@@ -4,6 +4,12 @@
    - **For Example**
       - `Artificial Intelligence` becomes `artificial intelligence`
       - `Data Science` becomes `data science`
+        
+    ``` Python
+         text = "Machine Learning is FUN!"
+         lowercased_text = text.lower()
+         print(lowercased_text)  # Output: "machine learning is fun!" 
+    ```
 ## Information Retrieval 
 
 ## Vector Search 

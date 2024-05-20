@@ -18,7 +18,6 @@
      - `they're` becomes `they are`
   ``` Python
   import re
-  # Dictionary of contractions and their expanded forms
   contractions_dict = {
     "i'm": "I am", "can't": "cannot", "won't": "will not", "isn't": "is not",
     "it's": "it is", "don't": "do not", "didn't": "did not", "couldn't": "could not",
@@ -247,7 +246,27 @@ print(clean_text)
 ```
 This is a text with special characters
 ```
-  
+- 3. **Removing Stop Words:** Eliminating non-alphanumeric characters, punctuation marks, and symbols.
+ ``` Python 
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+
+def remove_stop_words(text):
+    stop_words = set(stopwords.words('english'))
+    words = text.split()
+    filtered_text = ' '.join([word for word in words if word.lower() not in stop_words])
+    return filtered_text
+
+# Input
+text_with_stop_words = "This is a simple example to demonstrate removing stop words."
+clean_text = remove_stop_words(text_with_stop_words)
+print(clean_text)  
+ ```
+```
+Output: This simple example demonstrate removing stop words.
+```
+
 
 
 

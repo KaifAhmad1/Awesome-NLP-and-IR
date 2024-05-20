@@ -158,7 +158,7 @@ Natural Language Processing and Artificial Intelligence are subsets of Machine L
 """
 ```
  
-- **Stemming:** Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the "stem," by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
+- **Stemming:** Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the `stem`, by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
  - 1. **Porter Stemmer**
  - 2. **Snowball Stemmer**
  - 3. **Lancaster Stemmer**

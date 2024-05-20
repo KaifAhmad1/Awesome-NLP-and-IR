@@ -279,7 +279,44 @@ text_with_numbers = "There are 123 apples and 45 oranges in 2024."
 clean_text = remove_numerical_values(text_with_numbers)
 print(clean_text)  
  ```
+- 5. **Handling Emojis and Emoticons:** Removing or replacing emojis and emoticons with descriptive text.
+``` Python 
+import re
+import emoji
 
+def remove_emojis_and_emoticons(text):
+    text = emoji.replace_emoji(text, replace='')
+    # Define a regex pattern for common emoticons
+    emoticon_pattern = r'[:;=8][\-o\*\']?[)\]\(\[dDpP/:\}\{@\|\\]'
+    text = re.sub(emoticon_pattern, '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+# Input:
+text_with_emojis_and_emoticons = "Hello 😊! This is an example text with emoticons :) and emojis 🚀."
+clean_text = remove_emojis_and_emoticons(text_with_emojis_and_emoticons)
+print(clean_text)
+```  
+```
+Hello ! This is an example text with emoticons and emojis .
+```
+- 6. **Removing Non-Linguistic Symbols:**  Eliminating symbols or characters that do not convey linguistic meaning, such as currency symbols, mathematical operators, or trademark symbols.
+ ``` Python 
+import re
+import string
+
+def remove_non_linguistic_symbols(text):
+    symbols_pattern = r'[^\w\s]'
+    clean_text = re.sub(symbols_pattern, '', text)
+    clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+    return clean_text
+# Input
+text_with_symbols = "Price: $100. Use coupon code SAVE20%! Email: example@example.com ©2024."
+clean_text = remove_non_linguistic_symbols(text_with_symbols)
+print(clean_text) 
+  ```
+```
+Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
+```
 
 
 

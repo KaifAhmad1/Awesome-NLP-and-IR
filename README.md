@@ -57,6 +57,45 @@ Corrected sentence: I have a problem with my spelling.
 """
 ```
 
+- **Deduplication / Duplicate Removal:**  Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
+- 1. **Using Pandas for Deduplication:**
+ ``` Python
+import pandas as pd
+dataframe = {
+    'text': [
+        "This is a sample sentence.",
+        "This is a sample sentence.",
+        "Another example sentence.",
+        "This is a different sentence.",
+        "Another example sentence."
+    ]
+}
+
+data = pd.DataFrame(dataframe)
+print("Original DataFrame:")
+print(data)
+data_deduplicated = data.drop_duplicates(subset='text')
+print("\nDeduplicated DataFrame:")
+print(data_deduplicated)
+
+"""
+Output:
+Original DataFrame:
+                            text
+0     This is a sample sentence.
+1     This is a sample sentence.
+2      Another example sentence.
+3  This is a different sentence.
+4      Another example sentence.
+
+Deduplicated DataFrame:
+                            text
+0     This is a sample sentence.
+2      Another example sentence.
+3  This is a different sentence.
+"""
+ ```
+
 
      
 ## Information Retrieval 

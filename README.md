@@ -1,5 +1,6 @@
 ## NLP 
 ### **NLP Preprocessing**
+
  - **Case Folding:**   Case folding/lowercasing is a preprocessing technique in Natural Language Processing (NLP) that standardizes the text by converting all characters to a single case, typically lowercase. This step is essential for various NLP tasks as it ensures uniformity and consistency in text data, thereby enhancing the performance of downstream applications.
    - **For Example**
       - `Artificial Intelligence` becomes `artificial intelligence`
@@ -157,8 +158,33 @@ Natural Language Processing and Artificial Intelligence are subsets of Machine L
 """
 ```
  
+- **Stemming:** Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the "stem," by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
+ - 1. **Porter Stemmer**
+ - 2. **Snowball Stemmer**
+ - 3. **Lancaster Stemmer**
+ Stemming is preferred over lemmatization for its computational efficiency and speed, making it suitable for tasks like information retrieval search systems, text classification, and text mining.
 
+``` Python 
+from nltk.stem import PorterStemmer, SnowballStemmer
 
+# Porter Stemmer
+porter = PorterStemmer()
+word_porter = 'Dying'
+stem_porter = porter.stem(word_porter)
+print(f"Original: {word_porter}, Stemmed: {stem_porter}") 
+
+# Snowball Stemmer
+snowball = SnowballStemmer('english')
+word_snowball = 'Continuing'
+stem_snowball = snowball.stem(word_snowball)
+print(f"Original: {word_snowball}, Stemmed: {stem_snowball}")
+```
+``` Python
+"""
+Original: Dying, Stemmed: dy
+Original: Continuing, Stemmed: continu
+"""
+```
 
 
 

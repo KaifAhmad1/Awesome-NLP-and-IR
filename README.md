@@ -33,11 +33,29 @@
   # Input
   text = "I'm learning NLP. It's fascinating! Don't you think so?"
   expanded_text = expand_contractions(text)
-  print(expanded_text)  # Output: "I am learning NLP. It is fascinating! Do not you think so?"
-
-
-  
+  print(expanded_text)  # Output: "I am learning NLP. It is fascinating! Do not you think so?"  
   ```
+- **Correcting Spelling Errors:** Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
+- 1. **Dictionary-based approaches:** Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.
+- 2. **Edit distance algorithms:** Calculating the distance between words using metrics like `Levenshtein / Minimum Edit` distance to find the most likely correct spelling.
+- 3. **Rule-based methods:** Applying spelling correction rules and heuristics to identify and correct common spelling mistakes.
+``` Python 
+from textblob import TextBlob
+# Input sentence with mistake
+sentence = "I havv a pbroblem wit my speling."
+# Create a TextBlob object
+blob = TextBlob(sentence)
+
+corrected_sentence = str(blob.correct())
+print("Original sentence:", sentence)
+print("Corrected sentence:", corrected_sentence)
+
+"""
+Output:
+Original sentence: I havv a pbroblem wit my speling.
+Corrected sentence: I have a problem with my spelling.
+"""
+```
 
 
      

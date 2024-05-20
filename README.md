@@ -162,7 +162,7 @@ Natural Language Processing and Artificial Intelligence are subsets of Machine L
  - 1. **Porter Stemmer**
  - 2. **Snowball Stemmer**
  - 3. **Lancaster Stemmer**
- Stemming is preferred over lemmatization for its computational efficiency and speed, making it suitable for tasks like information retrieval search systems, text classification, and text mining.
+      -  Stemming is preferred over lemmatization for its computational efficiency and speed, making it suitable for tasks like information retrieval, search systems, text classification, and text mining.
 
 ``` Python 
 from nltk.stem import PorterStemmer, SnowballStemmer

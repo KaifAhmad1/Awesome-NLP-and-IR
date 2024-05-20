@@ -95,6 +95,33 @@ Deduplicated DataFrame:
 3  This is a different sentence.
 """
  ```
+- 1. **Using Fuzzy Matching for Deduplication:** Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
+     - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
+ ``` Python 
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
+
+# Input Strings
+string1 = "This is a sample sentence."
+string2 = "This is a smaple sentnce."
+
+# Calculate the similarity ratio
+similarity_ratio = fuzz.ratio(string1, string2)
+print(f"Similarity ratio between '{string1}' and '{string2}': {similarity_ratio}")
+choices = ["This is a sample sentence.", "This is a simple sentence.", "Totally different sentence."]
+
+# Find the best match
+best_match = process.extractOne(string2, choices)
+print(f"Best match for '{string2}': {best_match}")
+
+"""
+Output:
+Similarity ratio between 'This is a sample sentence.' and 'This is a smaple sentnce.': 94
+Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
+"""
+ ```
+
+
 
 
      

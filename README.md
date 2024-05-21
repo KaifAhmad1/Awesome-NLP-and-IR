@@ -323,7 +323,7 @@ Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
       - Example: `Tokenization is fun!` is tokenized into [`Tokenization`, `is`, `fun`, `!`].
         
 - 2. **Subword Tokenization:** Subword tokenization divides text into smaller units than words, which can help handle out-of-vocabulary words and morphological variations. Popular subword tokenization techniques include:
-      - 1. **Byte Pair Encoding (BPE)**: Byte Pair Encoding (BPE) is a subword tokenization method that iteratively merges the most frequent pair of bytes or characters in a corpus to form subword units. It helps reduce the vocabulary size and handle out-of-vocabulary words effectively.
+     -  **Byte Pair Encoding (BPE)**: Byte Pair Encoding (BPE) is a subword tokenization method that iteratively merges the most frequent pair of bytes or characters in a corpus to form subword units. It helps reduce the vocabulary size and handle out-of-vocabulary words effectively.
            - BPE efficiently reduces vocabulary size and handles out-of-vocabulary words with simplicity, making it ideal for machine translation, text generation, language modelling, and speech recognition.  Some prominent models that leverage Byte Pair Encoding (BPE) include GPT, GPT-2, RoBERTa, BART, and DeBERTa
  ```
        Steps
@@ -334,8 +334,46 @@ Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 - Repeat steps 2-4 for a predefined number of merges or until the desired vocabulary size is achieved.
  ```
 
-   - 2. **WordPiece Tokenization**: WordPiece is a subword tokenization method originally developed for speech recognition and later adopted by NLP models like BERT. It breaks down words into smaller, more frequent subword units to handle the problem of out-of-vocabulary words and improve model performance by capturing word morphology and semantics more effectively.
-        - WordPiece offers advantages in handling rare words efficiently by breaking them down into smaller, meaningful subwords, thus addressing the Out Of Vocabulary (OOV) problem common in word-based tokenization. Its use cases span across various NLP models like BERT, DistilBERT, and Electra, enhancing their ability to understand and process texts more accurately by leveraging subword units that retain linguistic meaning
+   -  **WordPiece Tokenization**: WordPiece is a subword tokenization method originally developed for speech recognition and later adopted by NLP models like BERT. It breaks down words into smaller, more frequent subword units to handle the problem of out-of-vocabulary words and improve model performance by capturing word morphology and semantics more effectively.
+         - WordPiece offers advantages in handling rare words efficiently by breaking them down into smaller, meaningful subwords, thus addressing the Out Of Vocabulary (OOV) problem common in word-based tokenization. Its use cases span across various NLP models like BERT, DistilBERT, and Electra, enhancing their ability to understand and process texts more accurately by leveraging subword units that retain linguistic meaning
+```
+Steps
+-  Start with an initial vocabulary, typically consisting of all individual characters and some predefined words from the training corpus.
+- Compute the frequency of all substrings (subword units) in the corpus. This includes both individual characters and longer subwords.
+- Iteratively merge the most frequent substring pairs to form new subwords. This process continues until the vocabulary reaches a predefined size.
+-  Once the vocabulary is built, tokenize new text by matching the longest possible subwords from the vocabulary.
+```
+
+   -  **Unigram Tokenization**: Unigram Tokenization is a subword tokenization method that treats each character as a token. It's a straightforward approach where the text is split into its constituent characters, without considering any linguistic rules or context.
+         - Unigram Tokenization offers simplicity via straightforward character-level tokenization, making it language agnostic and effective for languages with complex morphology like Japanese or Turkish; it's also useful for text normalization tasks such as sentiment analysis or text classification, prioritizing individual character preservation.
+ ```
+Steps
+- Tokenization: Break down the text into individual characters. Each character becomes a separate token.
+- Vocabulary Construction: Build a vocabulary containing all unique characters present in the text.
+ ```
+
+   -  **SentencePiece Tokenization**: SentencePiece is an unsupervised text tokenizer and detokenizer that creates subword units without relying on predefined word boundaries, making it language-agnostic and suitable for various languages, including those with complex word formation rules. It supports BPE and Unigram models, includes text normalization, and effectively handles out-of-vocabulary words.
+         - SentencePiece is flexible and language-agnostic, reducing out-of-vocabulary issues by generating subword units, making it ideal for machine translation, text generation, speech recognition, and pretrained language models like BERT, T5, and GPT.
+```
+Steps
+- Data Preparation: Collect and preprocess the text corpus.
+- Normalization: Standardize the text.
+ Model Training:
+- BPE:
+   Calculate frequencies of adjacent token pairs.
+   Merge the most frequent pair into a new token.
+   Repeat until the desired vocabulary size is reached.
+- Unigram:
+   Start with many subwords.
+   Assign probabilities and prune the least probable subwords.
+   Repeat until the desired vocabulary size is reached.
+- Save Model: Output the trained model and vocabulary.
+- Tokenization: Use the model to tokenize new text into subwords.
+```
+
+
+
+
 
 
 

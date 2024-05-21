@@ -370,8 +370,7 @@ Steps
 - Save Model: Output the trained model and vocabulary.
 - Tokenization: Use the model to tokenize new text into subwords.
 ```
-
-
+[More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
 
 

@@ -389,8 +389,44 @@ P(w_n | w_1, w_2, ..., w_{n-1}) = C(w_1, w_2, ..., w_n) / C(w_1, w_2, ..., w_{n-
 - `C(w_1, w_2, ..., w_n)` is the count of the n-gram `(w_1, w_2, ..., w_n)` in the training corpus.
 - `C(w_1, w_2, ..., w_{n-1})` is the count of the (n-1)-gram `(w_1, w_2, ..., w_{n-1})` in the training corpus.
 
+``` Python
+import nltk
+nltk.download('punkt')
+from nltk.util import ngrams
+from collections import defaultdict
 
+class NgramLanguageModel:
+    def __init__(self, n):
+        # Initialize model with n-gram size and dictionaries for storing n-grams and their contexts
+        self.n = n
+        self.ngrams = defaultdict(int)
+        self.context = defaultdict(int)
 
+    def train(self, text):
+        # Tokenize  text and generate n-grams
+        tokens = nltk.word_tokenize(text)
+        n_grams = ngrams(tokens, self.n)
+        # Count occurrences of n-grams and their contexts
+        for gram in n_grams:
+            self.ngrams[gram] += 1
+            self.context[gram[:-1]] += 1
+
+    def predict_next_word(self, context):
+        # Find candidates for the next word based on the given context
+        candidates = {gram[-1]: count / self.context[context] for gram, count in self.ngrams.items() if gram[:-1] == context}
+        # Return word with the highest probability, or None if no candidates exist
+        return max(candidates, key=candidates.get) if candidates else None
+
+# Input
+text = "I love natural language processing"
+model = NgramLanguageModel(n=2)
+model.train(text)
+next_word = model.predict_next_word(("natural",))
+print(next_word)
+```
+```
+language
+```
 
 
 

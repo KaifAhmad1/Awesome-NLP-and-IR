@@ -372,6 +372,7 @@ Steps
 ```
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
+### Statical NLP 
 
 
 

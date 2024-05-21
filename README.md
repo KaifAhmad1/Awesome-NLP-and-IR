@@ -373,6 +373,27 @@ Steps
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
 ### Statical NLP 
+- **N-gram language model:** An n-gram is a sequence of `n` items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
+    - Unigram (n=1): Single word sequences.
+    - Bigram (n=2): Pairs of words.
+    - Four-gram (n=4) and higher: Longer sequences.
+  - For example, with the sentence `I love natural language processing`:
+     - Unigrams: [`I`, `love`, `natural`, `language`, `processing`]
+     - Bigrams: [`I love`, `love natural`, `natural language`, `language processing`]
+     - Trigrams: [`I love natural`, `love natural language`, `natural language processing`]
+-  N-gram models predict the likelihood of a word given the preceding `n-1` words. The core idea is to estimate the probability of the next word in a sequence, given the previous words. Using the chain rule of probability:
+<pre>
+P(w_n | w_1, w_2, ..., w_{n-1}) = C(w_1, w_2, ..., w_n) / C(w_1, w_2, ..., w_{n-1})
+</pre>
+- `P(w_n | w_1, w_2, ..., w_{n-1})` represents the probability of the word `w_n` occurring after the sequence of words `w_1, w_2, ..., w_{n-1}`
+- `C(w_1, w_2, ..., w_n)` is the count of the n-gram `(w_1, w_2, ..., w_n)` in the training corpus.
+- `C(w_1, w_2, ..., w_{n-1})` is the count of the (n-1)-gram `(w_1, w_2, ..., w_{n-1})` in the training corpus.
+
+
+
+
+
+
 
 
 

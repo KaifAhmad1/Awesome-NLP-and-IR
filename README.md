@@ -318,10 +318,21 @@ print(clean_text)
 Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 ```
 
-
-
-
-
+- **Tokenization:** Tokenization is the process of splitting text into smaller, meaningful units called tokens. These tokens can represent words, subwords, or characters and are the foundational elements used in NLP tasks like text analysis, machine translation, and sentiment analysis. Types of Tokenization below:
+- 1. **Word Tokenization:** Word tokenization involves breaking text into individual words. It's the most intuitive form of tokenization but can be challenging for languages without clear word boundaries or texts with contractions and special characters.
+      - Example: `Tokenization is fun!` is tokenized into [`Tokenization`, `is`, `fun`, `!`].
+        
+- 2. **Subword Tokenization:** Subword tokenization divides text into smaller units than words, which can help handle out-of-vocabulary words and morphological variations. Popular subword tokenization techniques include:
+      - 1. **Byte Pair Encoding (BPE)**: Byte Pair Encoding (BPE) is a subword tokenization method that iteratively merges the most frequent pair of bytes or characters in a corpus to form subword units. It helps reduce the vocabulary size and handle out-of-vocabulary words effectively.
+           - BPE efficiently reduces vocabulary size and handles out-of-vocabulary words with simplicity, making it ideal for machine translation, text generation, language modelling, and speech recognition.  Some prominent models that leverage Byte Pair Encoding (BPE) include GPT, GPT-2, RoBERTa, BART, and DeBERTa
+ ```
+       Steps
+- Start with a vocabulary of all unique characters in the text.
+- Count the frequency of each adjacent character pair in the text.
+- Find and merge the most frequent pair into a new token.
+- Replace all instances of this pair in the text with the new token.
+- Repeat steps 2-4 for a predefined number of merges or until the desired vocabulary size is achieved.
+ ```
 
 
 

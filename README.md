@@ -334,8 +334,8 @@ Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 - Repeat steps 2-4 for a predefined number of merges or until the desired vocabulary size is achieved.
  ```
 
-
-
+   - 2. **WordPiece Tokenization**: WordPiece is a subword tokenization method originally developed for speech recognition and later adopted by NLP models like BERT. It breaks down words into smaller, more frequent subword units to handle the problem of out-of-vocabulary words and improve model performance by capturing word morphology and semantics more effectively.
+        - WordPiece offers advantages in handling rare words efficiently by breaking them down into smaller, meaningful subwords, thus addressing the Out Of Vocabulary (OOV) problem common in word-based tokenization. Its use cases span across various NLP models like BERT, DistilBERT, and Electra, enhancing their ability to understand and process texts more accurately by leveraging subword units that retain linguistic meaning
 
 
 

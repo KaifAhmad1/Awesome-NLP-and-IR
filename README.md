@@ -486,7 +486,40 @@ print("Observable States:", observable_states)
      - Utilize feature functions to learn these relationships during training.
      - Predict label sequences for new data during inference.
 
+``` Python 
+!pip install sklearn-crfsuite
+import sklearn_crfsuite
+from sklearn_crfsuite import metrics
 
+# Training data
+X_train = [
+   [('The', 'DT'), ('cat', 'NN'), ('sat', 'VBD')],
+   [('A', 'DT'), ('dog', 'NN'), ('barked', 'VBD')]
+]
+y_train = [['DT', 'NN', 'VBD'], ['DT', 'NN', 'VBD']]
+
+# Test data
+X_test = [[('The', 'DT'), ('dog', 'NN'), ('barked', 'VBD')]]
+y_test = [['DT', 'NN', 'VBD']]
+
+# Create a CRF model
+crf = sklearn_crfsuite.CRF(
+   algorithm='lbfgs',
+   c1=0.1,
+   c2=0.1,
+   max_iterations=100,
+   all_possible_transitions=True
+)
+
+# Train the model
+crf.fit(X_train, y_train)
+
+y_pred = crf.predict(X_test)
+print(y_pred)
+```
+```
+[['DT', 'NN', 'VBD']]
+```
 
 
   

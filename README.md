@@ -480,6 +480,11 @@ hidden_states, observable_states = hmm.generate_sequence(5)
 print("Hidden States:", hidden_states)
 print("Observable States:", observable_states)
 ```
+- **Conditional Random Fields(CRFs):** Conditional Random Fields (CRFs) are a type of machine learning model used for tasks where we need to predict a sequence of labels for a given sequence of input data. They're particularly handy in scenarios like analyzing text, where understanding the structure of the data is crucial.
+   - Imagine you have a sentence, and you want to tag each word with its part of speech (POS). For example, in the sentence `The cat sat on the mat`, you'd want to label `The` as a determiner (DT), `cat` as a noun (NN), and so on. CRFs help you do this efficiently by considering not only the individual words but also the relationships between them.
+     - Model label dependencies as `P(Y|X)`, with `Y` as output labels and `X` as input data.
+     - Utilize feature functions to learn these relationships during training.
+     - Predict label sequences for new data during inference.
 
 
 

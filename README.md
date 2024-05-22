@@ -427,6 +427,18 @@ print(next_word)
 ```
 language
 ```
+- **Markov Chain:** A Markov Chain is a way to model a system where the probability of moving to the next state depends only on the current state.
+  - Components of Markov Chain:
+      - 1. **States:** Different conditions or situations the system can be in. For example, the weather can be either Sunny or Rainy.
+             - A set of states `S = {s1, s2, …, sn}`.
+
+      - 2. **Transition Probabilities:** The chances of moving from one state to another.
+             - A transition probability matrix `P = [pij]`, where `pij = P(Xt+1 = sj | Xt = si)`.
+
+
+
+
+
 
 
 

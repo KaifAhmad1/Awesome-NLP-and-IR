@@ -448,7 +448,10 @@ language
    - A set of observable states `O = {o1, o2, …, om}`.
    - Transition probabilities `A = [aij]`, where `aij = P(Xt+1 = sj | Xt = si)`.
    - Emission probabilities `B = [bjk]`, where `bjk = P(Yt = ok | Xt = sj)`.
-
+- **Key Algorithms:**
+  - Forward Algorithm: Computes the likelihood of observing a sequence of symbols.
+  - Viterbi Algorithm: Finds the most likely sequence of hidden states based on observations.
+  - Baum-Welch Algorithm: Trains Hidden Markov Models (HMMs) by estimating transition and emission probabilities from observed data.
 
 
 

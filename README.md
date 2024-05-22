@@ -700,6 +700,7 @@ print(encoded)
 [0, 1, 2, 4, 3]
 ```
 
+- **Bag of words:** 
 
 
 

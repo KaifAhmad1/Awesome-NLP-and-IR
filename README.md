@@ -434,15 +434,6 @@ Message: Don't forget to submit your assignment. | Predicted Label: Not Spam
 Message: URGENT: Your account needs verification. | Predicted Label: Spam
 ```
 
-
-
-
-
-
-
-
-
-
 - **N-gram language model:** An n-gram is a sequence of `n` items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
     - Unigram (n=1): Single word sequences.
     - Bigram (n=2): Pairs of words.
@@ -591,8 +582,9 @@ print(y_pred)
 [['DT', 'NN', 'VBD']]
 ```
 
-
-  
+### Representation Learning in NLP
+- Representation learning in the context of Natural Language Processing (NLP) is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
+ 
 
 
 

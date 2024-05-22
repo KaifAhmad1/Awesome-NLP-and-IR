@@ -625,7 +625,34 @@ print(y_pred)
              - India:     [0, 0, 0, 0, 1]
 - One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
 
+``` Python 
+def one_hot_encoding(categories, data):
+    category_to_vector = {category: [0] * len(categories) for category in categories}
+    
+    for i, category in enumerate(categories):
+        category_to_vector[category][i] = 1
+    
+    encoded_data = [category_to_vector[datum] for datum in data]
+    return encoded_data
 
+# Input 
+countries = ['USA', 'France', 'Germany', 'Japan', 'India']
+languages = ['English', 'French', 'German', 'Japanese', 'Hindi']
+official_languages = ['English', 'French', 'German', 'Japanese', 'Hindi']
+
+binary_vectors = one_hot_encoding(languages, official_languages)
+encoded_countries = one_hot_encoding(languages, official_languages)
+# Results
+for country, encoded_vector in zip(countries, encoded_countries):
+    print(f"{country}: {encoded_vector}")
+```
+```
+USA: [1, 0, 0, 0, 0]
+France: [0, 1, 0, 0, 0]
+Germany: [0, 0, 1, 0, 0]
+Japan: [0, 0, 0, 1, 0]
+India: [0, 0, 0, 0, 1]
+```
 
 
 

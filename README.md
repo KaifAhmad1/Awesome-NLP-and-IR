@@ -468,7 +468,6 @@ class HiddenMarkovModel:
         for _ in range(1, length):
             hidden_states.append(np.random.choice(len(self.transition_prob[0]), p=self.transition_prob[hidden_states[-1]]))
             observable_states.append(np.random.choice(len(self.emission_prob[0]), p=self.emission_prob[hidden_states[-1]]))
-
         return hidden_states, observable_states
 
 # Input

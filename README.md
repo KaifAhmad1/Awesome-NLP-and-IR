@@ -453,9 +453,33 @@ language
   - Viterbi Algorithm: Finds the most likely sequence of hidden states based on observations.
   - Baum-Welch Algorithm: Trains Hidden Markov Models (HMMs) by estimating transition and emission probabilities from observed data.
 
+``` Python 
+import numpy as np
+class HiddenMarkovModel:
+    def __init__(self, initial_prob, transition_prob, emission_prob):
+        self.initial_prob = initial_prob
+        self.transition_prob = transition_prob
+        self.emission_prob = emission_prob
 
+    def generate_sequence(self, length):
+        hidden_states = [np.random.choice(len(self.initial_prob), p=self.initial_prob)]
+        observable_states = [np.random.choice(len(self.emission_prob[0]), p=self.emission_prob[hidden_states[-1]])]
 
+        for _ in range(1, length):
+            hidden_states.append(np.random.choice(len(self.transition_prob[0]), p=self.transition_prob[hidden_states[-1]]))
+            observable_states.append(np.random.choice(len(self.emission_prob[0]), p=self.emission_prob[hidden_states[-1]]))
 
+        return hidden_states, observable_states
+
+# Input
+initial_prob = [0.6, 0.4]
+transition_prob = [[0.7, 0.3], [0.4, 0.6]]
+emission_prob = [[0.1, 0.4, 0.5], [0.6, 0.3, 0.1]]
+hmm = HiddenMarkovModel(initial_prob, transition_prob, emission_prob)
+hidden_states, observable_states = hmm.generate_sequence(5)
+print("Hidden States:", hidden_states)
+print("Observable States:", observable_states)
+```
 
 
 

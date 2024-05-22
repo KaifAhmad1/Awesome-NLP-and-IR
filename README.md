@@ -587,9 +587,21 @@ print(y_pred)
 - **Encoding:** In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: `104, 101, 108, 108, 111`.
 - **Embedding:** In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like `[0.25, 0.8, -0.5, ...]`, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
 
-
-
-
+| Feature             | Encoding                                                | Embedding                                               |
+| :------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
+| **Definition**      | Convert text to numerical forms (e.g., one-hot, TF-IDF). | Represent words in continuous vector space.            |
+| **Purpose**         | Prepare text for ML models.                              | Capture semantic meanings in text.                     |
+| **Example**         | One-hot, TF-IDF.                                         | Word2Vec, GloVe, BERT.                                 |
+| **Dimensionality**  | Fixed (vocabulary size).                                 | Variable (semantic dimensionality).                    |
+| **Data Type**       | Discrete (words/characters).                            | Continuous (semantic vectors).                         |
+| **Transformation**  | Tokenization, vectorization.                             | Trained on large text corpora with NNs.                |
+| **Representation**  | Numeric/sparse vectors.                                  | Dense vectors capture semantic meanings.               |
+| **Application**     | Classification, sentiment analysis.                     | Semantic search, language modeling.                    |
+| **Complexity**      | Simple algorithms.                                      | Complex models, resource-intensive.                    |
+| **Information Preservation** | Preserves basic structure.                          | Retains semantic and contextual info.                  |
+| **Examples**        | Bag-of-Words, TF-IDF, Integer Encoding.                                   | Word2Vec, GloVe,FasText. ELMo.                                 |
+| **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
+| **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
 
 
 

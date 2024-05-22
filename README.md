@@ -435,7 +435,7 @@ language
       - 2. **Transition Probabilities:** The chances of moving from one state to another.
              - A transition probability matrix `P = [pij]`, where `pij = P(Xt+1 = sj | Xt = si)`.
 
-- **Hidden Markov Model (HMM):** A Hidden Markov Model (HMM) is a statistical model where the system being modeled is assumed to follow a Markov process with hidden states. In contrast to Markov Chains, in HMMs, the state is not directly visible, but output dependent on the state is visible.
+- **Hidden Markov Model (HMM):** A Hidden Markov Model (HMM) is a statistical model where the system being modelled is assumed to follow a Markov process with hidden states. In contrast to Markov Chains, in HMMs, the state is not directly visible, but output dependent on the state is visible.
 - Components:
    - **Initial State Distribution:** Probabilities of starting in each hidden state.
    - **Hidden States:** A finite set of states that are not directly observable.
@@ -452,6 +452,7 @@ language
   - Forward Algorithm: Computes the likelihood of observing a sequence of symbols.
   - Viterbi Algorithm: Finds the most likely sequence of hidden states based on observations.
   - Baum-Welch Algorithm: Trains Hidden Markov Models (HMMs) by estimating transition and emission probabilities from observed data.
+ - **Applications:** Applications of Markov Chains and HMM are Part of Speech tagging, Speech Recognition, Name Entity Recognition etc. 
 
 ``` Python 
 import numpy as np

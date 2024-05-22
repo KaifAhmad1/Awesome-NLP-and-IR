@@ -661,7 +661,37 @@ Germany: [0, 0, 1, 0, 0]
 Japan: [0, 0, 0, 1, 0]
 India: [0, 0, 0, 0, 1]
 ```
+- **Integer Encoding:** Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
+   - **Steps:**
+      1. **Assign integers to each unique category:**
+         - English: 0
+         - French: 1
+         - German: 2
+         - Japanese: 3
+         - Hindi: 4
 
+     2. **Map countries to their corresponding integer values:**
+         - USA: 0
+         - France: 1
+         - Germany: 2
+         - Japan: 3
+         - India: 4
+
+``` Python 
+from collections import defaultdict
+def integer_encoding(data):
+   categories = sorted(set(data))
+   category_to_int = {cat: i for i, cat in enumerate(categories)}
+   return [category_to_int[d] for d in data]
+
+# Input 
+languages = ['English', 'French', 'German', 'Japanese', 'Hindi']
+encoded = integer_encoding(languages)
+print(encoded)
+```
+```
+[0, 1, 2, 4, 3]
+```
 
 
 

@@ -603,6 +603,29 @@ print(y_pred)
 | **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
 | **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
 
+- **One Hot Encoding:** One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
+   - Consider a dataset containing information about countries and their official languages:
+      - **Countries**: USA, France, Germany, Japan, India
+      - **Official Languages**: English, French, German, Japanese, Hindi
+    - **Step 1:** We identify the unique categories in the `Official Language` column: English, French, German, Japanese, and Hindi.
+    - **Step 2:** Create Binary Vectors
+         - For each unique category, we create a binary vector:
+             - English:    [1, 0, 0, 0, 0]
+             - French:     [0, 1, 0, 0, 0]
+             - German:     [0, 0, 1, 0, 0]
+             - Japanese:   [0, 0, 0, 1, 0]
+             - Hindi: [0, 0, 0, 0, 1]
+  
+   - **Step 3:** Assign Values
+        - Now, we assign these binary vectors to each country based on their official language:
+             - USA:        [1, 0, 0, 0, 0]
+             - France:     [0, 1, 0, 0, 0]
+             - Germany:    [0, 0, 1, 0, 0]
+             - Japan:      [0, 0, 0, 1, 0]
+             - India:     [0, 0, 0, 0, 1]
+- One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
+
+
 
 
 

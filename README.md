@@ -624,6 +624,14 @@ print(y_pred)
              - Japan:      [0, 0, 0, 1, 0]
              - India:     [0, 0, 0, 0, 1]
 - One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
+   - Advantages of One Hot Encoding (OHE):
+      - 1. Simple to implement.
+      - 2. Preserves all categorical data.
+   - Disadvantages of One Hot Encoding (OHE):
+      - 1. Increases dimensionality.
+      - 2. Higher computational load.
+      - 3. Ignores ordinal relationships.
+      - 4. May introduce multicollinearity.
 
 ``` Python 
 def one_hot_encoding(categories, data):

@@ -373,6 +373,76 @@ Steps
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
 ### Statical NLP 
+- **Naive Bayes**: Naive Bayes presents a straightforward yet effective classification approach rooted in `Bayes theorem`, assuming `independence` among features. Here's a simplified rundown:
+  - Bayes theorem is a cornerstone of probability theory, revealing the probability of an event based on prior conditions. It's expressed as:
+     -    `P(A|B) = (P(B|A) * P(A)) / P(B)`
+ - Where, 
+     - `P(A|B)` is the probability of event A occurring given that event B has occurred.
+     - `P(B|A)` is the probability of event B occurring given that event A has occurred.
+     - `P(A)` and `P(B)` are the probabilities of events A and B occurring independently of each other.
+ - **Naive Bayes Assumption:** Naive Bayes assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature.
+ - **Types of Naive Bayes:**
+     - **Gaussian Naive Bayes:** Assumes features follow a Gaussian (normal) distribution.
+     - **Multinomial Naive Bayes:** Suitable for classification with discrete features (e.g., word counts for text).
+     - **Bernoulli Naive Bayes:** Assumes features are binary (e.g., presence or absence of a feature).
+
+``` Python 
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+# Input Messages
+messages = [
+    "Hey, want to buy some cheap Viagra?",
+    "Meeting for lunch today?",
+    "You've won a free vacation! Claim now!",
+    "Don't forget to submit your assignment.",
+    "URGENT: Your account needs verification.",
+]
+
+# Labels for examples 
+labels = [1, 0, 1, 0, 1]
+
+# Training data
+training_messages = [
+    "Buy Viagra for cheap!",
+    "Lunch meeting at 12 pm.",
+    "Claim your free vacation now!",
+    "Submit your assignment by Friday.",
+    "Your account requires immediate verification.",
+]
+training_labels = [1, 0, 1, 0, 1]
+
+# Define a pipeline
+model = make_pipeline(
+    CountVectorizer(),  
+    MultinomialNB(),   
+)
+
+# Train the model
+model.fit(training_messages, training_labels)
+
+# Inference on example
+predictions = model.predict(messages)
+for message, label in zip(messages, predictions):
+    print(f"Message: {message} | Predicted Label: {'Spam' if label == 1 else 'Not Spam'}")
+```
+```
+Message: Hey, want to buy some cheap Viagra? | Predicted Label: Spam
+Message: Meeting for lunch today? | Predicted Label: Not Spam
+Message: You've won a free vacation! Claim now! | Predicted Label: Spam
+Message: Don't forget to submit your assignment. | Predicted Label: Not Spam
+Message: URGENT: Your account needs verification. | Predicted Label: Spam
+```
+
+
+
+
+
+
+
+
+
+
 - **N-gram language model:** An n-gram is a sequence of `n` items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
     - Unigram (n=1): Single word sequences.
     - Bigram (n=2): Pairs of words.

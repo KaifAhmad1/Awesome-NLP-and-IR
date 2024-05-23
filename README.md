@@ -817,7 +817,7 @@ def calculate_tf_idf(corpus):
         for term, frequency in term_counts.items():
             tf = frequency / total_terms
             doc_freq = sum(1 for doc in corpus if term in doc)
-            idf = 1 + (doc_count / doc_freq) if doc_freq > 0 else 1
+            idf = 1 + (doc_count / doc_freq) if doc_freq > 0 else 1  # Here +1 is smoothing factor to avoid division by zero 
             doc_scores[term] = tf * idf
 
         tfidf_scores[doc_index] = doc_scores

@@ -996,8 +996,31 @@ terms.: 0.440
         - woman = `[0.25, 0.70, 0.10, 0.55]`
     - In this vector space, the embeddings for `king` and `queen` are closer to each other than to `man` and `woman,` capturing the relationship between royalty. Similarly, the difference between `king` and `man` is similar to the difference between `queen` and `woman,` capturing the gender relationship.
 
+- **Word2Vec:** Word2vec is a popular technique in Natural Language Processing (NLP) that transforms words into numerical vectors, capturing their meanings and relationships. Developed by Tomas Mikolov and his team at Google in 2013, Word2vec comes in two main models: Continuous Bag-of-Words (CBOW) and Skip-Gram.
+   - **How Word2vec Works:**
+       - **Continuous Bag-of-Words (CBOW):** The CBOW model predicts a target word based on its surrounding context words. Here’s how it works:
+         - Context Window: Assume a context window of size m. For a given target word w_t, the context words are
+            - `w_{t-m}, ..., w_{t-1}, w_{t+1}, ..., w_{t+m}`.
+         - Input Representation: Each word `w` in the vocabulary `V` is represented as a one-hot vector `x ∈ R^{|V|}`, where only the index corresponding to `w` is `1` and all other indices are `0`.
+         - Projection Layer: The input one-hot vectors are mapped to a continuous vector space using a weight matrix `W ∈ R^{|V| x d}`, where `d` is the dimensionality of the word vectors (embeddings). The context word vectors are averaged:
+            - `v_c = (1 / 2m) * sum_{i=-m, i ≠ 0}^{m} W * x_{t+i}`
 
-  
+         - Output Layer: The averaged context vector v_c is then multiplied by another weight matrix W' ∈ R^{d x |V|} and passed through a softmax function to produce the probability distribution over the vocabulary:
+            - `p(w_t | w_{t-m}, ..., w_{t-1}, w_{t+1}, ..., w_{t+m}) = exp(v_{w_t} ⋅ v_c) / sum_{w ∈ V} exp(v_w ⋅ v_c)`
+
+       - **Skip-Gram:** The Skip-Gram model, on the other hand, predicts context words given the target word. The steps are:
+          - Input Representation: For a target word `w_t`, represented as a one-hot vector `x_t`.
+          - Projection Layer: The one-hot vector is projected into the embedding space using the weight matrix `W:v_t = W * x_t`
+          - Output Layer: For each context word `w_{t+i}` (within the window of size m), the model predicts the probability distribution using the weight matrix `W'` and `softmax`:
+            - `p(w_{t+i} | w_t) = exp(v_{w_{t+i}} ⋅ v_t) / sum_{w ∈ V} exp(v_w ⋅ v_t)`
+       - **Negative Sampling:** Negative sampling simplifies the training process by approximating the softmax function. Instead of computing the gradient over the entire vocabulary, negative sampling updates the weights for a small number of `negative` words (words not in the context). For each context word `w_O` and target word `w_I`:
+          - `log σ(v_{w_O} ⋅ v_{w_I}) + sum_{i=1}^{k} E_{w_n ∼ P_n(w)} [log σ(-v_{w_n} ⋅ v_{w_I})]`
+        - where
+           - `σ` is the sigmoid function
+           -  `k` is the number of negative samples
+           -   and `P_n(w)` is the noise distribution
+       - **Hierarchical Softmax:** Hierarchical softmax reduces computational complexity by representing the vocabulary as a binary tree. Each word is a leaf node, and predicting a word involves traversing from the root to the leaf node. The probability of a word is the product of the probabilities of the decisions made at each node in the path.
+
 
 
 

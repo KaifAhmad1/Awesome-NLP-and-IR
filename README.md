@@ -591,12 +591,11 @@ print(y_pred)
 | :------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
 | **Definition**      | Convert text to numerical forms (e.g., one-hot, TF-IDF). | Represent words in continuous vector space.            |
 | **Purpose**         | Prepare text for ML models.                              | Capture semantic meanings in text.                     |
-| **Example**         | One-hot, TF-IDF.                                         | Word2Vec, GloVe, BERT.                                 |
 | **Dimensionality**  | Fixed (vocabulary size).                                 | Variable (semantic dimensionality).                    |
 | **Data Type**       | Discrete (words/characters).                            | Continuous (semantic vectors).                         |
 | **Transformation**  | Tokenization, vectorization.                             | Trained on large text corpora with NNs.                |
 | **Representation**  | Numeric/sparse vectors.                                  | Dense vectors capture semantic meanings.               |
-| **Application**     | Classification, sentiment analysis.                     | Semantic search, language modeling.                    |
+| **Application**     | Classification, Name Entity Recognition.                     | Semantic search, Sentiment Analysis, Summarization.                    |
 | **Complexity**      | Simple algorithms.                                      | Complex models, resource-intensive.                    |
 | **Information Preservation** | Preserves basic structure.                          | Retains semantic and contextual info.                  |
 | **Examples**        | Bag-of-Words, TF-IDF, Integer Encoding.                                   | Word2Vec, GloVe,FasText. ELMo.                                 |
@@ -700,9 +699,14 @@ print(encoded)
 [0, 1, 2, 4, 3]
 ```
 
-- **Bag of words:** 
-
-
+- **Bag of words:**  The Bag of Words (BoW) model in Natural Language Processing (NLP) converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
+  -  This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
+  -  **Process Steps:**
+     - **Corpus Collection:** Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modeling.
+     - **Preprocessing:** Executes meticulous text preprocessing tasks, including lowercasing, punctuation removal, and stop word elimination, to maintain standardized data quality.
+     - **Vocabulary Building:** Extracts unique words from the corpus, forming the foundational vocabulary that encompasses diverse linguistic elements.
+     - **Vectorization:** Transforms each document into a numerical vector representation based on the established vocabulary. Ensures vector length matches vocabulary size, with elements representing word frequencies, succinctly capturing the document's textual essence.
+     
 
      
 ## Information Retrieval 

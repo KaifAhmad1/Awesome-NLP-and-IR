@@ -1021,7 +1021,87 @@ terms.: 0.440
            -   and `P_n(w)` is the noise distribution
        - **Hierarchical Softmax:** Hierarchical softmax reduces computational complexity by representing the vocabulary as a binary tree. Each word is a leaf node, and predicting a word involves traversing from the root to the leaf node. The probability of a word is the product of the probabilities of the decisions made at each node in the path.
 
+``` Python 
+import tensorflow as tf
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import skipgrams
+from tensorflow.keras.layers import Embedding, Dot, Flatten, Dense
+from tensorflow.keras.models import Model
 
+# Input text
+text_data = [
+    "Natural language processing and machine learning are fascinating fields.",
+    "Word2Vec is an excellent tool for word embedding."
+]
+
+# Tokenize text data
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(text_data)
+sequences = tokenizer.texts_to_sequences(text_data)
+vocab_size = len(tokenizer.word_index) + 1
+
+# Generate skip-grams
+skip_grams = [skipgrams(seq, vocab_size, window_size=2) for seq in sequences]
+
+# Build the model
+embedding_dim = 100
+input_target = tf.keras.Input((1,))
+input_context = tf.keras.Input((1,))
+embedding = Embedding(vocab_size, embedding_dim, input_length=1)
+target = embedding(input_target)
+target = Flatten()(target)
+context = embedding(input_context)
+context = Flatten()(context)
+dot_product = Dot(axes=1)([target, context])
+output = Dense(1, activation='sigmoid')(dot_product)
+model = Model(inputs=[input_target, input_context], outputs=output)
+model.compile(loss='binary_crossentropy', optimizer='adam')
+
+# Prepare training data
+pairs, labels = [], []
+for skip_gram in skip_grams:
+    new_pairs, new_labels = skip_gram
+    pairs += new_pairs
+    labels += new_labels
+
+pairs = np.array(pairs)
+labels = np.array(labels)
+
+# Train the model
+model.fit([pairs[:, 0], pairs[:, 1]], labels, epochs=5)
+
+# Extract embeddings
+embedding_layer = model.get_layer('embedding')
+word_embeddings = embedding_layer.get_weights()[0]
+word_index = tokenizer.word_index
+
+# Create a dictionary to map words to their embeddings
+word_embedding_dict = {word: word_embeddings[idx] for word, idx in word_index.items()}
+
+# Get the embedding vector for a word
+word = 'word2vec'
+embedding_vector = word_embedding_dict.get(word)
+print(f"Vector for '{word}': {embedding_vector}")
+```
+```
+Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.0182811   0.05545079
+ -0.00735809 -0.0188455   0.00851007  0.01436511 -0.04801781  0.01853973
+  0.01926632  0.03376403  0.0487873  -0.01145255 -0.04073619  0.03759814
+ -0.01414892 -0.05184942  0.01196407 -0.03316187 -0.00062611  0.01561211
+  0.00904219 -0.03647533 -0.00858539  0.04711245 -0.02592229 -0.02614572
+  0.02072014 -0.05968965 -0.0232677   0.01341342 -0.00252265 -0.03830103
+  0.05060257  0.02582355 -0.01276324  0.05118259 -0.03334418  0.00891038
+  0.03433971 -0.00979966 -0.00288447  0.02499143 -0.01213881  0.03580792
+  0.04264407 -0.0246205  -0.05220392  0.01457958 -0.0077569  -0.02423846
+ -0.04646793  0.05509846  0.00207892  0.01464774  0.05045829  0.03539532
+  0.05784871 -0.00439313 -0.05079681 -0.03624607 -0.00137503 -0.01823079
+ -0.03566554 -0.00455899  0.03955529  0.01125429  0.01601778 -0.01737827
+  0.027907   -0.05140529 -0.01299851 -0.02882623 -0.02424621 -0.006307
+ -0.00143718 -0.05011651 -0.05629823 -0.05643904  0.05539116 -0.01744897
+  0.02687337 -0.00076933 -0.04316826  0.00651922 -0.00661349 -0.06343716
+ -0.03426652  0.03874123 -0.04863291 -0.02591641  0.00344516  0.0478721
+  0.06752533 -0.03133888  0.00209786 -0.01114183]
+```
 
 
 

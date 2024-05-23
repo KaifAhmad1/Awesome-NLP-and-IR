@@ -802,6 +802,70 @@ Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'ha
       - 2. May struggle with very long documents due to term frequency saturation. In lengthy documents, even insignificant terms can surface frequently, resulting in elevated and saturated term frequencies. Consequently, TF-IDF may encounter challenges in effectively distinguishing and assigning significant weights to important terms.
       - 3. Ignores term dependencies and phrase
       - 4. Needs large document collections for reliable IDF
+``` Python
+from collections import Counter
+
+def calculate_tf_idf(corpus):
+    tfidf_scores = {}
+    doc_count = len(corpus)
+
+    for doc_index, document in enumerate(corpus, 1):
+        term_counts = Counter(document.split())
+        total_terms = sum(term_counts.values())
+
+        doc_scores = {}
+        for term, frequency in term_counts.items():
+            tf = frequency / total_terms
+            doc_freq = sum(1 for doc in corpus if term in doc)
+            idf = 1 + (doc_count / doc_freq) if doc_freq > 0 else 1
+            doc_scores[term] = tf * idf
+
+        tfidf_scores[doc_index] = doc_scores
+    return tfidf_scores
+
+# Input
+corpus = [
+    "This is document 1. It contains some terms.",
+    "Document 2 has different terms than document 1.",
+    "Document 3 is another example document with some common terms."
+]
+tfidf_scores = calculate_tf_idf(corpus)
+for doc_index, doc_scores in tfidf_scores.items():
+    print(f"Document {doc_index}:")
+    for term, score in doc_scores.items():
+        print(f"{term}: {score:.3f}")
+```
+```
+Document 1:
+This: 0.500
+is: 0.312
+document: 0.250
+1.: 0.312
+It: 0.500
+contains: 0.500
+some: 0.312
+terms.: 0.312
+Document 2:
+Document: 0.312
+2: 0.500
+has: 0.500
+different: 0.500
+terms: 0.250
+than: 0.500
+document: 0.250
+1.: 0.312
+Document 3:
+Document: 0.250
+3: 0.400
+is: 0.250
+another: 0.400
+example: 0.400
+document: 0.200
+with: 0.400
+some: 0.250
+common: 0.400
+terms.: 0.250
+```
 
 
 

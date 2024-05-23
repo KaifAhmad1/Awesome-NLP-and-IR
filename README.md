@@ -791,7 +791,17 @@ Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'ha
           - The TF-IDF score for `data` in the document would be:
           - TF-IDF(data, d, D) = 0.03 * 2 = 0.06
 
-            
+   - Advantages:
+      - 1. Simple and easy to understand
+      - 2. Effective in identifying relevant terms and their weights
+      - 3. Distinguishes between common and rare terms
+      - 4. Language-independent
+
+   - Disadvantages\Limitations:
+      - 1. Doesn't consider semantics or term context
+      - 2. May struggle with very long documents due to term frequency saturation. In lengthy documents, even insignificant terms can surface frequently, resulting in elevated and saturated term frequencies. Consequently, TF-IDF may encounter challenges in effectively distinguishing and assigning significant weights to important terms.
+      - 3. Ignores term dependencies and phrase
+      - 4. Needs large document collections for reliable IDF
 
 
 

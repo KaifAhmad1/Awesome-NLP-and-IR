@@ -885,11 +885,109 @@ terms.: 0.250
             - `n(t)` is the number of documents containing term t.
       - **Document length Normalization:** Adjusts the TF component based on the length of the document. This ensures that longer documents do not have an unfair advantage over shorter ones.
    
+- **BM25 Score Calculation:**
+    - The BM25 score for a term t in a document d given a query q is calculated as:
+       - `BM25(t, d, q) = IDF(t, D) * ((f(t, d) * (k + 1)) / (f(t, d) + k * (1 - b + b * (|d| / avgdl))))`
+    - Where:
+       - `IDF(t, D)` is the inverse document frequency for term `t`.
+       - `f(t, d)` is the term frequency for term `t` in document `d`.
+       - `|d|` is the length of document `d`.
+       - `avgdl` is the average document length in the corpus.
+       - `k` and `b` are tuning parameters.
 
+   - Advantages:
+      - 1. Effective in ranking documents based on relevance to a query.
+      - 2. Accounts for document length normalization, addressing a limitation of TF-IDF.
+      - 3. Suitable for large document collections.
+      - 4. Robust and widely used in practice.
 
+   - Disadvantages\Limitations:
+      - 1. Like TF-IDF, BM25 does not consider semantic relationships between terms.
+      - 2. Tuning parameters (k and b) need to be carefully selected, although default values often work reasonably well.
+      - 3. May still struggle with certain types of queries or document collections, such as those containing very short documents or highly specialized domains.
 
+``` Python 
+from collections import Counter
+import math
 
+# BM25 parameters
+k = 1.5
+b = 0.75
 
+def calculate_bm25(corpus, k=1.5, b=0.75):
+    bm25_scores = {}
+    doc_count = len(corpus)
+    avgdl = sum(len(doc.split()) for doc in corpus) / doc_count
+    
+    # Precompute document frequencies for each term
+    doc_freq = {}
+    for document in corpus:
+        unique_terms = set(document.split())
+        for term in unique_terms:
+            if term not in doc_freq:
+                doc_freq[term] = 0
+            doc_freq[term] += 1
+    
+    # Compute BM25 scores
+    for doc_index, document in enumerate(corpus, 1):
+        term_counts = Counter(document.split())
+        doc_length = sum(term_counts.values())
+
+        doc_scores = {}
+        for term, frequency in term_counts.items():
+            tf = frequency
+            df = doc_freq.get(term, 0)
+            idf = math.log((doc_count - df + 0.5) / (df + 0.5) + 1)
+            score = idf * ((tf * (k + 1)) / (tf + k * (1 - b + b * (doc_length / avgdl))))
+            doc_scores[term] = score
+
+        bm25_scores[doc_index] = doc_scores
+    return bm25_scores
+
+# Input
+corpus = [
+    "This is document 1. It contains some terms.",
+    "Document 2 has different terms than document 1.",
+    "Document 3 is another example document with some common terms."
+]
+
+bm25_scores = calculate_bm25(corpus, k, b)
+for doc_index, doc_scores in bm25_scores.items():
+    print(f"Document {doc_index}:")
+    for term, score in doc_scores.items():
+        print(f"{term}: {score:.3f}")
+```
+```
+Document 1:
+This: 1.016
+is: 0.487
+document: 0.138
+1.: 0.487
+It: 1.016
+contains: 1.016
+some: 0.487
+terms.: 0.487
+Document 2:
+Document: 0.487
+2: 1.016
+has: 1.016
+different: 1.016
+terms: 1.016
+than: 1.016
+document: 0.138
+1.: 0.487
+Document 3:
+Document: 0.440
+3: 0.917
+is: 0.440
+another: 0.917
+example: 0.917
+document: 0.125
+with: 0.917
+some: 0.440
+common: 0.917
+terms.: 0.440
+```
 
 
 

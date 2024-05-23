@@ -728,8 +728,40 @@ print(encoded)
       - 1. Loss of context
       - 2. High dimensionality and sparse vectors
       - 3. Sparse data representations may pose challenges for some algorithms
+``` Python 
+from sklearn.feature_extraction.text import CountVectorizer
+corpus = [
+    "I love reading books. Books are great.",
+    "Books are a wonderful source of knowledge.",
+    "I have a great love for reading books.",
+    "Reading books can be very enlightening. Books are amazing."
+]
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(corpus)
+vocabulary = vectorizer.get_feature_names_out()
 
-     
+for i, document in enumerate(corpus):
+    print(f"Sentence {i + 1}: {document}")
+    print(f"Vector: {X[i].toarray().tolist()[0]}")
+    print()
+print("Vocabulary:", vocabulary)
+```
+```
+Sentence 1: I love reading books. Books are great.
+Vector: [0, 1, 0, 2, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0]
+
+Sentence 2: Books are a wonderful source of knowledge.
+Vector: [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1]
+
+Sentence 3: I have a great love for reading books.
+Vector: [0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0]
+
+Sentence 4: Reading books can be very enlightening. Books are amazing.
+Vector: [1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]
+
+Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'have'
+ 'knowledge' 'love' 'of' 'reading' 'source' 'very' 'wonderful']
+```
 ## Information Retrieval 
 
 ## Vector Search 

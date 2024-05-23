@@ -762,6 +762,40 @@ Vector: [1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]
 Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'have'
  'knowledge' 'love' 'of' 'reading' 'source' 'very' 'wonderful']
 ```
+- **TF-IDF:** TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
+   - **Components of TF-IDF:**
+      - **Term Frequency (TF):** Measures how frequently a term occurs in a document.
+          - Term Frequency is calculated as:
+          - `TF(t,d) = f(t,d) / sum(f(t',d) for all t' in d)`
+      - where:
+          - `f(t,d)` is the raw count of term `t` in document `d`.
+          - The denominator is the total number of terms in document `d`.
+      - Example:
+          - If the term `data` appears 3 times in a document with 100 words, the term frequency TF for `data` would be: `TF(data, d) = 3 / 100 = 0.03`
+     
+      - **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in a document.
+          - Inverse Document Frequency is calculated as:
+          - `IDF(t, D) = log(N / |{d in D : t in d}|)`
+      - where:
+          - `N` is the total number of documents.
+          - `|{d in D : t in d}|` is the number of documents containing the term `t`.
+      - Example:
+          - If the corpus contains `10,000` documents, and the term `data` appears in 100 of these documents, the inverse document frequency IDF for `data` would be:
+          - `IDF(data, D) = log(10000 / 100) = log(100) = 2`
+      - **Calculating TF-IDF:**
+          - The TF-IDF score for a term `t` in a document `d` is given by: `TF-IDF(t,d,D) = TF(t,d) * IDF(t,D)`
+      - Example:
+          - Using the previous values:
+          - TF(data, d) = 0.03
+          - IDF(data, D) = 2
+          - The TF-IDF score for `data` in the document would be:
+          - TF-IDF(data, d, D) = 0.03 * 2 = 0.06
+
+            
+
+
+
+
 ## Information Retrieval 
 
 ## Vector Search 

@@ -866,6 +866,34 @@ some: 0.250
 common: 0.400
 terms.: 0.250
 ```
+- **BM25 (Best Matching 25):** BM25 (Best Matching 25) is a ranking function used in information retrieval to estimate the relevance of documents to a given search query. It is an extension of the TF-IDF weighting scheme, designed to address some of its limitations while retaining its simplicity and effectiveness.
+   - **Components of BM25:**
+      - **Term Frequency (TF):** Measures how frequently a term occurs in a document, similar to TF in TF-IDF.
+         - TF in BM25 is adjusted to handle document length normalization and term saturation. It is calculated as:
+            - `TF(t,d) = (f(t,d) * (k + 1)) / (f(t,d) + k * (1 - b + b * (|d| / avgdl)))`
+      - Where
+         - `f(t,d)` is the raw count of term `t` in document `d`.
+         - `|d|` is the length of document `d`.
+         - `avgdl` is the average document length in the corpus.
+         - `k` and `b` are tuning parameters, typically set to 1.5 and 0.75 respectively.
+     
+      - **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in the entire document collection, similar to IDF in TF-IDF.
+         - IDF in BM25 is calculated as:
+            - `IDF(t, D) = log((N - n(t) + 0.5) / (n(t) + 0.5))`
+       - Where
+            - `N` is the total number of documents in the collection.
+            - `n(t)` is the number of documents containing term t.
+      - **Document length Normalization:** Adjusts the TF component based on the length of the document. This ensures that longer documents do not have an unfair advantage over shorter ones.
+   
+
+
+
+
+
+
+
+
+
 
 
 

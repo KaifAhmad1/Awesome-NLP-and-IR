@@ -1316,6 +1316,25 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 
+- **ELMo: Embeddings from Language Models:** ELMo, short for "Embeddings from Language Models," is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
+ - **How ELMo Works:**
+   - **Contextualized Embeddings/Dynamic Representations:** Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank.`
+   - **Deep, Bi-directional Language Model:**
+     - **Bi-directional LSTMs:** ELMo uses a deep bi-directional Long Short-Term Memory (bi-LSTM) network to model the word sequences. It reads the text both forward (left-to-right) and backward (right-to-left), capturing context from both directions.
+     - **Layered Approach:** ELMo's architecture consists of multiple layers of LSTMs. Each layer learns increasingly complex representations, from surface-level characteristics to deeper syntactic and semantic features.
+   - **Pre-trained on Large Corpora:**
+     - **Massive Pre-training:** ELMo models are pre-trained on large datasets, such as the 1 Billion Word Benchmark, to learn rich linguistic patterns and structures.
+     - **Fine-tuning for Specific Tasks:** After pre-training, these embeddings can be fine-tuned on specific NLP tasks, allowing ELMo to adapt to the nuances of the target task.
+
+   - Advantages:
+       - 1. Produces context-specific embeddings for more accurate word meaning.
+       - 2. Captures complex syntactic and semantic information.
+       - 3. Outperforms static embeddings on various NLP tasks
+
+   - Disadvantages\Limitations:
+      - 1. Requires significant resources for training and inference.
+      - 2. Pre-training and fine-tuning are time-consuming.
+      - 3. Large memory requirements pose deployment challenges.
 
 ## Information Retrieval 
 

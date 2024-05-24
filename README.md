@@ -1357,6 +1357,9 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
       - 3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
+### Deep NLP 
+
+
 ## Vector Search 
 
 ## LLMs 

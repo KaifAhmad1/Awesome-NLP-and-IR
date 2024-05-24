@@ -1316,7 +1316,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 
-- **ELMo: Embeddings from Language Models:** ELMo, short for "Embeddings from Language Models," is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
+- **ELMo:** ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
  - **How ELMo Works:**
    - **Contextualized Embeddings/Dynamic Representations:** Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank.`
    - **Deep, Bi-directional Language Model:**
@@ -1335,8 +1335,27 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
       - 1. Requires significant resources for training and inference.
       - 2. Pre-training and fine-tuning are time-consuming.
       - 3. Large memory requirements pose deployment challenges.
+     
+- [Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
 
-## Information Retrieval 
+- **BERT:** BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
+ - **How BERT Works:**
+   - **Bidirectional Contextualization:** Unlike traditional models that read text sequentially, BERT uses Transformers to process text from both the left and the right simultaneously, capturing the full context of each word.
+   - **Transformer Architecture:**
+     - **Self-Attention Mechanism:** BERT's architecture relies on the self-attention mechanism within Transformers, which allows the model to weigh the importance of different words in a sentence, regardless of their position.
+     - **Layers of Transformers:** BERT consists of multiple layers of Transformer encoders, each providing a progressively richer representation of the text.
+   - **Pre-training and Fine-tuning:**
+     - **Pre-training Tasks:** BERT is pre-trained on large corpora using two unsupervised tasks: `Masked Language Modeling (MLM)` and `Next Sentence Prediction (NSP)`. MLM involves predicting masked words in a sentence, while NSP involves predicting the relationship between two sentences.
+     - **Fine-tuning:** After pre-training, BERT can be fine-tuned on specific NLP tasks (e.g., question answering, sentiment analysis) by adding a task-specific output layer.
+   - Advantages:
+       - 1. Produces embeddings that consider the context from both directions
+       - 2. Captures intricate syntactic and semantic details.
+       - 3. Excels in a wide range of NLP tasks, setting new performance benchmarks.
+   - Disadvantages\Limitations:
+      - 1. Requires substantial computational resources for both training and inference.
+      - 2. Pre-training on large datasets is time-consuming and computationally expensive.
+      - 3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
+- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
 ## Vector Search 
 

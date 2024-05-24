@@ -1102,19 +1102,55 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
  -0.03426652  0.03874123 -0.04863291 -0.02591641  0.00344516  0.0478721
   0.06752533 -0.03133888  0.00209786 -0.01114183]
 ```
-
    - Advantages:
-      - 1. Efficient training on large datasets.
-      - 2. Captures semantic similarities.
-      - 3. Enables easy comparison of words.
-      - 4. Handles large datasets.
-      - 5. Flexible for task-specific fine-tuning.
+       - 1. Efficient training on large datasets.
+       - 2. Captures semantic similarities.
+       - 3. Enables easy comparison of words.
+       - 4. Handles large datasets.
+       - 5. Flexible for task-specific fine-tuning.
 
    - Disadvantages\Limitations:
       - 1. Ignores word order beyond a fixed window.
       - 2. Out-of-vocabulary words are not represented.
       - 3. Large embedding matrices can be memory-intensive.
       - 4. Static Embeddings which Doesn't adapt to different contexts within a document.
+
+- **GloVe: Global Vectors for Word Representation:** GloVe (Global Vectors for Word Representation) is an advanced technique in Natural Language Processing (NLP) that transforms words into numerical vectors by leveraging global word-word co-occurrence statistics from a corpus. Developed by Christopher D. Manning at Stanford University, GloVe provides rich semantic representations of words by capturing their contextual relationships.
+  - **How GloVe Works:**
+      - **Word Co-occurrence Matrix:**
+          - **Context Window**: Define a context window of size `m`. For a given target word `w_i`, consider the words within this window as context words.
+          - **Co-occurrence Matrix**: Construct a co-occurrence matrix `X` where each element `X_ij` represents the number of times word `j` appears in the context of word `i` across the entire corpus.
+
+  -  **Probability and Ratios:**  To extract meaningful relationships from the co-occurrence matrix, GloVe focuses on the probabilities and ratios of word co-occurrences.
+      - **Probability of Co-occurrence**:
+         - `P_ij = X_ij / ∑_k X_ik`
+         - Here, `P_ij` denotes the probability that word `j` appears in the context of word `i`.
+
+      - **Probability Ratio**:
+         - `P_ik / P_jk = (X_ik / ∑_k X_ik) / (X_jk / ∑_k X_jk)`
+         - This ratio captures the relationship between words `i` and `j` for a common context word `k`.
+
+  -  **GloVe Model Formulation:**
+      - **Objective Function**: GloVe aims to learn word vectors `w_i` and context word vectors `w~_j` such that their dot product approximates the logarithm of their co-occurrence probability:
+         - `w_i^T * w~_j + b_i + b~_j ≈ log(X_ij)`
+      - Where
+        - `w_i` and `w~_j` are the word and context word vectors.
+        - `b_i` and `b~_j` are bias terms.
+      - The goal is to minimize the following weighted least squares loss:
+        - `J = ∑_{i,j=1}^V f(X_ij) * (w_i^T * w~_j + b_i + b~_j - log(X_ij))^2`
+      - **Weighting Function**: The weighting function `f(X_ij)` controls the influence of each co-occurrence pair, reducing the impact of very frequent or very rare co-occurrences:
+        - `f(X_ij) = {(X_ij / x_max)^α if X_ij < x_max1 otherwise}`
+      - Where
+        - `x_max` and `α` are hyperparameters (typically `α = 0.75` and `x_max = 100`).
+
+  -  **Training Process:**
+      - **Initialization**:
+         - Initialize word vectors `w_i` and context vectors `w~_j` randomly.
+         - Initialize biases `b_i` and `b~_j`.
+      - **Optimization:**
+         - Use stochastic gradient descent (SGD) or an adaptive optimization algorithm like AdaGrad to minimize the loss function.
+         - Iteratively update vectors and biases based on the gradient of the loss function.
+
 
 
 

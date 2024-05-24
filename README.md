@@ -1103,6 +1103,22 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
   0.06752533 -0.03133888  0.00209786 -0.01114183]
 ```
 
+   - Advantages:
+      - 1. Efficient training on large datasets.
+      - 2. Captures semantic similarities.
+      - 3. Enables easy comparison of words.
+      - 4. Handles large datasets.
+      - 5. Flexible for task-specific fine-tuning.
+
+   - Disadvantages\Limitations:
+      - 1. Ignores word order beyond a fixed window.
+      - 2. Out-of-vocabulary words are not represented.
+      - 3. Large embedding matrices can be memory-intensive.
+      - 4. Static Embeddings which Doesn't adapt to different contexts within a document.
+
+
+
+
 
 
 

@@ -1150,10 +1150,130 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
       - **Optimization:**
          - Use stochastic gradient descent (SGD) or an adaptive optimization algorithm like AdaGrad to minimize the loss function.
          - Iteratively update vectors and biases based on the gradient of the loss function.
+   - Advantages:
+       - 1. Captures both global and local context of words.
+       - 2. Efficient in handling large corpora.
+       - 3. Produces meaningful embeddings that capture semantic relationships.
 
+   - Disadvantages\Limitations:
+      - 1. Computationally expensive due to the need to compute the co-occurrence matrix.
+      - 2. Static embeddings which do not adapt to different contexts within a document.
+      - 3. Large memory requirement for storing the co-occurrence matrix.
 
+``` Python 
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.layers import Embedding, Dot, Add, Reshape, Input
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adagrad
 
+# Sample text data
+text_data = [
+    "Natural language processing and machine learning are fascinating fields.",
+    "GloVe is an excellent tool for word embedding."
+]
 
+# Tokenize text data
+tokenizer = tf.keras.preprocessing.text.Tokenizer()
+tokenizer.fit_on_texts(text_data)
+sequences = tokenizer.texts_to_sequences(text_data)
+vocab_size = len(tokenizer.word_index) + 1
+word_index = tokenizer.word_index
+index_to_word = {v: k for k, v in word_index.items()}
+
+# Create co-occurrence matrix (simplified example)
+co_occurrence_matrix = np.zeros((vocab_size, vocab_size))
+
+# Fill the co-occurrence matrix based on a context window (simplified for illustration)
+window_size = 2
+for sequence in sequences:
+    for i, word_id in enumerate(sequence):
+        start = max(0, i - window_size)
+        end = min(len(sequence), i + window_size + 1)
+        for j in range(start, end):
+            if i != j:
+                co_occurrence_matrix[word_id, sequence[j]] += 1
+
+# Hyperparameters
+embedding_dim = 50
+x_max = 100
+alpha = 0.75
+
+# Weighting function
+def weighting_func(x):
+    return np.minimum((x / x_max) ** alpha, 1.0)
+
+weights = weighting_func(co_occurrence_matrix)
+
+# Building the GloVe model
+input_target = Input((1,))
+input_context = Input((1,))
+
+embedding_target = Embedding(vocab_size, embedding_dim, input_length=1, name="embedding_target")
+embedding_context = Embedding(vocab_size, embedding_dim, input_length=1, name="embedding_context")
+target = embedding_target(input_target)
+context = embedding_context(input_context)
+
+target = Reshape((embedding_dim,))(target)
+context = Reshape((embedding_dim,))(context)
+
+dot_product = Dot(axes=1)([target, context])
+
+# Add bias terms
+bias_input_target = Input((1,))
+bias_input_context = Input((1,))
+bias_target = Embedding(vocab_size, 1, input_length=1)(bias_input_target)
+bias_context = Embedding(vocab_size, 1, input_length=1)(bias_input_context)
+bias_target = Reshape((1,))(bias_target)
+bias_context = Reshape((1,))(bias_context)
+
+add_bias = Add()([dot_product, bias_target, bias_context])
+
+model = Model(inputs=[input_target, input_context, bias_input_target, bias_input_context], outputs=add_bias)
+model.compile(loss='mean_squared_error', optimizer=Adagrad())
+
+# Prepare training data
+pairs, labels, biases_target, biases_context = [], [], [], []
+
+for i in range(vocab_size):
+    for j in range(vocab_size):
+        if co_occurrence_matrix[i, j] > 0:
+            pairs.append((i, j))
+            labels.append(np.log(co_occurrence_matrix[i, j]))
+            biases_target.append(i)
+            biases_context.append(j)
+
+pairs = np.array(pairs)
+labels = np.array(labels)
+biases_target = np.array(biases_target)
+biases_context = np.array(biases_context)
+
+# Train the model
+model.fit([pairs[:, 0], pairs[:, 1], biases_target, biases_context], labels, epochs=5)
+
+# Extract embeddings
+embedding_target_weights = model.get_layer('embedding_target').get_weights()[0]
+embedding_context_weights = model.get_layer('embedding_context').get_weights()[0]
+
+# Create a dictionary to map words to their embeddings
+word_embedding_dict = {word: embedding_target_weights[word_index[word]] for word in word_index}
+
+# Get the embedding vector for a word
+word = 'glove'
+embedding_vector = word_embedding_dict.get(word)
+print(f"Vector for '{word}': {embedding_vector}")
+```
+```
+Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736  0.01504889
+ -0.04845165  0.01036947  0.00841802 -0.03494125 -0.00486815  0.03025544
+  0.00366436 -0.04756535 -0.01701002  0.02813601 -0.03724954  0.04696105
+  0.03691722  0.0395353   0.04234853 -0.01318511 -0.0009635  -0.01482506
+  0.04066756  0.0400206  -0.03915076 -0.01858991  0.01982226 -0.00893309
+  0.03469832 -0.03480824  0.01705096 -0.04444888 -0.03532882  0.02922454
+ -0.04793992  0.01991567 -0.03989727  0.00138859 -0.0238043  -0.02344322
+  0.04485585  0.03791862  0.04784629  0.01865678 -0.02116342 -0.02645371
+  0.01796384 -0.01561937]
+```
 
 
 

@@ -1358,6 +1358,30 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
 ### Deep NLP 
+- **Deep Learning - Basic Neural Network Components:** A basic neural network architecture includes:
+   - **Input Layer:** Receives input data.
+   - **Hidden Layers:** Process input through weighted connections.
+   - **Activation Function:** Adds non-linearity to neuron outputs.
+   - **Weights and Biases:** Parameters adjusted during training.
+   - **Output Layer:** Produces the final output.
+   - **Loss Function:** Measures the difference between predicted and actual output.
+   - **Optimization Algorithm:** Updates weights to minimize loss.
+   - **Learning Rate:** Controls the step size during optimization.
+
+- **Purpose of Activation Functions in Neural Networks:** Activation functions introduce non-linearity into the network, allowing it to learn complex patterns. Without them, the network would only perform linear transformations, limiting its ability to model complex data.
+  - **Common Activation Functions:**
+    - **Sigmoid Function:**
+      - `Formula: f(x) = 1 / (1 + e^(-x))`
+       - Use Cases: Often used in the output layer for binary classification.
+```python
+import numpy as np
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+```
+
+
+
+
 
 
 ## Vector Search 

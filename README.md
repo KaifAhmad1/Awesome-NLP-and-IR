@@ -1506,7 +1506,14 @@ Final loss: [4.41904213e-08]
      - **Advantages**: Speeds up convergence; reduces oscillations near minima.
      - **Disadvantages**: Requires tuning of the momentum parameter (momentum); can overshoot minima.
 
+- **Feedforward Neural Networks (FNN):** A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
+  - **Architecture:** The basic architecture of a Feedforward Neural Network consists of the following components:
+    - 1. **Input Layer**: This layer receives the input data. Each node in this layer represents one feature of the input.
+    - 2. **Hidden Layers**: These layers process the input data. There can be one or more hidden layers in an FNN. Each node in a hidden layer applies a weighted sum of its inputs and an activation function.
+    - 3. **Output Layer**: This layer produces the final output of the network. The number of nodes in this layer corresponds to the number of output classes or the required output dimensions.
 
+## Mathematical Formulation
+For a single hidden layer network:
     
 
 

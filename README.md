@@ -1523,7 +1523,39 @@ Final loss: [4.41904213e-08]
       - `σ` is an activation function (e.g. ReLU, Sigmoid)
       - `W2` is the weight matrix connecting the hidden layer to the output layer
       - `b2` is the bias vector for the output layer
-    
+   - Advantages:
+       - 1. Easy to implement and understand.
+       - 2. Can approximate any continuous function with enough layers and units.
+       - 3. Effective for classification and regression on structured data.
+       - 4. Predictable and easier to debug due to one-way data flow.
+   - Disadvantages\Limitations:
+      - 1. Not suitable for sequential data like time series or text.
+      - 2. Cannot retain information from previous inputs.
+      - 3. Prone to overfitting, especially with limited data
+
+ ``` Python 
+import numpy as np
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+def feedforward_nn(x, W1, b1, W2, b2):
+    h = sigmoid(np.dot(W1, x) + b1)
+    y = sigmoid(np.dot(W2, h) + b2)
+    return y
+
+# input (3 features)
+x = np.array([0.5, 0.1, 0.4])
+# weights and biases
+W1 = np.array([[0.2, 0.8, 0.5], [0.3, 0.4, 0.2]])
+b1 = np.array([0.1, 0.2])
+W2 = np.array([0.6, 0.9])
+b2 = 0.3
+# Forward pass
+output = feedforward_nn(x, W1, b1, W2, b2)
+print("Output:", output)
+ ```
+```
+Output: 0.772853461396208
+```
 
 ## Vector Search 
 

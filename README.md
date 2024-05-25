@@ -1512,11 +1512,18 @@ Final loss: [4.41904213e-08]
     - 2. **Hidden Layers**: These layers process the input data. There can be one or more hidden layers in an FNN. Each node in a hidden layer applies a weighted sum of its inputs and an activation function.
     - 3. **Output Layer**: This layer produces the final output of the network. The number of nodes in this layer corresponds to the number of output classes or the required output dimensions.
 
-## Mathematical Formulation
-For a single hidden layer network:
+  - **Mathematically:**
+   - For a single hidden layer network:
+      - `Input Layer: x`
+      - `Hidden Layer: [ h = σ(W1x + b1) ]`
+      - `Output Layer: [ y = W2h + b2 ]`
+    - Where:
+      - `W1` is the weight matrix connecting the input layer to the hidden layer
+      - `b1` is the bias vector for the hidden layer
+      - `σ` is an activation function (e.g. ReLU, Sigmoid)
+      - `W2` is the weight matrix connecting the hidden layer to the output layer
+      - `b2` is the bias vector for the output layer
     
-
-
 
 ## Vector Search 
 

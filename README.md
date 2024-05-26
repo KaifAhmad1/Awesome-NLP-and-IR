@@ -1694,7 +1694,67 @@ print("Output:", output)
 ```
 Output: [[0.54412203]]
 ```
-  
+- **Gated Recurrent Unit(GRU) Networks:** A Gated Recurrent Unit (GRU) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. GRUs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting. GRUs are a simplified version of Long Short-Term Memory (LSTM) networks, with fewer gates and a more streamlined architecture.
+   - **Architecture:** The basic architecture of a GRU consists of the following components:
+      - **Reset Gate:** This gate determines what information to discard from the previous hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
+      - **Update Gate:** This gate determines what information to update in the hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
+      - **Hidden State:** This is the internal state of the GRU network, which captures short-term dependencies in the data.
+      - **Output:** This is the output of the GRU network, which is calculated based on the hidden state.
+   - **Mathematically:** The GRU network can be represented mathematically as follows
+     - `Reset Gate: r = σ(Wr * x + Ur * h + br)`
+     - `Update Gate: z = σ(Wz * x + Uz * h + bz)`
+     - `Hidden State: h = (1 - z) * h_prev + z * tanh(W * x + U * h + b)`
+     - `Output: y = W * h + b`
+   - **Where:**
+     - `Wr, Wz, W` are the weight matrices for the reset, update, and output gates, respectively.
+     - `Ur, Uz, U` are the recurrent weight matrices for the reset, update, and output gates, respectively.
+     - `br, bz, b` are the bias vectors for the reset, update, and output gates, respectively.
+     - `σ` is the sigmoid activation function.
+     - `tanh` is the hyperbolic tangent activation function.
+   - Advantages:
+       - 1. GRUs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
+       - 2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
+       - 3. GRUs have a simpler architecture compared to LSTMs, with fewer parameters to train, making them computationally more efficient.
+   - Disadvantages\Limitations:
+      - 1. GRUs, like LSTMs, can be computationally expensive to train and require large amounts of data.
+      - 2. They can be difficult to interpret and visualize due to their complex architecture.
+      - 3. GRUs can suffer from overfitting if not regularized properly.
+``` Python 
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def gru(x, Wz, Uz, Wr, Ur, W, U, bz, br, b):
+    h = np.zeros((Uz.shape[0], 1))
+    for t in range(len(x)):
+        z = sigmoid(np.dot(Wz, x[t].reshape(-1, 1)) + np.dot(Uz, h) + bz)
+        r = sigmoid(np.dot(Wr, x[t].reshape(-1, 1)) + np.dot(Ur, h) + br)
+        h_tilde = np.tanh(np.dot(W, x[t].reshape(-1, 1)) + np.dot(U, r * h) + b)
+        h = (1 - z) * h + z * h_tilde
+    return h
+
+# Input sequence (3 time steps, each of size 1)
+x = np.array([[0.5], [0.1], [0.4]])
+
+# Weights and biases
+Wz = np.array([[0.2]])  
+Uz = np.array([[0.1]])  
+Wr = np.array([[0.3]])  
+Ur = np.array([[0.2]])  
+W = np.array([[0.4]])  
+U = np.array([[0.3]])  
+bz = np.array([[0.1]])   
+br = np.array([[0.2]])  
+b = np.array([[0.3]])  
+
+# Forward pass
+output = gru(x, Wz, Uz, Wr, Ur, W, U, bz, br, b)
+print("Output:", output)
+```
+```
+Output: [[0.40272816]]
+```
 ## Vector Search 
 
 ## LLMs 

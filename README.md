@@ -1618,11 +1618,83 @@ print("Output:", output)
 Output: [[0.53499449]]
 ```
 - **Different types of RNNs:** Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
-   - 1. **Vanilla RNNs:**
+   - 1. **Vanilla RNNs\RNNs:** I have talked about above. 
    - 2. **LSTMs:**
    - 3. **GRUs:**
-   - 4. **Bidirectional LSTMs and GRUs:** 
+   - 4. **Bidirectional LSTMs and GRUs:**
+  
+- **Long Short-Term Memory (LSTM) Networks:** A Long Short-Term Memory (LSTM) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. LSTMs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting.
+  - **Architecture:** The basic architecture of an LSTM network consists of the following components:
+    - **Input Gate:** This gate is responsible for controlling the flow of new information into the cell state. It consists of a sigmoid layer and a point-wise multiplication operation.
+    - **Forget Gate:** This gate determines what information to discard from the previous cell state. It also consists of a sigmoid layer and a point-wise multiplication operation.
+    - **Cell State:** This is the internal memory of the LSTM network, which stores information over long periods.
+    - **Output Gate:** This gate determines the output of the LSTM network based on the cell state and the hidden state.
+    - **Hidden State:** This is the internal state of the LSTM network, which captures short-term dependencies in the data.
+   - **Mathematically:** The LSTM network can be represented mathematically as follows:
+      - `Input Gate: i = σ(Wi * x + Ui * h + bi)`
+      - `Forget Gate: f = σ(Wf * x + Uf * h + bf)`
+      - `Cell State: c = f * c_prev + i * tanh(Wc * x + Uc * h + bc)`
+      - `Output Gate: o = σ(Wo * x + Uo * h + bo)`
+      - `Hidden State: h = o * tanh(c)`
+      - `Output: y = Wo * h + bo`
+   - **Where:**
+      - `Wi, Wf, Wc, Wo` are the weight matrices for the input, forget, cell, and output gates, respectively.
+      - `Ui, Uf, Uc, Uo` are the recurrent weight matrices for the input, forget, cell, and output gates, respectively.
+      - `bi, bf, bc, bo` are the bias vectors for the input, forget, cell, and output gates, respectively.
+      - `σ` is the sigmoid activation function.
+      - `tanh` is the hyperbolic tangent activation function.
+   - Advantages:
+       - 1. LSTMs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
+       - 2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
+       - 3. LSTMs can handle sequential data with varying lengths.
+   - Disadvantages\Limitations:
+      - 1. LSTMs are computationally expensive to train and require large amounts of data.
+      - 2. They can be difficult to interpret and visualize due to their complex architecture.
+      - 3. LSTMs can suffer from overfitting if not regularized properly.
+       
+``` Python 
+import numpy as np
 
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def lstm(x, Wi, Ui, Wf, Uf, Wc, Uc, Wo, Uo, bi, bf, bc, bo):
+    h = np.zeros((Ui.shape[0], 1))
+    c = np.zeros((Ui.shape[0], 1))
+    for t in range(len(x)):
+        i = sigmoid(np.dot(Wi, x[t].reshape(-1, 1)) + np.dot(Ui, h) + bi)
+        f = sigmoid(np.dot(Wf, x[t].reshape(-1, 1)) + np.dot(Uf, h) + bf)
+        c = f * c + i * np.tanh(np.dot(Wc, x[t].reshape(-1, 1)) + np.dot(Uc, h) + bc)
+        o = sigmoid(np.dot(Wo, x[t].reshape(-1, 1)) + np.dot(Uo, h) + bo)
+        h = o * np.tanh(c)
+    y = np.dot(Wo, h) + bo
+    return y
+
+# Input sequence (3 time steps, each of size 1)
+x = np.array([[0.5], [0.1], [0.4]])
+
+# Weights and biases
+Wi = np.array([[0.2]])  
+Ui = np.array([[0.1]])  
+Wf = np.array([[0.3]])  
+Uf = np.array([[0.2]])  
+Wc = np.array([[0.4]])  
+Uc = np.array([[0.3]])  
+Wo = np.array([[0.5]])  
+Uo = np.array([[0.4]])  
+bi = np.array([[0.1]])   
+bf = np.array([[0.2]])  
+bc = np.array([[0.3]])  
+bo = np.array([[0.4]])  
+
+# Forward pass
+output = lstm(x, Wi, Ui, Wf, Uf, Wc, Uc, Wo, Uo, bi, bf, bc, bo)
+print("Output:", output)
+```
+```
+Output: [[0.54412203]]
+```
+  
 ## Vector Search 
 
 ## LLMs 

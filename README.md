@@ -1560,23 +1560,22 @@ Output: 0.772853461396208
   - **Architecture:** The basic architecture of a Recurrent Neural Network consists of the following components:
     - 1. **Input Layer**:  This layer receives the input data. In the context of sequences, each input is often processed one time step at a time.
     - 2. **Hidden Layers**: These layers process the input data and maintain a memory of previous inputs. Each node in a hidden layer takes input not only from the current time step but also from the hidden state of the previous time step.
+    - 3. **Cell State:** This is a vector that stores the internal memory of the network. The cell state is updated at each time step based on the current input and the previous cell state
     - 3. **Output Layer**: This layer produces the final output of the network for each time step. The number of nodes in this layer corresponds to the desired output dimensions.
 
   - **Mathematically:**
    - For a single hidden layer RNN:
-      - `Input at time step t: x_t`
-      - `Hidden state at time step t: h_t`
-      - `Output at time step t: y_t`
-   - The equations are
-      - `h_t = σ(W_h x_t + U_h h_{t-1} + b_h)`
-      - `y_t = W_y h_t + b_y`
+      - `Input Layer: x`
+      - `Hidden State: [ h = σ(Wx * x + Wh * h + b) ]`
+      - `Cell State: [ c = f(c_prev, x) ]`
+      - `Output Layer: [ y = σ(Wy * h + b) ]`
    - Where:
-      - `W_h` is the weight matrix for the input to hidden layer
-      - `U_h` is the weight matrix for the hidden state to hidden state transition
-      - `b_h` is the bias vector for the hidden layer
-      - `σ` is an activation function (e.g. ReLU, Tanh)
-      - `W_y` is the weight matrix for the hidden layer to output layer
-      - `b_y` is the bias vector for the output layer
+      - `Wx` is the weight matrix connecting the input layer to the hidden state
+      - `Wh` is the weight matrix connecting the hidden state to itself
+      - `b` is the bias vector for the hidden state
+      - `f` is the forget gate function (e.g. sigmoid)
+      - `Wy` is the weight matrix connecting the hidden state to the output layer
+      - `σ` is an activation function (e.g. ReLU, Sigmoid)
 
 ![RNN illustrated with this Image example](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RNN.png)
 

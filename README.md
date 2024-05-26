@@ -1576,8 +1576,47 @@ Output: 0.772853461396208
       - `f` is the forget gate function (e.g. sigmoid)
       - `Wy` is the weight matrix connecting the hidden state to the output layer
       - `σ` is an activation function (e.g. ReLU, Sigmoid)
-
 ![RNN illustrated with this Image example](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RNN.png)
+
+   - Advantages:
+       - 1. Suitable for sequential data like time series or text.
+       - 2. Can retain information from previous inputs
+       - 3. Effective for modeling temporal dependencies in data.
+   - Disadvantages\Limitations:
+      - 1. Prone to vanishing gradients, which can make training difficult.
+      - 2. Difficult to train due to the complex recurrent connections.
+      - 3. Not suitable for very long sequences.
+
+``` Python 
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def rnn(x, Wx, Wh, Wy, b, by):
+    h = np.zeros((Wh.shape[0], 1))
+    for t in range(len(x)):
+        h = sigmoid(np.dot(Wx, x[t].reshape(-1, 1)) + np.dot(Wh, h) + b)
+    y = np.dot(Wy, h) + by
+    return y
+
+# Input sequence (3 time steps, each of size 1)
+x = np.array([[0.5], [0.1], [0.4]])
+
+# Weights and biases
+Wx = np.array([[0.2]])  
+Wh = np.array([[0.1]])  
+Wy = np.array([[0.6]]) 
+b = np.array([[0.1]])   
+by = np.array([[0.2]]) 
+
+# Forward pass
+output = rnn(x, Wx, Wh, Wy, b, by)
+print("Output:", output)
+```
+```
+Output: [[0.53499449]]
+```
 
 ## Vector Search 
 

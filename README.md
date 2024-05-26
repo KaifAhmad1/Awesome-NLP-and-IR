@@ -1617,6 +1617,11 @@ print("Output:", output)
 ```
 Output: [[0.53499449]]
 ```
+- **Different types of RNNs:** Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
+   - 1. **Vanilla RNNs:**
+   - 2. **LSTMs:**
+   - 3. **GRUs:**
+   - 4. **Bidirectional LSTMs and GRUs:** 
 
 ## Vector Search 
 

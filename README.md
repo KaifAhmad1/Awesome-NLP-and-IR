@@ -1833,8 +1833,17 @@ Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
    -0.0058728  -0.02651676  0.02246626  0.02886551 -0.01656632
    -0.02470564  0.04360295  0.01756983  0.02010829 -0.01958983]]]
 ```
+- **Transformers:** Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
 
-
+- **Key Components of Transformer Architecture:** 
+The Transformer architecture consists of an encoder and a decoder, both composed of multiple identical layers. Each layer in both the encoder and decoder contains two main sub-layers: a multi-head self-attention mechanism and a position-wise fully connected feed-forward network.
+  - **Encoder:** The encoder processes the input sequence and generates a set of feature representations for each element in the sequence. It consists of:
+    - **Input Embedding:** Converts input tokens into dense vectors.
+    - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order.
+    - **Multi-Head Self-Attention:** Allows the model to focus on different parts of the sequence simultaneously. Each head processes the sequence differently, and the results are concatenated and linearly transformed.
+    - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
+    - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
+    - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
 
 ## Vector Search 
 

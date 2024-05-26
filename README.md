@@ -1578,6 +1578,8 @@ Output: 0.772853461396208
       - `W_y` is the weight matrix for the hidden layer to output layer
       - `b_y` is the bias vector for the output layer
 
+![RNN illustrated with this Image example](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RNN.png)
+
 ## Vector Search 
 
 ## LLMs 

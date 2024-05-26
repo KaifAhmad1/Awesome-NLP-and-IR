@@ -1755,6 +1755,87 @@ print("Output:", output)
 ```
 Output: [[0.40272816]]
 ```
+- **Bidirectional RNNs:** Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
+   - **Architecture:** BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
+    - **Types:**
+      - **LSTM (Long Short-Term Memory):** Effective for learning long-term dependencies, ideal for tasks like language modeling and speech recognition.
+      - **GRU (Gated Recurrent Unit):** Simpler and more computationally efficient than LSTMs, suitable for tasks like text classification and sentiment analysis.
+    - Mathematical Representation:
+      - `Forward RNN: h_forward = LSTM(x, W, U, b) or GRU(x, W, U, b)`
+      - `Backward RNN: h_backward = LSTM(x, W, U, b) or GRU(x, W, U, b)`
+      - `Output: y = Concat(h_forward, h_backward)`
+    - Where:
+      - `x` is the input sequence
+      - `W`, `U`, and `b` are the weights, recurrent weights, and biases
+      - `h_forward` and `h_backward` are the hidden states
+      - `y` is the output
+    - Advantages:
+       - 1. Capture context from both past and future
+       - 2. Handle variable-length sequential data
+       - 3. Learn long-term dependencies
+    - Disadvantages\Limitations:
+      - 1. Computationally intensive
+      - 2. Require large datasets
+      - 3. Complex architecture can lead to overfitting
+
+```  Python
+from keras.models import Sequential
+from keras.layers import LSTM, Bidirectional
+import numpy as np
+
+# input sequence
+x = np.array([[[0.5], [0.1], [0.4]]])
+
+# BRNN model
+model = Sequential()
+model.add(Bidirectional(LSTM(10, return_sequences=True), input_shape=(3, 1)))
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+# Train the model
+model.fit(x, x, epochs=10)
+
+# Make predictions
+y_pred = model.predict(x)
+print("Output:", y_pred)
+```
+```
+Epoch 1/10
+1/1 [==============================] - 14s 14s/step - loss: 0.1366
+Epoch 2/10
+1/1 [==============================] - 0s 21ms/step - loss: 0.1362
+Epoch 3/10
+1/1 [==============================] - 0s 21ms/step - loss: 0.1358
+Epoch 4/10
+1/1 [==============================] - 0s 23ms/step - loss: 0.1353
+Epoch 5/10
+1/1 [==============================] - 0s 28ms/step - loss: 0.1349
+Epoch 6/10
+1/1 [==============================] - 0s 19ms/step - loss: 0.1345
+Epoch 7/10
+1/1 [==============================] - 0s 20ms/step - loss: 0.1341
+Epoch 8/10
+1/1 [==============================] - 0s 23ms/step - loss: 0.1337
+Epoch 9/10
+1/1 [==============================] - 0s 22ms/step - loss: 0.1333
+Epoch 10/10
+1/1 [==============================] - 0s 21ms/step - loss: 0.1328
+1/1 [==============================] - 2s 2s/step
+Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
+   -0.00989505  0.01275288  0.04869077  0.00156058 -0.00256061
+   -0.01736601 -0.05287949  0.05367433  0.06530365 -0.03861162
+   -0.04156534  0.09283099  0.03927685  0.05287885 -0.03797476]
+  [ 0.0087546   0.01840007  0.02062777  0.01294859  0.02938948
+   -0.00448973  0.01563004  0.04745301  0.00184349  0.00214797
+   -0.00804165 -0.0242324   0.03008071  0.03599263 -0.01945202
+   -0.01689252  0.04573838  0.02196954  0.02946377 -0.01660443]
+  [ 0.01434947  0.02994058  0.03340437  0.0187251   0.04273633
+   -0.0080414   0.02500243  0.07809883  0.00132269  0.00235718
+   -0.0058728  -0.02651676  0.02246626  0.02886551 -0.01656632
+   -0.02470564  0.04360295  0.01756983  0.02010829 -0.01958983]]]
+```
+
+
+
 ## Vector Search 
 
 ## LLMs 

@@ -1556,6 +1556,27 @@ print("Output:", output)
 ```
 Output: 0.772853461396208
 ```
+- **Recurrent Neural Networks (RNN):** A Recurrent Neural Network (RNN) is a type of artificial neural network designed for sequential data. Unlike Feedforward Neural Networks, RNNs have connections that form directed cycles, allowing them to maintain information about previous inputs through internal states. This makes them particularly suitable for tasks where the context or order of data is crucial, such as time series prediction, natural language processing, and speech recognition.
+  - **Architecture:** The basic architecture of a Recurrent Neural Network consists of the following components:
+    - 1. **Input Layer**:  This layer receives the input data. In the context of sequences, each input is often processed one time step at a time.
+    - 2. **Hidden Layers**: These layers process the input data and maintain a memory of previous inputs. Each node in a hidden layer takes input not only from the current time step but also from the hidden state of the previous time step.
+    - 3. **Output Layer**: This layer produces the final output of the network for each time step. The number of nodes in this layer corresponds to the desired output dimensions.
+
+  - **Mathematically:**
+   - For a single hidden layer RNN:
+      - `Input at time step t: x_t`
+      - `Hidden state at time step t: h_t`
+      - `Output at time step t: y_t`
+   - The equations are
+      - `h_t = σ(W_h x_t + U_h h_{t-1} + b_h)`
+      - `y_t = W_y h_t + b_y`
+   - Where:
+      - `W_h` is the weight matrix for the input to hidden layer
+      - `U_h` is the weight matrix for the hidden state to hidden state transition
+      - `b_h` is the bias vector for the hidden layer
+      - `σ` is an activation function (e.g. ReLU, Tanh)
+      - `W_y` is the weight matrix for the hidden layer to output layer
+      - `b_y` is the bias vector for the output layer
 
 ## Vector Search 
 

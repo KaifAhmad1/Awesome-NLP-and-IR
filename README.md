@@ -1910,6 +1910,28 @@ The Transformer architecture consists of an encoder and a decoder, both composed
       - 1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
       - 2. **Memory Usage:** Requires significant memory to store the attention weights.
 
+- **Transformer Architectures: A Detailed Comparison**
+
+Transformers have become a dominant architecture in the field of natural language processing (NLP), with various flavours and applications. Below is a comparison of the key differences between the three main transformer architectures:
+
+| **Aspect**                           | **Encoder-Style Transformer**                                     | **Decoder-Style Transformer**                                     | **Encoder-Decoder Style Transformer**                               |
+|--------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
+| **Structure**                        | Multiple layers of encoders, without any decoders                 | Multiple layers of decoders, without any encoders                 | Separate stacks of encoders and decoders                           |
+| **Primary Usage**                    | Representation learning and classification tasks                  | Generative tasks (e.g., autoregressive text generation)           | Sequence-to-sequence tasks (e.g., translation, summarization)      |
+| **Examples**               | BERT , RoBERTa, DistilBERT   | GPT Series by OpenAI, Llama Series by Meta, Mistral Etc.                          | Transformer (original, as in "Attention is All You Need")           |
+| **Attention Mechanism**              | Self-attention within each encoder layer                          | Self-attention within each decoder layer, with masked attention   | Self-attention in encoders, cross-attention in decoders            |
+| **Training Objective**               | Masked language modeling and next sentence prediction             | Causal Language modeling (predicting the next token)                     | Supervised learning with source and target sequences               |
+| **Advantages**                       | - Good at capturing bidirectional context                         | - Effective at generating coherent text                           | - Effective at learning mappings between input and output sequences|
+|                                      | - Effective for understanding tasks (e.g., sentiment analysis)    | - Can handle long text generation                                 | - Handles both input and output dependencies effectively           |
+|                                      | - Pre-training can be easily adapted to various downstream tasks  |                                                                   | - Versatile for various tasks                                      |
+| **Limitations**                      | - Not designed for generative tasks                               | - Unidirectional context                                          | - More complex architecture                                        |
+|                                      | - Requires large datasets for pre-training                        | - Can suffer from exposure bias                                   | - Computationally intensive                                        |
+| **Applications**                     | - Text classification                                             | - Text generation                                                 | - Machine translation                                              |
+|                                      | - Named entity recognition                                        | - Dialogue systems                                                | - Text summarization                                               |
+|                                      | - Sentence embedding                                              | - Story completion                                                | - Speech recognition                                               |
+
+This table provides a clear comparison of the different transformer architectures, their use cases, techniques, advantages, and limitations.
+
 
 ## Vector Search 
 

@@ -1844,7 +1844,16 @@ The Transformer architecture consists of an encoder and a decoder, both composed
     - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
     - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
     - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
-
+   - **Mathematically:** Mathematically, for each sub-layer:
+   - **Self-Attention:**
+      - `Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V`
+   - Where: 
+      - `Q`, `K`, and `V` are the query, key, and value matrices, respectively.
+      - `d_k` is the dimension of the key/query vectors.
+   - **Feed-Forward Network:**
+      - `FFN(x) = max(0, xW1 + b1) W2 + b2`
+    
+    
 ## Vector Search 
 
 ## LLMs 

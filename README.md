@@ -1902,6 +1902,15 @@ The Transformer architecture consists of an encoder and a decoder, both composed
    - **Where:**
      - `headi = Attention(QWiQ, KWiK, VWiV)`
 
+    - Advantages:
+       - 1. **Parallelization:** Unlike RNNs, Transformers can process all tokens in a sequence simultaneously, allowing for faster training.
+       - 2. **Long-Range Dependencies:** The self-attention mechanism can capture long-range dependencies more effectively than RNNs.
+       - 3. **Scalability:** Scales well with larger datasets and model sizes.
+    - Disadvantages\Limitations:
+      - 1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
+      - 2. **Memory Usage:** Requires significant memory to store the attention weights.
+
+
 ## Vector Search 
 
 ## LLMs 

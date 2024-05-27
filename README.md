@@ -1935,11 +1935,10 @@ This table provides a clear comparison of the different transformer architecture
 
 ## Vector Search: A Comprehensive Overview
 - **What is a Vector?:** In mathematics, a vector is a quantity defined by both magnitude and direction. Vectors are represented as arrays of numbers, which correspond to coordinates in a multidimensional space. They are foundational in various fields, including physics, engineering, and computer science.
+  - Typically represented as `V = [v1, v2, v3, ...., vn]` where `n` is the magnitude of the vector in high dimensional space.
    - **Basic Properties of Vectors:**
      - **Magnitude:** The length of the vector.
      - **Direction:** The orientation of the vector in space.
-     - **Notation:** Typically represented as `V = [v1, v2, v3, ...., vn]` where `n` is the magnitude of the vector in high dimensional space.
-
   - **Vector Representation in Machine Learning** In machine learning and information retrieval, vectors are used to represent data points in a high-dimensional space. This representation is crucial for tasks like similarity search, where the goal is to find data points that are similar to a given query.
     - 1. **Text Data:**
        - **Word Embeddings:** Words are mapped to vectors using models like Word2Vec, GloVe, or FastText. These vectors capture semantic meanings, where similar words have similar vectors.

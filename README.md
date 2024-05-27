@@ -1852,8 +1852,23 @@ The Transformer architecture consists of an encoder and a decoder, both composed
       - `d_k` is the dimension of the key/query vectors.
    - **Feed-Forward Network:**
       - `FFN(x) = max(0, xW1 + b1) W2 + b2`
-    
-    
+
+  - **Decoder:** The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
+    - **Output Embedding:** Converts output tokens into dense vectors.
+    - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order. Similar to the encoder's positional encoding.
+    - **Masked Multi-Head Self-Attention:** Prevents attending to future tokens by masking them.
+    - **Multi-Head Attention:** Attends to the encoder's output representations.
+    - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
+    - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
+    - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
+   - **Mathematically:** Mathematically, for each sub-layer:
+   - **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
+      - `Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V`
+   - **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
+     - `MultiHead(Q, K, V) = Concat(head1, ..., headh) WO` 
+   - **Where:**
+     - `headi = Attention(QWiQ, KWiK, VWiV)`
+
 ## Vector Search 
 
 ## LLMs 

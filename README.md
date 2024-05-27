@@ -1939,6 +1939,7 @@ This table provides a clear comparison of the different transformer architecture
    - **Basic Properties of Vectors:**
      - **Magnitude:** The length of the vector.
      - **Direction:** The orientation of the vector in space.
+  ![Vector Representation in High Dimensional Space](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/Vector%20Representation.png)
   - **Vector Representation in Machine Learning** In machine learning and information retrieval, vectors are used to represent data points in a high-dimensional space. This representation is crucial for tasks like similarity search, where the goal is to find data points that are similar to a given query.
     - 1. **Text Data:**
        - **Word Embeddings:** Words are mapped to vectors using models like Word2Vec, GloVe, or FastText. These vectors capture semantic meanings, where similar words have similar vectors.

@@ -1949,6 +1949,27 @@ This table provides a clear comparison of the different transformer architecture
      - 3. **Audio and Video Data:**
        - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
        - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
+  - **Vector Search Techniques:** Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
+   - 1. **Brute-Force Search:**
+      - Computes similarity between the query vector and all vectors in the dataset.
+      - Inefficient for large datasets due to high computational cost.
+   - 2. **k-Nearest Neighbors (k-NN):**
+      - Finds the k vectors closest to the query vector.
+      - Can be implemented using efficient data structures like KD-Trees or Ball Trees for lower-dimensional data.
+   - 3. **Approximate Nearest Neighbor (ANN):**
+      - Speeds up search by approximating the nearest neighbours.
+      - Methods include Locality-Sensitive Hashing (LSH) and Hierarchical Navigable Small World (HNSW) graphs.
+  - **Applications of Vector Search:** Vector search is transforming various industries by enabling more accurate and context-aware search functionalities:
+    - **Search Engines:**
+      - Enhance traditional keyword-based searches by incorporating semantic understanding.
+      - Google’s BERT and MUM models are examples of using vector search to improve search relevance.
+    - **E-commerce:**
+      - Improve product recommendations by understanding user preferences and product features through vector embeddings.
+      - Amazon and other retailers use vector search to provide contextually relevant search results.
+    - **Content Platforms:**
+      - Platforms like Spotify and YouTube use vector search to recommend music and videos based on user behavior and preferences.
+    - **Healthcare:**
+      - Retrieve relevant medical documents, research papers, and clinical notes to support diagnostics and treatment planning.
 
 ## LLMs 
 

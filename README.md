@@ -1933,7 +1933,22 @@ Transformers have become a dominant architecture in the field of natural languag
 This table provides a clear comparison of the different transformer architectures, their use cases, techniques, advantages, and limitations.
 
 
-## Vector Search 
+## Vector Search: A Comprehensive Overview
+- **What is a Vector?:** In mathematics, a vector is a quantity defined by both magnitude and direction. Vectors are represented as arrays of numbers, which correspond to coordinates in a multidimensional space. They are foundational in various fields, including physics, engineering, and computer science.
+   - **Basic Properties of Vectors:**
+     - **Magnitude:** The length of the vector.
+     - **Direction:** The orientation of the vector in space.
+     - **Notation:** Typically represented as `V = [v1, v2, v3, ...., vn]` where `n` is the magnitude of the vector in high dimensional space.
+
+  - **Vector Representation in Machine Learning** In machine learning and information retrieval, vectors are used to represent data points in a high-dimensional space. This representation is crucial for tasks like similarity search, where the goal is to find data points that are similar to a given query.
+    - 1. **Text Data:**
+       - **Word Embeddings:** Words are mapped to vectors using models like Word2Vec, GloVe, or FastText. These vectors capture semantic meanings, where similar words have similar vectors.
+       - **Sentence Embeddings:**  Models like BERT and GPT transform entire sentences or documents into vectors, preserving contextual meaning.
+     - 2. **Image Data:**
+       - **Feature Vectors:** Convolutional Neural Networks (CNNs) are used to extract features from images, which are then represented as vectors.
+     - 3. **Audio and Video Data:**
+       - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
+       - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
 
 ## LLMs 
 

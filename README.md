@@ -1949,6 +1949,18 @@ This table provides a clear comparison of the different transformer architecture
      - 3. **Audio and Video Data:**
        - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
        - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
+  - **Distance Metrics:** Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
+    - 1. **Euclidean Distance:** Measures the straight-line distance between two points in Euclidean space.
+          - `Formula: √(Σ (v_i - u_i)^2)`
+        -  For vectors V = [1, 2] and U = [4, 6], the Euclidean distance is √((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5.
+           - **Advantages:**
+             - Intuitive and easy to compute.
+             - Well-suited for small, low-dimensional datasets.
+           - **Limitations:**
+             - Sensitive to differences in magnitude and scaling.
+             - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
+
+
   - **Vector Search Techniques:** Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
    - 1. **Brute-Force Search:**
       - Computes similarity between the query vector and all vectors in the dataset.

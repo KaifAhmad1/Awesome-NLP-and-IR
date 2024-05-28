@@ -2043,8 +2043,36 @@ In image search, each image can be represented as a high-dimensional vector. Com
   - **Increased Noise and Redundancy:** Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
 - **Example:** Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
 
+- **Linear Search:** Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
+   - **Mathematical Explanation:** Given a vector `V = [v1, v2, ..., vn]` and a target element `t`, the linear search algorithm checks each element vi in V sequentially:
+      - 1.  Start from the first element: i = 1
+      - 2.  Compare t with vi.
+      - 3.  If `t = vi`, the search is successful, and the position i is returned.
+      - 4. If `t ≠ vi`, increment i and repeat steps 2-3 until i = n or t is found.
+The Time Complexity of Linear Search is Linear O(n) and the Space Complexity is Constant O(1)
+    - Advantages:
+       - 1. Linear search is straightforward to implement and understand.
+       - 2. Linear search does not require the dataset to be sorted or preprocessed in any way.
+       - 3. Linear search can be used on any type of dataset, regardless of structure or order.
+    - Limitations:
+      - 1. Linear search is inefficient for large datasets because it requires checking each element sequentially.
+      - 2. For large datasets, linear search can be very slow compared to other search algorithms KNN search or hash-based searches.
+```  Python 
+def linear_search(vector, target):
+    for i in range(len(vector)):
+        if vector[i] == target:
+            return i
+    return -1
 
-
+# Input 
+vector = [4, 2, 9, 1, 5]
+target = 9
+result = linear_search(vector, target)
+if result != -1:
+    print(f"Element found at index {result}")
+else:
+    print("Element not found")
+```
 
 ## LLMs 
 

@@ -1918,7 +1918,7 @@ Transformers have become a dominant architecture in the field of natural languag
 |--------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
 | **Structure**                        | Multiple layers of encoders, without any decoders                 | Multiple layers of decoders, without any encoders                 | Separate stacks of encoders and decoders                           |
 | **Primary Usage**                    | Representation learning and classification tasks                  | Generative tasks (e.g., autoregressive text generation)           | Sequence-to-sequence tasks (e.g., translation, summarization)      |
-| **Examples**               | BERT , RoBERTa, DistilBERT   | GPT Series by OpenAI, Llama Series by Meta, Mistral Etc.                          | Transformer (original, as in "Attention is All You Need")           |
+| **Examples**               | BERT , RoBERTa, DistilBERT   | GPT Series by OpenAI, Llama Series by Meta, Mistral Etc.                          | Transformer, BART, T5          |
 | **Attention Mechanism**              | Self-attention within each encoder layer                          | Self-attention within each decoder layer, with masked attention   | Self-attention in encoders, cross-attention in decoders            |
 | **Training Objective**               | Masked language modeling and next sentence prediction             | Causal Language modeling (predicting the next token)                     | Supervised learning with source and target sequences               |
 | **Advantages**                       | - Good at capturing bidirectional context                         | - Effective at generating coherent text                           | - Effective at learning mappings between input and output sequences|
@@ -1959,6 +1959,51 @@ This table provides a clear comparison of the different transformer architecture
            - **Limitations:**
              - Sensitive to differences in magnitude and scaling.
              - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
+    - 2. **Manhattan Distance:**  Measures the distance between two points along axes at right angles, also known as L1 distance or taxicab distance.
+          - `Formula:  Σ |v_i - u_i|`
+        -  For vectors V = [1, 2] and U = [4, 6], the Manhattan distance is |4-1| + |6-2| = 3 + 4 = 7.
+           - **Advantages:**
+             - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.
+           - **Limitations:**
+             - Can be less intuitive for non-grid-based data.
+             - Sensitive to scale, like Euclidean distance.
+
+    - 3. **Cosine Similarity:**  Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
+          - `Formula: cos(θ) = (v ⋅ u) / (||v|| ||u||)`
+        -  For vectors V = [1, 2] and U = [2, 3], the cosine similarity is (12 + 23) / (√(1^2 + 2^2) * √(2^2 + 3^2)) = 8 / (√5 * √13) ≈ 0.98.
+           - **Advantages:**
+             - Useful for high-dimensional data, such as text data represented as word vectors.
+             - Ignores magnitude, focusing on the direction of the vectors.
+           - **Limitations:**
+             - Ignores magnitude, which can be a drawback if magnitude differences are important.
+             - Requires non-zero vectors to compute.
+    - 4. **Jaccard Similarity:**  Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
+          - `Formula: J(A, B) = |A ∩ B| / |A ∪ B|`
+        -  For sets A = {1, 2, 3} and B = {2, 3, 4}, the Jaccard similarity is |{2, 3}| / |{1, 2, 3, 4}| = 2 / 4 = 0.5.
+           - **Advantages:**
+             - Handles binary or categorical data well.
+             - Simple interpretation and calculation.
+           - **Limitations:**
+             - Not suitable for continuous data.
+             - Can be less informative for datasets with many common elements.
+    - 5. **Hamming Distance:**  Measures the number of positions at which the corresponding elements of two binary vectors are different.
+          - `Formula: H(v, u) = Σ (v_i ≠ u_i)`
+        -  For binary vectors V = [1, 0, 1] and U = [0, 1, 1], the Hamming distance is (1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2.
+           - **Advantages:**
+             - Effective for error detection and correction in binary data.
+             - Simple and fast to compute.
+           - **Limitations:**
+             - Only applicable to binary vectors.
+             - Not useful for continuous or non-binary categorical data.
+    - 6. **Earth Mover's Distance (EMD):**  Measures the minimum amount of `work` needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
+          - `Formula: EMD(P, Q) = inf_γ ∫_X×Y d(x,y) dγ(x,y)`
+        -  Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution 𝑃 has points [1,2] and 𝑄 has points [2,3], EMD would calculate the minimal transportation cost.
+           - **Advantages:**
+             - Provides a meaningful metric for comparing distributions, taking into account the underlying geometry.
+             - Applicable to various types of data, including images and histograms.
+           - **Limitations:**
+             - Computationally intensive, especially for large datasets.
+             - Requires solving an optimization problem, which can be complex.
 
 
   - **Vector Search Techniques:** Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:

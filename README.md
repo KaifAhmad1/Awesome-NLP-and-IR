@@ -2028,6 +2028,23 @@ This table provides a clear comparison of the different transformer architecture
     - **Healthcare:**
       - Retrieve relevant medical documents, research papers, and clinical notes to support diagnostics and treatment planning.
 
+- **Nearest Neighbor Search**: Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. This method is crucial in various applications, such as recommendation systems, image and video retrieval, and machine learning classification tasks. For instance, in a recommendation system, nearest neighbor search can help find users with similar preferences, enabling the system to suggest products or services that align with the user’s tastes. Imagine how Netflix recommends movies by finding viewers with similar viewing habits and suggesting what others enjoyed.
+
+- **High-Dimensional Data:** High-dimensional data refers to datasets with a large number of features or dimensions, such as text data represented by word embeddings or image data characterized by pixel values. Analyzing and managing high-dimensional data brings several challenges:
+  - **Increased Computational Complexity:** The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
+  - **Data Sparsity:** As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
+  - **Overfitting:** With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
+For example, consider image search, where each image can be represented as a high-dimensional vector. Directly comparing these vectors is computationally intensive due to the vast number of dimensions involved.
+
+- **Curse of Dimensionality:**  The curse of dimensionality, a term coined by `Richard Bellman`, describes the various phenomena that arise when analyzing data in high-dimensional spaces. As the number of dimensions increases:
+  - **Distance Measures Become Less Meaningful:** In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
+  - **Volume of Space Increases Exponentially:** The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
+  - **Increased Noise and Redundancy:** Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
+- Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
+
+
+
+
 ## LLMs 
 
 ## RAG 

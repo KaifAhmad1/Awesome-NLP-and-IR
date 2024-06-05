@@ -2126,13 +2126,63 @@ X_transformed = np.dot(X_centered, top_k_eigenvectors)
       - 3. Requires standardized data.
       - 4. Captures variance, not necessarily the most important features for all tasks.
 
+- **t-Distributed Stochastic Neighbor Embedding (t-SNE):** t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
+  - **Key Concepts**
+    - **Dimensionality Reduction:** This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
+    - **Stochastic Neighbor Embedding:** This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
+    - **t-Distribution:** Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
 
+  - **How t-SNE Works**
+     - **Pairwise Similarities:** t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
+       - Similarity `p_ij` between two points `x_i` and `x_j` is calculated as:
+        `p_ij = exp(-||x_i - x_j||^2 / 2σ_i^2) / Σ_k≠i exp(-||x_i - x_k||^2 / 2σ_i^2)`
+       - Here, `σ_i` is the variance of the Gaussian distribution centered at `x_i`.
+     - **Joint Probabilities:** These probabilities are made symmetrical to ensure that the similarity between point A and point B is the same as between point B and point A.
+       - Joint probability `P_ij` is:
+        `P_ij = (p_ij + p_ji) / 2N`
+       - Here, `N` is the number of data points.
+     - **Low-Dimensional Mapping:** Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
+     - **Gradient Descent:** Positions are adjusted using an optimization method called gradient descent. This minimizes the Kullback-Leibler divergence between the two probability distributions (high-dimensional and low-dimensional).
+       - Kullback-Leibler divergence `KL(P || Q)` is:
+        `KL(P || Q) = Σ_i≠j P_ij log(P_ij / Q_ij)`
+       - Here, `Q_ij` is the similarity between points `y_i` and `y_j` in the low-dimensional space, calculated as:
+        `Q_ij = (1 + ||y_i - y_j||^2)^-1 / Σ_k≠l (1 + ||y_k - y_l||^2)^-1`
+       - The gradient descent algorithm updates the positions `y_i` to minimize `KL(P || Q)`, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
 
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from sklearn.datasets import load_digits
 
+# Load example data
+digits = load_digits()
+X = digits.data
+y = digits.target
 
+# Perform t-SNE
+tsne = TSNE(n_components=2, random_state=42)
+X_tsne = tsne.fit_transform(X)
 
+# Plot the results
+plt.figure(figsize=(10, 7))
+scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap='viridis', s=10)
+plt.colorbar(scatter, label='Digit')
+plt.title('t-SNE visualization of Digits dataset')
+plt.xlabel('t-SNE component 1')
+plt.ylabel('t-SNE component 2')
+plt.show()
+```
 
-
+   - Advantages:
+       - 1. Provides clear insights into complex data.
+       - 2. Maintains local similarities effectively.
+       - 3. Robust to Noise
+       - 4. Non-Linear Representation and Captures complex relationships accurately.
+   - Limitations:
+      - 1. Resource-demanding, especially for large datasets.
+      - 2. May distort overall data relationships.
+      - 3. Complex datasets may pose challenges in exact interpretation.
 
 
 ## LLMs 

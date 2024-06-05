@@ -2115,8 +2115,16 @@ top_k_eigenvectors = sorted_eigenvectors[:, :k]
 X_transformed = np.dot(X_centered, top_k_eigenvectors)
  ```
 
-
-
+   - Advantages:
+       - 1. Simplifies models and reduces computational costs.
+       - 2. Filters out noise, improving data quality.
+       - 3. Eases visualization of high-dimensional data.
+       - 4. Identifies significant features for better model performance.
+   - Limitations:
+      - 1. Assumes linear relationships, missing non-linear patterns.
+      - 2. Principal components may be hard to interpret
+      - 3. Requires standardized data.
+      - 4. Captures variance, not necessarily the most important features for all tasks.
 
 
 

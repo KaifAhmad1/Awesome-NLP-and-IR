@@ -2149,7 +2149,7 @@ X_transformed = np.dot(X_centered, top_k_eigenvectors)
         `Q_ij = (1 + ||y_i - y_j||^2)^-1 / Σ_k≠l (1 + ||y_k - y_l||^2)^-1`
        - The gradient descent algorithm updates the positions `y_i` to minimize `KL(P || Q)`, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
 
-```
+``` python 
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE

@@ -2240,7 +2240,8 @@ plt.show()
    - Tree Based Indexing like K-D Tree, Ball Tree and R Tree
    - Graph based indexing algorithms like HNSW and Vamana
    - LSH Forest
-   - Composite Indexing like IVF + PQ, LSH + KDTree, HNSW + IVF
+   - Composite Indexing (e.g., IVF + PQ, LSH + KDTree, HNSW + IVF)
+
 
 ## LLMs 
 

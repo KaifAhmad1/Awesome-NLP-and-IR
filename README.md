@@ -2244,6 +2244,7 @@ plt.show()
 - **Flat Indexing:** Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
   - **How it works:**
      - **Index Construction:** Initially, all dataset vectors are stored in memory or on disk to construct the index.
+       -  All dataset vectors $X = \{x_1, x_2, \ldots, x_n\}$ are stored in memory or on disk.
      - **Query Processing:** Upon receiving a query vector, the system systematically compares it with every vector in the index, computing the similarity or distance metric (e.g., Euclidean distance, cosine similarity) between the query and each vector.
      - **Ranking:** As comparisons progress, vectors are ranked based on their similarity to the query, thereby pinpointing the closest matches.
      - **Retrieval:** After evaluating all vectors, the system retrieves either the top-k closest matches or all vectors meeting a specified similarity threshold.
@@ -2287,6 +2288,9 @@ Top-k matches:
  [1 2 3]]
 Similarity scores: [0.50257071 0.45584231 0.26726124]
 ```
+
+
+
 ## LLMs 
 
 ## RAG 

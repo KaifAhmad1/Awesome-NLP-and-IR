@@ -2073,6 +2073,59 @@ if result != -1:
 else:
     print("Element not found")
 ```
+- **Dimensionality Reduction:** 
+- Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
+- Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
+- Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
+  
+- **Principal Component Analysis:** PCA is a widely used technique for linear dimensionality reduction. It aims to find the directions, or principal components, in which the data varies the most and projects the data onto these components to obtain a lower-dimensional representation.
+  - At its core, PCA seeks to transform high-dimensional data into a lower-dimensional form while preserving the most important information. It achieves this by identifying the directions in which the data varies the most, known as the principal components, and projecting the data onto these components.
+- **Mathematical Foundation:**
+   - **Centering the Data:** PCA begins by centering the data, which involves subtracting the mean vector `( Xmean )` from each sample.
+   - **Covariance Matrix:** Next, it computes the covariance matrix `( C )` of the centered data. This matrix quantifies the relationships between different features and how they vary together.
+   - **Eigen Decomposition:** PCA then proceeds to compute the eigenvectors and eigenvalues of the covariance matrix. These eigenvectors represent the principal components, and the corresponding eigenvalues indicate the amount of variance explained by each component.
+
+- **Steps in PCA:** 
+  - 1. **Standardization:** Center the data by subtracting the mean vector from each sample.
+  - 2. **Covariance Matrix Computation:** Compute the covariance matrix of the centered data.
+  - 3. **Eigen Decomposition:** Compute the eigenvectors and eigenvalues of the covariance matrix.
+  - 4. **Selection of Principal Components:** Select the top 𝑘 eigenvectors based on their corresponding eigenvalues to form the new feature space.
+  - 5. **Transformation:** Project the original data onto the selected principal components to obtain the lower-dimensional representation.
+ ``` Python
+import numpy as np
+
+# Create a random dataset
+np.random.seed(0)
+X = np.random.rand(100, 3)
+
+# Center the data
+X_centered = X - np.mean(X, axis=0)
+# Compute the covariance matrix
+cov_matrix = np.cov(X_centered, rowvar=False)
+# Compute the eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+# Sort eigenvectors based on eigenvalues
+sorted_indices = np.argsort(eigenvalues)[::-1]
+sorted_eigenvalues = eigenvalues[sorted_indices]
+sorted_eigenvectors = eigenvectors[:, sorted_indices]
+# Select top 2 eigenvectors
+k = 2
+top_k_eigenvectors = sorted_eigenvectors[:, :k]
+# Transform original data
+X_transformed = np.dot(X_centered, top_k_eigenvectors)
+ ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## LLMs 
 

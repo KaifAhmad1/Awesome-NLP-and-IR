@@ -2248,6 +2248,16 @@ plt.show()
      - **Ranking:** As comparisons progress, vectors are ranked based on their similarity to the query, thereby pinpointing the closest matches.
      - **Retrieval:** After evaluating all vectors, the system retrieves either the top-k closest matches or all vectors meeting a specified similarity threshold.
 
+   - Advantages:
+       - 1. Easy implementation and comprehension.
+       - 2. Avoids complex index structures, suitable for smaller datasets.
+       - 3. Adaptable to various data types and metrics.
+   - Limitations:
+      - 1. Inefficient for large datasets, leading to slower query processing.
+      - 2. Can be computationally intensive for high-dimensional data.
+      - 3. Requires substantial memory resources for storage.
+
+
 ## LLMs 
 
 ## RAG 

@@ -2257,7 +2257,36 @@ plt.show()
       - 2. Can be computationally intensive for high-dimensional data.
       - 3. Requires substantial memory resources for storage.
 
+``` python 
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+dataset_vectors = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
 
+query_vector = np.array([1, 0, 0])
+similarities = cosine_similarity([query_vector], dataset_vectors)[0]
+
+ranked_indices = np.argsort(-similarities)
+
+top_k = 3
+top_k_indices = ranked_indices[:top_k]
+top_k_matches = dataset_vectors[top_k_indices]
+
+print("Top-k indices:", top_k_indices)
+print("Top-k matches:\n", top_k_matches)
+print("Similarity scores:", similarities[top_k_indices])
+```
+```
+Top-k indices: [2 1 0]
+Top-k matches:
+ [[7 8 9]
+ [4 5 6]
+ [1 2 3]]
+Similarity scores: [0.50257071 0.45584231 0.26726124]
+```
 ## LLMs 
 
 ## RAG 

@@ -2231,6 +2231,15 @@ plt.show()
   - 2 **High-Dimensional Data:**
      - **Reduced Computational Complexity:** Techniques that reduce the number of dimensions or approximate distances help manage the computational load, making it feasible to process high-dimensional data effectively. This is crucial in fields like image and video processing, natural language processing, and genomics.
      - **Handling Sparsity:** High-dimensional spaces often lead to sparse data distributions. Efficient ANN search methods are designed to navigate this sparsity, finding relevant neighbors without exhaustive searches.
+- **Techniques to Balance Accuracy and Efficiency**
+   - Flat Indexing 
+   - Inverted File Indexing
+   - Locality-Sensitive Hashing (LSH)
+   - Product Quanitzation
+   - Vector Quantization
+   - Tree Based Indexing like K-D Tree, Ball Tree and R Tree
+   - Graph based indexing algorithms like HNSW and Vamana
+   - Composite Indexing like IVF + PQ, LSH + KDTree, HNSW + IVF
 
 ## LLMs 
 

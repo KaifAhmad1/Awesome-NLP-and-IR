@@ -2126,28 +2126,52 @@ X_transformed = np.dot(X_centered, top_k_eigenvectors)
       - 3. Requires standardized data.
       - 4. Captures variance, not necessarily the most important features for all tasks.
 
-- **t-Distributed Stochastic Neighbor Embedding (t-SNE):** t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
-  - **Key Concepts**
-    - **Dimensionality Reduction:** This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
-    - **Stochastic Neighbor Embedding:** This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
-    - **t-Distribution:** Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
+# t-Distributed Stochastic Neighbor Embedding (t-SNE)
 
-  - **How t-SNE Works**
-     - **Pairwise Similarities:** t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
-       - Similarity `p_ij` between two points `x_i` and `x_j` is calculated as:
-        `p_ij = exp(-||x_i - x_j||^2 / 2σ_i^2) / Σ_k≠i exp(-||x_i - x_k||^2 / 2σ_i^2)`
-       - Here, `σ_i` is the variance of the Gaussian distribution centered at `x_i`.
-     - **Joint Probabilities:** These probabilities are made symmetrical to ensure that the similarity between point A and point B is the same as between point B and point A.
-       - Joint probability `P_ij` is:
-        `P_ij = (p_ij + p_ji) / 2N`
-       - Here, `N` is the number of data points.
-     - **Low-Dimensional Mapping:** Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
-     - **Gradient Descent:** Positions are adjusted using an optimization method called gradient descent. This minimizes the Kullback-Leibler divergence between the two probability distributions (high-dimensional and low-dimensional).
-       - Kullback-Leibler divergence `KL(P || Q)` is:
-        `KL(P || Q) = Σ_i≠j P_ij log(P_ij / Q_ij)`
-       - Here, `Q_ij` is the similarity between points `y_i` and `y_j` in the low-dimensional space, calculated as:
-        `Q_ij = (1 + ||y_i - y_j||^2)^-1 / Σ_k≠l (1 + ||y_k - y_l||^2)^-1`
-       - The gradient descent algorithm updates the positions `y_i` to minimize `KL(P || Q)`, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
+t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
+
+## Key Concepts
+
+- **Dimensionality Reduction:** This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
+- **Stochastic Neighbor Embedding:** This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
+- **t-Distribution:** Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
+
+## How t-SNE Works
+
+- **Pairwise Similarities:** t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
+
+  The similarity $p_{ij}$ between two points $x_i$ and $x_j$ is calculated as:
+  $$
+  p_{ij} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
+  $$
+  Here, $\sigma_i$ is the variance of the Gaussian distribution centered at $x_i$.
+  
+- **Joint Probabilities:** These probabilities are made symmetrical to ensure that the similarity between point A and point B is the same as between point B and point A.
+
+  The joint probability $P_{ij}$ is:
+  $$
+  P_{ij} = \frac{p_{ij} + p_{ji}}{2N}
+  $$
+  Here, $N$ is the number of data points.
+
+- **Low-Dimensional Mapping:** Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
+
+- **Gradient Descent:** Positions are adjusted using an optimization method called gradient descent. This minimizes the Kullback-Leibler divergence between the two probability distributions (high-dimensional and low-dimensional).
+
+  The Kullback-Leibler divergence $KL(P \parallel Q)$ is:
+  $$
+  KL(P \parallel Q) = \sum_{i \neq j} P_{ij} \log\left(\frac{P_{ij}}{Q_{ij}}\right)
+  $$
+
+  Here, $Q_{ij}$ is the similarity between points $y_i$ and $y_j$ in the low-dimensional space, calculated as:
+  $$
+  Q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l} (1 + \|y_k - y_l\|^2)^{-1}}
+  $$
+
+  The gradient descent algorithm updates the positions $y_i$ to minimize $KL(P \parallel Q)$, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
+
+
+
 
 ``` python 
 import numpy as np
@@ -2183,6 +2207,18 @@ plt.show()
       - 1. Resource-demanding, especially for large datasets.
       - 2. May distort overall data relationships.
       - 3. Complex datasets may pose challenges in exact interpretation.
+
+# My Project
+
+This is an example of an inline formula: $E = mc^2$.
+
+This is an example of a block formula:
+
+$$
+\int_{a}^{b} f(x) \, dx = F(b) - F(a)
+$$
+
+
 
 
 ## LLMs 

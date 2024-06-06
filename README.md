@@ -2288,6 +2288,37 @@ Top-k matches:
  [1 2 3]]
 Similarity scores: [0.50257071 0.45584231 0.26726124]
 ```
+- **Inverted Index:** An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
+   - **How It Works**
+     - **Tokenization:** The process starts with tokenizing the text data. Tokenization involves breaking down text into individual tokens, typically words or terms.
+     - **Normalization:** Tokens are often normalized, which may include converting to lowercase, removing punctuation, and applying stemming or lemmatization to reduce words to their base forms.
+     - **Index Construction:** Each unique token is stored in the index, along with a list of documents or positions where it appears. This mapping allows for efficient look-up during search queries.
+     - **Posting List:** Each token in the index has an associated posting list, which is a list of all documents and positions where the token appears.
+
+   - Example Consider three documents
+     - $Document 1:$ `apple banana fruit`
+     - $Document 2:$ `banana apple juice`
+     - $Document 3:$ `fruit apple orange`
+   - The inverted index for these documents would look like this:
+     - $apple: [1, 2, 3]$
+     - $banana: [1, 2]$
+     - $fruit: [1, 3]$
+     - $juice: [2]$
+     - $orange: [3]$
+   - Here, the numbers represent the document IDs where each term appears.
+
+Applications
+Search Engines: Used extensively to quickly find web pages containing specific search terms.
+Document Management Systems: Helps in retrieving documents based on content.
+Libraries: Facilitates searching within a vast collection of texts.
+Advantages
+Fast Query Response: Allows quick retrieval of documents containing the queried terms.
+Efficient Storage: Optimizes storage space by indexing only terms and their occurrences rather than entire documents.
+Limitations
+Update Complexity: Adding or deleting documents requires updating the index, which can be complex and resource-intensive.
+Storage Overhead: Large datasets with many unique terms can result in significant storage overhead for the index.
+
+
 
 
 

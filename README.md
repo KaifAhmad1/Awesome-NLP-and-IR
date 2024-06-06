@@ -2353,6 +2353,57 @@ juice: [1]
 orange: [2]
 ```
 
+- **Locality-Sensitive Hashing (LSH)** Locality-Sensitive Hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is especially useful when dealing with large datasets where exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
+  - **Key Concepts**
+    - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
+    - **Hash Function Family:** LSH uses a set of hash functions $H$ that have a high probability of assigning similar items to the same bucket and a low probability of assigning dissimilar items to the same bucket.
+    - **Approximation:** LSH provides approximate results, which means it finds neighbours that are close enough rather than the exact nearest neighbours.
+  - **How LSH works:** 
+    - **Hash Function Selection:** Choose or design hash functions that are locality-sensitive to the chosen similarity metric.
+    - **Index Construction:** Apply the hash functions to all items in the dataset, distributing them into buckets.
+    - **Query Processing:**
+      - Hash the query item using the same hash functions.
+      - Retrieve and compare items from the corresponding bucket(s).
+      - Use a secondary, more precise similarity measure to rank the retrieved items and find the approximate nearest neighbours.
+
+- **Locality-Sensitive Hashing (LSH)** Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
+  - **Key Concepts**
+    - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
+    - **Hash Function Family:** LSH uses a set of hash functions $\mathcal{H}$ that have a high probability of assigning similar items to the same bucket and a low probability of assigning dissimilar items to the same bucket.
+    - **Approximation:** LSH provides approximate results, which means it finds neighbors that are close enough rather than the exact nearest neighbours.
+
+  - **How LSH Works**
+    - 1. **Hash Function Selection:** Choose or design hash functions that are locality-sensitive to the chosen similarity metric.
+    - 2. **Index Construction:** Apply the hash functions to all items in the dataset, distributing them into buckets.
+    - 3. **Query Processing:**
+       - Hash the query item using the same hash functions.
+       - Retrieve and compare items from the corresponding bucket(s).
+       - Use a secondary, more precise similarity measure to rank the retrieved items and find the approximate nearest neighbours.
+
+  - **Mathematics of LSH**
+     - **Distance Measure:** $d(\mathbf{x}, \mathbf{y})$ denotes the distance between two points $\mathbf{x}$ and $\mathbf{y}$ in a high-dimensional space.
+     - **Hash Function Family:** $\mathcal{H}$ is a set of hash functions. A hash function $h \in \mathcal{H}$ maps a point $\mathbf{x}$ to a bucket.
+     - **Probabilities:**
+      - $P_1 = \Pr[h(\mathbf{x}) = h(\mathbf{y}) \mid d(\mathbf{x}, \mathbf{y}) \leq r]$ is the probability that $h$ hashes two points $\mathbf{x}$ and $\mathbf{y}$ to the same bucket if $\mathbf{x}$ and $\mathbf{y}$ are within distance $r$.
+      - $P_2 = \Pr[h(\mathbf{x}) = h(\mathbf{y}) \mid d(\mathbf{x}, \mathbf{y}) > cr]$ is the probability that $h$ hashes two points $\mathbf{x}$ and $\mathbf{y}$ to the same bucket if $\mathbf{x}$ and $\mathbf{y}$ are further than $cr$ apart, where $c > 1$.
+     - **Locality-Sensitive Hash Family:** A hash family $\mathcal{H}$ is called $(r, cr, P_1, P_2)$-sensitive if $P_1 > P_2$, which ensures that similar items have a higher probability of colliding than dissimilar ones.
+
+- **Example: Euclidean Distance**
+A common hash function for Euclidean distance is:
+
+$$
+h_{\mathbf{a}, b}(\mathbf{x}) = \left\lfloor \frac{\mathbf{a} \cdot \mathbf{x} + b}{w} \right\rfloor
+$$
+
+where:
+- $\mathbf{a}$ is a random vector with each component drawn from a Gaussian distribution.
+- $b$ is a random shift drawn uniformly from the range $[0, w]$.
+- $w$ is the width of the hash bin.
+
+This hash function ensures that points close in Euclidean space are more likely to fall into the same hash bin.
+
+
+
 ## LLMs 
 
 ## RAG 

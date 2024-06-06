@@ -2307,17 +2307,12 @@ Similarity scores: [0.50257071 0.45584231 0.26726124]
      - $orange: [3]$
    - Here, the numbers represent the document IDs where each term appears.
 
-Applications
-Search Engines: Used extensively to quickly find web pages containing specific search terms.
-Document Management Systems: Helps in retrieving documents based on content.
-Libraries: Facilitates searching within a vast collection of texts.
-Advantages
-Fast Query Response: Allows quick retrieval of documents containing the queried terms.
-Efficient Storage: Optimizes storage space by indexing only terms and their occurrences rather than entire documents.
-Limitations
-Update Complexity: Adding or deleting documents requires updating the index, which can be complex and resource-intensive.
-Storage Overhead: Large datasets with many unique terms can result in significant storage overhead for the index.
-
+   - Advantages:
+       - 1. Allows quick retrieval of documents containing the queried terms.
+       - 2. Optimizes storage space by indexing only terms and their occurrences rather than entire documents.
+   - Limitations:
+      - 1. Adding or deleting documents requires updating the index, which can be complex and resource-intensive.
+      - 2. Large datasets with many unique terms can result in significant storage overhead for the index.
 
 
 

@@ -2314,8 +2314,43 @@ Similarity scores: [0.50257071 0.45584231 0.26726124]
       - 1. Adding or deleting documents requires updating the index, which can be complex and resource-intensive.
       - 2. Large datasets with many unique terms can result in significant storage overhead for the index.
 
+``` python
+import re
+from collections import defaultdict
+# Function to tokenize and normalize text
+def tokenize(text):
+    text = text.lower()
+    text = re.sub(r'\W+', ' ', text)
+    tokens = text.split()
+    return tokens
 
+# Function to build the inverted index
+def build_inverted_index(docs):
+    inverted_index = defaultdict(list)
+    for doc_id, doc in enumerate(docs):
+        tokens = tokenize(doc)
+        for token in tokens:
+            if doc_id not in inverted_index[token]:
+                inverted_index[token].append(doc_id)
+    return inverted_index
 
+documents = [
+    "apple banana fruit",
+    "banana apple juice",
+    "fruit apple orange"
+]
+
+inverted_index = build_inverted_index(documents)
+for term, postings in sorted(inverted_index.items()):
+    print(f"{term}: {postings}")
+```
+```
+apple: [0, 1, 2]
+banana: [0, 1]
+fruit: [0, 2]
+juice: [1]
+orange: [2]
+```
 
 ## LLMs 
 

@@ -2233,12 +2233,13 @@ plt.show()
      - **Handling Sparsity:** High-dimensional spaces often lead to sparse data distributions. Efficient ANN search methods are designed to navigate this sparsity, finding relevant neighbors without exhaustive searches.
 - **Techniques to Balance Accuracy and Efficiency**
    - Flat Indexing 
-   - Inverted File Indexing
+   - Inverted Index
    - Locality-Sensitive Hashing (LSH)
    - Product Quanitzation
    - Vector Quantization
    - Tree Based Indexing like K-D Tree, Ball Tree and R Tree
    - Graph based indexing algorithms like HNSW and Vamana
+   - Inverted File Indexing (IVF) 
    - LSH Forest
    - Composite Indexing (e.g., IVF + PQ, LSH + KDTree, HNSW + IVF)
 - **Flat Indexing:** Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.

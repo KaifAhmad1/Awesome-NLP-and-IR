@@ -2353,19 +2353,6 @@ juice: [1]
 orange: [2]
 ```
 
-- **Locality-Sensitive Hashing (LSH)** Locality-Sensitive Hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is especially useful when dealing with large datasets where exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
-  - **Key Concepts**
-    - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
-    - **Hash Function Family:** LSH uses a set of hash functions $H$ that have a high probability of assigning similar items to the same bucket and a low probability of assigning dissimilar items to the same bucket.
-    - **Approximation:** LSH provides approximate results, which means it finds neighbours that are close enough rather than the exact nearest neighbours.
-  - **How LSH works:** 
-    - **Hash Function Selection:** Choose or design hash functions that are locality-sensitive to the chosen similarity metric.
-    - **Index Construction:** Apply the hash functions to all items in the dataset, distributing them into buckets.
-    - **Query Processing:**
-      - Hash the query item using the same hash functions.
-      - Retrieve and compare items from the corresponding bucket(s).
-      - Use a secondary, more precise similarity measure to rank the retrieved items and find the approximate nearest neighbours.
-
 - **Locality-Sensitive Hashing (LSH)** Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
   - **Key Concepts**
     - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.

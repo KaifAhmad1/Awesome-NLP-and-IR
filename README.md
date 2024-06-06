@@ -2402,7 +2402,57 @@ where:
 
 This hash function ensures that points close in Euclidean space are more likely to fall into the same hash bin.
 
+   - Advantages:
+       - 1. Speeds up approximate nearest neighbor search, especially in high-dimensional spaces.
+       - 2. Handles large datasets effectively.
+       - 3. Similar items are likely to be hashed into the same bucket.
+   - Limitations:
+      - 1. Does not guarantee exact nearest neighbors.
+      - 2. Requires careful tuning of parameters like hash functions and bin width.
+      - 3. Possible false positives where dissimilar items collide.
+      - 4. Reduced accuracy in very high-dimensional spaces.
 
+``` python
+import numpy as np
+
+# Generate random hyperplanes
+def generate_random_hyperplanes(num_planes, dim):
+    return np.random.randn(num_planes, dim)
+
+# Compute LSH signatures
+def compute_lsh_signatures(data, hyperplanes):
+    return np.dot(data, hyperplanes.T) > 0
+
+# Query with LSH
+def lsh_query(query, hyperplanes, dataset_signatures):
+    query_signature = compute_lsh_signatures(query.reshape(1, -1), hyperplanes)
+    matches = np.all(dataset_signatures == query_signature, axis=1)
+    return matches
+
+# data
+data = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
+
+query = np.array([1, 0, 0])
+
+# LSH parameters
+num_planes = 5
+dim = data.shape[1]
+
+# Generate hyperplanes and compute signatures
+hyperplanes = generate_random_hyperplanes(num_planes, dim)
+dataset_signatures = compute_lsh_signatures(data, hyperplanes)
+
+# Query and find matches
+matches = lsh_query(query, hyperplanes, dataset_signatures)
+print("Matched indices:", np.where(matches)[0])
+```
+```
+Matched indices: []
+```
 
 ## LLMs 
 

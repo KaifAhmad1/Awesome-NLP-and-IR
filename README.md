@@ -2507,7 +2507,7 @@ def reconstruct_vectors(codebooks, quantized_indices):
 data = np.array([
     [1, 2, 3, 4, 5, 6],
     [7, 8, 9, 10, 11, 12],
-    [13, 14, 15, 16, 17, 18],
+    [13, 14, 15, 16, 17, 18]
 ])
 
 # Parameters
@@ -2522,6 +2522,44 @@ print("\nCodebooks:\n", codebooks)
 print("\nQuantized Indices:\n", quantized_indices)
 print("\nReconstructed Vectors:\n", reconstructed_vectors)
 ```
+- **Tree-Based Indexing in Approximate Nearest Neighbor Search:** Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
+  - 1. **K-D Tree (K-Dimensional Tree)** A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
+    - **Construction**
+      - **Splitting Planes:** At each level of the tree, the dataset is split along one of the k dimensions. The splitting dimension is usually chosen in a round-robin fashion or based on the dimension with the highest variance.
+      - **Median Selection:** The splitting point is typically the median of the selected dimension, ensuring that each subtree has roughly half of the points.
+    - **Query Processing**
+      - **Traversal:** For a given query point, the tree is traversed starting from the root, moving left or right depending on the value of the splitting dimension.
+      - **Backtracking:** Once a leaf node is reached, the algorithm may backtrack to explore other branches that could potentially contain closer points.
+    - **Balancing** The tree is balanced to minimize the depth, which helps maintain efficient query times. Balancing involves ensuring that the median point is chosen for splitting at each node, which divides the data into roughly equal parts.
+   - Advantages:
+       - 1. Efficient for low-dimensional spaces (usually less than 20 dimensions).
+       - 2. Simple to implement and understand.
+       - 3. Provides exact nearest neighbor search.
+   - Limitations:
+      - 1. Performance degrades significantly with increasing dimensionality due to the `curse of dimensionality`.
+      - 2. Requires periodic rebalancing to maintain efficiency.
+      - 3. Not suitable for dynamic datasets where frequent insertions and deletions are needed.
+ ``` python 
+from sklearn.neighbors import KDTree
+import numpy as np
+
+#  data
+data = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
+
+# Build KDTree
+tree = KDTree(data, leaf_size=2)
+
+# Query
+query = np.array([[1, 2]])
+dist, ind = tree.query(query, k=2)
+print("Distances:", dist)
+print("Indices:", ind)
+ ```
+
+
+
+
+
 
 
 

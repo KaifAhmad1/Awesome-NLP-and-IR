@@ -2476,6 +2476,55 @@ Matched indices: []
          - **Quantization Process** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(𝑥1, 𝑥2)$ is closest to $(1.0, 2.0)$, and $(𝑥3, 𝑥4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
          - **Quantization Error** The total error is the sum of errors from quantizing each sub-vector:
            - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$
+``` python
+import numpy as np
+from sklearn.cluster import KMeans
+
+# Split vectors into sub-vectors
+def split_vectors(data, num_subvectors):
+    subvector_length = data.shape[1] // num_subvectors
+    return np.split(data, num_subvectors, axis=1)
+
+# Perform product quantization
+def product_quantization(data, num_subvectors, num_centroids):
+    subvectors = split_vectors(data, num_subvectors)
+    codebooks = []
+    quantized_indices = []
+
+    for subvector in subvectors:
+        kmeans = KMeans(n_clusters=num_centroids, n_init=10, random_state=0).fit(subvector)
+        codebooks.append(kmeans.cluster_centers_)
+        quantized_indices.append(kmeans.predict(subvector))
+
+    return codebooks, np.array(quantized_indices).T
+
+# Reconstruct vectors from quantized indices
+def reconstruct_vectors(codebooks, quantized_indices):
+    reconstructed_vectors = np.hstack([codebooks[i][quantized_indices[:, i]] for i in range(len(codebooks))])
+    return reconstructed_vectors
+
+# Data
+data = np.array([
+    [1, 2, 3, 4, 5, 6],
+    [7, 8, 9, 10, 11, 12],
+    [13, 14, 15, 16, 17, 18],
+])
+
+# Parameters
+num_subvectors = 2  
+num_centroids = 3 
+
+codebooks, quantized_indices = product_quantization(data, num_subvectors, num_centroids)
+reconstructed_vectors = reconstruct_vectors(codebooks, quantized_indices)
+
+print("Original Data:\n", data)
+print("\nCodebooks:\n", codebooks)
+print("\nQuantized Indices:\n", quantized_indices)
+print("\nReconstructed Vectors:\n", reconstructed_vectors)
+```
+
+
+
 
 ## LLMs 
 

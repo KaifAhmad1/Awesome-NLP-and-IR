@@ -2440,6 +2440,24 @@ print("Matched indices:", np.where(matches)[0])
 ```
 Matched indices: []
 ```
+- **Quantization:** Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
+  - **Key Concepts in Quantization** 
+    - **Quantization:** The process of mapping high-dimensional vectors to a finite set of representative points, thereby reducing data complexity.
+    - **Centroids/Codewords:** Representative points used in the quantization process. Each data point is approximated by the nearest centroid.
+       - Consider approximating the value of $π(pi)$, which is approximately $3.14159$. Let's use a simple codebook with two centroids: $C1=3.0$ and $C2=3.2$
+       - The nearest centroid to $π(3.14159)$ is $C2=3.2$ since, $∣3.14159−3.2∣=0.05841$ is less than $∣3.14159−3.0∣=0.14159$
+         - Therefore, $π$ is approximated by $C2$ 
+    - **Codebook:** A collection of centroids that are used to approximate the original data points.
+    - **Quantization Error:** The difference between the original data point and its quantized approximation. Lower quantization error implies higher accuracy in search results.
+        - The quantization error is the squared difference between $π$ and the centroid $C2$
+           - Quatization Error = $(3.14159−3.2)^2$ $=(−0.05841)^2$ $≈0.00341$
+
+
+
+
+
+
+
 
 ## LLMs 
 

@@ -2451,10 +2451,13 @@ Matched indices: []
     - **Quantization Error:** The difference between the original data point and its quantized approximation. Lower quantization error implies higher accuracy in search results.
         - The quantization error is the squared difference between $π$ and the centroid $C2$
            - Quatization Error = $(3.14159−3.2)^2$ $=(−0.05841)^2$ $≈0.00341$
-
-
-
-
+- Quantization helps manage large datasets by simplifying data representation, which in turn speeds up the process of finding similar data points through approximate nearest neighbor search techniques.
+- **Types of Quantization:**
+   - 1. **Scalar Quantization:** Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
+      - **Example:** Suppose we have a dataset of 2D points $(x, y)$, and we want to quantize each dimension independently. Let's consider quantizing $x$ and $y$ into three levels: ${1.0, 2.0, 3.0}$ for $x$ and ${4.0, 5.0, 6.0}$ for y.
+         - **Quantization Process** Given a point $(2.3, 4.7)$, we quantize $x$ to the nearest level, which is $2.0$, and $y$ to $5.0$. So, the quantized point becomes $(2.0, 5.0)$.
+         - **Quantization Error** To compute the error, we take the sum of squared differences between the original and quantized values:
+           - Quantization Error = $(2.3 - 2.0)^2 + (4.7 - 5.0)^2 = 0.09 + 0.09 = 0.18$
 
 
 

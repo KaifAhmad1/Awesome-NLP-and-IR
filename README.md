@@ -2558,12 +2558,10 @@ print("Indices:", ind)
 
 
 
-
-
-
-
-
-
 ## LLMs 
+- **Large Language Models:**
+- Large language models (LLMs) are super-smart computer programs that understand and generate human-like text. They're like really big brains made of Transformer-based architecture, with hundreds of billions or even more parameters. Examples include GPT Series by OpenAI, Llama Series by Meta, Mistral Series, and Claude by Anthropic. These models are incredibly good at understanding language and doing all sorts of tasks with it.
+- Think of LLMs as the giants of AI language processing. They're built on this thing called the Transformer architecture, which has layers of attention mechanisms and neural networks. LLMs differ from smaller models mainly because they're, well, huge! They have way more parameters, bigger datasets to learn from, and need a ton of computational power.
+- So, LLMs are like the superheroes of text understanding and generation, making them super valuable for all sorts of applications, from chatbots to content creation tools. They're like the big brains behind the scenes, helping computers understand and interact with human language in really cool ways.
 
 ## RAG 

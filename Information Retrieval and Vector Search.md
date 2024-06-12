@@ -649,3 +649,51 @@ dist, ind = tree.query(query, k=2)
 print("Distances:", dist)
 print("Indices:", ind)
  ```
+  - #### 2. **Ball Tree**
+    A Ball Tree is a binary tree that organizes points in a k-dimensional space by enclosing them in hyperspheres (balls). It is well-suited for high-dimensional data and can handle non-Euclidean distance metrics effectively.
+   - #### **Construction**
+     - **Ball Creation:** At each level of the tree, data points are grouped into two subsets, each enclosed within a ball. The split is made by selecting a point (usually the centroid) and partitioning the points based on their distances to this point.
+     - **Recursive Partitioning:** The process is recursively applied to the subsets, creating a hierarchical structure of balls.
+   - #### **Query Processing**
+     - **Traversal:** For a given query point, the tree is traversed from the root, checking if the query point lies within a ball.
+     - **Pruning:** Branches of the tree are pruned if it's determined that they cannot contain the nearest neighbor, based on the distance to the query point and the radii of the balls.
+   - **Balancing** Similar to K-D Trees, Ball Trees require balancing to ensure efficient query times. This involves careful selection of partitioning points to keep the tree's depth minimal.
+   - Advantages:
+       - 1. EEfficient for higher-dimensional spaces.
+       - 2. Handles non-Euclidean distance metrics (e.g., Mahalanobis, Manhattan).
+       - 3. Provides exact nearest neighbor search with pruning to speed up queries.
+   - Limitations:
+      - 1. Construction can be more complex and computationally intensive compared to K-D Trees.
+      - 2. May require more memory due to the need to store ball boundaries.
+      - 3. Performance can still degrade in very high-dimensional spaces.
+``` Python
+import numpy as np
+from sklearn.neighbors import BallTree
+
+# Sample data
+data = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
+
+# Build BallTree
+tree = BallTree(data, leaf_size=2)
+
+# Query point
+query = np.array([2, 3])
+
+# Find nearest neighbor
+dist, ind = tree.query([query], k=1)
+
+print("Query point:", query)
+print("Nearest neighbor index:", ind[0][0])
+print("Nearest neighbor point:", data[ind[0][0]])
+print("Distance to nearest neighbor:", dist[0][0])
+```
+
+
+
+
+
+
+
+
+
+

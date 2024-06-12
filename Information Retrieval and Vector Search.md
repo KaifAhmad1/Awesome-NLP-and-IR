@@ -1,1 +1,622 @@
-Work in Progress 
+## Vector Search: A Comprehensive Overview
+- **What is a Vector?:** In mathematics, a vector is a quantity defined by both magnitude and direction. Vectors are represented as arrays of numbers, which correspond to coordinates in a multidimensional space. They are foundational in various fields, including physics, engineering, and computer science.
+  - Typically represented as `V = [v1, v2, v3, ...., vn]` where `n` is the magnitude of the vector in high dimensional space.
+   - **Basic Properties of Vectors:**
+     - **Magnitude:** The length of the vector.
+     - **Direction:** The orientation of the vector in space.
+  ![Vector Representation in High Dimensional Space](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/Vector%20Representation.png)
+  - **Vector Representation in Machine Learning** In machine learning and information retrieval, vectors are used to represent data points in a high-dimensional space. This representation is crucial for tasks like similarity search, where the goal is to find data points that are similar to a given query.
+    - 1. **Text Data:**
+       - **Word Embeddings:** Words are mapped to vectors using models like Word2Vec, GloVe, or FastText. These vectors capture semantic meanings, where similar words have similar vectors.
+       - **Sentence Embeddings:**  Models like BERT and GPT transform entire sentences or documents into vectors, preserving contextual meaning.
+     - 2. **Image Data:**
+       - **Feature Vectors:** Convolutional Neural Networks (CNNs) are used to extract features from images, which are then represented as vectors.
+     - 3. **Audio and Video Data:**
+       - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
+       - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
+  - **Distance Metrics:** Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
+    - 1. **Euclidean Distance:** Measures the straight-line distance between two points in Euclidean space.
+          - `Formula: √(Σ (v_i - u_i)^2)`
+        -  For vectors V = [1, 2] and U = [4, 6], the Euclidean distance is √((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5.
+           - **Advantages:**
+             - Intuitive and easy to compute.
+             - Well-suited for small, low-dimensional datasets.
+           - **Limitations:**
+             - Sensitive to differences in magnitude and scaling.
+             - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
+    - 2. **Manhattan Distance:**  Measures the distance between two points along axes at right angles, also known as L1 distance or taxicab distance.
+          - `Formula:  Σ |v_i - u_i|`
+        -  For vectors V = [1, 2] and U = [4, 6], the Manhattan distance is |4-1| + |6-2| = 3 + 4 = 7.
+           - **Advantages:**
+             - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.
+           - **Limitations:**
+             - Can be less intuitive for non-grid-based data.
+             - Sensitive to scale, like Euclidean distance.
+
+    - 3. **Cosine Similarity:**  Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
+          - `Formula: cos(θ) = (v ⋅ u) / (||v|| ||u||)`
+        -  For vectors V = [1, 2] and U = [2, 3], the cosine similarity is (12 + 23) / (√(1^2 + 2^2) * √(2^2 + 3^2)) = 8 / (√5 * √13) ≈ 0.98.
+           - **Advantages:**
+             - Useful for high-dimensional data, such as text data represented as word vectors.
+             - Ignores magnitude, focusing on the direction of the vectors.
+           - **Limitations:**
+             - Ignores magnitude, which can be a drawback if magnitude differences are important.
+             - Requires non-zero vectors to compute.
+    - 4. **Jaccard Similarity:**  Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
+          - `Formula: J(A, B) = |A ∩ B| / |A ∪ B|`
+        -  For sets A = {1, 2, 3} and B = {2, 3, 4}, the Jaccard similarity is |{2, 3}| / |{1, 2, 3, 4}| = 2 / 4 = 0.5.
+           - **Advantages:**
+             - Handles binary or categorical data well.
+             - Simple interpretation and calculation.
+           - **Limitations:**
+             - Not suitable for continuous data.
+             - Can be less informative for datasets with many common elements.
+    - 5. **Hamming Distance:**  Measures the number of positions at which the corresponding elements of two binary vectors are different.
+          - `Formula: H(v, u) = Σ (v_i ≠ u_i)`
+        -  For binary vectors V = [1, 0, 1] and U = [0, 1, 1], the Hamming distance is (1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2.
+           - **Advantages:**
+             - Effective for error detection and correction in binary data.
+             - Simple and fast to compute.
+           - **Limitations:**
+             - Only applicable to binary vectors.
+             - Not useful for continuous or non-binary categorical data.
+    - 6. **Earth Mover's Distance (EMD):**  Measures the minimum amount of `work` needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
+          - `Formula: EMD(P, Q) = inf_γ ∫_X×Y d(x,y) dγ(x,y)`
+        -  Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution 𝑃 has points [1,2] and 𝑄 has points [2,3], EMD would calculate the minimal transportation cost.
+           - **Advantages:**
+             - Provides a meaningful metric for comparing distributions, taking into account the underlying geometry.
+             - Applicable to various types of data, including images and histograms.
+           - **Limitations:**
+             - Computationally intensive, especially for large datasets.
+             - Requires solving an optimization problem, which can be complex.
+
+
+  - **Vector Search Techniques:** Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
+   - 1. **Brute-Force Search:**
+      - Computes similarity between the query vector and all vectors in the dataset.
+      - Inefficient for large datasets due to high computational cost.
+   - 2. **k-Nearest Neighbors (k-NN):**
+      - Finds the k vectors closest to the query vector.
+      - Can be implemented using efficient data structures like KD-Trees or Ball Trees for lower-dimensional data.
+   - 3. **Approximate Nearest Neighbor (ANN):**
+      - Speeds up search by approximating the nearest neighbours.
+      - Methods include Locality-Sensitive Hashing (LSH) and Hierarchical Navigable Small World (HNSW) graphs.
+  - **Applications of Vector Search:** Vector search is transforming various industries by enabling more accurate and context-aware search functionalities:
+    - **Search Engines:**
+      - Enhance traditional keyword-based searches by incorporating semantic understanding.
+      - Google’s BERT and MUM models are examples of using vector search to improve search relevance.
+    - **E-commerce:**
+      - Improve product recommendations by understanding user preferences and product features through vector embeddings.
+      - Amazon and other retailers use vector search to provide contextually relevant search results.
+    - **Content Platforms:**
+      - Platforms like Spotify and YouTube use vector search to recommend music and videos based on user behavior and preferences.
+    - **Healthcare:**
+      - Retrieve relevant medical documents, research papers, and clinical notes to support diagnostics and treatment planning.
+
+- **Nearest Neighbor Search**: Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
+   - **Example:** In a recommendation system, nearest neighbor search helps find users with similar preferences, enabling the system to suggest products or services that align with a user's tastes. For instance, Netflix recommends movies by identifying viewers with similar viewing habits and suggesting what others with similar preferences have enjoyed.
+
+- **High-Dimensional Data:** High-dimensional data refers to datasets with a large number of features or dimensions, such as text data represented by word embeddings or image data characterized by pixel values. Analyzing and managing high-dimensional data presents several challenges:
+  - **Increased Computational Complexity:** The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
+  - **Data Sparsity:** As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
+  - **Overfitting:** With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
+In image search, each image can be represented as a high-dimensional vector. Comparing these vectors directly is computationally intensive due to the vast number of dimensions involved.
+
+- **Curse of Dimensionality:** The curse of dimensionality, a term coined by `Richard Bellman`, describes the various phenomena that arise when analyzing data in high-dimensional spaces. As the number of dimensions increases:
+  - **Distance Measures Become Less Meaningful:** In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
+  - **Volume of Space Increases Exponentially:** The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
+  - **Increased Noise and Redundancy:** Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
+- **Example:** Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
+
+- **Linear Search:** Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
+   - **Mathematical Explanation:** Given a vector `V = [v1, v2, ..., vn]` and a target element `t`, the linear search algorithm checks each element vi in V sequentially:
+      - 1.  Start from the first element: i = 1
+      - 2.  Compare t with vi.
+      - 3.  If `t = vi`, the search is successful, and the position i is returned.
+      - 4. If `t ≠ vi`, increment i and repeat steps 2-3 until i = n or t is found.
+The Time Complexity of Linear Search is Linear O(n) and the Space Complexity is Constant O(1)
+    - Advantages:
+       - 1. Linear search is straightforward to implement and understand.
+       - 2. Linear search does not require the dataset to be sorted or preprocessed in any way.
+       - 3. Linear search can be used on any type of dataset, regardless of structure or order.
+    - Limitations:
+      - 1. Linear search is inefficient for large datasets because it requires checking each element sequentially.
+      - 2. For large datasets, linear search can be very slow compared to other search algorithms KNN search or hash-based searches.
+```  Python 
+def linear_search(vector, target):
+    for i in range(len(vector)):
+        if vector[i] == target:
+            return i
+    return -1
+
+# Input 
+vector = [4, 2, 9, 1, 5]
+target = 9
+result = linear_search(vector, target)
+if result != -1:
+    print(f"Element found at index {result}")
+else:
+    print("Element not found")
+```
+- **Dimensionality Reduction:** 
+- Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
+- Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
+- Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
+  
+- **Principal Component Analysis:** PCA is a widely used technique for linear dimensionality reduction. It aims to find the directions, or principal components, in which the data varies the most and projects the data onto these components to obtain a lower-dimensional representation.
+  - At its core, PCA seeks to transform high-dimensional data into a lower-dimensional form while preserving the most important information. It achieves this by identifying the directions in which the data varies the most, known as the principal components, and projecting the data onto these components.
+- **Mathematical Foundation:**
+   - **Centering the Data:** PCA begins by centering the data, which involves subtracting the mean vector `( Xmean )` from each sample.
+   - **Covariance Matrix:** Next, it computes the covariance matrix `( C )` of the centered data. This matrix quantifies the relationships between different features and how they vary together.
+   - **Eigen Decomposition:** PCA then proceeds to compute the eigenvectors and eigenvalues of the covariance matrix. These eigenvectors represent the principal components, and the corresponding eigenvalues indicate the amount of variance explained by each component.
+
+- **Steps in PCA:** 
+  - 1. **Standardization:** Center the data by subtracting the mean vector from each sample.
+  - 2. **Covariance Matrix Computation:** Compute the covariance matrix of the centered data.
+  - 3. **Eigen Decomposition:** Compute the eigenvectors and eigenvalues of the covariance matrix.
+  - 4. **Selection of Principal Components:** Select the top 𝑘 eigenvectors based on their corresponding eigenvalues to form the new feature space.
+  - 5. **Transformation:** Project the original data onto the selected principal components to obtain the lower-dimensional representation.
+ ``` Python
+import numpy as np
+
+# Create a random dataset
+np.random.seed(0)
+X = np.random.rand(100, 3)
+
+# Center the data
+X_centered = X - np.mean(X, axis=0)
+# Compute the covariance matrix
+cov_matrix = np.cov(X_centered, rowvar=False)
+# Compute the eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+# Sort eigenvectors based on eigenvalues
+sorted_indices = np.argsort(eigenvalues)[::-1]
+sorted_eigenvalues = eigenvalues[sorted_indices]
+sorted_eigenvectors = eigenvectors[:, sorted_indices]
+# Select top 2 eigenvectors
+k = 2
+top_k_eigenvectors = sorted_eigenvectors[:, :k]
+# Transform original data
+X_transformed = np.dot(X_centered, top_k_eigenvectors)
+ ```
+
+   - Advantages:
+       - 1. Simplifies models and reduces computational costs.
+       - 2. Filters out noise, improving data quality.
+       - 3. Eases visualization of high-dimensional data.
+       - 4. Identifies significant features for better model performance.
+   - Limitations:
+      - 1. Assumes linear relationships, missing non-linear patterns.
+      - 2. Principal components may be hard to interpret
+      - 3. Requires standardized data.
+      - 4. Captures variance, not necessarily the most important features for all tasks.
+
+# t-Distributed Stochastic Neighbor Embedding (t-SNE)
+
+t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
+
+## Key Concepts
+
+- **Dimensionality Reduction:** This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
+- **Stochastic Neighbor Embedding:** This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
+- **t-Distribution:** Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
+
+## How t-SNE Works
+
+- **Pairwise Similarities:** t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
+
+  The similarity $p_{ij}$ between two points $x_i$ and $x_j$ is calculated as:
+  $$
+  p_{ij} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
+  $$
+  Here, $\sigma_i$ is the variance of the Gaussian distribution centered at $x_i$.
+  
+- **Joint Probabilities:** These probabilities are made symmetrical to ensure that the similarity between point A and point B is the same as between point B and point A.
+
+  The joint probability $P_{ij}$ is:
+  $$
+  P_{ij} = \frac{p_{ij} + p_{ji}}{2N}
+  $$
+  Here, $N$ is the number of data points.
+
+- **Low-Dimensional Mapping:** Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
+
+- **Gradient Descent:** Positions are adjusted using an optimization method called gradient descent. This minimizes the Kullback-Leibler divergence between the two probability distributions (high-dimensional and low-dimensional).
+
+  The Kullback-Leibler divergence $KL(P \parallel Q)$ is:
+  $$
+  KL(P \parallel Q) = \sum_{i \neq j} P_{ij} \log\left(\frac{P_{ij}}{Q_{ij}}\right)
+  $$
+
+  Here, $Q_{ij}$ is the similarity between points $y_i$ and $y_j$ in the low-dimensional space, calculated as:
+  $$
+  Q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l} (1 + \|y_k - y_l\|^2)^{-1}}
+  $$
+
+  The gradient descent algorithm updates the positions $y_i$ to minimize $KL(P \parallel Q)$, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
+
+
+
+
+``` python 
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from sklearn.datasets import load_digits
+
+# Load example data
+digits = load_digits()
+X = digits.data
+y = digits.target
+
+# Perform t-SNE
+tsne = TSNE(n_components=2, random_state=42)
+X_tsne = tsne.fit_transform(X)
+
+# Plot the results
+plt.figure(figsize=(10, 7))
+scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap='viridis', s=10)
+plt.colorbar(scatter, label='Digit')
+plt.title('t-SNE visualization of Digits dataset')
+plt.xlabel('t-SNE component 1')
+plt.ylabel('t-SNE component 2')
+plt.show()
+```
+
+   - Advantages:
+       - 1. Provides clear insights into complex data.
+       - 2. Maintains local similarities effectively.
+       - 3. Robust to Noise
+       - 4. Non-Linear Representation and Captures complex relationships accurately.
+   - Limitations:
+      - 1. Resource-demanding, especially for large datasets.
+      - 2. May distort overall data relationships.
+      - 3. Complex datasets may pose challenges in exact interpretation.
+
+- **Approximate Nearest Neighbor (ANN) Search:** Approximate Nearest Neighbor (ANN) search is a technique used to find points in a high-dimensional space that are approximately closest to a given query point. This method is particularly crucial when dealing with large datasets where exact nearest neighbor search becomes computationally infeasible. ANN search balances between accuracy and computational efficiency, making it an invaluable tool in various fields such as machine learning, data mining, and information retrieval.
+   - **ANN Search in Machine Learning** ANN search is crucial for high-dimensional data tasks, such as:
+     - **Feature Matching in Computer Vision:** Identifies similar features across images for tasks like image stitching, object recognition, and 3D reconstruction.
+     - **Recommendation Systems:** Recommends items by identifying similar users or items based on behavior or attributes represented as vectors.
+     - **Clustering:** Accelerates clustering large datasets by quickly finding approximate clusters, which can then be refined.
+   - **ANN Search in Data Mining** In data mining, ANN search enhances:
+     - **Efficient Data Retrieval:** Quickly finds relevant data points similar to a query, essential for applications like anomaly detection.
+     - **Pattern Recognition:** Identifies patterns or associations within large datasets, aiding in market basket analysis and customer segmentation.
+   - **ANN Search in Information Retrieval** Information retrieval systems use ANN search for:
+     - **Semantic Search:** Retrieves documents or information semantically similar to a user's query by representing text data as vectors.
+     - **Multimedia Retrieval:** Finds similar images, videos, or audio files based on content rather than metadata, using high-dimensional vectors.
+
+- **Trade-Off Between Accuracy and Efficiency in ANN Search** In Approximate Nearest Neighbor (ANN) search, balancing accuracy and efficiency is crucial, especially for large-scale and high-dimensional datasets. While the aim is to quickly find the nearest neighbors with high precision, achieving both accuracy and speed is challenging due to computational constraints.
+  - **Accuracy vs. Efficiency**
+    - **Accuracy:** Ensures the search results closely match the exact nearest neighbors. High accuracy is vital for tasks requiring precise similarity measures but demands extensive computations, making it resource-intensive and slow.
+    - **Efficiency:** Focuses on the speed and resource usage of the search. Efficient algorithms deliver quick results and use minimal memory, but they may sacrifice some accuracy by employing approximations and heuristics.
+  - **Importance of Faster Search Methods**
+  - 1 **Large-Scale Datasets**
+     - **Real-Time Processing:** In applications like online search engines, recommendation systems, and real-time analytics, delivering results almost instantaneously is crucial. Efficient ANN search methods enable these systems to provide timely and relevant results without delays.
+     - **Scalability:** As datasets grow, the computational burden increases exponentially. Efficient ANN search algorithms ensure the system can handle this growth without a proportional rise in resource requirements, maintaining performance and responsiveness.
+  - 2 **High-Dimensional Data:**
+     - **Reduced Computational Complexity:** Techniques that reduce the number of dimensions or approximate distances help manage the computational load, making it feasible to process high-dimensional data effectively. This is crucial in fields like image and video processing, natural language processing, and genomics.
+     - **Handling Sparsity:** High-dimensional spaces often lead to sparse data distributions. Efficient ANN search methods are designed to navigate this sparsity, finding relevant neighbors without exhaustive searches.
+- **Techniques to Balance Accuracy and Efficiency**
+   - Flat Indexing 
+   - Inverted Index
+   - Locality-Sensitive Hashing (LSH)
+   - Product Quanitzation
+   - Vector Quantization
+   - Tree Based Indexing like K-D Tree, Ball Tree and R Tree
+   - Graph based indexing algorithms like HNSW and Vamana
+   - Inverted File Indexing (IVF) 
+   - LSH Forest
+   - Composite Indexing (e.g., IVF + PQ, LSH + KDTree, HNSW + IVF)
+- **Flat Indexing:** Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
+  - **How it works:**
+     - **Index Construction:** Initially, all dataset vectors are stored in memory or on disk to construct the index.
+       -  All dataset vectors $X = \{x_1, x_2, \ldots, x_n\}$ are stored in memory or on disk.
+     - **Query Processing:** Upon receiving a query vector, the system systematically compares it with every vector in the index, computing the similarity or distance metric (e.g., Euclidean distance, cosine similarity) between the query and each vector.
+     - **Ranking:** As comparisons progress, vectors are ranked based on their similarity to the query, thereby pinpointing the closest matches.
+     - **Retrieval:** After evaluating all vectors, the system retrieves either the top-k closest matches or all vectors meeting a specified similarity threshold.
+
+   - Advantages:
+       - 1. Easy implementation and comprehension.
+       - 2. Avoids complex index structures, suitable for smaller datasets.
+       - 3. Adaptable to various data types and metrics.
+   - Limitations:
+      - 1. Inefficient for large datasets, leading to slower query processing.
+      - 2. Can be computationally intensive for high-dimensional data.
+      - 3. Requires substantial memory resources for storage.
+
+``` python 
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+dataset_vectors = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
+
+query_vector = np.array([1, 0, 0])
+similarities = cosine_similarity([query_vector], dataset_vectors)[0]
+
+ranked_indices = np.argsort(-similarities)
+
+top_k = 3
+top_k_indices = ranked_indices[:top_k]
+top_k_matches = dataset_vectors[top_k_indices]
+
+print("Top-k indices:", top_k_indices)
+print("Top-k matches:\n", top_k_matches)
+print("Similarity scores:", similarities[top_k_indices])
+```
+```
+Top-k indices: [2 1 0]
+Top-k matches:
+ [[7 8 9]
+ [4 5 6]
+ [1 2 3]]
+Similarity scores: [0.50257071 0.45584231 0.26726124]
+```
+- **Inverted Index:** An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
+   - **How It Works**
+     - **Tokenization:** The process starts with tokenizing the text data. Tokenization involves breaking down text into individual tokens, typically words or terms.
+     - **Normalization:** Tokens are often normalized, which may include converting to lowercase, removing punctuation, and applying stemming or lemmatization to reduce words to their base forms.
+     - **Index Construction:** Each unique token is stored in the index, along with a list of documents or positions where it appears. This mapping allows for efficient look-up during search queries.
+     - **Posting List:** Each token in the index has an associated posting list, which is a list of all documents and positions where the token appears.
+
+   - Example Consider three documents
+     - $Document 1:$ `apple banana fruit`
+     - $Document 2:$ `banana apple juice`
+     - $Document 3:$ `fruit apple orange`
+   - The inverted index for these documents would look like this:
+     - $apple: [1, 2, 3]$
+     - $banana: [1, 2]$
+     - $fruit: [1, 3]$
+     - $juice: [2]$
+     - $orange: [3]$
+   - Here, the numbers represent the document IDs where each term appears.
+
+   - Advantages:
+       - 1. Allows quick retrieval of documents containing the queried terms.
+       - 2. Optimizes storage space by indexing only terms and their occurrences rather than entire documents.
+   - Limitations:
+      - 1. Adding or deleting documents requires updating the index, which can be complex and resource-intensive.
+      - 2. Large datasets with many unique terms can result in significant storage overhead for the index.
+
+``` python
+import re
+from collections import defaultdict
+# Function to tokenize and normalize text
+def tokenize(text):
+    text = text.lower()
+    text = re.sub(r'\W+', ' ', text)
+    tokens = text.split()
+    return tokens
+
+# Function to build the inverted index
+def build_inverted_index(docs):
+    inverted_index = defaultdict(list)
+    for doc_id, doc in enumerate(docs):
+        tokens = tokenize(doc)
+        for token in tokens:
+            if doc_id not in inverted_index[token]:
+                inverted_index[token].append(doc_id)
+    return inverted_index
+
+documents = [
+    "apple banana fruit",
+    "banana apple juice",
+    "fruit apple orange"
+]
+
+inverted_index = build_inverted_index(documents)
+for term, postings in sorted(inverted_index.items()):
+    print(f"{term}: {postings}")
+```
+```
+apple: [0, 1, 2]
+banana: [0, 1]
+fruit: [0, 2]
+juice: [1]
+orange: [2]
+```
+
+- **Locality-Sensitive Hashing (LSH)** Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
+  - **Key Concepts**
+    - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
+    - **Hash Function Family:** LSH uses a set of hash functions $\mathcal{H}$ that have a high probability of assigning similar items to the same bucket and a low probability of assigning dissimilar items to the same bucket.
+    - **Approximation:** LSH provides approximate results, which means it finds neighbors that are close enough rather than the exact nearest neighbours.
+
+  - **How LSH Works**
+    - 1. **Hash Function Selection:** Choose or design hash functions that are locality-sensitive to the chosen similarity metric.
+    - 2. **Index Construction:** Apply the hash functions to all items in the dataset, distributing them into buckets.
+    - 3. **Query Processing:**
+       - Hash the query item using the same hash functions.
+       - Retrieve and compare items from the corresponding bucket(s).
+       - Use a secondary, more precise similarity measure to rank the retrieved items and find the approximate nearest neighbours.
+
+  - **Mathematics of LSH**
+     - **Distance Measure:** $d(\mathbf{x}, \mathbf{y})$ denotes the distance between two points $\mathbf{x}$ and $\mathbf{y}$ in a high-dimensional space.
+     - **Hash Function Family:** $\mathcal{H}$ is a set of hash functions. A hash function $h \in \mathcal{H}$ maps a point $\mathbf{x}$ to a bucket.
+     - **Probabilities:**
+      - $P_1 = \Pr[h(\mathbf{x}) = h(\mathbf{y}) \mid d(\mathbf{x}, \mathbf{y}) \leq r]$ is the probability that $h$ hashes two points $\mathbf{x}$ and $\mathbf{y}$ to the same bucket if $\mathbf{x}$ and $\mathbf{y}$ are within distance $r$.
+      - $P_2 = \Pr[h(\mathbf{x}) = h(\mathbf{y}) \mid d(\mathbf{x}, \mathbf{y}) > cr]$ is the probability that $h$ hashes two points $\mathbf{x}$ and $\mathbf{y}$ to the same bucket if $\mathbf{x}$ and $\mathbf{y}$ are further than $cr$ apart, where $c > 1$.
+     - **Locality-Sensitive Hash Family:** A hash family $\mathcal{H}$ is called $(r, cr, P_1, P_2)$-sensitive if $P_1 > P_2$, which ensures that similar items have a higher probability of colliding than dissimilar ones.
+
+- **Example: Euclidean Distance**
+A common hash function for Euclidean distance is:
+
+$$
+h_{\mathbf{a}, b}(\mathbf{x}) = \left\lfloor \frac{\mathbf{a} \cdot \mathbf{x} + b}{w} \right\rfloor
+$$
+
+where:
+- $\mathbf{a}$ is a random vector with each component drawn from a Gaussian distribution.
+- $b$ is a random shift drawn uniformly from the range $[0, w]$.
+- $w$ is the width of the hash bin.
+
+This hash function ensures that points close in Euclidean space are more likely to fall into the same hash bin.
+
+   - Advantages:
+       - 1. Speeds up approximate nearest neighbor search, especially in high-dimensional spaces.
+       - 2. Handles large datasets effectively.
+       - 3. Similar items are likely to be hashed into the same bucket.
+   - Limitations:
+      - 1. Does not guarantee exact nearest neighbors.
+      - 2. Requires careful tuning of parameters like hash functions and bin width.
+      - 3. Possible false positives where dissimilar items collide.
+      - 4. Reduced accuracy in very high-dimensional spaces.
+
+``` python
+import numpy as np
+
+# Generate random hyperplanes
+def generate_random_hyperplanes(num_planes, dim):
+    return np.random.randn(num_planes, dim)
+
+# Compute LSH signatures
+def compute_lsh_signatures(data, hyperplanes):
+    return np.dot(data, hyperplanes.T) > 0
+
+# Query with LSH
+def lsh_query(query, hyperplanes, dataset_signatures):
+    query_signature = compute_lsh_signatures(query.reshape(1, -1), hyperplanes)
+    matches = np.all(dataset_signatures == query_signature, axis=1)
+    return matches
+
+# data
+data = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+])
+
+query = np.array([1, 0, 0])
+
+# LSH parameters
+num_planes = 5
+dim = data.shape[1]
+
+# Generate hyperplanes and compute signatures
+hyperplanes = generate_random_hyperplanes(num_planes, dim)
+dataset_signatures = compute_lsh_signatures(data, hyperplanes)
+
+# Query and find matches
+matches = lsh_query(query, hyperplanes, dataset_signatures)
+print("Matched indices:", np.where(matches)[0])
+```
+```
+Matched indices: []
+```
+- **Quantization:** Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
+  - **Key Concepts in Quantization** 
+    - **Quantization:** The process of mapping high-dimensional vectors to a finite set of representative points, thereby reducing data complexity.
+    - **Centroids/Codewords:** Representative points used in the quantization process. Each data point is approximated by the nearest centroid.
+       - Consider approximating the value of $π(pi)$, which is approximately $3.14159$. Let's use a simple codebook with two centroids: $C1=3.0$ and $C2=3.2$
+       - The nearest centroid to $π(3.14159)$ is $C2=3.2$ since, $∣3.14159−3.2∣=0.05841$ is less than $∣3.14159−3.0∣=0.14159$
+         - Therefore, $π$ is approximated by $C2$ 
+    - **Codebook:** A collection of centroids that are used to approximate the original data points.
+    - **Quantization Error:** The difference between the original data point and its quantized approximation. Lower quantization error implies higher accuracy in search results.
+        - The quantization error is the squared difference between $π$ and the centroid $C2$
+           - Quatization Error = $(3.14159−3.2)^2$ $=(−0.05841)^2$ $≈0.00341$
+- Quantization helps manage large datasets by simplifying data representation, which in turn speeds up the process of finding similar data points through approximate nearest neighbor search techniques.
+- **Types of Quantization:**
+   - 1. **Scalar Quantization:** Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
+      - **Example:** Suppose we have a dataset of 2D points $(x, y)$, and we want to quantize each dimension independently. Let's consider quantizing $x$ and $y$ into three levels: ${1.0, 2.0, 3.0}$ for $x$ and ${4.0, 5.0, 6.0}$ for y.
+         - **Quantization Process** Given a point $(2.3, 4.7)$, we quantize $x$ to the nearest level, which is $2.0$, and $y$ to $5.0$. So, the quantized point becomes $(2.0, 5.0)$.
+         - **Quantization Error** To compute the error, we take the sum of squared differences between the original and quantized values:
+           - Quantization Error = $(2.3 - 2.0)^2 + (4.7 - 5.0)^2 = 0.09 + 0.09 = 0.18$
+   - 2. **Vector Quantization:** This technique quantizes the entire vector as a whole rather than its individual components, capturing the correlations between different dimensions of the vector. The data points are mapped to the nearest centroid in a set of predefined centroids (codebook) based on the overall similarity.
+      - **Example:**  Consider the same 2D dataset, but this time, we want to quantize the entire vector as a single entity. Let's have centroids ${(1.0, 2.0), (3.0, 4.0)}$.
+         - **Quantization Process** For the point $(2.3, 4.7)$, we find the nearest centroid, which is $(3.0, 4.0)$. Thus, the quantized point becomes $(3.0, 4.0)$.
+         - **Quantization Error** The error is computed as the squared Euclidean distance between the original and quantized vectors:
+           - Quantization Error = $(2.3 - 3.0)^2 + (4.7 - 4.0)^2 = 0.49 + 0.49 = 0.98$
+
+   - 3. **Product Quantization:** Product quantization is an advanced technique designed to handle very large and high-dimensional datasets efficiently by decomposing the original space into lower-dimensional subspaces.
+         - **Process**
+            - **Decomposition:** Divide the high-dimensional vector into smaller, non-overlapping sub-vectors.
+            - **Independent Quantization:** Quantize each sub-vector independently using its own set of centroids.
+            - **Complexity Reduction:** Break down the high-dimensional quantization problem into several lower-dimensional problems.
+            - **Centroid Assignment:**
+               - Assign each sub-vector a centroid from a sub-codebook.
+               - Combine these centroids to represent the original vector.
+      - **Example:** Suppose we have a $4D$ vector $(𝑥1, 𝑥2, 𝑥3, 𝑥4)$ and want to perform product quantization by splitting it into two 2D sub-vectors: $(𝑥1, 𝑥2)$ and $(𝑥3, 𝑥4)$. Let's use centroids ${(1.0, 2.0), (3.0, 4.0)}$ for each sub-vector.
+         - **Quantization Process** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(𝑥1, 𝑥2)$ is closest to $(1.0, 2.0)$, and $(𝑥3, 𝑥4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
+         - **Quantization Error** The total error is the sum of errors from quantizing each sub-vector:
+           - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$
+``` python
+import numpy as np
+from sklearn.cluster import KMeans
+
+# Split vectors into sub-vectors
+def split_vectors(data, num_subvectors):
+    subvector_length = data.shape[1] // num_subvectors
+    return np.split(data, num_subvectors, axis=1)
+
+# Perform product quantization
+def product_quantization(data, num_subvectors, num_centroids):
+    subvectors = split_vectors(data, num_subvectors)
+    codebooks = []
+    quantized_indices = []
+
+    for subvector in subvectors:
+        kmeans = KMeans(n_clusters=num_centroids, n_init=10, random_state=0).fit(subvector)
+        codebooks.append(kmeans.cluster_centers_)
+        quantized_indices.append(kmeans.predict(subvector))
+
+    return codebooks, np.array(quantized_indices).T
+
+# Reconstruct vectors from quantized indices
+def reconstruct_vectors(codebooks, quantized_indices):
+    reconstructed_vectors = np.hstack([codebooks[i][quantized_indices[:, i]] for i in range(len(codebooks))])
+    return reconstructed_vectors
+
+# Data
+data = np.array([
+    [1, 2, 3, 4, 5, 6],
+    [7, 8, 9, 10, 11, 12],
+    [13, 14, 15, 16, 17, 18]
+])
+
+# Parameters
+num_subvectors = 2  
+num_centroids = 3 
+
+codebooks, quantized_indices = product_quantization(data, num_subvectors, num_centroids)
+reconstructed_vectors = reconstruct_vectors(codebooks, quantized_indices)
+
+print("Original Data:\n", data)
+print("\nCodebooks:\n", codebooks)
+print("\nQuantized Indices:\n", quantized_indices)
+print("\nReconstructed Vectors:\n", reconstructed_vectors)
+```
+- **Tree-Based Indexing in Approximate Nearest Neighbor Search:** Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
+  - 1. **K-D Tree (K-Dimensional Tree)** A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
+    - **Construction**
+      - **Splitting Planes:** At each level of the tree, the dataset is split along one of the k dimensions. The splitting dimension is usually chosen in a round-robin fashion or based on the dimension with the highest variance.
+      - **Median Selection:** The splitting point is typically the median of the selected dimension, ensuring that each subtree has roughly half of the points.
+    - **Query Processing**
+      - **Traversal:** For a given query point, the tree is traversed starting from the root, moving left or right depending on the value of the splitting dimension.
+      - **Backtracking:** Once a leaf node is reached, the algorithm may backtrack to explore other branches that could potentially contain closer points.
+    - **Balancing** The tree is balanced to minimize the depth, which helps maintain efficient query times. Balancing involves ensuring that the median point is chosen for splitting at each node, which divides the data into roughly equal parts.
+   - Advantages:
+       - 1. Efficient for low-dimensional spaces (usually less than 20 dimensions).
+       - 2. Simple to implement and understand.
+       - 3. Provides exact nearest neighbor search.
+   - Limitations:
+      - 1. Performance degrades significantly with increasing dimensionality due to the `curse of dimensionality`.
+      - 2. Requires periodic rebalancing to maintain efficiency.
+      - 3. Not suitable for dynamic datasets where frequent insertions and deletions are needed.
+ ``` python 
+from sklearn.neighbors import KDTree
+import numpy as np
+
+#  data
+data = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
+
+# Build KDTree
+tree = KDTree(data, leaf_size=2)
+
+# Query
+query = np.array([[1, 2]])
+dist, ind = tree.query(query, k=2)
+print("Distances:", dist)
+print("Indices:", ind)
+ ```

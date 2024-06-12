@@ -27,27 +27,30 @@
            - **Limitations:**
              - Sensitive to differences in magnitude and scaling.
              - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
-    - 2. **Manhattan Distance:**  Measures the distance between two points along axes at right angles, also known as L1 distance or taxicab distance.
+    - #### 2. **Manhattan Distance:**
+        Measures the distance between two points along axes at right angles, also known as L1 or taxicab distance.
          $$d(v, u) = \sum_{i=1}^{n} |v_i - u_i|$$
-        -  For vectors V = [1, 2] and U = [4, 6], the Manhattan distance is |4-1| + |6-2| = 3 + 4 = 7.
+        -  For vectors $V = [1, 2]$ and $U = [4, 6]$, the Manhattan distance is $|4-1| + |6-2| = 3 + 4 = 7$.
            - **Advantages:**
              - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.
            - **Limitations:**
              - Can be less intuitive for non-grid-based data.
              - Sensitive to scale, like Euclidean distance.
 
-    - 3. **Cosine Similarity:**  Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
-          - `Formula: cos(θ) = (v ⋅ u) / (||v|| ||u||)`
-        -  For vectors V = [1, 2] and U = [2, 3], the cosine similarity is (12 + 23) / (√(1^2 + 2^2) * √(2^2 + 3^2)) = 8 / (√5 * √13) ≈ 0.98.
+    - #### 3. **Cosine Similarity:**
+      Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
+         $$\cos(\theta) = \frac{v \cdot u}{\|v\| \|u\|}$$
+        -  For vectors $V = [1, 2]$ and $U = [2, 3]$, the cosine similarity is $$\cos(\theta) = \frac{1 \cdot 2 + 2 \cdot 3}{\sqrt{1^2 + 2^2} \cdot \sqrt{2^2 + 3^2}} = \frac{8}{\sqrt{5} \cdot \sqrt{13}} \approx 0.98$$
            - **Advantages:**
              - Useful for high-dimensional data, such as text data represented as word vectors.
              - Ignores magnitude, focusing on the direction of the vectors.
            - **Limitations:**
              - Ignores magnitude, which can be a drawback if magnitude differences are important.
              - Requires non-zero vectors to compute.
-    - 4. **Jaccard Similarity:**  Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
-          - `Formula: J(A, B) = |A ∩ B| / |A ∪ B|`
-        -  For sets A = {1, 2, 3} and B = {2, 3, 4}, the Jaccard similarity is |{2, 3}| / |{1, 2, 3, 4}| = 2 / 4 = 0.5.
+    - #### 4. **Jaccard Similarity:**
+      Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
+        $$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
+        -  For sets $A = {1, 2, 3}$ and $B = {2, 3, 4}$, the Jaccard similarity is $$J(A, B) = \frac{| \{2, 3\} |}{| \{1, 2, 3, 4\} |} = \frac{2}{4} = 0.5$$
            - **Advantages:**
              - Handles binary or categorical data well.
              - Simple interpretation and calculation.

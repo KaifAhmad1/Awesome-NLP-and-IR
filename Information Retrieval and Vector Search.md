@@ -15,10 +15,12 @@
      - #### 3. **Audio and Video Data:**
        - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
        - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
-  - **Distance Metrics:** Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
-    - 1. **Euclidean Distance:** Measures the straight-line distance between two points in Euclidean space.
-          - `Formula: √(Σ (v_i - u_i)^2)`
-        -  For vectors V = [1, 2] and U = [4, 6], the Euclidean distance is √((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5.
+  - ### **Distance Metrics:**
+  Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
+    - #### 1. **Euclidean Distance:**
+         Measures the straight-line distance between two points in Euclidean space.
+          $$d(v, u) = \sqrt{\sum_{i=1}^{n} (v_i - u_i)^2}$$
+        -  For vectors $V = [1, 2]$ and $U = [4, 6]$, the Euclidean distance is $√((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5$.
            - **Advantages:**
              - Intuitive and easy to compute.
              - Well-suited for small, low-dimensional datasets.
@@ -26,7 +28,7 @@
              - Sensitive to differences in magnitude and scaling.
              - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
     - 2. **Manhattan Distance:**  Measures the distance between two points along axes at right angles, also known as L1 distance or taxicab distance.
-          - `Formula:  Σ |v_i - u_i|`
+         $$d(v, u) = \sum_{i=1}^{n} |v_i - u_i|$$
         -  For vectors V = [1, 2] and U = [4, 6], the Manhattan distance is |4-1| + |6-2| = 3 + 4 = 7.
            - **Advantages:**
              - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.

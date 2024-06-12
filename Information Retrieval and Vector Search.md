@@ -687,6 +687,13 @@ print("Nearest neighbor index:", ind[0][0])
 print("Nearest neighbor point:", data[ind[0][0]])
 print("Distance to nearest neighbor:", dist[0][0])
 ```
+### **Random Projection in ANN** 
+Random projection is a dimensionality reduction technique used to approximate the distances between points in high-dimensional space. It is especially useful in Approximate Nearest Neighbor (ANN) search, where finding exact nearest neighbors in high-dimensional datasets can be computationally infeasible. By reducing the dimensionality while preserving the relative distances, random projection balances accuracy and efficiency.
+  - #### **Key Concepts**
+     - **Dimensionality Reduction** Random projection reduces the number of dimensions of the dataset, which helps in managing the computational complexity and improving the efficiency of ANN search.
+     - **Johnson-Lindenstrauss Lemma** The Johnson-Lindenstrauss lemma is a foundational result that guarantees that a set of points in high-dimensional space can be embedded into a lower-dimensional space such that the distances between the points are approximately preserved.
+  - #### **How it works**
+  - 
 
 
 

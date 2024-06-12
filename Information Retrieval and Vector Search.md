@@ -374,8 +374,9 @@ Top-k matches:
  [1 2 3]]
 Similarity scores: [0.50257071 0.45584231 0.26726124]
 ```
-- **Inverted Index:** An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
-   - **How It Works**
+### **Inverted Index** 
+An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
+   - #### **How It Works**
      - **Tokenization:** The process starts with tokenizing the text data. Tokenization involves breaking down text into individual tokens, typically words or terms.
      - **Normalization:** Tokens are often normalized, which may include converting to lowercase, removing punctuation, and applying stemming or lemmatization to reduce words to their base forms.
      - **Index Construction:** Each unique token is stored in the index, along with a list of documents or positions where it appears. This mapping allows for efficient look-up during search queries.
@@ -386,11 +387,11 @@ Similarity scores: [0.50257071 0.45584231 0.26726124]
      - $Document 2:$ `banana apple juice`
      - $Document 3:$ `fruit apple orange`
    - The inverted index for these documents would look like this:
-     - $apple: [1, 2, 3]$
-     - $banana: [1, 2]$
-     - $fruit: [1, 3]$
-     - $juice: [2]$
-     - $orange: [3]$
+     - apple: $[1, 2, 3]$
+     - banana: $[1, 2]$
+     - fruit: $[1, 3]$
+     - juice: $[2]$
+     - orange: $[3]$
    - Here, the numbers represent the document IDs where each term appears.
 
    - Advantages:
@@ -438,13 +439,14 @@ juice: [1]
 orange: [2]
 ```
 
-- **Locality-Sensitive Hashing (LSH)** Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
-  - **Key Concepts**
+### **Locality-Sensitive Hashing (LSH)** 
+Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
+  - #### **Key Concepts**
     - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
     - **Hash Function Family:** LSH uses a set of hash functions $\mathcal{H}$ that have a high probability of assigning similar items to the same bucket and a low probability of assigning dissimilar items to the same bucket.
     - **Approximation:** LSH provides approximate results, which means it finds neighbors that are close enough rather than the exact nearest neighbours.
 
-  - **How LSH Works**
+  - #### **How LSH Works**
     - 1. **Hash Function Selection:** Choose or design hash functions that are locality-sensitive to the chosen similarity metric.
     - 2. **Index Construction:** Apply the hash functions to all items in the dataset, distributing them into buckets.
     - 3. **Query Processing:**
@@ -452,7 +454,7 @@ orange: [2]
        - Retrieve and compare items from the corresponding bucket(s).
        - Use a secondary, more precise similarity measure to rank the retrieved items and find the approximate nearest neighbours.
 
-  - **Mathematics of LSH**
+  - #### **Mathematics of LSH**
      - **Distance Measure:** $d(\mathbf{x}, \mathbf{y})$ denotes the distance between two points $\mathbf{x}$ and $\mathbf{y}$ in a high-dimensional space.
      - **Hash Function Family:** $\mathcal{H}$ is a set of hash functions. A hash function $h \in \mathcal{H}$ maps a point $\mathbf{x}$ to a bucket.
      - **Probabilities:**
@@ -525,8 +527,9 @@ print("Matched indices:", np.where(matches)[0])
 ```
 Matched indices: []
 ```
-- **Quantization:** Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
-  - **Key Concepts in Quantization** 
+### **Quantization:** 
+Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
+  - #### **Key Concepts in Quantization** 
     - **Quantization:** The process of mapping high-dimensional vectors to a finite set of representative points, thereby reducing data complexity.
     - **Centroids/Codewords:** Representative points used in the quantization process. Each data point is approximated by the nearest centroid.
        - Consider approximating the value of $π(pi)$, which is approximately $3.14159$. Let's use a simple codebook with two centroids: $C1=3.0$ and $C2=3.2$
@@ -537,30 +540,34 @@ Matched indices: []
         - The quantization error is the squared difference between $π$ and the centroid $C2$
            - Quatization Error = $(3.14159−3.2)^2$ $=(−0.05841)^2$ $≈0.00341$
 - Quantization helps manage large datasets by simplifying data representation, which in turn speeds up the process of finding similar data points through approximate nearest neighbor search techniques.
-- **Types of Quantization:**
-   - 1. **Scalar Quantization:** Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
+- #### **Types of Quantization:**
+   - #### 1. **Scalar Quantization:**
+     Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
       - **Example:** Suppose we have a dataset of 2D points $(x, y)$, and we want to quantize each dimension independently. Let's consider quantizing $x$ and $y$ into three levels: ${1.0, 2.0, 3.0}$ for $x$ and ${4.0, 5.0, 6.0}$ for y.
          - **Quantization Process** Given a point $(2.3, 4.7)$, we quantize $x$ to the nearest level, which is $2.0$, and $y$ to $5.0$. So, the quantized point becomes $(2.0, 5.0)$.
          - **Quantization Error** To compute the error, we take the sum of squared differences between the original and quantized values:
            - Quantization Error = $(2.3 - 2.0)^2 + (4.7 - 5.0)^2 = 0.09 + 0.09 = 0.18$
-   - 2. **Vector Quantization:** This technique quantizes the entire vector as a whole rather than its individual components, capturing the correlations between different dimensions of the vector. The data points are mapped to the nearest centroid in a set of predefined centroids (codebook) based on the overall similarity.
+   - #### 2. **Vector Quantization:**
+     This technique quantizes the entire vector as a whole rather than its individual components, capturing the correlations between different dimensions of the vector. The data points are mapped to the nearest centroid in a set of predefined centroids (codebook) based on the overall similarity.
       - **Example:**  Consider the same 2D dataset, but this time, we want to quantize the entire vector as a single entity. Let's have centroids ${(1.0, 2.0), (3.0, 4.0)}$.
          - **Quantization Process** For the point $(2.3, 4.7)$, we find the nearest centroid, which is $(3.0, 4.0)$. Thus, the quantized point becomes $(3.0, 4.0)$.
          - **Quantization Error** The error is computed as the squared Euclidean distance between the original and quantized vectors:
            - Quantization Error = $(2.3 - 3.0)^2 + (4.7 - 4.0)^2 = 0.49 + 0.49 = 0.98$
 
-   - 3. **Product Quantization:** Product quantization is an advanced technique designed to handle very large and high-dimensional datasets efficiently by decomposing the original space into lower-dimensional subspaces.
-         - **Process**
-            - **Decomposition:** Divide the high-dimensional vector into smaller, non-overlapping sub-vectors.
-            - **Independent Quantization:** Quantize each sub-vector independently using its own set of centroids.
-            - **Complexity Reduction:** Break down the high-dimensional quantization problem into several lower-dimensional problems.
-            - **Centroid Assignment:**
-               - Assign each sub-vector a centroid from a sub-codebook.
-               - Combine these centroids to represent the original vector.
-      - **Example:** Suppose we have a $4D$ vector $(𝑥1, 𝑥2, 𝑥3, 𝑥4)$ and want to perform product quantization by splitting it into two 2D sub-vectors: $(𝑥1, 𝑥2)$ and $(𝑥3, 𝑥4)$. Let's use centroids ${(1.0, 2.0), (3.0, 4.0)}$ for each sub-vector.
-         - **Quantization Process** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(𝑥1, 𝑥2)$ is closest to $(1.0, 2.0)$, and $(𝑥3, 𝑥4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
-         - **Quantization Error** The total error is the sum of errors from quantizing each sub-vector:
-           - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$
+   - #### 3. **Product Quantization:**
+     Product quantization is an advanced technique designed to handle very large and high-dimensional datasets efficiently by decomposing the original space into lower-dimensional subspaces.
+      - #### **Process**
+        - **Decomposition:** Divide the high-dimensional vector into smaller, non-overlapping sub-vectors.
+        - **Independent Quantization:** Quantize each sub-vector independently using its own set of centroids.
+        - **Complexity Reduction:** Break down the high-dimensional quantization problem into several lower-dimensional problems.
+        - **Centroid Assignment:**
+          - Assign each sub-vector a centroid from a sub-codebook.
+          - Combine these centroids to represent the original vector.
+        - ####  **Example:**
+          Suppose we have a $4D$ vector $(𝑥1, 𝑥2, 𝑥3, 𝑥4)$ and want to perform product quantization by splitting it into two 2D sub-vectors: $(𝑥1, 𝑥2)$ and $(𝑥3, 𝑥4)$. Let's use centroids ${(1.0, 2.0), (3.0, 4.0)}$ for each sub-vector.
+            - **Quantization Process** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(𝑥1, 𝑥2)$ is closest to $(1.0, 2.0)$, and $(𝑥3, 𝑥4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
+            - **Quantization Error** The total error is the sum of errors from quantizing each sub-vector:
+              - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$
 ``` python
 import numpy as np
 from sklearn.cluster import KMeans
@@ -607,8 +614,10 @@ print("\nCodebooks:\n", codebooks)
 print("\nQuantized Indices:\n", quantized_indices)
 print("\nReconstructed Vectors:\n", reconstructed_vectors)
 ```
-- **Tree-Based Indexing in Approximate Nearest Neighbor Search:** Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
-  - 1. **K-D Tree (K-Dimensional Tree)** A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
+### **Tree-Based Indexing in Approximate Nearest Neighbor Search:** 
+Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
+  - #### 1. **K-D Tree (K-Dimensional Tree)**
+    A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
     - **Construction**
       - **Splitting Planes:** At each level of the tree, the dataset is split along one of the k dimensions. The splitting dimension is usually chosen in a round-robin fashion or based on the dimension with the highest variance.
       - **Median Selection:** The splitting point is typically the median of the selected dimension, ensuring that each subtree has roughly half of the points.

@@ -79,17 +79,19 @@
              - Requires solving an optimization problem, which can be complex.
 
 
-  - **Vector Search Techniques:** Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
-   - 1. **Brute-Force Search:**
+  - ### **Vector Search Techniques:**
+  Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
+   - #### 1. **Brute-Force Search:**
       - Computes similarity between the query vector and all vectors in the dataset.
       - Inefficient for large datasets due to high computational cost.
-   - 2. **k-Nearest Neighbors (k-NN):**
+   - #### 2. **k-Nearest Neighbors (k-NN):**
       - Finds the k vectors closest to the query vector.
       - Can be implemented using efficient data structures like KD-Trees or Ball Trees for lower-dimensional data.
-   - 3. **Approximate Nearest Neighbor (ANN):**
+   - #### 3. **Approximate Nearest Neighbor (ANN):**
       - Speeds up search by approximating the nearest neighbours.
       - Methods include Locality-Sensitive Hashing (LSH) and Hierarchical Navigable Small World (HNSW) graphs.
-  - **Applications of Vector Search:** Vector search is transforming various industries by enabling more accurate and context-aware search functionalities:
+  - ### **Applications of Vector Search:**
+  Vector search is transforming various industries by enabling more accurate and context-aware search functionalities:
     - **Search Engines:**
       - Enhance traditional keyword-based searches by incorporating semantic understanding.
       - Google’s BERT and MUM models are examples of using vector search to improve search relevance.
@@ -101,28 +103,39 @@
     - **Healthcare:**
       - Retrieve relevant medical documents, research papers, and clinical notes to support diagnostics and treatment planning.
 
-- **Nearest Neighbor Search**: Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
+- ### **Nearest Neighbor Search**:
+Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
    - **Example:** In a recommendation system, nearest neighbor search helps find users with similar preferences, enabling the system to suggest products or services that align with a user's tastes. For instance, Netflix recommends movies by identifying viewers with similar viewing habits and suggesting what others with similar preferences have enjoyed.
 
-- **High-Dimensional Data:** High-dimensional data refers to datasets with a large number of features or dimensions, such as text data represented by word embeddings or image data characterized by pixel values. Analyzing and managing high-dimensional data presents several challenges:
-  - **Increased Computational Complexity:** The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
-  - **Data Sparsity:** As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
-  - **Overfitting:** With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
-In image search, each image can be represented as a high-dimensional vector. Comparing these vectors directly is computationally intensive due to the vast number of dimensions involved.
+- ### **High-Dimensional Data:**
+High-dimensional data refers to datasets with a large number of features or dimensions, such as text data represented by word embeddings or image data characterized by pixel values. Analyzing and managing high-dimensional data presents several challenges:
+  - #### 1. **Increased Computational Complexity:**
+The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
+  - #### 2. **Data Sparsity:**
+As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
+  - #### 3. **Overfitting:**
+With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
 
-- **Curse of Dimensionality:** The curse of dimensionality, a term coined by `Richard Bellman`, describes the various phenomena that arise when analyzing data in high-dimensional spaces. As the number of dimensions increases:
-  - **Distance Measures Become Less Meaningful:** In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
-  - **Volume of Space Increases Exponentially:** The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
-  - **Increased Noise and Redundancy:** Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
+- **For Example:** In image search, each image can be represented as a high-dimensional vector. Comparing these vectors directly is computationally intensive due to the vast number of dimensions involved.
+
+- ### **Curse of Dimensionality:**
+The curse of dimensionality, a term coined by `Richard Bellman`, describes the various phenomena that arise when analyzing data in high-dimensional spaces. As the number of dimensions increases:
+  - #### 1. **Distance Measures Become Less Meaningful:**
+In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
+  - #### 2. **Volume of Space Increases Exponentially:**
+The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
+  - #### 3. **Increased Noise and Redundancy:**
+ Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
 - **Example:** Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
 
-- **Linear Search:** Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
-   - **Mathematical Explanation:** Given a vector `V = [v1, v2, ..., vn]` and a target element `t`, the linear search algorithm checks each element vi in V sequentially:
-      - 1.  Start from the first element: i = 1
-      - 2.  Compare t with vi.
-      - 3.  If `t = vi`, the search is successful, and the position i is returned.
-      - 4. If `t ≠ vi`, increment i and repeat steps 2-3 until i = n or t is found.
-The Time Complexity of Linear Search is Linear O(n) and the Space Complexity is Constant O(1)
+- ### **Linear Search:**
+Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
+  - **Mathematical Explanation:** Given a vector $V = [v1, v2, ..., vn]$ and a target element $t$, the linear search algorithm checks each element $vi$ in $V$ sequentially:
+      - 1.  Start from the first element: $i = 1$
+      - 2.  Compare $t$ with $vi$.
+      - 3.  If $t = vi$, the search is successful, and the position i is returned.
+      - 4. If $t ≠ vi$, increment i and repeat steps 2-3 until $i = n$ or $t$ is found.
+- The Time Complexity of Linear Search is Linear $O(n)$ and the Space Complexity is Constant $O(1)$
     - Advantages:
        - 1. Linear search is straightforward to implement and understand.
        - 2. Linear search does not require the dataset to be sorted or preprocessed in any way.
@@ -146,19 +159,20 @@ if result != -1:
 else:
     print("Element not found")
 ```
-- **Dimensionality Reduction:** 
-- Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
-- Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
-- Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
+- ### **Dimensionality Reduction:** 
+     - Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
+     - Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
+     - Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
   
-- **Principal Component Analysis:** PCA is a widely used technique for linear dimensionality reduction. It aims to find the directions, or principal components, in which the data varies the most and projects the data onto these components to obtain a lower-dimensional representation.
+- ### **Principal Component Analysis:**
+PCA is a widely used technique for linear dimensionality reduction. It aims to find the directions, or principal components, in which the data varies the most and projects the data onto these components to obtain a lower-dimensional representation.
   - At its core, PCA seeks to transform high-dimensional data into a lower-dimensional form while preserving the most important information. It achieves this by identifying the directions in which the data varies the most, known as the principal components, and projecting the data onto these components.
-- **Mathematical Foundation:**
-   - **Centering the Data:** PCA begins by centering the data, which involves subtracting the mean vector `( Xmean )` from each sample.
-   - **Covariance Matrix:** Next, it computes the covariance matrix `( C )` of the centered data. This matrix quantifies the relationships between different features and how they vary together.
+- #### **Mathematical Foundation:**
+   - **Centering the Data:** PCA begins by centering the data, which involves subtracting the mean vector $Xmean$ from each sample.
+   - **Covariance Matrix:** Next, it computes the covariance matrix $C$ of the centered data. This matrix quantifies the relationships between different features and how they vary together.
    - **Eigen Decomposition:** PCA then proceeds to compute the eigenvectors and eigenvalues of the covariance matrix. These eigenvectors represent the principal components, and the corresponding eigenvalues indicate the amount of variance explained by each component.
 
-- **Steps in PCA:** 
+- #### **Steps in PCA:** 
   - 1. **Standardization:** Center the data by subtracting the mean vector from each sample.
   - 2. **Covariance Matrix Computation:** Compute the covariance matrix of the centered data.
   - 3. **Eigen Decomposition:** Compute the eigenvectors and eigenvalues of the covariance matrix.
@@ -199,47 +213,41 @@ X_transformed = np.dot(X_centered, top_k_eigenvectors)
       - 3. Requires standardized data.
       - 4. Captures variance, not necessarily the most important features for all tasks.
 
-# t-Distributed Stochastic Neighbor Embedding (t-SNE)
-
+- ### **t-Distributed Stochastic Neighbor Embedding (t-SNE)**
 t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
+  - #### **Key Concepts**
+    - #### 1. **Dimensionality Reduction:**
+      This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
+    - #### 2. **Stochastic Neighbor Embedding:**
+      This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
+    - #### 3. **t-Distribution:**
+      Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
 
-## Key Concepts
-
-- **Dimensionality Reduction:** This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
-- **Stochastic Neighbor Embedding:** This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
-- **t-Distribution:** Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
-
-## How t-SNE Works
-
-- **Pairwise Similarities:** t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
+  - #### **How t-SNE Works**
+    - #### 1. **Pairwise Similarities:**
+      t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
 
   The similarity $p_{ij}$ between two points $x_i$ and $x_j$ is calculated as:
-  $$
-  p_{ij} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
-  $$
+  $$p_{ij} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}$$
   Here, $\sigma_i$ is the variance of the Gaussian distribution centered at $x_i$.
   
-- **Joint Probabilities:** These probabilities are made symmetrical to ensure that the similarity between point A and point B is the same as between point B and point A.
+   - #### 2. **Joint Probabilities:**
+     These probabilities are symmetrical to ensure that the similarity between point $A$ and point $B$ is the same as between point B and point A.
 
   The joint probability $P_{ij}$ is:
-  $$
-  P_{ij} = \frac{p_{ij} + p_{ji}}{2N}
-  $$
+  $$P_{ij} = \frac{p_{ij} + p_{ji}}{2N}$$
   Here, $N$ is the number of data points.
 
-- **Low-Dimensional Mapping:** Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
+   - #### 3. **Low-Dimensional Mapping:**
+     Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
 
-- **Gradient Descent:** Positions are adjusted using an optimization method called gradient descent. This minimizes the Kullback-Leibler divergence between the two probability distributions (high-dimensional and low-dimensional).
-
+   - #### 4. **Gradient Descent:**
+     Positions are adjusted using an optimization method called gradient descent. This minimizes the KL divergence between the two probability distributions (high-dimensional and low-dimensional).
   The Kullback-Leibler divergence $KL(P \parallel Q)$ is:
-  $$
-  KL(P \parallel Q) = \sum_{i \neq j} P_{ij} \log\left(\frac{P_{ij}}{Q_{ij}}\right)
-  $$
+  $$KL(P \parallel Q) = \sum_{i \neq j} P_{ij} \log\left(\frac{P_{ij}}{Q_{ij}}\right)$$
 
   Here, $Q_{ij}$ is the similarity between points $y_i$ and $y_j$ in the low-dimensional space, calculated as:
-  $$
-  Q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l} (1 + \|y_k - y_l\|^2)^{-1}}
-  $$
+  $$Q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l} (1 + \|y_k - y_l\|^2)^{-1}}$$
 
   The gradient descent algorithm updates the positions $y_i$ to minimize $KL(P \parallel Q)$, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
 
@@ -281,30 +289,33 @@ plt.show()
       - 2. May distort overall data relationships.
       - 3. Complex datasets may pose challenges in exact interpretation.
 
-- **Approximate Nearest Neighbor (ANN) Search:** Approximate Nearest Neighbor (ANN) search is a technique used to find points in a high-dimensional space that are approximately closest to a given query point. This method is particularly crucial when dealing with large datasets where exact nearest neighbor search becomes computationally infeasible. ANN search balances between accuracy and computational efficiency, making it an invaluable tool in various fields such as machine learning, data mining, and information retrieval.
-   - **ANN Search in Machine Learning** ANN search is crucial for high-dimensional data tasks, such as:
+- ### **Approximate Nearest Neighbor (ANN) Search:**
+  Approximate Nearest Neighbor (ANN) search is a technique used to find points in a high-dimensional space that are approximately closest to a given query point. This method is particularly crucial when dealing with large datasets where exact nearest neighbor search becomes computationally infeasible. ANN search balances between accuracy and computational efficiency, making it an invaluable tool in various fields such as machine learning, data mining, and information retrieval.
+   - #### 1. **ANN Search in Machine Learning** ANN search is crucial for high-dimensional data tasks, such as:
      - **Feature Matching in Computer Vision:** Identifies similar features across images for tasks like image stitching, object recognition, and 3D reconstruction.
      - **Recommendation Systems:** Recommends items by identifying similar users or items based on behavior or attributes represented as vectors.
      - **Clustering:** Accelerates clustering large datasets by quickly finding approximate clusters, which can then be refined.
-   - **ANN Search in Data Mining** In data mining, ANN search enhances:
+   - #### 2. **ANN Search in Data Mining** In data mining, ANN search enhances:
      - **Efficient Data Retrieval:** Quickly finds relevant data points similar to a query, essential for applications like anomaly detection.
      - **Pattern Recognition:** Identifies patterns or associations within large datasets, aiding in market basket analysis and customer segmentation.
-   - **ANN Search in Information Retrieval** Information retrieval systems use ANN search for:
+   - #### 3. **ANN Search in Information Retrieval** Information retrieval systems use ANN search for:
      - **Semantic Search:** Retrieves documents or information semantically similar to a user's query by representing text data as vectors.
      - **Multimedia Retrieval:** Finds similar images, videos, or audio files based on content rather than metadata, using high-dimensional vectors.
 
-- **Trade-Off Between Accuracy and Efficiency in ANN Search** In Approximate Nearest Neighbor (ANN) search, balancing accuracy and efficiency is crucial, especially for large-scale and high-dimensional datasets. While the aim is to quickly find the nearest neighbors with high precision, achieving both accuracy and speed is challenging due to computational constraints.
+- ### **Trade-Off Between Accuracy and Efficiency in ANN Search**
+  In Approximate Nearest Neighbor (ANN) search, balancing accuracy and efficiency is crucial, especially for large-scale and high-dimensional datasets. While the aim is to quickly find the nearest neighbors with high precision, achieving both accuracy and speed is challenging due to computational constraints.
   - **Accuracy vs. Efficiency**
     - **Accuracy:** Ensures the search results closely match the exact nearest neighbors. High accuracy is vital for tasks requiring precise similarity measures but demands extensive computations, making it resource-intensive and slow.
     - **Efficiency:** Focuses on the speed and resource usage of the search. Efficient algorithms deliver quick results and use minimal memory, but they may sacrifice some accuracy by employing approximations and heuristics.
-  - **Importance of Faster Search Methods**
-  - 1 **Large-Scale Datasets**
+- ### **Importance of Faster Search Methods**
+  - #### 1 **Large-Scale Datasets**
      - **Real-Time Processing:** In applications like online search engines, recommendation systems, and real-time analytics, delivering results almost instantaneously is crucial. Efficient ANN search methods enable these systems to provide timely and relevant results without delays.
      - **Scalability:** As datasets grow, the computational burden increases exponentially. Efficient ANN search algorithms ensure the system can handle this growth without a proportional rise in resource requirements, maintaining performance and responsiveness.
-  - 2 **High-Dimensional Data:**
+  - #### 2 **High-Dimensional Data:**
      - **Reduced Computational Complexity:** Techniques that reduce the number of dimensions or approximate distances help manage the computational load, making it feasible to process high-dimensional data effectively. This is crucial in fields like image and video processing, natural language processing, and genomics.
      - **Handling Sparsity:** High-dimensional spaces often lead to sparse data distributions. Efficient ANN search methods are designed to navigate this sparsity, finding relevant neighbors without exhaustive searches.
-- **Techniques to Balance Accuracy and Efficiency**
+
+- ### **Techniques to Balance Accuracy and Efficiency**
    - Flat Indexing 
    - Inverted Index
    - Locality-Sensitive Hashing (LSH)
@@ -315,13 +326,14 @@ plt.show()
    - Inverted File Indexing (IVF) 
    - LSH Forest
    - Composite Indexing (e.g., IVF + PQ, LSH + KDTree, HNSW + IVF)
-- **Flat Indexing:** Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
-  - **How it works:**
+### **Flat Indexing:**
+Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
+  - #### **How it works:**
      - **Index Construction:** Initially, all dataset vectors are stored in memory or on disk to construct the index.
        -  All dataset vectors $X = \{x_1, x_2, \ldots, x_n\}$ are stored in memory or on disk.
      - **Query Processing:** Upon receiving a query vector, the system systematically compares it with every vector in the index, computing the similarity or distance metric (e.g., Euclidean distance, cosine similarity) between the query and each vector.
      - **Ranking:** As comparisons progress, vectors are ranked based on their similarity to the query, thereby pinpointing the closest matches.
-     - **Retrieval:** After evaluating all vectors, the system retrieves either the top-k closest matches or all vectors meeting a specified similarity threshold.
+     - **Retrieval:** After evaluating all vectors, the system retrieves either the $top-k$ closest matches or all vectors meeting a specified similarity threshold.
 
    - Advantages:
        - 1. Easy implementation and comprehension.

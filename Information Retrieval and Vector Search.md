@@ -57,18 +57,20 @@
            - **Limitations:**
              - Not suitable for continuous data.
              - Can be less informative for datasets with many common elements.
-    - 5. **Hamming Distance:**  Measures the number of positions at which the corresponding elements of two binary vectors are different.
-          - `Formula: H(v, u) = Σ (v_i ≠ u_i)`
-        -  For binary vectors V = [1, 0, 1] and U = [0, 1, 1], the Hamming distance is (1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2.
+    - #### 5. **Hamming Distance:**
+      Measures the number of positions at which the corresponding elements of two binary vectors are different.
+         $$H(v, u) = \sum (v_i \neq u_i)$$
+        -  For binary vectors $V = [1, 0, 1]$ and $U = [0, 1, 1]$, the Hamming distance is $(1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2$.
            - **Advantages:**
              - Effective for error detection and correction in binary data.
              - Simple and fast to compute.
            - **Limitations:**
              - Only applicable to binary vectors.
              - Not useful for continuous or non-binary categorical data.
-    - 6. **Earth Mover's Distance (EMD):**  Measures the minimum amount of `work` needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
-          - `Formula: EMD(P, Q) = inf_γ ∫_X×Y d(x,y) dγ(x,y)`
-        -  Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution 𝑃 has points [1,2] and 𝑄 has points [2,3], EMD would calculate the minimal transportation cost.
+    - #### 6. **Earth Mover's Distance (EMD):**
+       Measures the minimum amount of `work` needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
+         $$EMD(P, Q) = \inf_{\gamma} \int_{X \times Y} d(x,y) \, d\gamma(x,y)$$
+        -  Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution $𝑃$ has points $[1,2]$ and $𝑄$ has points $[2,3]$, EMD would calculate the minimal transportation cost.
            - **Advantages:**
              - Provides a meaningful metric for comparing distributions, taking into account the underlying geometry.
              - Applicable to various types of data, including images and histograms.

@@ -618,10 +618,12 @@ print(y_pred)
 [['DT', 'NN', 'VBD']]
 ```
 
-### Representation Learning in NLP
-- Representation learning in the context of Natural Language Processing (NLP) is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
-- **Encoding:** In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: `104, 101, 108, 108, 111`.
-- **Embedding:** In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like `[0.25, 0.8, -0.5, ...]`, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
+## **Representation Learning in NLP**
+Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
+  - ### **Encoding:**
+    In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: $104, 101, 108, 108, 111$.
+  - ### **Embedding:**
+    In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like $[0.25, 0.8, -0.5, ...]$, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
 
 | Feature             | Encoding                                                | Embedding                                               |
 | :------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
@@ -638,31 +640,32 @@ print(y_pred)
 | **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
 | **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
 
-- **One Hot Encoding:** One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
+- ### **One Hot Encoding:**
+  One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
    - Consider a dataset containing information about countries and their official languages:
       - **Countries**: USA, France, Germany, Japan, India
       - **Official Languages**: English, French, German, Japanese, Hindi
     - **Step 1:** We identify the unique categories in the `Official Language` column: English, French, German, Japanese, and Hindi.
     - **Step 2:** Create Binary Vectors
          - For each unique category, we create a binary vector:
-             - English:    [1, 0, 0, 0, 0]
-             - French:     [0, 1, 0, 0, 0]
-             - German:     [0, 0, 1, 0, 0]
-             - Japanese:   [0, 0, 0, 1, 0]
-             - Hindi: [0, 0, 0, 0, 1]
+             - English:    $[1, 0, 0, 0, 0]$
+             - French:     $[0, 1, 0, 0, 0]$
+             - German:     $[0, 0, 1, 0, 0]$
+             - Japanese:   $[0, 0, 0, 1, 0]$
+             - Hindi: $[0, 0, 0, 0, 1]$
   
    - **Step 3:** Assign Values
         - Now, we assign these binary vectors to each country based on their official language:
-             - USA:        [1, 0, 0, 0, 0]
-             - France:     [0, 1, 0, 0, 0]
-             - Germany:    [0, 0, 1, 0, 0]
-             - Japan:      [0, 0, 0, 1, 0]
-             - India:     [0, 0, 0, 0, 1]
+             - USA:        $[1, 0, 0, 0, 0]$
+             - France:     $[0, 1, 0, 0, 0]$
+             - Germany:    $[0, 0, 1, 0, 0]$
+             - Japan:      $[0, 0, 0, 1, 0]$
+             - India:     $[0, 0, 0, 0, 1]$
 - One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
    - Advantages:
       - 1. Simple to implement.
       - 2. Preserves all categorical data.
-   - Disadvantages:
+   - Limitations:
       - 1. Increases dimensionality.
       - 2. Higher computational load.
       - 3. Ignores ordinal relationships.
@@ -696,25 +699,26 @@ Germany: [0, 0, 1, 0, 0]
 Japan: [0, 0, 0, 1, 0]
 India: [0, 0, 0, 0, 1]
 ```
-- **Integer Encoding:** Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
+- ### **Integer Encoding:**
+  Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
    - **Steps:**
       1. **Assign integers to each unique category:**
-         - English: 0
-         - French: 1
-         - German: 2
-         - Japanese: 3
-         - Hindi: 4
+         - English: $0$
+         - French: $1$
+         - German: $2$
+         - Japanese: $3$
+         - Hindi: $4$
 
      2. **Map countries to their corresponding integer values:**
-         - USA: 0
-         - France: 1
-         - Germany: 2
-         - Japan: 3
-         - India: 4
+         - USA: $0$
+         - France: $1$
+         - Germany: $2$
+         - Japan: $3$
+         - India: $4$
    - Advantages:
       - 1. Simple to implement.
       - 2. Memory efficiency as compared to one hot encoding uses less memory 
-   - Disadvantages:
+   - Limitations:
       - 1. Ordinal Misinterpretation
       - 2. Loss of Information
       - 3. Not Suitable for High Cardinality
@@ -735,7 +739,8 @@ print(encoded)
 [0, 1, 2, 4, 3]
 ```
 
-- **Bag of words:**  The Bag of Words (BoW) model in Natural Language Processing (NLP) converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
+- ### **Bag of words:**
+  The Bag of Words (BoW) model in Natural Language Processing (NLP) converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
   -  This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
   -  **Process Steps:**
      - **Corpus Collection:** Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modelling.

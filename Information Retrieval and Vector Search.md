@@ -702,11 +702,58 @@ Random projection is a dimensionality reduction technique used to approximate th
      - **Approximate Nearest Neighbor Search:**
         - Use the reduced-dimensional data $𝑋′$ for efficient ANN search.
         - Perform distance calculations and similarity measures in the lower-dimensional space, which is computationally less expensive than in the original high-dimensional space.
+   - Advantages:
+       - 1. Reduces the computational load by working in a lower-dimensional space.
+       - 2. Easy to implement and does not require complex algorithms or data structures.
+       - 3. Suitable for large datasets where exact nearest neighbor search is impractical.
+   - Limitations:
+      - 1. Provides approximate results, which may not be as precise as exact nearest neighbor searches.
+      - 2. Performance depends on the choice of reduced dimensionality $𝑘$
+``` Python
+import numpy as np
+from sklearn.random_projection import GaussianRandomProjection
+from sklearn.metrics.pairwise import euclidean_distances
 
+data = np.array([
+    [1, 2, 3, 4],
+    [4, 5, 6, 7],
+    [7, 8, 9, 10]
+])
 
+# Perform random projection to reduce dimensionality
+n_components = 2 
+projector = GaussianRandomProjection(n_components=n_components)
+reduced_data = projector.fit_transform(data)
+print("Original Data:\n", data)
+print("Reduced Data:\n", reduced_data)
 
+# Query point (high-dimensional)
+query = np.array([1, 1, 1, 1])
+reduced_query = projector.transform(query.reshape(1, -1))
+print("Reduced Query Point:\n", reduced_query)
 
+distances = euclidean_distances(reduced_query, reduced_data)
+nearest_neighbor_index = np.argmin(distances)
 
+# Retrieve the nearest neighbor in the original space
+nearest_neighbor = data[nearest_neighbor_index]
+print("Nearest Neighbor Index:", nearest_neighbor_index)
+print("Nearest Neighbor:", nearest_neighbor)
+```
+```
+Original Data:
+ [[ 1  2  3  4]
+ [ 4  5  6  7]
+ [ 7  8  9 10]]
+Reduced Data:
+ [[  0.87118251  -1.46763879]
+ [  3.73753765  -6.17643136]
+ [  6.60389279 -10.88522393]]
+Reduced Query Point:
+ [[ 0.95545171 -1.56959752]]
+Nearest Neighbor Index: 0
+Nearest Neighbor: [1 2 3 4]
+```
 
 
 

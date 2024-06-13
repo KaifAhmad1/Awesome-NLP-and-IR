@@ -835,3 +835,17 @@ Distances: [[14.286862 14.975046 15.01863  15.024027 15.081305 15.204177 15.2868
        - **HNSW:** Vamana is similar to HNSW in leveraging small-world properties but focuses more on maintaining a balanced connection strategy for efficient search.
        - **Tree-Based Methods:** Outperforms tree-based methods like KD-Tree and Ball Tree in high-dimensional spaces, avoiding issues like the curse of dimensionality.
        - **Locality-Sensitive Hashing (LSH):** Offers better accuracy and scalability compared to LSH, with a more structured approach to graph construction and search. 
+
+### LSH Forest
+Locality-Sensitive Hashing (LSH) Forest is an advanced technique for efficient approximate nearest neighbor search in high-dimensional data. It extends traditional LSH by introducing a dynamic and hierarchical structure.
+  - #### **Key Features**
+     - **Hierarchical Structure:** Constructs multiple LSH trees, each with hash tables to partition data hierarchically.
+     - **Dynamic Hashing:** Adjusts hash functions based on data distribution for better handling of varying data densities.
+     - **Bucket Management:** Similar items are hashed into the same buckets, enabling quick neighbor retrieval.
+  - #### How It Works
+     - ####  1. **Tree Construction:**
+        - **Hashing:** Multiple sets of locality-sensitive hash functions partition data into buckets across different trees.
+     - #### 2. **Query Processing:**
+       - **Hash the Query:** Query points are hashed into buckets.
+       - **Retrieve Candidates:** Potential neighbors are gathered from corresponding buckets.
+       - **Refinement:** Candidates are ranked to find approximate nearest neighbors

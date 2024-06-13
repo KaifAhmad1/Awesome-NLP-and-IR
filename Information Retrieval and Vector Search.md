@@ -693,9 +693,15 @@ Random projection is a dimensionality reduction technique used to approximate th
      - **Dimensionality Reduction** Random projection reduces the number of dimensions of the dataset, which helps in managing the computational complexity and improving the efficiency of ANN search.
      - **Johnson-Lindenstrauss Lemma** The Johnson-Lindenstrauss lemma is a foundational result that guarantees that a set of points in high-dimensional space can be embedded into a lower-dimensional space such that the distances between the points are approximately preserved.
   - #### **How it works**
-  - 
-
-
+     - **Generate Random Projections:**
+        - Create a random projection matrix $𝑅$ with dimensions $𝑘×𝑑$ where $𝑑$ is the original dimensionality, and $𝑘$ is the reduced dimensionality.
+        - Each element of $𝑅$ is typically drawn from a Gaussian distribution (mean $0$ and variance $1/k$) or a simpler distribution like ${−1,1}$
+     - **Project Data:**
+        - Multiply the original data matrix $X$ (with dimensions $n×d$) by the projection matrix $𝑅$ to obtain a new matrix $𝑋′$ (with dimensions $n×k$).
+        - The transformed data $𝑋′$ now resides in a lower-dimensional space.
+     - **Approximate Nearest Neighbor Search:**
+        - Use the reduced-dimensional data $𝑋′$ for efficient ANN search.
+        - Perform distance calculations and similarity measures in the lower-dimensional space, which is computationally less expensive than in the original high-dimensional space.
 
 
 

@@ -764,4 +764,51 @@ Graph-based indexing is an advanced technique for performing Approximate Nearest
      - **High Efficiency:** Fast query responses due to optimized traversal of the graph.
      - **Scalability:** Capable of handling large datasets and high-dimensional spaces.
      - **Accuracy:** Often provides better approximations compared to other methods, striking a balance between speed and accuracy.
+  - #### 1. **HNSW**
+    Hierarchical Navigable Small World (HNSW) is an advanced graph-based algorithm for Approximate Nearest Neighbor (ANN) search, designed to handle high-dimensional and large-scale datasets efficiently. HNSW constructs a multi-layered graph, where each layer contains a subset of nodes connected in a small-world network structure, allowing fast and accurate nearest neighbor searches.
+    - #### **Key Concepts**
+      - **Small-World Network:** HNSW leverages the properties of small-world networks, where most nodes can be reached from every other by a small number of steps. This significantly reduces search time.
+      - **Hierarchical Structure:** The algorithm builds multiple layers of graphs. The top layers are sparsely connected and contain fewer nodes, while the bottom layers are densely connected and contain more nodes.
+      - **Efficient Search:** The hierarchical nature allows the algorithm to quickly narrow down the search area by starting from the top layers and progressively moving to the bottom layers, which are more detailed.
+    - #### **How it works**
+      - #### 1. **Graph Construction:**
+         - Layer Creation: Nodes are inserted into multiple layers of the graph. Higher layers contain fewer nodes and serve as navigational shortcuts.
+         - Connection Strategy: Each node is connected to a fixed number of nearest neighbors, ensuring a balance between search efficiency and graph sparsity.
+      - #### 2. **Query Processing:**
+         - Top-Down Search: The search starts at the topmost layer, where the graph is sparse, making it easy to find a rough approximation of the nearest neighbor.
+         - Navigating Down Layers: The search continues to the lower layers, where the graph becomes denser, refining the nearest neighbor approximation with each step.
+         - Greedy Search: Within each layer, a greedy search algorithm moves from the current node to the closest node in the direction of the query, ensuring a fast traversal.
+   - **Advantages:**
+       - 1. **High Efficiency:** HNSW provides near real-time query responses even for large and high-dimensional datasets, thanks to its hierarchical structure and small-world properties.
+       - 2. **Scalability:** The algorithm scales well with the size of the dataset, maintaining efficient performance as data grows.
+       - 3. **High Accuracy:** HNSW achieves high accuracy in ANN search, often comparable to exact methods, but with significantly reduced computational overhead.
+   - **Comparison to Other Methods**
+       - **Flat Indexing:** HNSW outperforms flat indexing in terms of both speed and memory efficiency, particularly for large and high-dimensional datasets.
+       - **Tree-Based Indexing (e.g., K-D Tree, Ball Tree):** HNSW is more efficient in high-dimensional spaces where tree-based methods suffer from the curse of dimensionality.
+       - **Locality-Sensitive Hashing (LSH):** While LSH also provides efficient ANN search, HNSW generally offers better accuracy and scalability.
+``` Python 
+import hnswlib
+import numpy as np
+data = np.random.rand(10000, 128).astype(np.float32)
 
+# Initialize the index
+dim = data.shape[1]
+num_elements = data.shape[0]
+hnsw_index = hnswlib.Index(space='l2', dim=dim)
+
+hnsw_index.init_index(max_elements=num_elements, ef_construction=200, M=16)
+hnsw_index.add_items(data)
+
+# Set the query parameters
+hnsw_index.set_ef(50)  
+query_vector = np.random.rand(1, 128).astype(np.float32)
+labels, distances = hnsw_index.knn_query(query_vector, k=10)
+
+print("Nearest neighbors:", labels)
+print("Distances:", distances)
+```
+```
+Nearest neighbors: [[2588 7881 4298 1877 5270 6926 4005 1598 3829 9343]]
+Distances: [[14.286862 14.975046 15.01863  15.024027 15.081305 15.204177 15.286852
+  15.358801 15.378472 15.497097]]
+```

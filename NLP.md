@@ -519,32 +519,37 @@ print(next_word)
 ```
 language
 ```
-- **Markov Chain:** A Markov Chain is a way to model a system where the probability of moving to the next state depends only on the current state.
+- ### **Markov Chain:**
+  A Markov Chain is a way to model a system where the probability of moving to the next state depends only on the current state.
   - Components of Markov Chain:
-      - 1. **States:** Different conditions or situations the system can be in. For example, the weather can be either Sunny or Rainy.
-             - A set of states `S = {s1, s2, …, sn}`.
+      - #### 1. **States:**
+        Different conditions or situations the system can be in. For example, the weather can be either Sunny or Rainy.
+        - A set of states $S = {s1, s2, …, sn}$.
 
-      - 2. **Transition Probabilities:** The chances of moving from one state to another.
-             - A transition probability matrix `P = [pij]`, where `pij = P(Xt+1 = sj | Xt = si)`.
+      - #### 2. **Transition Probabilities:**
+        The chances of moving from one state to another.
+        - A transition probability matrix $P = [pij]$, where $pij = P(Xt+1 = sj | Xt = si)$.
 
-- **Hidden Markov Model (HMM):** A Hidden Markov Model (HMM) is a statistical model where the system being modelled is assumed to follow a Markov process with hidden states. In contrast to Markov Chains, in HMMs, the state is not directly visible, but output dependent on the state is visible.
-- Components:
-   - **Initial State Distribution:** Probabilities of starting in each hidden state.
-   - **Hidden States:** A finite set of states that are not directly observable.
-   - **Observable States:** A finite set of states that can be directly observed.
-   - **Transition Probabilities:** Probabilities of transitioning between hidden states.
-   - **Emission Probabilities:** Probabilities of an observable state being generated from a hidden state.
-- An HMM can be characterized by:
-   - Initial state probabilities `π = [πi]`, where `πi = P(X1 = si)`.
-   - A set of hidden states `S = {s1, s2, …, sn}`.
-   - A set of observable states `O = {o1, o2, …, om}`.
-   - Transition probabilities `A = [aij]`, where `aij = P(Xt+1 = sj | Xt = si)`.
-   - Emission probabilities `B = [bjk]`, where `bjk = P(Yt = ok | Xt = sj)`.
-- **Key Algorithms:**
-  - Forward Algorithm: Computes the likelihood of observing a sequence of symbols.
-  - Viterbi Algorithm: Finds the most likely sequence of hidden states based on observations.
-  - Baum-Welch Algorithm: Trains Hidden Markov Models (HMMs) by estimating transition and emission probabilities from observed data.
- - **Applications:** Applications of Markov Chains and HMM are Part of Speech tagging, Speech Recognition, Name Entity Recognition etc. 
+- **Hidden Markov Model (HMM):**
+  A Hidden Markov Model (HMM) is a statistical model where the system being modelled is assumed to follow a Markov process with hidden states. In contrast to Markov Chains, in HMMs, the state is not directly visible, but output dependent on the state is visible.
+  - #### **Components:**
+     - **Initial State Distribution:** Probabilities of starting in each hidden state.
+     - **Hidden States:** A finite set of states that are not directly observable.
+     - **Observable States:** A finite set of states that can be directly observed.
+     - **Transition Probabilities:** Probabilities of transitioning between hidden states.
+     - **Emission Probabilities:** Probabilities of an observable state being generated from a hidden state.
+ - #### **An HMM can be characterized by:**
+     - Initial state probabilities $π = [πi]$, where $πi = P(X1 = si)$.
+     - A set of hidden states $S = {s1, s2, …, sn}$.
+     - A set of observable states $O = {o1, o2, …, om}$.
+     - Transition probabilities $A = [aij]$, where $aij = P(Xt+1 = sj | Xt = si)$.
+     - Emission probabilities $B = [bjk]$, where $bjk = P(Yt = ok | Xt = sj)$.
+- #### **Key Algorithms:**
+    - **Forward Algorithm:** Computes the likelihood of observing a sequence of symbols.
+    - **Viterbi Algorithm:** Finds the most likely sequence of hidden states based on observations.
+    - **Baum-Welch Algorithm:** Trains Hidden Markov Models (HMMs) by estimating transition and emission probabilities from observed data.
+- #### **Applications:**
+  Applications of Markov Chains and HMM are Part of Speech tagging, Speech Recognition, Name Entity Recognition etc. 
 
 ``` Python 
 import numpy as np

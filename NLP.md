@@ -40,10 +40,14 @@
   ```
   Output: "I am learning NLP. It is fascinating! Do not you think so?"  
   ```
-- **Correcting Spelling Errors:** Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
-- 1. **Dictionary-based approaches:** Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.
-- 2. **Edit distance algorithms:** Calculating the distance between words using metrics like `Levenshtein / Minimum Edit` distance to find the most likely correct spelling.
-- 3. **Rule-based methods:** Applying spelling correction rules and heuristics to identify and correct common spelling mistakes.
+- ### **Correcting Spelling Errors:**
+  Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
+- #### 1. **Dictionary-based approaches:**
+  Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.
+- #### 2. **Edit distance algorithms:**
+  Calculating the distance between words using metrics like `Levenshtein / Minimum Edit` distance to find the most likely correct spelling.
+- #### 3. **Rule-based methods:**
+  Applying spelling correction rules and heuristics to identify and correct common spelling mistakes.
 ``` Python 
 from textblob import TextBlob
 # Input sentence with mistake
@@ -62,8 +66,9 @@ Original sentence: I havv a pbroblem wit my speling.
 Corrected sentence: I have a problem with my spelling.
 ```
 
-- **Deduplication / Duplicate Removal:**  Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
-- 1. **Using Pandas for Deduplication:**
+- ### **Deduplication / Duplicate Removal:**
+  Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
+- #### 1. **Using Pandas for Deduplication:**
  ``` Python
 import pandas as pd
 dataframe = {
@@ -100,7 +105,8 @@ Deduplicated DataFrame:
 2      Another example sentence.
 3  This is a different sentence.
  ```
-- 2. **Using Fuzzy Matching for Deduplication:** Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
+- #### 2. **Using Fuzzy Matching for Deduplication:**
+  Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
      - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
  ``` Python 
 from fuzzywuzzy import fuzz
@@ -125,11 +131,15 @@ Output:
 Similarity ratio between 'This is a sample sentence.' and 'This is a smaple sentnce.': 94
 Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
  ```
-- **Expanding Abbreviations and Acronyms:**  Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
-- 1. **Dictionary-Based Methods:** These methods involve using precompiled lists of abbreviations and their expansions. The dictionary can be curated manually or generated from various sources such as online databases or domain-specific corpora.
-- 2. **Rule-Based Methods:** These methods use linguistic rules and patterns to identify and expand abbreviations. For example, context-specific rules can be applied based on the position of the abbreviation in the text or its surrounding words.
-- 3. **Statistical Methods:** These methods rely on statistical models and machine learning algorithms to predict expansions based on large corpora. Techniques include: N-gram models, Hidden Markov Models (HMMs) and Conditional Random Fields(CRFs)
-      - **Simple Dictionary-based Implementation**
+- ### **Expanding Abbreviations and Acronyms:**
+  Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
+- #### 1. **Dictionary-Based Methods:**
+  These methods involve using precompiled lists of abbreviations and their expansions. The dictionary can be curated manually or generated from various sources such as online databases or domain-specific corpora.
+- #### 2. **Rule-Based Methods:**
+  These methods use linguistic rules and patterns to identify and expand abbreviations. For example, context-specific rules can be applied based on the position of the abbreviation in the text or its surrounding words.
+- #### 3. **Statistical Methods:**
+  These methods rely on statistical models and machine learning algorithms to predict expansions based on large corpora. Techniques include: N-gram models, Hidden Markov Models (HMMs) and Conditional Random Fields(CRFs)
+  - ####  **Simple Dictionary-based Implementation**
 ``` Python
 abbreviation_dict = {
     "NLP": "Natural Language Processing",
@@ -161,10 +171,11 @@ Output:
 Natural Language Processing and Artificial Intelligence are subsets of Machine Learning
 ```
  
-- **Stemming:** Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the `stem`, by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
- - 1. **Porter Stemmer**
- - 2. **Snowball Stemmer**
- - 3. **Lancaster Stemmer**
+- ### **Stemming:**
+  Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the `stem`, by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
+ - #### 1. **Porter Stemmer**
+ - #### 2. **Snowball Stemmer**
+ - #### 3. **Lancaster Stemmer**
       -  Stemming is preferred over lemmatization for its computational efficiency and speed, making it suitable for tasks like information retrieval, search systems, text classification, and text mining.
 
 ``` Python 
@@ -186,10 +197,13 @@ print(f"Original: {word_snowball}, Stemmed: {stem_snowball}")
 Original: Dying, Stemmed: dy
 Original: Continuing, Stemmed: continu
 ```
-- **Lemmatization:** Lemmatization is another crucial text normalization technique in Natural Language Processing (NLP) that involves reducing words to their base or dictionary form, known as the "lemma." Unlike stemming, which simply chops off affixes to obtain the root form, lemmatization considers the context of the word and ensures that the resulting base form is a valid word in the language. Lemmatization algorithms rely on linguistic rules and lexical resources to map inflected words to their base or dictionary forms.
-- 1. **Rule-Based Lemmatization:** Rule-based lemmatization algorithms rely on linguistic rules and patterns to derive lemmas from inflected forms. These rules are often derived from linguistic knowledge and may vary based on language and context.
-- 2. **Lexical Resource-based Lemmatization:** WordNet is a lexical database of the English language that includes information about word meanings, relationships between words, and word forms. Lemmatization algorithms leveraging WordNet typically use its morphological information and lexical relationships to derive lemmas.
-      - Lemmatization provides more accurate, context-aware, and consistent base forms of words compared to stemming, making it essential for applications like virtual assistant and question-answering systems, text normalization, machine translation, and text summarization tasks requiring readable and meaningful text.
+- ### **Lemmatization:**
+  Lemmatization is another crucial text normalization technique in Natural Language Processing (NLP) that involves reducing words to their base or dictionary form, known as the "lemma." Unlike stemming, which simply chops off affixes to obtain the root form, lemmatization considers the context of the word and ensures that the resulting base form is a valid word in the language. Lemmatization algorithms rely on linguistic rules and lexical resources to map inflected words to their base or dictionary forms.
+- #### 1. **Rule-Based Lemmatization:**
+  Rule-based lemmatization algorithms rely on linguistic rules and patterns to derive lemmas from inflected forms. These rules are often derived from linguistic knowledge and may vary based on language and context.
+- #### 2. **Lexical Resource-based Lemmatization:**
+  WordNet is a lexical database of the English language that includes information about word meanings, relationships between words, and word forms. Lemmatization algorithms leveraging WordNet typically use its morphological information and lexical relationships to derive lemmas.
+   - Lemmatization provides more accurate, context-aware, and consistent base forms of words compared to stemming, making it essential for applications like virtual assistant and question-answering systems, text normalization, machine translation, and text summarization tasks requiring readable and meaningful text.
 ``` Python 
 import nltk
 nltk.download('wordnet')
@@ -213,8 +227,10 @@ print(lemmatized_sentence)
 Output:
 The striped bat are hanging on their foot for best
 ```
-- **Noise Removing:** Noise removal in NLP involves eliminating irrelevant or unwanted elements, such as HTML tags, special characters, punctuation, stop words, and numerical values, from text data. This process aims to clean and standardize the data, making it more suitable for analysis or model training. The goal of noise removal is to clean the text data by stripping away these elements while preserving the meaningful content. This typically involves a series of preprocessing steps, which may include:
-- 1. **Stripping HTML Tags:** Removing HTML markup from text obtained from web sources.
+- ### **Noise Removing:**
+  Noise removal in NLP involves eliminating irrelevant or unwanted elements, such as HTML tags, special characters, punctuation, stop words, and numerical values, from text data. This process aims to clean and standardize the data, making it more suitable for analysis or model training. The goal of noise removal is to clean the text data by stripping away these elements while preserving the meaningful content. This typically involves a series of preprocessing steps, which may include:
+- #### 1. **Stripping HTML Tags:**
+  Removing HTML markup from text obtained from web sources.
  ``` Python 
 from bs4 import BeautifulSoup
 
@@ -230,7 +246,8 @@ print(clean_text)  # Output: This is HTML text.
 ```
 This is HTML text.
 ```
-- 2. **Removing Special Characters:** Eliminating non-alphanumeric characters, punctuation marks, and symbols.
+- #### 2. **Removing Special Characters:**
+  Eliminating non-alphanumeric characters, punctuation marks, and symbols.
 ``` Python 
 import re
 def remove_special_characters(text):
@@ -248,7 +265,8 @@ print(clean_text)
 ```
 This is a text with special characters
 ```
-- 3. **Removing Stop Words:** Eliminating non-alphanumeric characters, punctuation marks, and symbols.
+- #### 3. **Removing Stop Words:**
+  Eliminating non-alphanumeric characters, punctuation marks, and symbols.
  ``` Python 
 import nltk
 from nltk.corpus import stopwords
@@ -268,7 +286,8 @@ print(clean_text)
 ```
 Output: This simple example demonstrate removing stop words.
 ```
-- 4. **Removing Numerical Values:**  Eliminating digits and numbers that may not be relevant to the analysis.
+- #### 4. **Removing Numerical Values:**
+  Eliminating digits and numbers that may not be relevant to the analysis.
  ``` Python 
 import re
 def remove_numerical_values(text):
@@ -281,7 +300,8 @@ text_with_numbers = "There are 123 apples and 45 oranges in 2024."
 clean_text = remove_numerical_values(text_with_numbers)
 print(clean_text)  
  ```
-- 5. **Handling Emojis and Emoticons:** Removing or replacing emojis and emoticons with descriptive text.
+- #### 5. **Handling Emojis and Emoticons:**
+  Removing or replacing emojis and emoticons with descriptive text.
 ``` Python 
 import re
 import emoji
@@ -301,7 +321,8 @@ print(clean_text)
 ```
 Hello ! This is an example text with emoticons and emojis .
 ```
-- 6. **Removing Non-Linguistic Symbols:**  Eliminating symbols or characters that do not convey linguistic meaning, such as currency symbols, mathematical operators, or trademark symbols.
+- #### 6. **Removing Non-Linguistic Symbols:**
+  Eliminating symbols or characters that do not convey linguistic meaning, such as currency symbols, mathematical operators, or trademark symbols.
  ``` Python 
 import re
 import string
@@ -320,15 +341,19 @@ print(clean_text)
 Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 ```
 
-- **Tokenization:** Tokenization is the process of splitting text into smaller, meaningful units called tokens. These tokens can represent words, subwords, or characters and are the foundational elements used in NLP tasks like text analysis, machine translation, and sentiment analysis. Types of Tokenization below:
-- 1. **Word Tokenization:** Word tokenization involves breaking text into individual words. It's the most intuitive form of tokenization but can be challenging for languages without clear word boundaries or texts with contractions and special characters.
+- ### **Tokenization:**
+  Tokenization is the process of splitting text into smaller, meaningful units called tokens. These tokens can represent words, subwords, or characters and are the foundational elements used in NLP tasks like text analysis, machine translation, and sentiment analysis. Types of Tokenization below:
+- #### 1. **Word Tokenization:**
+  Word tokenization involves breaking text into individual words. It's the most intuitive form of tokenization but can be challenging for languages without clear word boundaries or texts with contractions and special characters.
       - Example: `Tokenization is fun!` is tokenized into [`Tokenization`, `is`, `fun`, `!`].
         
-- 2. **Subword Tokenization:** Subword tokenization divides text into smaller units than words, which can help handle out-of-vocabulary words and morphological variations. Popular subword tokenization techniques include:
-     -  **Byte Pair Encoding (BPE)**: Byte Pair Encoding (BPE) is a subword tokenization method that iteratively merges the most frequent pair of bytes or characters in a corpus to form subword units. It helps reduce the vocabulary size and handle out-of-vocabulary words effectively.
-           - BPE efficiently reduces vocabulary size and handles out-of-vocabulary words with simplicity, making it ideal for machine translation, text generation, language modelling, and speech recognition.  Some prominent models that leverage Byte Pair Encoding (BPE) include GPT, GPT-2, RoBERTa, BART, and DeBERTa
+- #### 2. **Subword Tokenization:**
+  Subword tokenization divides text into smaller units than words, which can help handle out-of-vocabulary words and morphological variations. Popular subword tokenization techniques include:
+     - #### **Byte Pair Encoding (BPE)**:
+       - Byte Pair Encoding (BPE) is a subword tokenization method that iteratively merges the most frequent pair of bytes or characters in a corpus to form subword units. It helps reduce the vocabulary size and handle out-of-vocabulary words effectively.
+       - BPE efficiently reduces vocabulary size and handles out-of-vocabulary words with simplicity, making it ideal for machine translation, text generation, language modelling, and speech recognition.  Some prominent models that leverage Byte Pair Encoding (BPE) include GPT, GPT-2, RoBERTa, BART, and DeBERTa
  ```
-       Steps
+ Steps
 - Start with a vocabulary of all unique characters in the text.
 - Count the frequency of each adjacent character pair in the text.
 - Find and merge the most frequent pair into a new token.
@@ -336,8 +361,9 @@ Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 - Repeat steps 2-4 for a predefined number of merges or until the desired vocabulary size is achieved.
  ```
 
-   -  **WordPiece Tokenization**: WordPiece is a subword tokenization method originally developed for speech recognition and later adopted by NLP models like BERT. It breaks down words into smaller, more frequent subword units to handle the problem of out-of-vocabulary words and improve model performance by capturing word morphology and semantics more effectively.
-         - WordPiece offers advantages in handling rare words efficiently by breaking them down into smaller, meaningful subwords, thus addressing the Out Of Vocabulary (OOV) problem common in word-based tokenization. Its use cases span across various NLP models like BERT, DistilBERT, and Electra, enhancing their ability to understand and process texts more accurately by leveraging subword units that retain linguistic meaning
+   - #### **WordPiece Tokenization**:
+     -  WordPiece is a subword tokenization method originally developed for speech recognition and later adopted by NLP models like BERT. It breaks down words into smaller, more frequent subword units to handle the problem of out-of-vocabulary words and improve model performance by capturing word morphology and semantics more effectively.
+     - WordPiece offers advantages in handling rare words efficiently by breaking them down into smaller, meaningful subwords, thus addressing the Out Of Vocabulary (OOV) problem common in word-based tokenization. Its use cases span across various NLP models like BERT, DistilBERT, and Electra, enhancing their ability to understand and process texts more accurately by leveraging subword units that retain linguistic meaning
 ```
 Steps
 -  Start with an initial vocabulary, typically consisting of all individual characters and some predefined words from the training corpus.
@@ -346,16 +372,18 @@ Steps
 -  Once the vocabulary is built, tokenize new text by matching the longest possible subwords from the vocabulary.
 ```
 
-   -  **Unigram Tokenization**: Unigram Tokenization is a subword tokenization method that treats each character as a token. It's a straightforward approach where the text is split into its constituent characters, without considering any linguistic rules or context.
-         - Unigram Tokenization offers simplicity via straightforward character-level tokenization, making it language agnostic and effective for languages with complex morphology like Japanese or Turkish; it's also useful for text normalization tasks such as sentiment analysis or text classification, prioritizing individual character preservation.
+   - #### **Unigram Tokenization**:
+     - Unigram Tokenization is a subword tokenization method that treats each character as a token. It's a straightforward approach where the text is split into its constituent characters, without considering any linguistic rules or context.
+     - Unigram Tokenization offers simplicity via straightforward character-level tokenization, making it language agnostic and effective for languages with complex morphology like Japanese or Turkish; it's also useful for text normalization tasks such as sentiment analysis or text classification, prioritizing individual character preservation.
  ```
 Steps
 - Tokenization: Break down the text into individual characters. Each character becomes a separate token.
 - Vocabulary Construction: Build a vocabulary containing all unique characters present in the text.
  ```
 
-   -  **SentencePiece Tokenization**: SentencePiece is an unsupervised text tokenizer and detokenizer that creates subword units without relying on predefined word boundaries, making it language-agnostic and suitable for various languages, including those with complex word formation rules. It supports BPE and Unigram models, includes text normalization, and effectively handles out-of-vocabulary words.
-         - SentencePiece is flexible and language-agnostic, reducing out-of-vocabulary issues by generating subword units, making it ideal for machine translation, text generation, speech recognition, and pretrained language models like BERT, T5, and GPT.
+   - #### **SentencePiece Tokenization**:
+     - SentencePiece is an unsupervised text tokenizer and detokenizer that creates subword units without relying on predefined word boundaries, making it language-agnostic and suitable for various languages, including those with complex word formation rules. It supports BPE and Unigram models, includes text normalization, and effectively handles out-of-vocabulary words.
+     - SentencePiece is flexible and language-agnostic, reducing out-of-vocabulary issues by generating subword units, making it ideal for machine translation, text generation, speech recognition, and pretrained language models like BERT, T5, and GPT.
 ```
 Steps
 - Data Preparation: Collect and preprocess the text corpus.
@@ -374,14 +402,15 @@ Steps
 ```
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
-### Statical NLP 
-- **Naive Bayes**: Naive Bayes presents a straightforward yet effective classification approach rooted in `Bayes theorem`, assuming `independence` among features. Here's a simplified rundown:
+##  Statical NLP 
+- ### **Naive Bayes**:
+  Naive Bayes presents a straightforward yet effective classification approach rooted in `Bayes theorem`, assuming `independence` among features. Here's a simplified rundown:
   - Bayes theorem is a cornerstone of probability theory, revealing the probability of an event based on prior conditions. It's expressed as:
-     -    `P(A|B) = (P(B|A) * P(A)) / P(B)`
+    $$P(A|B) = (P(B|A) * P(A)) / P(B)$$
  - Where, 
-     - `P(A|B)` is the probability of event A occurring given that event B has occurred.
-     - `P(B|A)` is the probability of event B occurring given that event A has occurred.
-     - `P(A)` and `P(B)` are the probabilities of events A and B occurring independently of each other.
+     - $P(A|B)$ is the probability of event $A$ occurring given that event $B$ has occurred.
+     - $P(B|A)$ is the probability of event $B$ occurring given that event $A$ has occurred.
+     - $P(A)$ and $P(B)$ are the probabilities of events $A$ and $B$ occurring independently of each other.
  - **Naive Bayes Assumption:** Naive Bayes assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature.
  - **Types of Naive Bayes:**
      - **Gaussian Naive Bayes:** Assumes features follow a Gaussian (normal) distribution.
@@ -436,21 +465,21 @@ Message: Don't forget to submit your assignment. | Predicted Label: Not Spam
 Message: URGENT: Your account needs verification. | Predicted Label: Spam
 ```
 
-- **N-gram language model:** An n-gram is a sequence of `n` items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
-    - Unigram (n=1): Single word sequences.
-    - Bigram (n=2): Pairs of words.
-    - Four-gram (n=4) and higher: Longer sequences.
+- ### **N-gram language model:**
+  An n-gram is a sequence of $n$ items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
+    - Unigram $(n=1)$: Single word sequences.
+    - Bigram $(n=2)$: Pairs of words.
+    - Four-gram $(n=4)$ and higher: Longer sequences.
   - For example, with the sentence `I love natural language processing`:
      - Unigrams: [`I`, `love`, `natural`, `language`, `processing`]
      - Bigrams: [`I love`, `love natural`, `natural language`, `language processing`]
      - Trigrams: [`I love natural`, `love natural language`, `natural language processing`]
--  N-gram models predict the likelihood of a word given the preceding `n-1` words. The core idea is to estimate the probability of the next word in a sequence, given the previous words. Using the chain rule of probability:
-<pre>
-P(w_n | w_1, w_2, ..., w_{n-1}) = C(w_1, w_2, ..., w_n) / C(w_1, w_2, ..., w_{n-1})
-</pre>
-- `P(w_n | w_1, w_2, ..., w_{n-1})` represents the probability of the word `w_n` occurring after the sequence of words `w_1, w_2, ..., w_{n-1}`
-- `C(w_1, w_2, ..., w_n)` is the count of the n-gram `(w_1, w_2, ..., w_n)` in the training corpus.
-- `C(w_1, w_2, ..., w_{n-1})` is the count of the (n-1)-gram `(w_1, w_2, ..., w_{n-1})` in the training corpus.
+-  N-gram models predict the likelihood of a word given the preceding $n-1$ words. The core idea is to estimate the probability of the next word in a sequence, given the previous words. Using the chain rule of probability:
+$$P(w_n | w_1, w_2, ..., w_{n-1}) = C(w_1, w_2, ..., w_n) / C(w_1, w_2, ..., w_{n-1})$$
+- Where,
+  - $P(w_n | w_1, w_2, ..., w_{n-1})$ represents the probability of the word $w_n$ occurring after the sequence of words $w_1, w_2, ..., w_{n-1}$
+  - $C(w_1, w_2, ..., w_n)$ is the count of the n-gram $(w_1, w_2, ..., w_n)$ in the training corpus.
+  - $C(w_1, w_2, ..., w_{n-1})$ is the count of the $(n-1)$-gram $(w_1, w_2, ..., w_{n-1})$ in the training corpus.
 
 ``` Python
 import nltk

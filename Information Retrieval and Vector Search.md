@@ -849,3 +849,12 @@ Locality-Sensitive Hashing (LSH) Forest is an advanced technique for efficient a
        - **Hash the Query:** Query points are hashed into buckets.
        - **Retrieve Candidates:** Potential neighbors are gathered from corresponding buckets.
        - **Refinement:** Candidates are ranked to find approximate nearest neighbors
+### Composite Indexing in ANN
+Composite indexing in Approximate Nearest Neighbor (ANN) search involves combining different indexing techniques to enhance search efficiency and effectiveness in high-dimensional datasets. Here are a few notable composite indexing approaches:
+  - **IVF + PQ:** Uses inverted indexing for initial clustering (IVF) and product quantization (PQ) for efficient search within clusters.
+  - **LSH + KDTree:** Applies locality-sensitive hashing (LSH) for fast candidate selection and KDTree for accurate nearest neighbor refinement.
+  - **HNSW + IVF:** Utilizes hierarchical navigable small world (HNSW) graphs for quick navigation and inverted file (IVF) for detailed search within clusters.
+
+
+
+

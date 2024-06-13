@@ -812,3 +812,26 @@ Nearest neighbors: [[2588 7881 4298 1877 5270 6926 4005 1598 3829 9343]]
 Distances: [[14.286862 14.975046 15.01863  15.024027 15.081305 15.204177 15.286852
   15.358801 15.378472 15.497097]]
 ```
+  - #### 2. **Vamana Indexing**
+    Vamana is a graph-based algorithm designed for efficient Approximate Nearest Neighbor (ANN) search, particularly in high-dimensional spaces. It constructs a navigable small-world graph to enable quick and accurate searches, making it suitable for large-scale datasets.
+    - #### **Key Concepts**
+      - **Navigable Small-World Graph:** Vamana leverages small-world properties where nodes are connected in such a way that any node can be reached from any other node within a few steps.
+      - **Greedy Search:** Utilizes a greedy search approach to traverse the graph, efficiently finding the nearest neighbors by following the closest links at each step.
+      - **Graph Construction:** Builds a graph incrementally, ensuring each node is optimally connected to maintain a balance between search efficiency and graph sparsity.
+    - #### **How it works**
+      - #### 1. **Graph Construction:**
+          - Node Insertion: Nodes are added to the graph one by one, each being connected to its nearest neighbors.
+          - Randomized Greedy Algorithm: When adding a new node, Vamana uses a randomized greedy algorithm to select connections, ensuring a diverse set of links that improve search efficiency.
+          - Graph Pruning: Excessive edges are pruned to maintain a manageable number of connections per node, optimizing both storage and query speed.
+      - #### 2. **Query Processing:**
+         - Initial Search: Begins at a random or designated entry point in the graph.
+         - Greedy Forward Search: Moves through the graph using a greedy approach, always moving to the nearest neighbor closer to the query point.
+         - Refinement: Continues until the nearest neighbors are found or no closer nodes can be reached, ensuring an efficient yet thorough search process.
+   - **Advantages:**
+       - **High Efficiency:** Vamana provides fast query responses due to its optimized graph structure and greedy search mechanism.
+       - **Scalability:** Handles large and high-dimensional datasets effectively, maintaining performance as data scales.
+       - **High Accuracy:** Delivers accurate nearest neighbor approximations, often comparable to exact methods with significantly less computational overhead.
+   - **Comparison to Other Methods**
+       - **HNSW:** Vamana is similar to HNSW in leveraging small-world properties but focuses more on maintaining a balanced connection strategy for efficient search.
+       - **Tree-Based Methods:** Outperforms tree-based methods like KD-Tree and Ball Tree in high-dimensional spaces, avoiding issues like the curse of dimensionality.
+       - **Locality-Sensitive Hashing (LSH):** Offers better accuracy and scalability compared to LSH, with a more structured approach to graph construction and search. 

@@ -1,7 +1,8 @@
 # NLP 
 ## **Preprocessing**
 
- - **Case Folding:**   Case folding/lowercasing is a preprocessing technique in Natural Language Processing (NLP) that standardizes the text by converting all characters to a single case, typically lowercase. This step is essential for various NLP tasks as it ensures uniformity and consistency in text data, thereby enhancing the performance of downstream applications.
+ - ### **Case Folding**
+   Case folding/lowercasing is a preprocessing technique in Natural Language Processing (NLP) that standardizes the text by converting all characters to a single case, typically lowercase. This step is essential for various NLP tasks as it ensures uniformity and consistency in text data, thereby enhancing the performance of downstream applications.
    - **For Example**
       - `Artificial Intelligence` becomes `artificial intelligence`
       - `Data Science` becomes `data science`
@@ -11,7 +12,8 @@
          lowercased_text = text.lower()
          print(lowercased_text)  # Output: "machine learning is fun!" 
     ```
-- **Contraction Mapping:** Contraction mapping refers to the process of expanding contractions, which are shortened forms of words or phrases, into their complete versions. For example:
+- ### **Contraction Mapping**
+  Contraction mapping refers to the process of expanding contractions, which are shortened forms of words or phrases, into their complete versions. For example:
    - **For Example**
      - `I'm` becomes `I am`
      - `can't` becomes `cannot`

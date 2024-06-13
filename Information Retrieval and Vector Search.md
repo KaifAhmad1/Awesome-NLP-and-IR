@@ -614,7 +614,7 @@ print("\nCodebooks:\n", codebooks)
 print("\nQuantized Indices:\n", quantized_indices)
 print("\nReconstructed Vectors:\n", reconstructed_vectors)
 ```
-### **Tree-Based Indexing in Approximate Nearest Neighbor Search:** 
+### **Tree-Based Indexing in ANN:** 
 Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
   - #### 1. **K-D Tree (K-Dimensional Tree)**
     A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
@@ -754,6 +754,14 @@ Reduced Query Point:
 Nearest Neighbor Index: 0
 Nearest Neighbor: [1 2 3 4]
 ```
-
-
+### **Graph-based Indexing for ANN Search:** 
+Graph-based indexing is an advanced technique for performing Approximate Nearest Neighbor (ANN) searches in high-dimensional spaces. This approach constructs a graph where data points are nodes, and edges represent the proximity or similarity between these points. Graph-based indexing efficiently addresses the limitations of traditional methods, such as tree-based or hashing methods, especially in handling high-dimensional data.
+  - #### **Key Concepts**
+     - **Graph Construction:** Nodes (data points) are connected based on proximity, forming a graph that represents the dataset's structure.
+     - **Search Efficiency:** Graph-based methods use the graph's connectivity to navigate quickly to the nearest neighbors, reducing the number of distance computations.
+     - **Scalability:** These methods handle large datasets effectively, providing a balance between accuracy and computational efficiency.
+  - #### **Advantages**
+     - **High Efficiency:** Fast query responses due to optimized traversal of the graph.
+     - **Scalability:** Capable of handling large datasets and high-dimensional spaces.
+     - **Accuracy:** Often provides better approximations compared to other methods, striking a balance between speed and accuracy.
 

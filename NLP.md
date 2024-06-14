@@ -1973,32 +1973,35 @@ Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
         - Score for $the = Q_opened · K_the$
      - #### 5. **Applying Softmax:**
         - Pass attention scores through the Softmax function to get attention weights.
-          - Softmax formula: $$softmax(x_i) = exp(x_i) / sum(exp(x))$$
+          - Softmax formula: $$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$$
      - #### 6. **Weighted Sum of Values:**
         - Multiply Value vectors by their corresponding attention weights.
           - Example for `opened`:
           - $$Weighted sum = softmax(Scores) * [V_She, V_opened, V_the, V_door, V_to, V_the, V_garden]$$
   - By iteratively performing these steps for all words in the input sentence, the self-attention mechanism captures intricate relationships and dependencies across the entire sequence, facilitating effective sequence-to-sequence processing tasks like language translation or text generation.
 
-- **Key Components of Transformer Architecture:** 
+- ### **Key Components of Transformer Architecture:** 
 The Transformer architecture consists of an encoder and a decoder, both composed of multiple identical layers. Each layer in both the encoder and decoder contains two main sub-layers: a multi-head self-attention mechanism and a position-wise fully connected feed-forward network.
-  - **Encoder:** The encoder processes the input sequence and generates a set of feature representations for each element in the sequence. It consists of:
+  - #### **Encoder:**
+    The encoder processes the input sequence and generates a set of feature representations for each element in the sequence. It consists of:
     - **Input Embedding:** Converts input tokens into dense vectors.
     - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order.
     - **Multi-Head Self-Attention:** Allows the model to focus on different parts of the sequence simultaneously. Each head processes the sequence differently, and the results are concatenated and linearly transformed.
     - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
     - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
     - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
-   - **Mathematically:** Mathematically, for each sub-layer:
-   - **Self-Attention:**
-     $$\text{Attention(Q, K, V)} = softmax(QK^T / sqrt(d_k)) V$$
-   - Where: 
-      - $Q$, $K$, and $V$ are the query, key, and value matrices, respectively.
-      - $d_k$ is the dimension of the key/query vectors.
-   - **Feed-Forward Network:**
-      - $$FFN(x) = max(0, xW1 + b1) W2 + b2$$
+   - #### **Mathematically:**
+     Mathematically, for each sub-layer:
+     - **Self-Attention:**
+     $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
+     - **Where:**
+       - $Q$, $K$, and $V$ are the query, key, and value matrices, respectively.
+       - $d_k$ is the dimension of the key/query vectors.
+     - **Feed-Forward Network:**
+     $$\text{FFN}(x) = \text{max}(0, xW_1 + b_1) W_2 + b_2$$
 
-  - **Decoder:** The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
+  - #### **Decoder:**
+    The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
     - **Output Embedding:** Converts output tokens into dense vectors.
     - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order. Similar to the encoder's positional encoding.
     - **Masked Multi-Head Self-Attention:** Prevents attending to future tokens by masking them.
@@ -2006,19 +2009,19 @@ The Transformer architecture consists of an encoder and a decoder, both composed
     - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
     - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
     - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
-   - **Mathematically:** Mathematically, for each sub-layer:
-   - **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
-      - $$\text{Attention(Q, K, V) }= softmax(QK^T / sqrt(d_k)) V$$
-   - **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
-     - $$\text{MultiHead(Q, K, V)} = Concat(head1, ..., headh) WO$$
-   - **Where:**
-     - $$headi = Attention(QWiQ, KWiK, VWiV)$$
+   - #### **Mathematically:** Mathematically, for each sub-layer:
+     - **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
+     $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
+     - **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
+     $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W_O$$
+     - **Where:**
+    $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
 
-    - Advantages:
+   - Advantages:
        - 1. **Parallelization:** Unlike RNNs, Transformers can process all tokens in a sequence simultaneously, allowing for faster training.
        - 2. **Long-Range Dependencies:** The self-attention mechanism can capture long-range dependencies more effectively than RNNs.
        - 3. **Scalability:** Scales well with larger datasets and model sizes.
-    - Disadvantages\Limitations:
+   - Disadvantages\Limitations:
       - 1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
       - 2. **Memory Usage:** Requires significant memory to store the attention weights.
 

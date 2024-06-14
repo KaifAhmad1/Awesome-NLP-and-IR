@@ -1443,7 +1443,7 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 ```
-   - **Tanh Function::**
+   - #### **Tanh Function::**
      $$f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
        - **Use Cases:** Useful for hidden layers, especially in RNNs, as it maps input to a range between $-1$ and $1$.
 ```python
@@ -1452,7 +1452,8 @@ def tanh(x):
     return np.tanh(x)
 ```
 
-   - **ReLU (Rectified Linear Unit):**
+   - #### **ReLU (Rectified Linear Unit):**
+     ReLU zeros out negative values, hence its name.
 
 $$
 f(x) =

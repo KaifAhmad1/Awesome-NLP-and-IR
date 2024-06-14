@@ -1804,7 +1804,7 @@ Output: [[0.54412203]]
       - **Update Gate:** This gate determines what information to update in the hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
       - **Hidden State:** This is the internal state of the GRU network, which captures short-term dependencies in the data.
       - **Output:** This is the output of the GRU network, which is calculated based on the hidden state.
-   - ### **Mathematically:**
+   - #### **Mathematically:**
      The GRU network can be represented mathematically as follows
      $$\text{Reset Gate: }r = σ(Wr * x + Ur * h + br)$$
      $$\text{Update Gate: }z = σ(Wz * x + Uz * h + bz)$$
@@ -1860,20 +1860,22 @@ print("Output:", output)
 ```
 Output: [[0.40272816]]
 ```
-- **Bidirectional RNNs:** Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
-   - **Architecture:** BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
-    - **Types:**
+- ### **Bidirectional RNNs:**
+  Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
+   - #### **Architecture:**
+     BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
+    - #### **Types:**
       - **LSTM (Long Short-Term Memory):** Effective for learning long-term dependencies, ideal for tasks like language modeling and speech recognition.
       - **GRU (Gated Recurrent Unit):** Simpler and more computationally efficient than LSTMs, suitable for tasks like text classification and sentiment analysis.
-    - Mathematical Representation:
-      - `Forward RNN: h_forward = LSTM(x, W, U, b) or GRU(x, W, U, b)`
-      - `Backward RNN: h_backward = LSTM(x, W, U, b) or GRU(x, W, U, b)`
-      - `Output: y = Concat(h_forward, h_backward)`
+    - #### Mathematical Representation:
+      $$\text{Forward RNN: }h_forward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
+      $$\text{Backward RNN: }h_backward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
+      $$\text{Output: }y = Concat(h_forward, h_backward)$$
     - Where:
-      - `x` is the input sequence
-      - `W`, `U`, and `b` are the weights, recurrent weights, and biases
-      - `h_forward` and `h_backward` are the hidden states
-      - `y` is the output
+      - $x$ is the input sequence
+      - $W$, $U$, and $b$ are the weights, recurrent weights, and biases
+      - $h_forward$ and $h_backward$ are the hidden states
+      - $y$ is the output
     - Advantages:
        - 1. Capture context from both past and future
        - 2. Handle variable-length sequential data
@@ -1938,7 +1940,8 @@ Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
    -0.0058728  -0.02651676  0.02246626  0.02886551 -0.01656632
    -0.02470564  0.04360295  0.01756983  0.02010829 -0.01958983]]]
 ```
-- **Transformers:** Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
+- ### **Transformers:**
+  Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
 - **Secret Sauce: Self-Attention Mechanism** Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
   - **Steps:**
     - 1. **Input Sentence:** We start with the sentence: `She opened the door to the garden.`

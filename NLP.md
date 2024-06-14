@@ -1521,14 +1521,16 @@ def softmax(z):
     return e_z / np.sum(e_z)
 ```
 
-- **Important Optimization Algorithms for NLP:** In Natural Language Processing (NLP), optimization algorithms are crucial for training models effectively. The purpose of optimization algorithms in deep learning is to minimize the loss function, improving the model's ability to make accurate predictions by adjusting its parameters iteratively during training. Below are some of the most important optimization algorithms commonly used in NLP, along with their descriptions and implementations.
- -  **Gradient Descent:** Gradient Descent is a fundamental optimization algorithm used to minimize the loss function by iteratively moving towards the steepest descent direction of the gradient.
-    -  **Algorithm:**
-       - 1. Initialize the parameters `theta` randomly or with predefined values.
-       - 2. Repeat until convergence:
-         - Compute the gradient of the loss function concerning the parameters: `gradient = compute_gradient(loss_function, theta)`.
-         - Update the parameters using the gradient and the learning rate: `theta = theta - learning_rate * gradient`.
-         - Check for convergence criteria (e.g., small change in the loss function or maximum number of iterations reached).
+- ### **Important Optimization Algorithms for NLP:**
+  In NLP, optimization algorithms are crucial for training models effectively. The purpose of optimization algorithms in deep learning is to minimize the loss function, improving the model's ability to make accurate predictions by adjusting its parameters iteratively during training. Below are some of the most important optimization algorithms commonly used in NLP, along with their descriptions and implementations.
+ -  #### **Gradient Descent:**
+   Gradient Descent is a fundamental optimization algorithm used to minimize the loss function by iteratively moving towards the steepest descent direction of the gradient.
+ -  #### **Algorithm:**
+   - 1. Initialize the parameters `theta` randomly or with predefined values.
+   - 2. Repeat until convergence:
+       - Compute the gradient of the loss function concerning the parameters: `gradient = compute_gradient(loss_function, theta)`.
+       - Update the parameters using the gradient and the learning rate: `theta = theta - learning_rate * gradient`.
+       - Check for convergence criteria (e.g., small change in the loss function or maximum number of iterations reached).
 ``` Python
 import numpy as np
 
@@ -1573,25 +1575,25 @@ Final loss: [4.41904213e-08]
   gradient[i] = (loss_function(theta_plus) - loss_function(theta)) / epsilon
 ```
 
--  **Comparison of Gradient Descent Algorithms:**
-   - **Standard Gradient Descent:**
+-  ### **Comparison of Gradient Descent Algorithms:**
+   - #### **Standard Gradient Descent:**
      -  **Description**: Iteratively updates parameters by computing the gradient of the loss function over the entire dataset.
      - **Update Rule**: `theta = theta - learning_rate * gradient`
      - **Advantages**: Stable convergence for convex functions.
      - **Disadvantages**: Slow for large datasets; each iteration is computationally expensive.
 
-   - **Stochastic Gradient Descent (SGD):**
+   - #### **Stochastic Gradient Descent (SGD):**
      - **Description**: Updates parameters using the gradient computed from a single training example, providing more frequent updates.
      - **Update Rule**: `theta = theta - learning_rate * gradient (single example)`
      - **Advantages**: Faster convergence on large datasets; can escape local minima.
      - **Disadvantages**: Can be noisy, leading to fluctuations in the loss function.
-   - **Mini-Batch Gradient Descent:**
+   - #### **Mini-Batch Gradient Descent:**
      - **Description**: Updates parameters using the gradient computed from a small subset (mini-batch) of training examples.
      - **Update Rule**: `theta = theta - learning_rate * gradient (mini-batch)`
      - **Advantages**: Reduces variance in updates, providing a balance between SGD and batch GD.
      - **Disadvantages**: Requires choosing an appropriate batch size; computational cost is still significant.
 
-   - **Momentum-based Gradient Descent:**
+   - #### **Momentum-based Gradient Descent:**
      - **Description**: Incorporates a momentum term that helps accelerate updates in relevant directions and dampens oscillations.
      - **Update Rule**: 
       - `velocity = momentum * velocity + gradient`

@@ -1076,6 +1076,18 @@ terms.: 0.440
            -   and $P_n(w)$ is the noise distribution
        - #### **Hierarchical Softmax:**
          Hierarchical softmax reduces computational complexity by representing the vocabulary as a binary tree. Each word is a leaf node, and predicting a word involves traversing from the root to the leaf node. The probability of a word is the product of the probabilities of the decisions made at each node in the path.
+    - Advantages:
+       - 1. Efficient training on large datasets.
+       - 2. Captures semantic similarities.
+       - 3. Enables easy comparison of words.
+       - 4. Handles large datasets.
+       - 5. Flexible for task-specific fine-tuning.
+
+   - Disadvantages\Limitations:
+      - 1. Ignores word order beyond a fixed window.
+      - 2. Out-of-vocabulary words are not represented.
+      - 3. Large embedding matrices can be memory-intensive.
+      - 4. Static Embeddings which Doesn't adapt to different contexts within a document.
 
 ``` Python 
 import tensorflow as tf
@@ -1158,51 +1170,40 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
  -0.03426652  0.03874123 -0.04863291 -0.02591641  0.00344516  0.0478721
   0.06752533 -0.03133888  0.00209786 -0.01114183]
 ```
-   - Advantages:
-       - 1. Efficient training on large datasets.
-       - 2. Captures semantic similarities.
-       - 3. Enables easy comparison of words.
-       - 4. Handles large datasets.
-       - 5. Flexible for task-specific fine-tuning.
 
-   - Disadvantages\Limitations:
-      - 1. Ignores word order beyond a fixed window.
-      - 2. Out-of-vocabulary words are not represented.
-      - 3. Large embedding matrices can be memory-intensive.
-      - 4. Static Embeddings which Doesn't adapt to different contexts within a document.
+- ### **GloVe: Global Vectors for Word Representation:**
+   GloVe (Global Vectors for Word Representation) is an advanced technique in Natural Language Processing (NLP) that transforms words into numerical vectors by leveraging global word-word co-occurrence statistics from a corpus. Developed by Christopher D. Manning at Stanford University, GloVe provides rich semantic representations of words by capturing their contextual relationships.
+  - #### **How GloVe Works:**
+      - #### **Word Co-occurrence Matrix:**
+          - **Context Window**: Define a context window of size $m$. For a given target word $w_i$, consider the words within this window as context words.
+          - **Co-occurrence Matrix**: Construct a co-occurrence matrix $X$ where each element $X_ij$ represents the number of times word $j$ appears in the context of word $i$ across the entire corpus.
 
-- **GloVe: Global Vectors for Word Representation:** GloVe (Global Vectors for Word Representation) is an advanced technique in Natural Language Processing (NLP) that transforms words into numerical vectors by leveraging global word-word co-occurrence statistics from a corpus. Developed by Christopher D. Manning at Stanford University, GloVe provides rich semantic representations of words by capturing their contextual relationships.
-  - **How GloVe Works:**
-      - **Word Co-occurrence Matrix:**
-          - **Context Window**: Define a context window of size `m`. For a given target word `w_i`, consider the words within this window as context words.
-          - **Co-occurrence Matrix**: Construct a co-occurrence matrix `X` where each element `X_ij` represents the number of times word `j` appears in the context of word `i` across the entire corpus.
+      - ####  **Probability and Ratios:**  To extract meaningful relationships from the co-occurrence matrix, GloVe focuses on the probabilities and ratios of word co-occurrences.
+        - **Probability of Co-occurrence**:
+           $$P_ij = X_ij / ∑_k X_ik$$
+          - Here, $P_ij$ denotes the probability that word $j$ appears in the context of word $i$.
 
-  -  **Probability and Ratios:**  To extract meaningful relationships from the co-occurrence matrix, GloVe focuses on the probabilities and ratios of word co-occurrences.
-      - **Probability of Co-occurrence**:
-         - `P_ij = X_ij / ∑_k X_ik`
-         - Here, `P_ij` denotes the probability that word `j` appears in the context of word `i`.
-
-      - **Probability Ratio**:
-         - `P_ik / P_jk = (X_ik / ∑_k X_ik) / (X_jk / ∑_k X_jk)`
-         - This ratio captures the relationship between words `i` and `j` for a common context word `k`.
+        - **Probability Ratio**:
+           $$P_ik / P_jk = (X_ik / ∑_k X_ik) / (X_jk / ∑_k X_jk)$$
+          - This ratio captures the relationship between words $i$ and $j$ for a common context word $k$.
 
   -  **GloVe Model Formulation:**
-      - **Objective Function**: GloVe aims to learn word vectors `w_i` and context word vectors `w~_j` such that their dot product approximates the logarithm of their co-occurrence probability:
-         - `w_i^T * w~_j + b_i + b~_j ≈ log(X_ij)`
+      - **Objective Function**: GloVe aims to learn word vectors $w_i$ and context word vectors $w~_j$ such that their dot product approximates the logarithm of their co-occurrence probability:
+        $$w_i^T * w~_j + b_i + b~_j ≈ log(X_ij)$$
       - Where
-        - `w_i` and `w~_j` are the word and context word vectors.
-        - `b_i` and `b~_j` are bias terms.
+        - $w_i$ and $w~_j$ are the word and context word vectors.
+        - $b_i$ and $b~_j$ are bias terms.
       - The goal is to minimize the following weighted least squares loss:
-        - `J = ∑_{i,j=1}^V f(X_ij) * (w_i^T * w~_j + b_i + b~_j - log(X_ij))^2`
-      - **Weighting Function**: The weighting function `f(X_ij)` controls the influence of each co-occurrence pair, reducing the impact of very frequent or very rare co-occurrences:
-        - `f(X_ij) = {(X_ij / x_max)^α if X_ij < x_max1 otherwise}`
+        $$J = ∑_{i,j=1}^V f(X_ij) * (w_i^T * w~_j + b_i + b~_j - log(X_ij))^2$$
+      - **Weighting Function**: The weighting function $f(X_ij)$ controls the influence of each co-occurrence pair, reducing the impact of very frequent or very rare co-occurrences:
+        $$f(X_ij) = {(X_ij / x_max)^α if X_ij < x_max1 otherwise}$$
       - Where
-        - `x_max` and `α` are hyperparameters (typically `α = 0.75` and `x_max = 100`).
+        - $x_max$ and $α$ are hyperparameters (typically $α = 0.75$ and $x_max = 100$).
 
   -  **Training Process:**
       - **Initialization**:
-         - Initialize word vectors `w_i` and context vectors `w~_j` randomly.
-         - Initialize biases `b_i` and `b~_j`.
+         - Initialize word vectors $w_i$ and context vectors $w~_j$ randomly.
+         - Initialize biases $b_i$ and $b~_j$.
       - **Optimization:**
          - Use stochastic gradient descent (SGD) or an adaptive optimization algorithm like AdaGrad to minimize the loss function.
          - Iteratively update vectors and biases based on the gradient of the loss function.
@@ -1211,7 +1212,7 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
        - 2. Efficient in handling large corpora.
        - 3. Produces meaningful embeddings that capture semantic relationships.
 
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Computationally expensive due to the need to compute the co-occurrence matrix.
       - 2. Static embeddings which do not adapt to different contexts within a document.
       - 3. Large memory requirement for storing the co-occurrence matrix.
@@ -1330,33 +1331,34 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
   0.04485585  0.03791862  0.04784629  0.01865678 -0.02116342 -0.02645371
   0.01796384 -0.01561937]
 ```
-- **FastText:** FastText, developed by Facebook AI Research (FAIR), is another popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information. This approach is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
+- ### **FastText:**
+  FastText, developed by Facebook AI Research (FAIR), is another popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information. This approach is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
   - FastText works by representing each word as a bag of character n-grams, in addition to the word itself. This allows FastText to capture the morphological structure of words, making it more robust, especially for tasks involving rare words or languages with rich morphology.
-    - **How FastText Works:**
-       - **Character n-grams:**
+    - #### **How FastText Works:**
+       - #### **Character n-grams:**
          - FastText considers all character n-grams of a word, including the word itself and special boundary symbols.
          - For example, for the word `apple` and assuming `𝑛=3`, the character n-grams would be: `<ap`, `app`, `ppl`, `ple`, `le>`, and `apple` itself.
-       - **Vector Representation:**
+       - #### **Vector Representation:**
          - Each word is represented as the sum of the vectors of its character n-grams.
          - The vectors for character n-grams are learned alongside the word embeddings during training.
-       - **Word Embeddings:**
+       - #### **Word Embeddings:**
          - FastText trains word embeddings by optimizing a classification objective, typically a softmax classifier, over the entire vocabulary.
          - The context for each word is defined by the bag of its character n-grams.
-       - **Training Process:**
+       - #### **Training Process:**
          - FastText employs techniques like hierarchical softmax or negative sampling to efficiently train embeddings on large datasets.
-    - **Implementation Steps:**
-       - **Data Preparation:**
+    - #### **Implementation Steps:**
+       - #### **Data Preparation:**
          - Tokenize the text data into words.
          - Preprocess the text by lowercasing and removing punctuation if necessary.
-       - **Model Building:**
+       - #### **Model Building:**
          - Use an embedding layer to represent each character n-gram.
          - Sum the embeddings of all character n-grams to obtain the word representation.
          - Concatenate word and character n-gram embeddings.
          - Apply Global Average Pooling to aggregate embeddings.
-       - **Training:**
+       - #### **Training:**
          - Train the model using a softmax classifier with a cross-entropy loss function.
          - Use techniques like hierarchical softmax or negative sampling for efficiency.
-       - **Evaluation:**
+       - #### **Evaluation:**
          - Evaluate the trained model on downstream tasks such as text classification, sentiment analysis, etc.
    - Advantages:
        - 1. Uses character n-grams to manage out-of-vocabulary words.
@@ -1364,7 +1366,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
        - 3. Effective for rare words
        - 4. Adapts to different word structures.
 
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. More memory is needed due to character n-grams.
       - 2. Embeddings are less interpretable and explainable 
       - 3. Slow inference due to additional computation
@@ -1372,13 +1374,15 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 
-- **ELMo:** ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
- - **How ELMo Works:**
-   - **Contextualized Embeddings/Dynamic Representations:** Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank.`
-   - **Deep, Bi-directional Language Model:**
+- ### **ELMo:**
+  ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
+ - #### **How ELMo Works:**
+   - #### **Contextualized Embeddings/Dynamic Representations:**
+     Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank.`
+   - #### **Deep, Bi-directional Language Model:**
      - **Bi-directional LSTMs:** ELMo uses a deep bi-directional Long Short-Term Memory (bi-LSTM) network to model the word sequences. It reads the text both forward (left-to-right) and backward (right-to-left), capturing context from both directions.
      - **Layered Approach:** ELMo's architecture consists of multiple layers of LSTMs. Each layer learns increasingly complex representations, from surface-level characteristics to deeper syntactic and semantic features.
-   - **Pre-trained on Large Corpora:**
+   - #### **Pre-trained on Large Corpora:**
      - **Massive Pre-training:** ELMo models are pre-trained on large datasets, such as the 1 Billion Word Benchmark, to learn rich linguistic patterns and structures.
      - **Fine-tuning for Specific Tasks:** After pre-training, these embeddings can be fine-tuned on specific NLP tasks, allowing ELMo to adapt to the nuances of the target task.
 
@@ -1387,34 +1391,37 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
        - 2. Captures complex syntactic and semantic information.
        - 3. Outperforms static embeddings on various NLP tasks
 
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Requires significant resources for training and inference.
       - 2. Pre-training and fine-tuning are time-consuming.
       - 3. Large memory requirements pose deployment challenges.
      
 - [Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
 
-- **BERT:** BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
- - **How BERT Works:**
-   - **Bidirectional Contextualization:** Unlike traditional models that read text sequentially, BERT uses Transformers to process text from both the left and the right simultaneously, capturing the full context of each word.
-   - **Transformer Architecture:**
+- ### **BERT:**
+  BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
+ - #### **How BERT Works:**
+   - #### **Bidirectional Contextualization:**
+     Unlike traditional models that read text sequentially, BERT uses Transformers to process text from both the left and the right simultaneously, capturing the full context of each word.
+   - #### **Transformer Architecture:**
      - **Self-Attention Mechanism:** BERT's architecture relies on the self-attention mechanism within Transformers, which allows the model to weigh the importance of different words in a sentence, regardless of their position.
      - **Layers of Transformers:** BERT consists of multiple layers of Transformer encoders, each providing a progressively richer representation of the text.
-   - **Pre-training and Fine-tuning:**
+   - #### **Pre-training and Fine-tuning:**
      - **Pre-training Tasks:** BERT is pre-trained on large corpora using two unsupervised tasks: `Masked Language Modeling (MLM)` and `Next Sentence Prediction (NSP)`. MLM involves predicting masked words in a sentence, while NSP involves predicting the relationship between two sentences.
      - **Fine-tuning:** After pre-training, BERT can be fine-tuned on specific NLP tasks (e.g., question answering, sentiment analysis) by adding a task-specific output layer.
    - Advantages:
        - 1. Produces embeddings that consider the context from both directions
        - 2. Captures intricate syntactic and semantic details.
        - 3. Excels in a wide range of NLP tasks, setting new performance benchmarks.
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Requires substantial computational resources for both training and inference.
       - 2. Pre-training on large datasets is time-consuming and computationally expensive.
       - 3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
-### Deep NLP 
-- **Deep Learning - Basic Neural Network Components:** A basic neural network architecture includes:
+## Deep NLP 
+- #### **Deep Learning - Basic Neural Network Components:**
+   A basic neural network architecture includes:
    - **Input Layer:** Receives input data.
    - **Hidden Layers:** Process input through weighted connections.
    - **Activation Function:** Adds non-linearity to neuron outputs.
@@ -1424,19 +1431,21 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
    - **Optimization Algorithm:** Updates weights to minimize loss.
    - **Learning Rate:** Controls the step size during optimization.
 
-- **Purpose of Activation Functions in Neural Networks:** Activation functions introduce non-linearity into the network, allowing it to learn complex patterns. Without them, the network would only perform linear transformations, limiting its ability to model complex data.
-- **Common Activation Functions:**
-    - **Sigmoid Function:**
-      - `Formula: f(x) = 1 / (1 + e^(-x))`
-      - Use Cases: Often used in the output layer for binary classification.
+- ### **Purpose of Activation Functions in Neural Networks:**
+  Activation functions introduce non-linearity into the network, allowing it to learn complex patterns. Without them, the network would only perform linear transformations, limiting its ability to model complex data.
+- #### **Common Activation Functions:**
+    - #### **Sigmoid Function:**
+$$f(x) = \frac{1}{1 + e^{-x}}$$
+  - For every input $x$ the output in between $0$ and $1$ 
+  - **Use Cases:** Often used in the output layer for binary classification and multilable classification.
 ```python
 import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 ```
    - **Tanh Function::**
-       - `Formula: f(x) = (e^x - e^(-x)) / (e^x + e^(-x))`
-       - Use Cases: Useful for hidden layers, especially in RNNs, as it maps input to a range between -1 and 1.
+     $$f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
+       - **Use Cases:** Useful for hidden layers, especially in RNNs, as it maps input to a range between $-1$ and $1$.
 ```python
 import numpy as np
 def tanh(x):
@@ -1444,8 +1453,19 @@ def tanh(x):
 ```
 
    - **ReLU (Rectified Linear Unit):**
-        - `Formula: f(x) = max(0, x)`
-        - Use Cases: Commonly used in hidden layers for its simplicity and efficiency.
+
+$$
+f(x) =
+\begin{cases}
+x & \text{if } x > 0 \\
+0 & \text{if } x \leq 0
+\end{cases}
+$$
+
+   - **Use Cases:**
+       - Commonly used in hidden layers for its simplicity and efficiency.
+       - Default activation function in many deep learning models like convolutional neural networks (CNNs) and deep fully connected networks.
+       - Used to overcome vanishing gradient problem
 ```python
 import numpy as np
 def relu(x):

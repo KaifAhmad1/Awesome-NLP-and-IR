@@ -769,7 +769,7 @@ print(encoded)
       - 1. Simple to implement.
       - 2. Efficient conversion of text to numerical data
       - 3. Effective for basic text classification and clustering
-   - Disadvantages:
+   - Limitations:
       - 1. Loss of context
       - 2. High dimensionality and sparse vectors
       - 3. Sparse data representations may pose challenges for some algorithms
@@ -807,34 +807,37 @@ Vector: [1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]
 Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'have'
  'knowledge' 'love' 'of' 'reading' 'source' 'very' 'wonderful']
 ```
-- **TF-IDF:** TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
-   - **Components of TF-IDF:**
-      - **Term Frequency (TF):** Measures how frequently a term occurs in a document.
+- ### **TF-IDF:**
+  TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
+   - #### **Components of TF-IDF:**
+      - #### **Term Frequency (TF):** Measures how frequently a term occurs in a document.
           - Term Frequency is calculated as:
-          - `TF(t,d) = f(t,d) / sum(f(t',d) for all t' in d)`
+            $$\text{TF}(t, d) = \frac{f(t, d)}{\sum_{t' \in d} f(t', d)}$$
       - where:
-          - `f(t,d)` is the raw count of term `t` in document `d`.
-          - The denominator is the total number of terms in document `d`.
+          - $f(t,d)$ is the raw count of term $t$ in document $d$.
+          - The denominator is the total number of terms in document $d$.
       - Example:
-          - If the term `data` appears 3 times in a document with 100 words, the term frequency TF for `data` would be: `TF(data, d) = 3 / 100 = 0.03`
+          - If the term `data` appears $3$ times in a document with $100$ words, the term frequency TF for `data` would be: $TF(data, d) = 3 / 100 = 0.03$
      
-      - **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in a document.
+      - #### **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in a document.
           - Inverse Document Frequency is calculated as:
-          - `IDF(t, D) = log(N / |{d in D : t in d}|)`
+            $$\text{IDF}(t, D) = \log \left( \frac{N}{| \{ d \in D : t \in d \} |} \right)$$
       - where:
-          - `N` is the total number of documents.
-          - `|{d in D : t in d}|` is the number of documents containing the term `t`.
+          - $N$ is the total number of documents.
+          - $| \{ d \in D : t \in d \} |$ is the number of documents containing the term $t$.
       - Example:
-          - If the corpus contains `10,000` documents, and the term `data` appears in 100 of these documents, the inverse document frequency IDF for `data` would be:
-          - `IDF(data, D) = log(10000 / 100) = log(100) = 2`
-      - **Calculating TF-IDF:**
-          - The TF-IDF score for a term `t` in a document `d` is given by: `TF-IDF(t,d,D) = TF(t,d) * IDF(t,D)`
+          - If the corpus contains $10,000$ documents, and the term `data` appears in $100$ of these documents, the inverse document frequency IDF for `data` would be:
+          - $IDF(data, D) = log(10000 / 100) = log(100) = 2$
+            
+      - #### **Calculating TF-IDF:**
+          - The TF-IDF score for a term $t$ in a document $d$ is given by:
+            $$\text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)$$
       - Example:
           - Using the previous values:
-          - TF(data, d) = 0.03
-          - IDF(data, D) = 2
+          - $TF(data, d) = 0.03$
+          - $IDF(data, D) = 2$
           - The TF-IDF score for `data` in the document would be:
-          - TF-IDF(data, d, D) = 0.03 * 2 = 0.06
+          - $TF-IDF(data, d, D) = 0.03 * 2 = 0.06$
 
    - Advantages:
       - 1. Simple and easy to understand
@@ -842,7 +845,7 @@ Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'ha
       - 3. Distinguishes between common and rare terms
       - 4. Language-independent
 
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Doesn't consider semantics or term context
       - 2. May struggle with very long documents due to term frequency saturation. In lengthy documents, even insignificant terms can surface frequently, resulting in elevated and saturated term frequencies. Consequently, TF-IDF may encounter challenges in effectively distinguishing and assigning significant weights to important terms.
       - 3. Ignores term dependencies and phrase

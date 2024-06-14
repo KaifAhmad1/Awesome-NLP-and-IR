@@ -914,34 +914,36 @@ some: 0.250
 common: 0.400
 terms.: 0.250
 ```
-- **BM25 (Best Matching 25):** BM25 (Best Matching 25) is a ranking function used in information retrieval to estimate the relevance of documents to a given search query. It is an extension of the TF-IDF weighting scheme, designed to address some of its limitations while retaining its simplicity and effectiveness.
-   - **Components of BM25:**
-      - **Term Frequency (TF):** Measures how frequently a term occurs in a document, similar to TF in TF-IDF.
+- ### **BM25 (Best Matching 25):**
+  BM25 (Best Matching 25) is a ranking function used in information retrieval to estimate the relevance of documents to a given search query. It is an extension of the TF-IDF weighting scheme, designed to address some of its limitations while retaining its simplicity and effectiveness.
+   - #### **Components of BM25:**
+      - #### **Term Frequency (TF):** Measures how frequently a term occurs in a document, similar to TF in TF-IDF.
          - TF in BM25 is adjusted to handle document length normalization and term saturation. It is calculated as:
-            - `TF(t,d) = (f(t,d) * (k + 1)) / (f(t,d) + k * (1 - b + b * (|d| / avgdl)))`
-      - Where
-         - `f(t,d)` is the raw count of term `t` in document `d`.
-         - `|d|` is the length of document `d`.
-         - `avgdl` is the average document length in the corpus.
-         - `k` and `b` are tuning parameters, typically set to 1.5 and 0.75 respectively.
+           $$\text{TF}(t, d) = \frac{f(t, d) \cdot (k + 1)}{f(t, d) + k \cdot (1 - b + b \cdot (|d| / \text{avgdl}))}$$
+         - Where
+           - $f(t,d)$ is the raw count of term $t$ in document $d$.
+           - $|d|$ is the length of document $d$.
+           - $\text{avgdl}$ is the average document length in the corpus.
+           - $k$ and $b$ are tuning parameters, typically set to $1.5$ and $0.75$ respectively.
      
-      - **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in the entire document collection, similar to IDF in TF-IDF.
+      - #### **Inverse Document Frequency (IDF):**
+        Measures how frequently a term occurs in the entire document collection, similar to IDF in TF-IDF.
          - IDF in BM25 is calculated as:
-            - `IDF(t, D) = log((N - n(t) + 0.5) / (n(t) + 0.5))`
-       - Where
-            - `N` is the total number of documents in the collection.
-            - `n(t)` is the number of documents containing term t.
+           $$\text{IDF}(t, D) = \log \left( \frac{N - n(t) + 0.5}{n(t) + 0.5} \right)$$
+         - Where
+            - $N$ is the total number of documents in the collection.
+            - $n(t)$ is the number of documents containing term $t$.
       - **Document length Normalization:** Adjusts the TF component based on the length of the document. This ensures that longer documents do not have an unfair advantage over shorter ones.
    
-- **BM25 Score Calculation:**
-    - The BM25 score for a term t in a document d given a query q is calculated as:
-       - `BM25(t, d, q) = IDF(t, D) * ((f(t, d) * (k + 1)) / (f(t, d) + k * (1 - b + b * (|d| / avgdl))))`
+- #### **BM25 Score Calculation:**
+  The BM25 score for a term t in a document d given a query q is calculated as:
+      $$\text{BM25}(t, d, q) = \text{IDF}(t, D) \cdot \frac{f(t, d) \cdot (k + 1)}{f(t, d) + k \cdot (1 - b + b \cdot \frac{|d|}{\text{avgdl}})}$$
     - Where:
-       - `IDF(t, D)` is the inverse document frequency for term `t`.
-       - `f(t, d)` is the term frequency for term `t` in document `d`.
-       - `|d|` is the length of document `d`.
-       - `avgdl` is the average document length in the corpus.
-       - `k` and `b` are tuning parameters.
+       - $IDF(t, D)$ is the inverse document frequency for term $t$.
+       - $f(t, d)$ is the term frequency for term $t$ in document $d$.
+       - $|d|$ is the length of document $d$.
+       - $\text{avgdl}$ is the average document length in the corpus.
+       - $k$ and $b$ are tuning parameters.
 
    - Advantages:
       - 1. Effective in ranking documents based on relevance to a query.
@@ -949,7 +951,7 @@ terms.: 0.250
       - 3. Suitable for large document collections.
       - 4. Robust and widely used in practice.
 
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Like TF-IDF, BM25 does not consider semantic relationships between terms.
       - 2. Tuning parameters (k and b) need to be carefully selected, although default values often work reasonably well.
       - 3. May still struggle with certain types of queries or document collections, such as those containing very short documents or highly specialized domains.

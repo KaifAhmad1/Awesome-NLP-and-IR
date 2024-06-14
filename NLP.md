@@ -740,26 +740,30 @@ print(encoded)
 ```
 
 - ### **Bag of words:**
-  The Bag of Words (BoW) model in Natural Language Processing (NLP) converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
+  The Bag of Words (BoW) model in NLP converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
   -  This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
-  -  **Process Steps:**
-     - **Corpus Collection:** Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modelling.
+  -  #### **Process Steps:**
+     - #### **Corpus Collection:**
+       Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modelling.
         - I love reading books. Books are great.
         - Books are a wonderful source of knowledge.
         - I have a great love for reading books.
         - Reading books can be very enlightening. Books are amazing.
-     - **Preprocessing:** Executes meticulous text preprocessing tasks, including lowercasing, punctuation removal, and stop word elimination, to maintain standardized data quality.
+     - #### **Preprocessing:**
+       Executes meticulous text preprocessing tasks, including lowercasing, punctuation removal, and stop word elimination, to maintain standardized data quality.
         - i love reading books books are great
         - books are a wonderful source of knowledge
         - i have a great love for reading books
         - reading books can be very enlightening books are amazing
-     - **Vocabulary Building:** Extracts unique words from the corpus, forming the foundational vocabulary that encompasses diverse linguistic elements.
+     - #### **Vocabulary Building:**
+       Extracts unique words from the corpus, forming the foundational vocabulary that encompasses diverse linguistic elements.
         - Vocabulary: [`i`, `love`, `reading`, `books`, `are`, `great`, `a`, `wonderful`, `source`, `of`, `knowledge`, `have`, `for`, `can`, `be`, `very`, `enlightening`, `amazing`]
-     - **Vectorization:** Transforms each document into a numerical vector representation based on the established vocabulary. Ensures vector length matches vocabulary size, with elements representing word frequencies, succinctly capturing the document's textual essence.
-        - Sentence 1: `i love reading books books are great` Vector: `[1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]`
-        - Sentence 2: `books are a wonderful source of knowledge` Vector: `[0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]`
-        - Sentence 3: `i have a great love for reading books` Vector: `[1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]`
-        - Sentence 4: `reading books can be very enlightening books are amazing` Vector: `[0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]`
+     - #### **Vectorization:**
+       Transforms each document into a numerical vector representation based on the established vocabulary. Ensures vector length matches vocabulary size, with elements representing word frequencies, succinctly capturing the document's textual essence.
+        - Sentence 1: `i love reading books books are great` Vector: $[1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$
+        - Sentence 2: `books are a wonderful source of knowledge` Vector: $[0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]$
+        - Sentence 3: `i have a great love for reading books` Vector: $[1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]$
+        - Sentence 4: `reading books can be very enlightening books are amazing` Vector: $[0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]$
 
    - Advantages:
       - 1. Simple to implement.

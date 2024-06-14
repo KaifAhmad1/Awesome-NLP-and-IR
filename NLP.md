@@ -1942,38 +1942,42 @@ Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
 ```
 - ### **Transformers:**
   Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
-- **Secret Sauce: Self-Attention Mechanism** Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
-  - **Steps:**
-    - 1. **Input Sentence:** We start with the sentence: `She opened the door to the garden.`
-    - 2. **Convert Words to Vectors:** We start with the sentence: `She opened the door to the garden.` Each word in this sentence is represented as a vector after being passed through an embedding layer. Let's use simplified vector representations for clarity:
-          - `She: [1, 0, 0]`
-          - `opened: [0, 1, 0]`
-          - `the: [0, 0, 1]`
-          - `door: [1, 1, 0]`
-          - `to: [1, 0, 1]`
-          - `the: [0, 1, 1]`
-          - `garden: [1, 1, 1]`
-    - 3. **Creating Q, K, and V Matrices:** For each word, we create three vectors: `Query (Q), Key (K)`, and `Value (V)`. These vectors are derived by multiplying the word vector by three different weight matrices `(W_Q, W_K, W_V)`.
+- #### **Secret Sauce: Self-Attention Mechanism**
+  Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
+  - #### **Steps:**
+    - #### 1. **Input Sentence:**
+      We start with the sentence: `She opened the door to the garden.`
+    - #### 2. **Convert Words to Vectors:**
+      We start with the sentence: `She opened the door to the garden.` Each word in this sentence is represented as a vector after being passed through an embedding layer. Let's use simplified vector representations for clarity:
+      - She: $[1, 0, 0]$
+      - opened: $[0, 1, 0]$
+      - the: $[0, 0, 1]$
+      - door: $[1, 1, 0]$
+      - to: $[1, 0, 1]$
+      - the: $[0, 1, 1]$
+      - garden: $[1, 1, 1]$
+    - #### 3. **Creating Q, K, and V Matrices:**
+      For each word, we create three vectors: $Query (Q), Key (K)$, and $Value (V)$. These vectors are derived by multiplying the word vector by three different weight matrices $(W_Q, W_K, W_V)$.
        - **Query (Q):** Represents the word we are currently processing.
        - **Key (K):** Represents the words we compare the current word against.
        - **Value (V):** Represents the actual content of the words
-         -  These vectors are derived by multiplying the word vector by weight matrices (W_Q, W_K, W_V).
+         -  These vectors are derived by multiplying the word vector by weight matrices $(W_Q, W_K, W_V)$.
          - Example for "opened":
-          - `Q_opened = [0, 1, 0] * W_Q`
-          - `K_opened = [0, 1, 0] * W_K`
-          - `V_opened = [0, 1, 0] * W_V`
-     - 4. **Calculating Attention Scores:** Dot product of the Query vector of the word with Key vectors of all words.
+          - $Q_opened = [0, 1, 0] * W_Q$
+          - $K_opened = [0, 1, 0] * W_K$
+          - $V_opened = [0, 1, 0] * W_V$
+     - #### 4. **Calculating Attention Scores:** Dot product of the Query vector of the word with Key vectors of all words.
       - Example for `opened`:
-        - Score for `She` = `Q_opened · K_She`
-        - Score for `opened` = `Q_opened · K_opened`
-        - Score for `the` = `Q_opened · K_the`
-     - 5. **Applying Softmax:**
+        - Score for $She = Q_opened · K_She$
+        - Score for $opened = Q_opened · K_opened$
+        - Score for $the = Q_opened · K_the$
+     - #### 5. **Applying Softmax:**
         - Pass attention scores through the Softmax function to get attention weights.
-          - Softmax formula: `softmax(x_i) = exp(x_i) / sum(exp(x))`
-     - 6. **Weighted Sum of Values:**
+          - Softmax formula: $$softmax(x_i) = exp(x_i) / sum(exp(x))$$
+     - #### 6. **Weighted Sum of Values:**
         - Multiply Value vectors by their corresponding attention weights.
           - Example for `opened`:
-          - `Weighted sum = softmax(Scores) * [V_She, V_opened, V_the, V_door, V_to, V_the, V_garden]`
+          - $$Weighted sum = softmax(Scores) * [V_She, V_opened, V_the, V_door, V_to, V_the, V_garden]$$
   - By iteratively performing these steps for all words in the input sentence, the self-attention mechanism captures intricate relationships and dependencies across the entire sequence, facilitating effective sequence-to-sequence processing tasks like language translation or text generation.
 
 - **Key Components of Transformer Architecture:** 
@@ -1987,12 +1991,12 @@ The Transformer architecture consists of an encoder and a decoder, both composed
     - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
    - **Mathematically:** Mathematically, for each sub-layer:
    - **Self-Attention:**
-      - `Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V`
+     $$\text{Attention(Q, K, V)} = softmax(QK^T / sqrt(d_k)) V$$
    - Where: 
-      - `Q`, `K`, and `V` are the query, key, and value matrices, respectively.
-      - `d_k` is the dimension of the key/query vectors.
+      - $Q$, $K$, and $V$ are the query, key, and value matrices, respectively.
+      - $d_k$ is the dimension of the key/query vectors.
    - **Feed-Forward Network:**
-      - `FFN(x) = max(0, xW1 + b1) W2 + b2`
+      - $$FFN(x) = max(0, xW1 + b1) W2 + b2$$
 
   - **Decoder:** The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
     - **Output Embedding:** Converts output tokens into dense vectors.
@@ -2004,11 +2008,11 @@ The Transformer architecture consists of an encoder and a decoder, both composed
     - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
    - **Mathematically:** Mathematically, for each sub-layer:
    - **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
-      - `Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V`
+      - $$\text{Attention(Q, K, V) }= softmax(QK^T / sqrt(d_k)) V$$
    - **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
-     - `MultiHead(Q, K, V) = Concat(head1, ..., headh) WO` 
+     - $$\text{MultiHead(Q, K, V)} = Concat(head1, ..., headh) WO$$
    - **Where:**
-     - `headi = Attention(QWiQ, KWiK, VWiV)`
+     - $$headi = Attention(QWiQ, KWiK, VWiV)$$
 
     - Advantages:
        - 1. **Parallelization:** Unlike RNNs, Transformers can process all tokens in a sequence simultaneously, allowing for faster training.

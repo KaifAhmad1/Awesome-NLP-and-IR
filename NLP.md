@@ -1473,9 +1473,15 @@ def relu(x):
     return np.maximum(0, x)
 ```
 
-   - **Leaky ReLU:**
-        - `Formula: f(x) = max(αx, x) where α is a small positive constant.`
-        - Use Cases: Prevents neurons from dying during training.
+   - #### **Leaky ReLU:**
+$$
+f(x) =
+\begin{cases}
+x & \text{if } x > 0 \\
+\alpha x & \text{if } x \leq 0
+\end{cases}
+$$
+   - **Use Cases:** Leaky ReLU is widely favoured in neural networks for its ability to prevent neuron death during training by maintaining a small gradient $𝛼$ for negative inputs. This helps accelerate convergence in deep learning models, making it more efficient than traditional activation functions like sigmoid and tanh, especially in deeper networks prone to the vanishing gradient problem.
 
 ```python
 import numpy as np
@@ -1483,9 +1489,18 @@ def leaky_relu(x, alpha=0.01):
     return np.where(x > 0, x, alpha * x)
 ```
 
-   - **ELU (Exponential Linear Unit):**
-        - `Formula: f(x) = x if x > 0, α(e^x - 1) if x ≤ 0`
-        - Use Cases: Helps avoid dead neurons and provides smooth gradient updates.
+   - #### **ELU (Exponential Linear Unit):**
+$$
+f(x) =
+\begin{cases}
+x & \text{if } x > 0 \\
+\alpha (e^x - 1) & \text{if } x \leq 0
+\end{cases}
+$$
+   - **Use Cases:**
+     - Effective in preventing dead neurons and encouraging model robustness during training.
+     - Facilitates smooth gradient flow, potentially improving convergence speed in complex models.
+
 
 ```python
 import numpy as np
@@ -1493,9 +1508,10 @@ def elu(x, alpha=1.0):
     return np.where(x > 0, x, alpha * (np.exp(x) - 1))
 ```
 
-   - **Softmax Function:**
-        - `Formula: softmax(z_i) = e^(z_i) / ∑(e^(z_j))`
-        - Use Cases: Used in the output layer for multi-class classification tasks.
+   - #### **Softmax Function:**
+     Softmax is an activation function that converts logits (raw prediction values) into probabilities, ensuring that the output probabilities sum to $1$
+        $$\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j} e^{z_j}}$$
+ - **Use Cases:** Used in the output layer for multi-class classification tasks.
 
 
 ```python

@@ -1661,17 +1661,17 @@ Output: 0.772853461396208
 
   - **Mathematically:**
    - For a single hidden layer RNN:
-      - Input Layer: x
-      - `Hidden State: [ h = σ(Wx * x + Wh * h + b) ]`
-      - `Cell State: [ c = f(c_prev, x) ]`
-      - `Output Layer: [ y = σ(Wy * h + b) ]`
+     $$\text{Input Layer: }x$$
+     $$\text{Hidden State: }h = σ(Wx * x + Wh * h + b)$$
+     $$\text{Cell State: }c = f(c_prev, x)$$ 
+     $$\text{Output Layer: }y = σ(Wy * h + b)$$
    - Where:
-      - `Wx` is the weight matrix connecting the input layer to the hidden state
-      - `Wh` is the weight matrix connecting the hidden state to itself
-      - `b` is the bias vector for the hidden state
-      - `f` is the forget gate function (e.g. sigmoid)
-      - `Wy` is the weight matrix connecting the hidden state to the output layer
-      - `σ` is an activation function (e.g. ReLU, Sigmoid)
+      - $Wx$ is the weight matrix connecting the input layer to the hidden state
+      - $Wh$ is the weight matrix connecting the hidden state to itself
+      - $b$ is the bias vector for the hidden state
+      - $f$ is the forget gate function (e.g. sigmoid)
+      - $Wy$ is the weight matrix connecting the hidden state to the output layer
+      - $σ$ is an activation function (e.g. ReLU, Sigmoid)
 ![RNN illustrated with this Image example](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RNN.png)
 
    - Advantages:

@@ -1601,29 +1601,30 @@ Final loss: [4.41904213e-08]
      - **Advantages**: Speeds up convergence; reduces oscillations near minima.
      - **Disadvantages**: Requires tuning of the momentum parameter (momentum); can overshoot minima.
 
-- **Feedforward Neural Networks (FNN):** A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
-  - **Architecture:** The basic architecture of a Feedforward Neural Network consists of the following components:
+- ### **Feedforward Neural Networks (FNN):**
+  A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
+  - #### **Architecture:** The basic architecture of a Feedforward Neural Network consists of the following components:
     - 1. **Input Layer**: This layer receives the input data. Each node in this layer represents one feature of the input.
     - 2. **Hidden Layers**: These layers process the input data. There can be one or more hidden layers in an FNN. Each node in a hidden layer applies a weighted sum of its inputs and an activation function.
     - 3. **Output Layer**: This layer produces the final output of the network. The number of nodes in this layer corresponds to the number of output classes or the required output dimensions.
 
-  - **Mathematically:**
-   - For a single hidden layer network:
-      - `Input Layer: x`
-      - `Hidden Layer: [ h = σ(W1x + b1) ]`
-      - `Output Layer: [ y = W2h + b2 ]`
+- #### **Mathematically:**
+  - For a single hidden layer network:
+    $$\text{Input Layer: } x$$
+    $$\text{Hidden Layer: } h = \sigma(W_1 x + b_1)$$
+    $$\text{Output Layer: } y = W_2 h + b_2$$
     - Where:
-      - `W1` is the weight matrix connecting the input layer to the hidden layer
-      - `b1` is the bias vector for the hidden layer
-      - `σ` is an activation function (e.g. ReLU, Sigmoid)
-      - `W2` is the weight matrix connecting the hidden layer to the output layer
-      - `b2` is the bias vector for the output layer
+      - $W1$ is the weight matrix connecting the input layer to the hidden layer
+      - $b1$ is the bias vector for the hidden layer
+      - $σ$ is an activation function (e.g. ReLU, Sigmoid)
+      - $W2$ is the weight matrix connecting the hidden layer to the output layer
+      - $b2$ is the bias vector for the output layer
    - Advantages:
        - 1. Easy to implement and understand.
        - 2. Can approximate any continuous function with enough layers and units.
        - 3. Effective for classification and regression on structured data.
        - 4. Predictable and easier to debug due to one-way data flow.
-   - Disadvantages\Limitations:
+   - Limitations:
       - 1. Not suitable for sequential data like time series or text.
       - 2. Cannot retain information from previous inputs.
       - 3. Prone to overfitting, especially with limited data
@@ -1660,7 +1661,7 @@ Output: 0.772853461396208
 
   - **Mathematically:**
    - For a single hidden layer RNN:
-      - `Input Layer: x`
+      - Input Layer: x
       - `Hidden State: [ h = σ(Wx * x + Wh * h + b) ]`
       - `Cell State: [ c = f(c_prev, x) ]`
       - `Output Layer: [ y = σ(Wy * h + b) ]`

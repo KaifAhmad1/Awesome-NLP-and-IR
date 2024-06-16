@@ -44,13 +44,14 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
  - ### **Masked Language Modeling:**
      - In MLM, certain tokens in the input sequence are masked at random, and the model is trained to predict these masked tokens based on the context provided by the remaining tokens.
      - This approach helps the model understand bidirectional contexts.
-  - #### **Mathematical Formulation**
-    -  Given a sequence of tokens $\mathbf{x} = \{x_1, x_2, \ldots, x_n\}$, we create a corrupted version $\mathbf{x}_{\text{masked}}$ by replacing some tokens with a special `[MASK]` token.
-    -  Let $M$ be the set of masked positions.
-    The training objective is to maximize the likelihood of the masked tokens given the context:
-
-    $$L_{\text{MLM}} = -\sum_{i \in M} \log P(x_i \mid \mathbf{x}_{\text{masked}})$$
+- #### **Mathematical Formulation**
+  - Given a sequence of tokens $\mathbf{X} = \{x_1, x_2, \ldots, x_n\}$, we create a corrupted version $\mathbf{X}_{\text{masked}}$ by replacing some tokens with a special `[MASK]` token.
+  - Let $M$ be the set of masked positions.
+  - The training objective is to maximize the likelihood of the masked tokens given the context:
+  
+    $$L_{\text{MLM}} = -\sum_{i \in M} \log P(x_i \mid \mathbf{X}_{\text{masked}})$$
     
-    - Here, $P(x_i \mid \mathbf{x}_{\text{masked}})$ is the probability of token $x_i$ given the masked sequence.
+  - Here, $P(x_i \mid \mathbf{X}_{\text{masked}})$ is the probability of token $x_i$ given the masked sequence.
+
      
 

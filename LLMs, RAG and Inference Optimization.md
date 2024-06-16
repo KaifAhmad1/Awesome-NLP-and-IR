@@ -17,12 +17,16 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
     The model is trained on a large corpus of text to learn language patterns. This is typically done in an unsupervised manner, where the model learns to predict the next word in a sentence or fill in the blanks.
   - #### **Fine-tuning:**
     The pre-trained model is then fine-tuned on a smaller, task-specific dataset to improve its performance on particular tasks, such as question answering or text summarization.
- - ### **Advantages:**
+ - #### **Advantages:**
     - **Versatility:** LLMs can handle a wide variety of tasks without the need for task-specific architectures.
     - **Contextual Understanding:** Their ability to capture long-range dependencies makes them adept at understanding context.
     - **Scalability:** They can be scaled to larger datasets and more parameters, leading to improved performance.
-  - ### **Limitations:**
+  - #### **Limitations:**
     - **Computationally Intensive:** Training and deploying LLMs require significant computational resources, including powerful GPUs and extensive memory.
     - **Data Hungry:** They need vast amounts of training data to achieve high performance.
     - **Bias and Fairness:** LLMs can inadvertently learn and propagate biases present in the training data, leading to ethical concerns.
     - **Interpretability:** Their large and complex architectures make it difficult to understand and interpret their decision-making processes.
+
+   ### **LLM Pretraining** 
+  Pretraining is the process of training a machine learning model on a large dataset before fine-tuning it on a specific task. This initial phase involves learning general patterns, representations, and features from the data, which can then be adapted and refined for various downstream tasks, improving performance and efficiency.
+

@@ -30,13 +30,13 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
    ### **LLM Pretraining** 
   Pretraining is the process of training a machine learning model on a large dataset before fine-tuning it on a specific task. This initial phase involves learning general patterns, representations, and features from the data, which can then be adapted and refined for various downstream tasks, improving performance and efficiency.
 - #### **Self Supervised Learning:**
-  Self-supervised learning (SSL) is a type of machine learning where a model is trained using automatically generated labels from the data itself, eliminating the need for manually labeled data. This approach has gained significant attention due to its ability to leverage vast amounts of unlabeled data, which is abundant and cheap to obtain, to create powerful models.
-  - Self-supervised learning (SSL) is a form of unsupervised learning where the data itself provides the supervision. In SSL, a model is trained on a task where part of the input data is used to predict another part of the data. This paradigm is particularly effective for training large language models (LLMs) because it allows them to learn rich representations from vast amounts of unlabelled text data.
+  - Self-supervised learning (SSL) is a cutting-edge approach in machine learning where the model trains itself using automatically generated labels derived from the data, eliminating the need for manual annotation. This method harnesses the abundance of unlabeled data, which is both plentiful and inexpensive, to build robust and powerful models.
+  - SSL is considered a subset of unsupervised learning, where the data itself provides the necessary supervision. The model is trained to predict one part of the input data from another part, allowing it to learn meaningful patterns and representations. This approach is particularly beneficial for training large language models (LLMs) because it enables them to extract rich and diverse features from vast amounts of text data without requiring human-labeled examples.
   - #### Key Concepts
     - **Pretext Task:** The core idea of SSL is to create a pretext task, a pseudo-task for which labels can be generated from the data itself. The model is first trained on this task, and the learned representations are then fine-tuned on the actual downstream task.
     - **Downstream Task:** After learning representations from the pretext task, the model is fine-tuned or directly applied to the downstream task, which is the actual task of interest (e.g., image classification, object detection, natural language understanding).
 - #### **Key Techniques in Self-Supervised Learning**
-    - Masked Language Modeling (MLM) and Mask Multi-Language Modeling (MMLM)
+    - Masked Language Modeling (MLM) and Masked Multimodal Language Modeling (MMLM)
     - Next Sentence Prediction (NSP)
     - Causal Language Modeling (CLM)
     - Denoising Autoencoders

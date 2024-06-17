@@ -35,6 +35,7 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
   - #### Key Concepts
     - **Pretext Task:** The core idea of SSL is to create a pretext task, a pseudo-task for which labels can be generated from the data itself. The model is first trained on this task, and the learned representations are then fine-tuned on the actual downstream task.
     - **Downstream Task:** After learning representations from the pretext task, the model is fine-tuned or directly applied to the downstream task, which is the actual task of interest (e.g., image classification, object detection, natural language understanding).
+      
 - #### **Key Techniques in Self-Supervised Learning**
     - Masked Language Modeling (MLM) and Masked Multimodal Language Modeling (MMLM)
     - Next Sentence Prediction (NSP)
@@ -130,4 +131,9 @@ DAE improves model robustness by reconstructing clean inputs from corrupted vers
 
 This technique enhances model performance by learning discriminative features from data pairs, beneficial for tasks like image and text clustering, retrieval.
 
-
+   ### **LLM Fine Tuning** 
+   Fine-tuning is the process of adapting a pre-trained language model to specific downstream tasks by further training it on task-specific data. While pre-training provides a strong foundation by learning general language patterns, fine-tuning tailors the model to excel in particular applications, improving its performance on specific tasks.
+   - #### **Why We Need Fine-Tuning:**
+     - **Task Specialization:** Pre-trained models are generalists. Fine-tuning allows these models to specialize in particular tasks such as sentiment analysis, translation, or question answering.
+     - **Improved Performance:** Fine-tuning on task-specific data enhances the model's ability to perform well on that task by leveraging the relevant information it has seen during pretraining.
+     - **Efficiency:** Fine-tuning requires significantly less data and computational resources compared to training a model from scratch, making it a practical approach for many applications.

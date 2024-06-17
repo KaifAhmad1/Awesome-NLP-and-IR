@@ -53,6 +53,9 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
     
   - Here, $P(x_i \mid \mathbf{X}_{\text{masked}})$ is the probability of token $x_i$ given the masked sequence.
 
+ In MLM, the model enhances its understanding of bidirectional contexts by predicting masked tokens.
+
+
 - ### **Masked Multimodal Language Modeling:**
     - In MMLM, certain tokens in the input sequence are masked at random, similar to MLM, but the model is trained using both textual and non-textual data such as images, audio, or video.
     - This approach enhances the model's ability to understand and integrate multimodal information, learning representations that capture the interplay between different modalities.
@@ -81,7 +84,7 @@ By integrating information from multiple modalities, MMLM allows models to learn
     
   - Here, $P(y=1 \mid A, B)$ is the probability that $B$ is the next sentence following $A$.
 
-By training on the NSP task, the model learns to capture sentence-level coherence and dependencies, enhancing its ability to perform tasks that require understanding the flow of information across multiple sentences. This results in improved performance on complex language understanding and generation tasks.
+Training on NSP tasks, the model learns to capture sentence-level coherence and dependencies, enhancing its ability to perform tasks that require understanding the flow of information across multiple sentences crucial for tasks like document-level QA and summarization.
 
 - ### **Causal Language Modeling:**
     - In CLM, the model is trained to predict the next token in a sequence, given all the previous tokens. This unidirectional approach models the probability of a token based on its preceding context.
@@ -95,7 +98,7 @@ By training on the NSP task, the model learns to capture sentence-level coherenc
     
   - Here, $P(x_t \mid x_1, x_2, \ldots, x_{t-1})$ is the probability of token $x_t$ given the preceding tokens.
 
-By focusing on the sequential nature of text, CLM enables models to generate coherent and contextually relevant text, making it ideal for applications such as story generation, conversational agents, and autocomplete systems. This approach leverages the temporal dependencies in language, enhancing the model's generative performance.
+CLM focuses on generating coherent text by predicting tokens based on their sequential context, making it ideal for generative tasks.
 
 
  ### **Denoising Autoencoders:**
@@ -111,7 +114,7 @@ By focusing on the sequential nature of text, CLM enables models to generate coh
     
   - Here, $\hat{x}_t$ is the reconstructed token corresponding to the original token $x_t$.
 
-By learning to denoise corrupted inputs, Denoising Autoencoders develop a robust understanding of the underlying data structure, enabling the extraction of meaningful features. This results in improved performance on various tasks that require capturing the essential characteristics of data while ignoring irrelevant noise.
+DAE improves model robustness by reconstructing clean inputs from corrupted versions, essential for tasks requiring accurate data representation.
 
 - ### **Contrastive Learning:**
     - Contrastive Learning trains the model to distinguish between similar and dissimilar pairs of data. By learning to bring similar pairs closer and push dissimilar pairs apart in the representation space, the model captures meaningful patterns and structures in the data.
@@ -125,4 +128,6 @@ By learning to denoise corrupted inputs, Denoising Autoencoders develop a robust
     
   - Here, $d(\mathbf{x}_i, \mathbf{x}_j)$ is the distance measure (e.g., Euclidean distance) between the representations of $\mathbf{x}_i$ and $\mathbf{x}_j$, and $\alpha$ is a margin that enforces a minimum separation between dissimilar pairs.
 
-By focusing on the relative distances between data points, Contrastive Learning enables the model to learn discriminative features that capture the essence of the data. This results in improved performance on various downstream tasks, such as retrieval, clustering, and classification, by leveraging the learned representations.
+This technique enhances model performance by learning discriminative features from data pairs, beneficial for tasks like image and text clustering, retrieval.
+
+

@@ -53,5 +53,19 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
     
   - Here, $P(x_i \mid \mathbf{X}_{\text{masked}})$ is the probability of token $x_i$ given the masked sequence.
 
+- ### **Masked Multimodal Language Modeling:**
+    - In MMLM, certain tokens in the input sequence are masked at random, similar to MLM, but the model is trained using both textual and non-textual data such as images, audio, or video.
+    - This approach enhances the model's ability to understand and integrate multimodal information, learning representations that capture the interplay between different modalities.
+
+- #### **Mathematical Formulation**
+  - Given a sequence of tokens $\mathbf{X} = \{x_1, x_2, \ldots, x_n\}$ and a sequence of non-textual features $\mathbf{Y} = \{y_1, y_2, \ldots, y_m\}$, we create a corrupted version $\mathbf{X}_{\text{masked}}$ by replacing some tokens with a special `[MASK]` token.
+  - Let $M$ be the set of masked positions in $\mathbf{X}$.
+  - The training objective is to maximize the likelihood of the masked tokens given the context provided by both the masked textual sequence and the associated non-textual data:
+
+    $$L_{\text{MMLM}} = -\sum_{i \in M} \log P(x_i \mid \mathbf{X}_{\text{masked}}, \mathbf{Y})$$
+    
+  - Here, $P(x_i \mid \mathbf{X}_{\text{masked}}, \mathbf{Y})$ is the probability of token $x_i` given the masked sequence and the additional multimodal context.
+
+By integrating information from multiple modalities, MMLM allows models to learn richer, more comprehensive representations, leading to improvements in tasks such as visual question answering, image captioning, and more complex language understanding scenarios where context is derived from both text and other types of data.
      
 

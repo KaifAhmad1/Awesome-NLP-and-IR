@@ -137,3 +137,9 @@ This technique enhances model performance by learning discriminative features fr
      - **Task Specialization:** Pre-trained models are generalists. Fine-tuning allows these models to specialize in particular tasks such as sentiment analysis, translation, or question answering.
      - **Improved Performance:** Fine-tuning on task-specific data enhances the model's ability to perform well on that task by leveraging the relevant information it has seen during pretraining.
      - **Efficiency:** Fine-tuning requires significantly less data and computational resources compared to training a model from scratch, making it a practical approach for many applications.
+    
+   - ### **Types of Fine-Tuning Methods**
+     - Full Fine-Tuning
+     - Parameter-Efficient Fine-Tuning (PEFT)
+     - Memory-Efficient Fine-Tuning (MEFT)
+     - Alignment-Based Fine-Tuning

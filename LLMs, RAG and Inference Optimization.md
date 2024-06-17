@@ -68,4 +68,61 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
 
 By integrating information from multiple modalities, MMLM allows models to learn richer, more comprehensive representations, leading to improvements in tasks such as visual question answering, image captioning, and more complex language understanding scenarios where context is derived from both text and other types of data.
      
+- ### **Next Sentence Prediction:**
+    - In NSP, the model is trained to understand the relationship between pairs of sentences, determining whether a given sentence B naturally follows a given sentence A.
+    - This technique is particularly useful for tasks that require a coherent understanding of longer texts, such as document-level question answering and summarization.
 
+- #### **Mathematical Formulation**
+  - Given a pair of sentences $(A, B)$, the model's task is to predict whether $B$ is the actual next sentence that follows $A$ in the corpus.
+  - We introduce a binary classification variable $y \in \{0, 1\}$, where $y = 1$ indicates that $B$ is the next sentence following $A$, and $y = 0$ otherwise.
+  - The training objective is to minimize the binary cross-entropy loss:
+
+    $$L_{\text{NSP}} = -\left[ y \log P(y=1 \mid A, B) + (1 - y) \log P(y=0 \mid A, B) \right]$$
+    
+  - Here, $P(y=1 \mid A, B)$ is the probability that $B$ is the next sentence following $A$.
+
+By training on the NSP task, the model learns to capture sentence-level coherence and dependencies, enhancing its ability to perform tasks that require understanding the flow of information across multiple sentences. This results in improved performance on complex language understanding and generation tasks.
+
+- ### **Causal Language Modeling:**
+    - In CLM, the model is trained to predict the next token in a sequence, given all the previous tokens. This unidirectional approach models the probability of a token based on its preceding context.
+    - This technique is particularly effective for tasks that require generative capabilities, such as text generation and language modeling.
+
+- #### **Mathematical Formulation**
+  - Given a sequence of tokens $\mathbf{X} = \{x_1, x_2, \ldots, x_n\}$, the model is trained to predict each token $x_t$ based on the preceding tokens $\{x_1, x_2, \ldots, x_{t-1}\}$.
+  - The training objective is to maximize the likelihood of each token in the sequence:
+
+    $$L_{\text{CLM}} = -\sum_{t=1}^{n} \log P(x_t \mid x_1, x_2, \ldots, x_{t-1})$$
+    
+  - Here, $P(x_t \mid x_1, x_2, \ldots, x_{t-1})$ is the probability of token $x_t$ given the preceding tokens.
+
+By focusing on the sequential nature of text, CLM enables models to generate coherent and contextually relevant text, making it ideal for applications such as story generation, conversational agents, and autocomplete systems. This approach leverages the temporal dependencies in language, enhancing the model's generative performance.
+
+
+ ### **Denoising Autoencoders:**
+   - Denoising Autoencoders (DAE) are trained to reconstruct the original input from a corrupted version of it. This process helps the model learn robust representations by focusing on essential features and ignoring noise.
+   - This technique is widely used for tasks such as feature learning, dimensionality reduction, and anomaly detection.
+
+- #### **Mathematical Formulation**
+  - Given an input sequence $\mathbf{X} = \{x_1, x_2, \ldots, x_n\}$, we create a corrupted version $\mathbf{X}_{\text{corrupted}}$ by applying noise or perturbations.
+  - The model is trained to reconstruct the original input sequence $\mathbf{X}$ from the corrupted version $\mathbf{X}_{\text{corrupted}}$.
+  - The training objective is to minimize the reconstruction loss, often measured by mean squared error (MSE) or cross-entropy loss, depending on the nature of the data:
+
+    $$L_{\text{DAE}} = \sum_{t=1}^{n} \| x_t - \hat{x}_t \|^2$$
+    
+  - Here, $\hat{x}_t$ is the reconstructed token corresponding to the original token $x_t$.
+
+By learning to denoise corrupted inputs, Denoising Autoencoders develop a robust understanding of the underlying data structure, enabling the extraction of meaningful features. This results in improved performance on various tasks that require capturing the essential characteristics of data while ignoring irrelevant noise.
+
+- ### **Contrastive Learning:**
+    - Contrastive Learning trains the model to distinguish between similar and dissimilar pairs of data. By learning to bring similar pairs closer and push dissimilar pairs apart in the representation space, the model captures meaningful patterns and structures in the data.
+    - This technique is particularly effective for tasks such as image and text clustering, and representation learning.
+
+- #### **Mathematical Formulation**
+  - Given a set of input pairs $\{(\mathbf{x}_i, \mathbf{x}_i^+), (\mathbf{x}_i, \mathbf{x}_i^-)\}$ where $(\mathbf{x}_i, \mathbf{x}_i^+)$ are similar pairs and $(\mathbf{x}_i, \mathbf{x}_i^-)$ are dissimilar pairs, the model learns to minimize the distance between similar pairs and maximize the distance between dissimilar pairs.
+  - The training objective is to minimize the contrastive loss, which can be defined as:
+
+    $$L_{\text{contrastive}} = \sum_{i} \left[ \max(0, d(\mathbf{x}_i, \mathbf{x}_i^+) - d(\mathbf{x}_i, \mathbf{x}_i^-) + \alpha) \right]$$
+    
+  - Here, $d(\mathbf{x}_i, \mathbf{x}_j)$ is the distance measure (e.g., Euclidean distance) between the representations of $\mathbf{x}_i$ and $\mathbf{x}_j$, and $\alpha$ is a margin that enforces a minimum separation between dissimilar pairs.
+
+By focusing on the relative distances between data points, Contrastive Learning enables the model to learn discriminative features that capture the essence of the data. This results in improved performance on various downstream tasks, such as retrieval, clustering, and classification, by leveraging the learned representations.

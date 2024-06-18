@@ -286,4 +286,23 @@ PEFT addresses key challenges and practical considerations in machine learning:
     - **Xattn Tuning (Cross-Attention Tuning)**: Fine-tunes only cross-attention layers within Transformer architectures, optimizing model adaptation for specific tasks.
     - **SPT (Sensitivity-aware Parameter-Efficient Fine-Tuning)**: Identifies sensitive parameters through first-order Taylor expansions, selecting and fine-tuning only those critical for task performance.
 
+- ### **Background of Matrix Decomposition**
+  Matrix decomposition, also known as factorization, breaks down matrices into simpler components, essential across mathematics, engineering, and data science for simplifying operations and revealing underlying structures.
+  
+  - #### **Why Matrix Decomposition is Essential:**
+    1. **Dimensionality Reduction:** Simplifies data/models by retaining key information in lower-dimensional forms, reducing complexity and storage needs.
+    2. **Feature Extraction:** Identifies data patterns/features crucial in analysis and machine learning, enhancing efficiency in processing and interpretation.
+    3. **Numerical Stability:** Enhances stability in computations, particularly for large or ill-conditioned matrices, by reducing errors through decomposition.
+    4. **Algorithm Efficiency:** Speeds up operations and reduces memory usage compared to original matrices, crucial in fields like image/signal processing.
+  
+  - #### **Advantages:**
+    - **Simplicity and Interpretability:** Simplifies relationships within data/models (e.g., PCA's eigen-decomposition).
+    - **Computational Efficiency:** Faster operations and lower memory use post-decomposition, vital for large datasets/models.
+    - **Optimization Applications:** Crucial in solving linear equations and iterative algorithms (e.g., SVD in recommendations).
+    - **Flexibility:** Various methods (e.g., SVD, QR, LU) cater to different challenges, adaptable to diverse applications.
+    - **Feature Transformation:** Enhances feature representation, e.g., in deep learning, via matrix transformations.
+
+
+  - ### **Reparameterized PEFT**
+    
 

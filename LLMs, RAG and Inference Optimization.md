@@ -185,7 +185,7 @@ Supervised fine-tuning adapts a pre-trained model to a specific task using label
     - Memory-Efficient Fine-Tuning (MEFT)
     - Alignment-Based Fine-Tuning
       
- ### Full Fine-Tuning: Simplified Explanation
+ ### Full Fine-Tuning
 
 Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to fit a new task-specific dataset. Here’s how it works:
 

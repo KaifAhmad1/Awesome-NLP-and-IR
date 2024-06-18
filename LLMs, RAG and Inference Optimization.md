@@ -184,3 +184,35 @@ Supervised fine-tuning adapts a pre-trained model to a specific task using label
     - Parameter-Efficient Fine-Tuning (PEFT)
     - Memory-Efficient Fine-Tuning (MEFT)
     - Alignment-Based Fine-Tuning
+      
+ ### Full Fine-Tuning: Simplified Explanation
+
+Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to fit a new task-specific dataset. Here’s how it works:
+
+#### How It Works:
+
+1. **Starting Point**: You begin with a pre-trained model $\theta$, which has already learned useful patterns from a large dataset during its initial training.
+
+2. **New Task**: You have a new dataset $\mathcal{D}$ for a specific task, such as recognizing objects in images or understanding sentiment in text.
+
+3. **Adjusting the Model**: The goal is to make $\theta$ better at the new task by updating all its parameters based on $\mathcal{D}$. This is done by minimizing a measure of how well the model predicts on $\mathcal{D}$, known as the loss function $\mathcal{L}(\theta)$.
+
+   - **Loss Function**: This function $\mathcal{L}(\theta)$ tells us how wrong the model's predictions are compared to the correct answers in `$\mathcal{D}$`.
+   
+     $$\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^N \ell(\theta; x_i, y_i)$$
+   
+     Here, $\ell(\theta; x_i, y_i)$ quantifies the error between the model's prediction and the true label $y_i$ for input $x_i$.
+
+   - **Optimization**: Techniques like gradient descent are used to adjust $\theta$ to minimize $\mathcal{L}(\theta)$. This means tweaking $\theta$ in small steps to improve its performance on the new task.
+
+#### Advantages:
+
+- **Efficiency**: It builds on what the model already knows, saving time compared to training from scratch.
+- **Performance**: Can lead to better results on the new task because the model starts with a strong foundation.
+
+#### Challenges, including Catastrophic Forgetting:
+
+- **Catastrophic Forgetting**: While adjusting to the new dataset, the model might forget some things it learned from its original training. This can lead to poorer performance on tasks it used to handle well.
+  
+- **Balancing Act**: It's important to find a balance between adapting to the new data and retaining valuable knowledge from previous training.
+

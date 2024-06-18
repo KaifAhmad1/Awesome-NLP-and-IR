@@ -257,4 +257,33 @@ PEFT addresses key challenges and practical considerations in machine learning:
 
        **(IA)^3:** (IA)^3 [53] introduces three learnable rescaling vectors (for key, value, and FFN activations) to scale the activations within the Transformer layers. This integration, shown in Figure 6(a), eliminates extra computational costs during inference.
 
+- ### **Selective PEFT**
+  Selective PEFT methods focus on fine-tuning a subset of existing parameters rather than introducing additional parameters. This approach aims to enhance model performance on specific downstream tasks while minimizing computational overhead. Selective PEFT can be broadly categorized into unstructured and structured masking techniques.
+
+  - #### **Unstructured Masking**
+    Unstructured masking involves applying binary masks to the model's parameters to determine which ones are updated during fine-tuning. The binary mask **M = { m_i }** indicates whether a parameter **θ_i** is frozen (0) or trainable (1). The updated parameters after fine-tuning are calculated as:
+    
+    $$θ_i' = θ_i - η \cdot BL_{θ_i} \cdot m_i$$
+    
+    where η is the learning rate, $BL_{θ_i}$ is the gradient of the loss function with respect to $θ_i$. This selective updating process optimizes resource allocation by focusing computational efforts on task-critical parameters.
+
+    Representative methods in unstructured masking include:
+    
+    - **Diff Pruning**: Uses a differentiable L0-norm penalty to regularize a learnable binary mask applied to model weights.
+    - **PaFi (Parameter-Freezing)**: Selects parameters with the smallest absolute magnitude for fine-tuning, optimizing parameter efficiency.
+    - **FishMask**: Uses Fisher information to determine parameter importance, selecting top parameters for updating based on task relevance.
+    - **Fish-Dip**: Dynamically recalculates the mask using Fisher information during each training period to adapt to evolving task requirements.
+    - **Child-tuning**: Introduces dynamic selection of a `child` network during training iterations, where only parameters within the chosen network are updated.
+
+  - #### **Structured Masking**
+    Structured masking organizes parameter selection into regular patterns rather than applying it randomly, enhancing computational and hardware efficiency during training.
+    
+    Techniques in structured selective PEFT include:
+    
+    - **Structured Pruning**: Techniques like Diff Pruning partition weight parameters into local groups and systematically prune them based on predefined criteria, improving computational efficiency.
+    - **FAR (Feature-Aware Regularization)**: Groups FFN weights in Transformer blocks into nodes, ranks them using L1 norm, and fine-tunes only the most critical nodes for selective optimization.
+    - **Bitfit**: Focuses on fine-tuning bias parameters of DNN layers, demonstrating competitive results for smaller models.
+    - **Xattn Tuning (Cross-Attention Tuning)**: Fine-tunes only cross-attention layers within Transformer architectures, optimizing model adaptation for specific tasks.
+    - **SPT (Sensitivity-aware Parameter-Efficient Fine-Tuning)**: Identifies sensitive parameters through first-order Taylor expansions, selecting and fine-tuning only those critical for task performance.
+
 

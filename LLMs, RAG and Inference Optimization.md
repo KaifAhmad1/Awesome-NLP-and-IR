@@ -216,3 +216,16 @@ Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to
   
 - **Balancing Act**: It's important to find a balance between adapting to the new data and retaining valuable knowledge from previous training.
 
+ ### PEFT (Parameter-Efficient Fine-Tuning):
+ PEFT is a technique used in machine learning, particularly in deep learning and LLMs, where instead of updating all parameters of a pre-trained model during adaptation to a new task or dataset, only a subset of parameters are adjusted. This approach aims to optimize model performance with fewer trainable parameters compared to full fine-tuning methods.
+- #### **Why PEFT is Needed:**
+PEFT addresses key challenges and practical considerations in machine learning:
+   - **Efficiency:** It reduces computational resources and time required for training by updating only the most relevant parameters, making it feasible to deploy models on hardware with limited capabilities.
+   - **Preservation of Knowledge:** PEFT retains valuable knowledge from pre-training, minimizing changes to the original model architecture while adapting it to new tasks.
+   - **Generalization:** By focusing updates on task-relevant parameters, PEFT can improve model generalization on new datasets by avoiding overfitting.
+- #### **Advantages of PEFT over Full Fine-Tuning:**
+   - **Speed:** Faster convergence during training due to fewer parameters being updated.
+   - **Resource Efficiency:** Reduced memory and computational demands, suitable for deployment on hardware with constraints.
+   - **Flexibility:** Adaptable to various deep learning architectures and scales, including large models with millions or billions of parameters.
+   - **Improved Performance:** Enhanced model efficiency and effectiveness on new tasks, leveraging pre-trained knowledge effectively.
+

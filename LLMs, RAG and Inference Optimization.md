@@ -247,4 +247,14 @@ PEFT addresses key challenges and practical considerations in machine learning:
           Adapter layers run alongside each Transformer sublayer, maintaining model parallelism and efficiency.
        3. #### **CoDA**
           Combines parallel adapters with a sparse activation mechanism, where a soft top-k selection process identifies important tokens processed by both the frozen pre-trained layer and the adapter branch for efficiency.
+    2. #### **Soft Prompt-based Fine-tuning**
+       Soft prompt-based fine-tuning refines model performance by optimizing continuous vectors, known as soft prompts, appended to the input sequence. This approach leverages the rich information contained within the continuous embedding space, as opposed to discrete token representations.
+
+       #### Prominent Soft Prompt Approaches:
+       - **Prefix-tuning:** Introduced by [35], this method adds learnable vectors to keys and values across all Transformer layers. A reparameterization strategy using an MLP layer ensures stable optimization. Variants such as p-tuning v2 [37] and APT (Adaptive Prefix Tuning) [38] have enhanced this method by removing reparameterization and introducing adaptive mechanisms to control the importance of prefixes in each layer.
+    3. #### **Other Additive Methods**
+       Several other methods incorporate additional parameters during fine-tuning, aiming to enhance efficiency without modifying the base model’s structure significantly.
+
+       **(IA)^3:** (IA)^3 [53] introduces three learnable rescaling vectors (for key, value, and FFN activations) to scale the activations within the Transformer layers. This integration, shown in Figure 6(a), eliminates extra computational costs during inference.
+
 

@@ -137,9 +137,50 @@ This technique enhances model performance by learning discriminative features fr
      - **Task Specialization:** Pre-trained models are generalists. Fine-tuning allows these models to specialize in particular tasks such as sentiment analysis, translation, or question answering.
      - **Improved Performance:** Fine-tuning on task-specific data enhances the model's ability to perform well on that task by leveraging the relevant information it has seen during pretraining.
      - **Efficiency:** Fine-tuning requires significantly less data and computational resources compared to training a model from scratch, making it a practical approach for many applications.
+### Supervised Fine-Tuning
+
+Supervised fine-tuning adapts a pre-trained model to a specific task using labeled data, refining the general knowledge the model gained during pre-training for particular applications.
+
+#### Steps in Supervised Fine-Tuning
+
+1. **Pre-trained Model Selection:**
+   - Choose a model pre-trained on a large dataset (e.g., BERT, GPT, ResNet).
+
+2. **Task-Specific Dataset:**
+   - Prepare a labeled dataset relevant to the task (e.g., sentiment analysis, image classification).
+
+3. **Model Adjustment (Optional):**
+   - Modify the model architecture if necessary (e.g., add task-specific layers).
+
+4. **Training Process:**
+   - **Initialization:** Load pre-trained weights.
+   - **Loss Function:** Choose a loss function (e.g., cross-entropy for classification):
+     $$\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i)$$
+   - **Optimizer:** Select an optimizer (e.g., Adam, SGD).
+
+5. **Training Loop:**
+   - Train the model, including forward propagation, loss calculation, backpropagation, and parameter updates:
+     $$\theta = \theta - \eta \nabla_{\theta} \mathcal{L}$$
+     where $\theta$ represents model parameters and $\eta$ is the learning rate.
+
+6. **Evaluation and Validation:**
+   - Monitor performance on a validation set using metrics like accuracy or F1 score to avoid overfitting.
+
+7. **Hyperparameter Tuning:**
+   - Adjust learning rate, batch size, and epochs to optimize performance.
+
+8. **Testing:**
+   - Test the fine-tuned model on an unseen test set to assess generalization.
+
+#### Advantages
+
+- **Improved Performance:** Enhances accuracy by specializing the model for specific tasks.
+- **Efficiency:** Requires less data and computational resources than training from scratch.
+- **Flexibility:** Allows the same model to be fine-tuned for various tasks.
+
     
-   - ### **Types of Fine-Tuning Methods**
-     - Full Fine-Tuning
-     - Parameter-Efficient Fine-Tuning (PEFT)
-     - Memory-Efficient Fine-Tuning (MEFT)
-     - Alignment-Based Fine-Tuning
+- ### **Types of Fine-Tuning Methods**
+    - Full Fine-Tuning
+    - Parameter-Efficient Fine-Tuning (PEFT)
+    - Memory-Efficient Fine-Tuning (MEFT)
+    - Alignment-Based Fine-Tuning

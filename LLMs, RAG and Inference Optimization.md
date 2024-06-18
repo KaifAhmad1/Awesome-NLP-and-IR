@@ -228,4 +228,9 @@ PEFT addresses key challenges and practical considerations in machine learning:
    - **Resource Efficiency:** Reduced memory and computational demands, suitable for deployment on hardware with constraints.
    - **Flexibility:** Adaptable to various deep learning architectures and scales, including large models with millions or billions of parameters.
    - **Improved Performance:** Enhanced model efficiency and effectiveness on new tasks, leveraging pre-trained knowledge effectively.
+- #### **Types of PEFT**
+  - Additive PEFT
+  - Selective PEFT
+  - Reparameterized PEFT
+  - Hybrid PEFT
 

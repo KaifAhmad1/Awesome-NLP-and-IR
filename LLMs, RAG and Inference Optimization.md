@@ -235,3 +235,16 @@ PEFT addresses key challenges and practical considerations in machine learning:
   - Hybrid PEFT
   - ### **Additive PEFT**
     Full fine-tuning of large pre-trained models (PLMs) is computationally expensive and can potentially harm their generalization ability. To address this, a common approach is to leave the pre-trained model largely unchanged and introduce a minimal number of trainable parameters. These additional parameters are strategically positioned within the model architecture, and only these weights are updated during fine-tuning for specific downstream tasks. This approach, called Additive Tuning, significantly reduces storage, memory, and computational resource requirements.
+    1. #### **Adapters**
+       Adapter methods involve inserting small adapter layers within Transformer blocks. These layers typically consist of a down-projection matrix $W_{\text{down}}$, a non-linear activation function $\sigma$, and an up-projection matrix $W_{\text{up}}$. Given an input $h_{\text{in}}$, the computation in the adapter module (with residual connection) is:
+
+       $$\text{Adapter}(x) = W_{\text{up}} \sigma (W_{\text{down}} x) + x$$
+
+       #### Adapter Variants
+       1. #### **Serial Adapter**
+          Each Transformer block is enhanced with adapter modules placed after the self-attention layer and the feed-forward network (FFN) layer.
+       2. #### **Parallel Adapter**
+          Adapter layers run alongside each Transformer sublayer, maintaining model parallelism and efficiency.
+       3. #### **CoDA**
+          Combines parallel adapters with a sparse activation mechanism, where a soft top-k selection process identifies important tokens processed by both the frozen pre-trained layer and the adapter branch for efficiency.
+

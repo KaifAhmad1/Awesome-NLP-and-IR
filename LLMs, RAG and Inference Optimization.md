@@ -233,4 +233,5 @@ PEFT addresses key challenges and practical considerations in machine learning:
   - Selective PEFT
   - Reparameterized PEFT
   - Hybrid PEFT
-
+  - ### **Additive PEFT**
+    Full fine-tuning of large pre-trained models (PLMs) is computationally expensive and can potentially harm their generalization ability. To address this, a common approach is to leave the pre-trained model largely unchanged and introduce a minimal number of trainable parameters. These additional parameters are strategically positioned within the model architecture, and only these weights are updated during fine-tuning for specific downstream tasks. This approach, called Additive Tuning, significantly reduces storage, memory, and computational resource requirements.

@@ -396,8 +396,9 @@ LLM-Adapters offer a framework incorporating various PEFT techniques into large 
 - Proper in-distribution fine-tuning enables smaller models to outperform larger ones on specific tasks.
 
 #### 5. Neural Architecture Search (NAS)
-
 NAS is used to discover optimal PEFT combinations:
+- **NOAH:** Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
+- **AUTOPEFT:** Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.
 
 - **NOAH**: Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
 - **AUTOPEFT**: Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.

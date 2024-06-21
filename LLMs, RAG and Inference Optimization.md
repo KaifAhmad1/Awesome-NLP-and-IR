@@ -356,3 +356,49 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
   - This approach allows the model to dynamically adjust the rank within each LoRA module, effectively managing its parameter counts.
   - AdaLoRA delivers superior performance by leveraging a predefined training budget for pruning, orthogonality maintenance, and learning module-specific ranks dynamically.
 
+### **Hybrid PEFT**
+
+The effectiveness of Parameter-Efficient Fine-Tuning (PEFT) methods varies across tasks. Thus, many studies focus on combining the advantages of different PEFT approaches or unifying them through commonalities. Here are some notable approaches:
+
+#### 1. UniPELT
+
+UniPELT integrates LoRA, prefix-tuning, and adapters within each Transformer block, using a gating mechanism to control the activation of PEFT submodules. This mechanism consists of three small feed-forward networks (FFNs), each producing a scalar value $G \in [0,1]$, applied to LoRA, prefix, and adapter matrices respectively. UniPELT consistently improves accuracy by 1% to 4% across various setups.
+
+#### 2. S4
+
+S4 explores design spaces for Adapter (A), Prefix (P), BitFit (B), and LoRA (L), identifying key design patterns:
+
+- **Spindle Grouping**: Divides Transformer layers into four groups $G_i$ for $i \in \{1,2,3,4\}$, with each group applying similar PEFT strategies.
+- **Uniform Parameter Allocation**: Distributes trainable parameters uniformly across layers.
+- **Tuning All Groups**: Ensures all groups are tuned.
+- **Diverse Strategies per Group**: Assigns different PEFT strategies to different groups. Optimal configuration:
+  - $G_1$: (A, L)
+  - $G_2$: (A, P)
+  - $G_3$: (A, P, B)
+  - $G_4$: (P, B, L)
+
+#### 3. MAM Adapter
+
+MAM Adapter examines the similarities between adapters, prefix-tuning, and LoRA, creating three variants:
+
+- **Parallel Adapter**: Places adapter layers alongside specific layers (SA or FFN).
+- **Multi-head Parallel Adapter**: Divides the parallel adapter into multiple heads affecting head attention output in SA.
+- **Scaled Parallel Adapter**: Adds a scaling term post-adapter layer, akin to LoRA.
+
+The best setup, called MAM Adapter, uses prefix-tuning in the SA layer and scaled parallel adapter in the FFN layer.
+
+#### 4. LLM-Adapters
+
+LLM-Adapters offer a framework incorporating various PEFT techniques into large language models (LLMs). Key insights include:
+
+- Effective placements for series adapters, parallel adapters, and LoRA are after MLP layers, alongside MLP layers, and following both Attention and MLP layers, respectively.
+- Smaller LLMs with PEFT can match or surpass larger models on certain tasks.
+- Proper in-distribution fine-tuning enables smaller models to outperform larger ones on specific tasks.
+
+#### 5. Neural Architecture Search (NAS)
+
+NAS is used to discover optimal PEFT combinations:
+
+- **NOAH**: Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
+- **AUTOPEFT**: Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.
+

@@ -304,25 +304,55 @@ PEFT addresses key challenges and practical considerations in machine learning:
 
 
 ### **Reparameterized PEFT**
-Reparameterization involves transforming a model's architecture by altering its parameters while maintaining functional equivalence. Parameter-efficient fine-tuning (PEFT) typically involves constructing a low-rank parameterization to achieve efficiency during training. The model can revert to its original weight parameterization, ensuring unchanged inference speed.
-
-#### **Intrinsic Dimensionality in Pre-trained Models**
-Research has shown that pre-trained models have exceptionally low intrinsic dimensionality, meaning a low-dimensional reparameterization can be as effective for fine-tuning as the entire parameter space. This intrinsic dimensionality has been explored during fine-tuning large language models (LLMs).
 
 #### **LoRA: Low-Rank Adaptation**
-LoRA (Low-Rank Adaptation) is a widely recognized reparameterization technique. For a given pre-trained weight matrix $W_0 \in \mathbb{R}^{d \times k}$, LoRA introduces two trainable weight matrices, $W_{up} \in \mathbb{R}^{d \times r}$ and $W_{down} \in \mathbb{R}^{r \times k}$, where the rank $r \leq \min(d, k)$. These matrices operate in parallel to $W_0$. The input $h_{in}$ typically produces the output $h_{out} = W_0 h_{in}$. LoRA modifies this output by introducing an incremental update $\Delta W$:
+LoRA (Low-Rank Adaptation) is a widely recognized reparameterization technique.
 
-$$h_{out} = W_0 h_{in} + \frac{\alpha}{r} W_{up} W_{down} h_{in}$$
+- **Concept:**
+  - For a given pre-trained weight matrix $W_0 \in \mathbb{R}^{d \times k}$, LoRA introduces two trainable weight matrices:
+    - $W_{up} \in \mathbb{R}^{d \times r}$
+    - $W_{down} \in \mathbb{R}^{r \times k}$
+  - Here, the rank $r \leq \min(d, k)$.
+  - These matrices operate in parallel to $W_0$.
 
-where $\alpha$ is a scaling factor. Initially, $W_{down}$ is randomized, and $W_{up}$ is zeroed out, ensuring $\Delta W$ starts at zero. LoRA is straightforward to implement and effective on models with up to 175 billion parameters. Once fine-tuning is complete, LoRA’s adaptive weights integrate seamlessly with the pre-trained backbone, maintaining efficiency without adding inference burden.
+- **Operation:**
+  - The input $h_{\text{in}}$ typically produces the output $h_{\text{out}} = W_0 h_{\text{in}}$.
+  - LoRA modifies this output by introducing an incremental update $\Delta W$:
+    
+    $$h_{\text{out}} = W_0 h_{\text{in}} + \frac{\alpha}{r} W_{up} W_{down} h_{\text{in}}$$
+    
+    where $\alpha$ is a scaling factor.
+
+- **Implementation:**
+  - Initially, $W_{down}$ is randomized, and $W_{up}$ is zeroed out, ensuring $\Delta W$ starts at zero.
+  - LoRA is straightforward to implement and effective on models with up to 175 billion parameters.
+  - Once fine-tuning is complete, LoRA’s adaptive weights integrate seamlessly with the pre-trained backbone, maintaining efficiency without adding inference burden.
 
 #### **DyLoRA: Dynamic LoRA**
-Selecting an appropriate rank in LoRA training is challenging. DyLoRA addresses this by training the LoRA module on a range of ranks within a predefined training budget. For a given rank range, DyLoRA dynamically chooses a rank at each iteration. Consequently, matrices $W_{down}$ and $W_{up}$ are tailored for the selected rank, reducing the training time required to find an optimal rank.
+DyLoRA addresses the challenge of selecting an appropriate rank in LoRA training.
+
+- **Concept:**
+  - DyLoRA trains the LoRA module on a range of ranks within a predefined training budget.
+  - For a given rank range, DyLoRA dynamically chooses a rank at each iteration.
+
+- **Operation:**
+  - Matrices $W_{down}$ and $W_{up}$ are tailored for the selected rank, reducing the training time required to find an optimal rank.
 
 #### **AdaLoRA: Adaptive LoRA**
-AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD), $\Delta W = P \Lambda Q$, where $P$ and $Q$ are orthogonal matrices, and $\Lambda$ is a diagonal matrix containing singular values. During training, singular values are pruned iteratively based on their importance scores. To ensure orthogonality, an additional regularizer term is included in the loss:
+AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 
-$$R(P, Q) = \| P^T P - I \|^2_F + \| QQ^T - I \|^2_F$$
+- **Concept:**
+  - $\Delta W = P \Lambda Q$, where:
+    - $P$ and $Q$ are orthogonal matrices.
+    - $\Lambda$ is a diagonal matrix containing singular values.
 
-This approach allows the model to dynamically adjust the rank within each LoRA module, effectively managing its parameter counts. AdaLoRA delivers superior performance by leveraging a predefined training budget for pruning, orthogonality maintenance, and learning module-specific ranks dynamically.
+- **Operation:**
+  - Singular values are pruned iteratively during training based on their importance scores.
+  - An additional regularizer term is included in the loss to ensure orthogonality:
+    
+    $$R(P, Q) = \| P^T P - I \|^2_F + \| QQ^T - I \|^2_F$$
+
+- **Advantages:**
+  - This approach allows the model to dynamically adjust the rank within each LoRA module, effectively managing its parameter counts.
+  - AdaLoRA delivers superior performance by leveraging a predefined training budget for pruning, orthogonality maintenance, and learning module-specific ranks dynamically.
 

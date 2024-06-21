@@ -306,6 +306,7 @@ PEFT addresses key challenges and practical considerations in machine learning:
 ### **Reparameterized PEFT**
 
 #### **LoRA: Low-Rank Adaptation**
+
 LoRA (Low-Rank Adaptation) is a widely recognized reparameterization technique.
 
 - **Concept:**
@@ -318,9 +319,9 @@ LoRA (Low-Rank Adaptation) is a widely recognized reparameterization technique.
 - **Operation:**
   - The input $h_{\text{in}}$ typically produces the output $h_{\text{out}} = W_0 h_{\text{in}}$.
   - LoRA modifies this output by introducing an incremental update $\Delta W$:
-    
+
     $$h_{\text{out}} = W_0 h_{\text{in}} + \frac{\alpha}{r} W_{up} W_{down} h_{\text{in}}$$
-    
+
     where $\alpha$ is a scaling factor.
 
 - **Implementation:**
@@ -329,6 +330,7 @@ LoRA (Low-Rank Adaptation) is a widely recognized reparameterization technique.
   - Once fine-tuning is complete, LoRA’s adaptive weights integrate seamlessly with the pre-trained backbone, maintaining efficiency without adding inference burden.
 
 #### **DyLoRA: Dynamic LoRA**
+
 DyLoRA addresses the challenge of selecting an appropriate rank in LoRA training.
 
 - **Concept:**
@@ -339,6 +341,7 @@ DyLoRA addresses the challenge of selecting an appropriate rank in LoRA training
   - Matrices $W_{down}$ and $W_{up}$ are tailored for the selected rank, reducing the training time required to find an optimal rank.
 
 #### **AdaLoRA: Adaptive LoRA**
+
 AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 
 - **Concept:**
@@ -349,7 +352,7 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 - **Operation:**
   - Singular values are pruned iteratively during training based on their importance scores.
   - An additional regularizer term is included in the loss to ensure orthogonality:
-    
+
     $$R(P, Q) = \| P^T P - I \|^2_F + \| QQ^T - I \|^2_F$$
 
 - **Advantages:**
@@ -360,11 +363,11 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 
 The effectiveness of Parameter-Efficient Fine-Tuning (PEFT) methods varies across tasks. Thus, many studies focus on combining the advantages of different PEFT approaches or unifying them through commonalities. Here are some notable approaches:
 
-#### 1. UniPELT
+#### **1. UniPELT**
 
 UniPELT integrates LoRA, prefix-tuning, and adapters within each Transformer block, using a gating mechanism to control the activation of PEFT submodules. This mechanism consists of three small feed-forward networks (FFNs), each producing a scalar value $G \in [0,1]$, applied to LoRA, prefix, and adapter matrices respectively. UniPELT consistently improves accuracy by 1% to 4% across various setups.
 
-#### 2. S4
+#### **2. S4**
 
 S4 explores design spaces for Adapter (A), Prefix (P), BitFit (B), and LoRA (L), identifying key design patterns:
 
@@ -377,7 +380,7 @@ S4 explores design spaces for Adapter (A), Prefix (P), BitFit (B), and LoRA (L),
   - $G_3$: (A, P, B)
   - $G_4$: (P, B, L)
 
-#### 3. MAM Adapter
+#### **3. MAM Adapter**
 
 MAM Adapter examines the similarities between adapters, prefix-tuning, and LoRA, creating three variants:
 
@@ -385,9 +388,9 @@ MAM Adapter examines the similarities between adapters, prefix-tuning, and LoRA,
 - **Multi-head Parallel Adapter**: Divides the parallel adapter into multiple heads affecting head attention output in SA.
 - **Scaled Parallel Adapter**: Adds a scaling term post-adapter layer, akin to LoRA.
 
-The best setup, called MAM Adapter, uses prefix-tuning in the SA layer and scaled parallel adapter in the FFN layer.
+The best setup, called the MAM Adapter, uses prefix-tuning in the SA layer and a scaled parallel adapter in the FFN layer.
 
-#### 4. LLM-Adapters
+#### **4. LLM-Adapters**
 
 LLM-Adapters offer a framework incorporating various PEFT techniques into large language models (LLMs). Key insights include:
 
@@ -395,7 +398,8 @@ LLM-Adapters offer a framework incorporating various PEFT techniques into large 
 - Smaller LLMs with PEFT can match or surpass larger models on certain tasks.
 - Proper in-distribution fine-tuning enables smaller models to outperform larger ones on specific tasks.
 
-#### 5. Neural Architecture Search (NAS)
+#### **5. Neural Architecture Search (NAS)**
+
 NAS is used to discover optimal PEFT combinations:
 - **NOAH:** Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
 - **AUTOPEFT:** Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.

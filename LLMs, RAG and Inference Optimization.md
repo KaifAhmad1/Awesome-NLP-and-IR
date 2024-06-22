@@ -408,3 +408,41 @@ NAS is used to discover optimal PEFT combinations:
 Fine-tuning large language models (LLMs) demands substantial training memory due to their immense size. Although many parameter-efficient fine-tuning (PEFT) methods aim to reduce the number of parameters, they still incur significant memory overhead during training because gradient computation and backpropagation remain necessary. For instance, popular PEFT techniques like adapters and LoRA only reduce memory usage to about 70% compared to full model fine-tuning. Memory efficiency is a crucial factor that cannot be overlooked.
 
 To enhance memory efficiency, various techniques have been developed to minimize the need for caching gradients for the entire LLM during fine-tuning, thereby reducing memory usage. Notable examples include:
+
+#### 1. Side-Tuning and Ladder-Side Tuning (LST)
+
+- **Side-Tuning** introduces a learnable network branch parallel to the backbone model. By confining backpropagation to this parallel branch, the need to store gradient information for the main model's weights is eliminated, significantly reducing memory requirements.
+- **Ladder-Side Tuning (LST)** further refines this approach by adding a ladder structure where fine-tuning occurs exclusively within the additional branches, bypassing the main model’s gradient storage needs.
+
+#### 2. Res-Tuning and Res-Tuning-Bypass
+
+- **Res-Tuning** separates the PEFT tuners (e.g., prompt tuning, adapters) from the backbone model, allowing independent fine-tuning of these modules.
+- **Res-Tuning-Bypass** enhances this by creating a bypass network in parallel with the backbone model, removing the data flow from the decoupled tuners to the backbone. This eliminates the requirement for gradient caching within the backbone model during backpropagation.
+
+#### 3. Memory-Efficient Fine-Tuning (MEFT)
+
+- MEFT is inspired by reversible models, which do not require caching intermediate activations during the forward pass. Instead, these activations are recalculated from the final output during backpropagation.
+- MEFT transforms an LLM into its reversible counterpart without additional pre-training. This involves careful initialization of new parameters to maintain the pre-trained model’s performance, ensuring effective fine-tuning.
+- MEFT introduces three methods to significantly reduce memory demands for storing activations, achieving performance comparable to traditional fine-tuning methods.
+
+#### 4. LoRA-FA (LoRA with Frozen Activations)
+
+- Addresses the high activation memory consumption in LoRA fine-tuning. Traditional LoRA requires large input activations to be stored during the forward pass for gradient computation.
+- LoRA-FA freezes both the pre-trained weights and the projection-down weights, updating only the projection-up weights. This reduces the need to store input activations, as intermediate activations are sufficient for gradient computation, significantly lowering memory usage.
+
+#### 5. HyperTuning
+
+- Employs a HyperModel to generate PEFT parameters using only a few shot examples, avoiding extensive gradient-based optimization directly on larger models.
+- This method achieves results comparable to full model fine-tuning while substantially reducing memory usage.
+
+#### 6. PEFT Plug-in
+
+- Trains PEFT modules on smaller language models first, which is more memory-efficient.
+- These trained modules are then integrated into LLMs during inference, circumventing the necessity for gradient-based optimization on larger models, resulting in significant memory savings.
+
+#### 7. MeZO (Memory-Efficient Zeroth-Order Optimizer)
+
+- Fine-tunes LLMs through forward passes only, using a zeroth-order (ZO) gradient estimator.
+- Implements an in-place solution for the ZO gradient estimator, reducing memory consumption during inference.
+- MeZO enables efficient fine-tuning of LLMs with up to 30 billion parameters on a single GPU with 80GB of memory, maintaining performance comparable to traditional backpropagation-based fine-tuning methods.
+

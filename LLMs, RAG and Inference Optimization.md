@@ -404,3 +404,7 @@ NAS is used to discover optimal PEFT combinations:
 - **NOAH:** Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
 - **AUTOPEFT:** Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.
 
+### Memory-Efficient PEFT Methods
+Fine-tuning large language models (LLMs) demands substantial training memory due to their immense size. Although many parameter-efficient fine-tuning (PEFT) methods aim to reduce the number of parameters, they still incur significant memory overhead during training because gradient computation and backpropagation remain necessary. For instance, popular PEFT techniques like adapters and LoRA only reduce memory usage to about 70% compared to full model fine-tuning. Memory efficiency is a crucial factor that cannot be overlooked.
+
+To enhance memory efficiency, various techniques have been developed to minimize the need for caching gradients for the entire LLM during fine-tuning, thereby reducing memory usage. Notable examples include:

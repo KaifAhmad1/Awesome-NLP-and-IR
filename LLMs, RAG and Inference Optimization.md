@@ -446,3 +446,10 @@ To enhance memory efficiency, various techniques have been developed to minimize
 - Implements an in-place solution for the ZO gradient estimator, reducing memory consumption during inference.
 - MeZO enables efficient fine-tuning of LLMs with up to 30 billion parameters on a single GPU with 80GB of memory, maintaining performance comparable to traditional backpropagation-based fine-tuning methods.
 
+#### 8. QLoRA (Quantized LoRA)
+
+- QLoRA extends the principles of LoRA by introducing quantization techniques to further reduce memory usage.
+- By quantizing the activation data, QLoRA reduces the memory footprint required to store activations during fine-tuning.
+- This method leverages lower precision data representations while preserving fine-tuning performance, making it highly efficient in memory-constrained environments.
+
+These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.

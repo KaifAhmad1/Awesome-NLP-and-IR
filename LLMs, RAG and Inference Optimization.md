@@ -453,3 +453,6 @@ To enhance memory efficiency, various techniques have been developed to minimize
 - This method leverages lower precision data representations while preserving fine-tuning performance, making it highly efficient in memory-constrained environments.
 
 These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.
+
+### Alignment-Based Fine-Tuning
+Alignment-based fine-tuning is the process of adjusting a large language model (LLM) to ensure its behavior aligns with specific goals, such as ethical guidelines, user preferences, and performance standards. The aim is to create models that generate outputs not only based on statistical accuracy but also in accordance with desired ethical, safety, and user-specific criteria.

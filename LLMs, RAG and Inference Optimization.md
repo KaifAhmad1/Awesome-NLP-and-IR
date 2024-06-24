@@ -456,3 +456,11 @@ These memory-efficient PEFT methods are crucial advancements in optimizing the f
 
 ### Alignment-Based Fine-Tuning
 Alignment-based fine-tuning is the process of adjusting a large language model (LLM) to ensure its behavior aligns with specific goals, such as ethical guidelines, user preferences, and performance standards. The aim is to create models that generate outputs not only based on statistical accuracy but also in accordance with desired ethical, safety, and user-specific criteria.
+- #### Types of Alignment Methods
+   - RLHF
+   - RLAIF
+   - PPO
+   - DPO
+   - KTO
+   - ORPO
+  

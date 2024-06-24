@@ -467,7 +467,7 @@ Alignment-based fine-tuning is the process of adjusting a large language model (
 - **KTO**: 
 - **ORPO**: 
 
-#### Introduction to RLHF
+#### RLHF: Enhancing Language Models with Human Feedback
 
 Reinforcement Learning from Human Feedback (RLHF) is a powerful technique that significantly improves the performance of Large Language Models (LLMs) compared to Supervised Fine-Tuning (SFT) alone. RLHF leverages human feedback to refine and optimize the model’s responses, ensuring they align better with human preferences and expectations. While SFT trains the model to generate plausible responses based on demonstration data, RLHF provides a more nuanced training signal by using a reward model to score and rank these responses.
 

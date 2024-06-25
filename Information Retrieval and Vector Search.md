@@ -1,4 +1,5 @@
 # Vector Search: A Comprehensive Overview
+---
 - **What is a Vector?:** In mathematics, a vector is a quantity defined by both magnitude and direction. Vectors are represented as arrays of numbers, which correspond to coordinates in a multidimensional space. They are foundational in various fields, including physics, engineering, and computer science.
   - Typically represented as $V = [v1, v2, v3, ...., vn]$ where $n$ is the magnitude of the vector in high dimensional space.
    - #### **Basic Properties of Vectors:**
@@ -15,6 +16,7 @@
      - #### 3. **Audio and Video Data:**
        - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
        - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
+  ---
   - ### **Distance Metrics:**
   Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
     - #### 1. **Euclidean Distance:**
@@ -78,6 +80,7 @@
              - Computationally intensive, especially for large datasets.
              - Requires solving an optimization problem, which can be complex.
 
+---
 
   - ### **Vector Search Techniques:**
   Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
@@ -90,7 +93,7 @@
    - #### 3. **Approximate Nearest Neighbor (ANN):**
       - Speeds up search by approximating the nearest neighbours.
       - Methods include Locality-Sensitive Hashing (LSH) and Hierarchical Navigable Small World (HNSW) graphs.
-  - ### **Applications of Vector Search:**
+- ### **Applications of Vector Search:**
   Vector search is transforming various industries by enabling more accurate and context-aware search functionalities:
     - **Search Engines:**
       - Enhance traditional keyword-based searches by incorporating semantic understanding.
@@ -102,6 +105,9 @@
       - Platforms like Spotify and YouTube use vector search to recommend music and videos based on user behavior and preferences.
     - **Healthcare:**
       - Retrieve relevant medical documents, research papers, and clinical notes to support diagnostics and treatment planning.
+
+
+--- 
 
 - ### **Nearest Neighbor Search**:
 Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
@@ -127,6 +133,8 @@ The volume of the space grows exponentially with the number of dimensions, causi
   - #### 3. **Increased Noise and Redundancy:**
  Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
 - **Example:** Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
+
+--- 
 
 - ### **Linear Search:**
 Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
@@ -159,6 +167,8 @@ if result != -1:
 else:
     print("Element not found")
 ```
+--- 
+
 - ### **Dimensionality Reduction:** 
      - Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
      - Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
@@ -289,6 +299,8 @@ plt.show()
       - 2. May distort overall data relationships.
       - 3. Complex datasets may pose challenges in exact interpretation.
 
+--- 
+
 - ### **Approximate Nearest Neighbor (ANN) Search:**
   Approximate Nearest Neighbor (ANN) search is a technique used to find points in a high-dimensional space that are approximately closest to a given query point. This method is particularly crucial when dealing with large datasets where exact nearest neighbor search becomes computationally infeasible. ANN search balances between accuracy and computational efficiency, making it an invaluable tool in various fields such as machine learning, data mining, and information retrieval.
    - #### 1. **ANN Search in Machine Learning** ANN search is crucial for high-dimensional data tasks, such as:
@@ -326,6 +338,9 @@ plt.show()
    - Inverted File Indexing (IVF) 
    - LSH Forest
    - Composite Indexing (e.g., IVF + PQ, LSH + KDTree, HNSW + IVF)
+
+--- 
+
 ### **Flat Indexing:**
 Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
   - #### **How it works:**
@@ -374,6 +389,8 @@ Top-k matches:
  [1 2 3]]
 Similarity scores: [0.50257071 0.45584231 0.26726124]
 ```
+--- 
+
 ### **Inverted Index** 
 An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
    - #### **How It Works**
@@ -438,6 +455,8 @@ fruit: [0, 2]
 juice: [1]
 orange: [2]
 ```
+
+--- 
 
 ### **Locality-Sensitive Hashing (LSH)** 
 Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
@@ -527,6 +546,9 @@ print("Matched indices:", np.where(matches)[0])
 ```
 Matched indices: []
 ```
+
+---
+
 ### **Quantization:** 
 Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
   - #### **Key Concepts in Quantization** 
@@ -614,6 +636,10 @@ print("\nCodebooks:\n", codebooks)
 print("\nQuantized Indices:\n", quantized_indices)
 print("\nReconstructed Vectors:\n", reconstructed_vectors)
 ```
+
+--- 
+
+
 ### **Tree-Based Indexing in ANN:** 
 Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
   - #### 1. **K-D Tree (K-Dimensional Tree)**
@@ -687,6 +713,9 @@ print("Nearest neighbor index:", ind[0][0])
 print("Nearest neighbor point:", data[ind[0][0]])
 print("Distance to nearest neighbor:", dist[0][0])
 ```
+
+--- 
+
 ### **Random Projection in ANN** 
 Random projection is a dimensionality reduction technique used to approximate the distances between points in high-dimensional space. It is especially useful in Approximate Nearest Neighbor (ANN) search, where finding exact nearest neighbors in high-dimensional datasets can be computationally infeasible. By reducing the dimensionality while preserving the relative distances, random projection balances accuracy and efficiency.
   - #### **Key Concepts**
@@ -754,6 +783,9 @@ Reduced Query Point:
 Nearest Neighbor Index: 0
 Nearest Neighbor: [1 2 3 4]
 ```
+
+--- 
+
 ### **Graph-based Indexing for ANN Search:** 
 Graph-based indexing is an advanced technique for performing Approximate Nearest Neighbor (ANN) searches in high-dimensional spaces. This approach constructs a graph where data points are nodes, and edges represent the proximity or similarity between these points. Graph-based indexing efficiently addresses the limitations of traditional methods, such as tree-based or hashing methods, especially in handling high-dimensional data.
   - #### **Key Concepts**
@@ -834,7 +866,9 @@ Distances: [[14.286862 14.975046 15.01863  15.024027 15.081305 15.204177 15.2868
    - **Comparison to Other Methods**
        - **HNSW:** Vamana is similar to HNSW in leveraging small-world properties but focuses more on maintaining a balanced connection strategy for efficient search.
        - **Tree-Based Methods:** Outperforms tree-based methods like KD-Tree and Ball Tree in high-dimensional spaces, avoiding issues like the curse of dimensionality.
-       - **Locality-Sensitive Hashing (LSH):** Offers better accuracy and scalability compared to LSH, with a more structured approach to graph construction and search. 
+       - **Locality-Sensitive Hashing (LSH):** Offers better accuracy and scalability compared to LSH, with a more structured approach to graph construction and search.
+     
+--- 
 
 ### LSH Forest
 Locality-Sensitive Hashing (LSH) Forest is an advanced technique for efficient approximate nearest neighbor search in high-dimensional data. It extends traditional LSH by introducing a dynamic and hierarchical structure.
@@ -849,6 +883,9 @@ Locality-Sensitive Hashing (LSH) Forest is an advanced technique for efficient a
        - **Hash the Query:** Query points are hashed into buckets.
        - **Retrieve Candidates:** Potential neighbors are gathered from corresponding buckets.
        - **Refinement:** Candidates are ranked to find approximate nearest neighbors
+         
+--- 
+
 ### Composite Indexing in ANN
 Composite indexing in Approximate Nearest Neighbor (ANN) search involves combining different indexing techniques to enhance search efficiency and effectiveness in high-dimensional datasets. Here are a few notable composite indexing approaches:
   - **IVF + PQ:** Uses inverted indexing for initial clustering (IVF) and product quantization (PQ) for efficient search within clusters.

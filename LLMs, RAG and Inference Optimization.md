@@ -1,6 +1,9 @@
 # LLMs
 ## **Large Language Models (LLMs):**
 Large Language Models (LLMs) are a significant advancement in the field of natural language processing (NLP). These models are designed to understand and generate human language by leveraging deep learning techniques and vast amounts of data. Unlike simpler models, LLMs can perform a wide range of tasks, from translation and summarization to answering questions and engaging in conversational dialogues.
+
+---
+
  - ### **Architecture:**
 The architecture of LLMs is typically based on the Transformer model, which was introduced by Vaswani et al. in 2017 in the paper "Attention is All You Need". The key components of this architecture are:
   - #### 1. **Self-Attention Mechanism:** 
@@ -11,6 +14,9 @@ The architecture of LLMs is typically based on the Transformer model, which was 
     These are applied to each position in the sequence independently, adding a layer of non-linearity.
   - #### 4. **Positional Encoding:** 
     Since Transformers do not inherently capture the order of the sequence, positional encodings are added to the input embeddings to provide information about the position of each word in the sequence.
+    
+ --- 
+ 
  - ### **Training:**
 LLMs are trained using large datasets that encompass a diverse range of text sources, such as books, articles, websites, and more. The training process involves:
   - #### **Pre-training:**
@@ -26,7 +32,7 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
     - **Data Hungry:** They need vast amounts of training data to achieve high performance.
     - **Bias and Fairness:** LLMs can inadvertently learn and propagate biases present in the training data, leading to ethical concerns.
     - **Interpretability:** Their large and complex architectures make it difficult to understand and interpret their decision-making processes.
-
+---
    ### **LLM Pretraining** 
   Pretraining is the process of training a machine learning model on a large dataset before fine-tuning it on a specific task. This initial phase involves learning general patterns, representations, and features from the data, which can then be adapted and refined for various downstream tasks, improving performance and efficiency.
 - #### **Self Supervised Learning:**
@@ -42,6 +48,7 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
     - Causal Language Modeling (CLM)
     - Denoising Autoencoders
     - Contrastive Learning
+ ---
  - ### **Masked Language Modeling:**
      - In MLM, certain tokens in the input sequence are masked at random, and the model is trained to predict these masked tokens based on the context provided by the remaining tokens.
      - This approach helps the model understand bidirectional contexts.
@@ -56,7 +63,7 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
 
  In MLM, the model enhances its understanding of bidirectional contexts by predicting masked tokens.
 
-
+---
 - ### **Masked Multimodal Language Modeling:**
     - In MMLM, certain tokens in the input sequence are masked at random, similar to MLM, but the model is trained using both textual and non-textual data such as images, audio, or video.
     - This approach enhances the model's ability to understand and integrate multimodal information, learning representations that capture the interplay between different modalities.
@@ -71,7 +78,9 @@ LLMs are trained using large datasets that encompass a diverse range of text sou
   - Here, $P(x_i \mid \mathbf{X}_{\text{masked}}, \mathbf{Y})$ is the probability of token $x_i` given the masked sequence and the additional multimodal context.
 
 By integrating information from multiple modalities, MMLM allows models to learn richer, more comprehensive representations, leading to improvements in tasks such as visual question answering, image captioning, and more complex language understanding scenarios where context is derived from both text and other types of data.
-     
+
+---     
+
 - ### **Next Sentence Prediction:**
     - In NSP, the model is trained to understand the relationship between pairs of sentences, determining whether a given sentence B naturally follows a given sentence A.
     - This technique is particularly useful for tasks that require a coherent understanding of longer texts, such as document-level question answering and summarization.
@@ -87,6 +96,8 @@ By integrating information from multiple modalities, MMLM allows models to learn
 
 Training on NSP tasks, the model learns to capture sentence-level coherence and dependencies, enhancing its ability to perform tasks that require understanding the flow of information across multiple sentences crucial for tasks like document-level QA and summarization.
 
+--- 
+
 - ### **Causal Language Modeling:**
     - In CLM, the model is trained to predict the next token in a sequence, given all the previous tokens. This unidirectional approach models the probability of a token based on its preceding context.
     - This technique is particularly effective for tasks that require generative capabilities, such as text generation and language modeling.
@@ -101,6 +112,7 @@ Training on NSP tasks, the model learns to capture sentence-level coherence and 
 
 CLM focuses on generating coherent text by predicting tokens based on their sequential context, making it ideal for generative tasks.
 
+--- 
 
  ### **Denoising Autoencoders:**
    - Denoising Autoencoders (DAE) are trained to reconstruct the original input from a corrupted version of it. This process helps the model learn robust representations by focusing on essential features and ignoring noise.
@@ -117,6 +129,8 @@ CLM focuses on generating coherent text by predicting tokens based on their sequ
 
 DAE improves model robustness by reconstructing clean inputs from corrupted versions, essential for tasks requiring accurate data representation.
 
+--- 
+
 - ### **Contrastive Learning:**
     - Contrastive Learning trains the model to distinguish between similar and dissimilar pairs of data. By learning to bring similar pairs closer and push dissimilar pairs apart in the representation space, the model captures meaningful patterns and structures in the data.
     - This technique is particularly effective for tasks such as image and text clustering, and representation learning.
@@ -130,6 +144,8 @@ DAE improves model robustness by reconstructing clean inputs from corrupted vers
   - Here, $d(\mathbf{x}_i, \mathbf{x}_j)$ is the distance measure (e.g., Euclidean distance) between the representations of $\mathbf{x}_i$ and $\mathbf{x}_j$, and $\alpha$ is a margin that enforces a minimum separation between dissimilar pairs.
 
 This technique enhances model performance by learning discriminative features from data pairs, beneficial for tasks like image and text clustering, retrieval.
+
+--- 
 
    ### **LLM Fine Tuning** 
    Fine-tuning is the process of adapting a pre-trained language model to specific downstream tasks by further training it on task-specific data. While pre-training provides a strong foundation by learning general language patterns, fine-tuning tailors the model to excel in particular applications, improving its performance on specific tasks.

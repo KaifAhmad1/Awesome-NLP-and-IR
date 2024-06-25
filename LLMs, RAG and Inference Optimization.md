@@ -200,7 +200,8 @@ Supervised fine-tuning adapts a pre-trained model to a specific task using label
     - Parameter-Efficient Fine-Tuning (PEFT)
     - Memory-Efficient Fine-Tuning (MEFT)
     - Alignment-Based Fine-Tuning
-      
+
+  ---
  ### Full Fine-Tuning
 
 Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to fit a new task-specific dataset. Here’s how it works:
@@ -232,6 +233,8 @@ Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to
   
 - **Balancing Act**: It's important to find a balance between adapting to the new data and retaining valuable knowledge from previous training.
 
+--- 
+
  ### PEFT (Parameter-Efficient Fine-Tuning):
  PEFT is a technique used in machine learning, particularly in deep learning and LLMs, where instead of updating all parameters of a pre-trained model during adaptation to a new task or dataset, only a subset of parameters are adjusted. This approach aims to optimize model performance with fewer trainable parameters compared to full fine-tuning methods.
 - #### **Why PEFT is Needed:**
@@ -249,6 +252,9 @@ PEFT addresses key challenges and practical considerations in machine learning:
   - Selective PEFT
   - Reparameterized PEFT
   - Hybrid PEFT
+    
+---
+
   - ### **Additive PEFT**
     Full fine-tuning of large pre-trained models (PLMs) is computationally expensive and can potentially harm their generalization ability. To address this, a common approach is to leave the pre-trained model largely unchanged and introduce a minimal number of trainable parameters. These additional parameters are strategically positioned within the model architecture, and only these weights are updated during fine-tuning for specific downstream tasks. This approach, called Additive Tuning, significantly reduces storage, memory, and computational resource requirements.
     1. #### **Adapters**
@@ -272,6 +278,8 @@ PEFT addresses key challenges and practical considerations in machine learning:
        Several other methods incorporate additional parameters during fine-tuning, aiming to enhance efficiency without modifying the base model’s structure significantly.
 
        **(IA)^3:** (IA)^3 [53] introduces three learnable rescaling vectors (for key, value, and FFN activations) to scale the activations within the Transformer layers. This integration, shown in Figure 6(a), eliminates extra computational costs during inference.
+
+---
 
 - ### **Selective PEFT**
   Selective PEFT methods focus on fine-tuning a subset of existing parameters rather than introducing additional parameters. This approach aims to enhance model performance on specific downstream tasks while minimizing computational overhead. Selective PEFT can be broadly categorized into unstructured and structured masking techniques.
@@ -318,6 +326,7 @@ PEFT addresses key challenges and practical considerations in machine learning:
     - **Flexibility:** Various methods (e.g., SVD, QR, LU) cater to different challenges, adaptable to diverse applications.
     - **Feature Transformation:** Enhances feature representation, e.g., in deep learning, via matrix transformations.
 
+--- 
 
 ### **Reparameterized PEFT**
 
@@ -374,6 +383,8 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 - **Advantages:**
   - This approach allows the model to dynamically adjust the rank within each LoRA module, effectively managing its parameter counts.
   - AdaLoRA delivers superior performance by leveraging a predefined training budget for pruning, orthogonality maintenance, and learning module-specific ranks dynamically.
+
+--- 
 
 ### **Hybrid PEFT**
 
@@ -435,6 +446,7 @@ To enhance memory efficiency, various techniques have been developed to minimize
 - **Res-Tuning** separates the PEFT tuners (e.g., prompt tuning, adapters) from the backbone model, allowing independent fine-tuning of these modules.
 - **Res-Tuning-Bypass** enhances this by creating a bypass network in parallel with the backbone model, removing the data flow from the decoupled tuners to the backbone. This eliminates the requirement for gradient caching within the backbone model during backpropagation.
 
+---
 #### 3. Memory-Efficient Fine-Tuning (MEFT)
 
 - MEFT is inspired by reversible models, which do not require caching intermediate activations during the forward pass. Instead, these activations are recalculated from the final output during backpropagation.
@@ -470,6 +482,7 @@ To enhance memory efficiency, various techniques have been developed to minimize
 
 These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.
 
+--- 
 ## Alignment-Based Fine-Tuning
 
 Alignment-based fine-tuning is the process of adjusting a large language model (LLM) to ensure its behavior aligns with specific goals, such as ethical guidelines, user preferences, and performance standards. The aim is to create models that generate outputs not only based on statistical accuracy but also in accordance with desired ethical, safety, and user-specific criteria.
@@ -478,6 +491,8 @@ Alignment-based fine-tuning is the process of adjusting a large language model (
 
 - **RLHF**: Enhancing Language Models with Human Feedback
 - **RLAIF**: Leveraging AI Feedback for Training
+
+--- 
 
 ### RLHF: Enhancing Language Models with Human Feedback
 
@@ -546,6 +561,8 @@ This function encourages the RM to give higher scores to winning responses.
 - RLHF enhances the overall performance and is generally preferred by human evaluators.
 - It refines responses based on human feedback and comparisons, improving the model’s ability to generate high-quality, contextually appropriate responses.
 
+--- 
+
 ### RLAIF: Reinforcement Learning from AI Feedback
 
 RLAIF is an advanced approach to training large language models (LLMs) that leverages AI-generated feedback instead of human feedback. This method aims to improve scalability, reduce bias, and ensure ethical model behavior.
@@ -581,6 +598,8 @@ RLAIF is an advanced approach to training large language models (LLMs) that leve
 - **Ethical and Safe Models**: Adherence to Constitutional AI principles ensures ethical model behavior.
 - **Performance Improvement**: Iterative fine-tuning and RL enhance model performance and stability.
 
+--- 
+
 ### Direct Preference Optimization (DPO)
 
 Direct Preference Optimization (DPO) is a novel and efficient method for training language models directly from human preferences. DPO simplifies the training process by optimizing the log-likelihood difference between preferred and non-preferred outputs, bypassing the need for complex reward modeling. This section provides a detailed and structured overview of DPO, including its formulation, advantages, experimental evaluation, and comparative analysis.
@@ -606,6 +625,7 @@ DPO offers several key advantages over traditional RLHF methods:
 3. **Robustness**: DPO is less sensitive to hyperparameter settings, making it easier to implement and tune across different tasks.
 4. **Performance**: Empirical results demonstrate that DPO achieves better or comparable performance to state-of-the-art RLHF methods with minimal hyperparameter tuning.
 
+--- 
 
 ### Identity Preference Optimization (IPO)
 

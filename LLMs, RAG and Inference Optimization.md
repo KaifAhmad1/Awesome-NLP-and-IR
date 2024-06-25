@@ -591,7 +591,7 @@ DPO offers several key advantages over traditional RLHF methods:
 4. **Performance**: Empirical results demonstrate that DPO achieves better or comparable performance to state-of-the-art RLHF methods with minimal hyperparameter tuning.
 
 
-#### Identity Preference Optimization (IPO)
+### Identity Preference Optimization (IPO)
 **Identity Preference Optimization (IPO)** is a technique to improve the alignment of language models with human preferences. It builds upon **Direct Preference Optimization (DPO)** by addressing DPO's shortcomings, such as overconfidence and policy degeneration, through identity-based regularization.
 
 #### Motivation

@@ -1,6 +1,8 @@
 # NLP 
 ## **Preprocessing**
 
+--- 
+
  - ### **Case Folding**
    Case folding/lowercasing is a preprocessing technique in Natural Language Processing (NLP) that standardizes the text by converting all characters to a single case, typically lowercase. This step is essential for various NLP tasks as it ensures uniformity and consistency in text data, thereby enhancing the performance of downstream applications.
    - **For Example**
@@ -12,6 +14,9 @@
          lowercased_text = text.lower()
          print(lowercased_text)  # Output: "machine learning is fun!" 
     ```
+    
+ ---
+ 
 - ### **Contraction Mapping**
   Contraction mapping refers to the process of expanding contractions, which are shortened forms of words or phrases, into their complete versions. For example:
    - **For Example**
@@ -40,6 +45,9 @@
   ```
   Output: "I am learning NLP. It is fascinating! Do not you think so?"  
   ```
+
+  ---
+  
 - ### **Correcting Spelling Errors:**
   Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
 - #### 1. **Dictionary-based approaches:**
@@ -65,6 +73,8 @@ Output:
 Original sentence: I havv a pbroblem wit my speling.
 Corrected sentence: I have a problem with my spelling.
 ```
+
+--- 
 
 - ### **Deduplication / Duplicate Removal:**
   Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
@@ -105,6 +115,10 @@ Deduplicated DataFrame:
 2      Another example sentence.
 3  This is a different sentence.
  ```
+
+--- 
+
+
 - #### 2. **Using Fuzzy Matching for Deduplication:**
   Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
      - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
@@ -131,6 +145,10 @@ Output:
 Similarity ratio between 'This is a sample sentence.' and 'This is a smaple sentnce.': 94
 Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
  ```
+
+--- 
+
+
 - ### **Expanding Abbreviations and Acronyms:**
   Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
 - #### 1. **Dictionary-Based Methods:**
@@ -170,6 +188,8 @@ print(expanded_text)
 Output:
 Natural Language Processing and Artificial Intelligence are subsets of Machine Learning
 ```
+
+ --- 
  
 - ### **Stemming:**
   Stemming in Natural Language Processing (NLP) refers to the process of reducing words to their base or root form, known as the `stem`, by removing prefixes and suffixes. The stem may not always be a valid word in the language, but it represents the core meaning of the word, thereby helping to group similar words. Types of Stemming Algorithms: 
@@ -197,6 +217,10 @@ print(f"Original: {word_snowball}, Stemmed: {stem_snowball}")
 Original: Dying, Stemmed: dy
 Original: Continuing, Stemmed: continu
 ```
+
+--- 
+
+
 - ### **Lemmatization:**
   Lemmatization is another crucial text normalization technique in Natural Language Processing (NLP) that involves reducing words to their base or dictionary form, known as the "lemma." Unlike stemming, which simply chops off affixes to obtain the root form, lemmatization considers the context of the word and ensures that the resulting base form is a valid word in the language. Lemmatization algorithms rely on linguistic rules and lexical resources to map inflected words to their base or dictionary forms.
 - #### 1. **Rule-Based Lemmatization:**
@@ -227,6 +251,10 @@ print(lemmatized_sentence)
 Output:
 The striped bat are hanging on their foot for best
 ```
+
+--- 
+
+
 - ### **Noise Removing:**
   Noise removal in NLP involves eliminating irrelevant or unwanted elements, such as HTML tags, special characters, punctuation, stop words, and numerical values, from text data. This process aims to clean and standardize the data, making it more suitable for analysis or model training. The goal of noise removal is to clean the text data by stripping away these elements while preserving the meaningful content. This typically involves a series of preprocessing steps, which may include:
 - #### 1. **Stripping HTML Tags:**
@@ -341,6 +369,8 @@ print(clean_text)
 Price 100 Use coupon code SAVE20 Email exampleexamplecom 2024
 ```
 
+--- 
+
 - ### **Tokenization:**
   Tokenization is the process of splitting text into smaller, meaningful units called tokens. These tokens can represent words, subwords, or characters and are the foundational elements used in NLP tasks like text analysis, machine translation, and sentiment analysis. Types of Tokenization below:
 - #### 1. **Word Tokenization:**
@@ -403,6 +433,9 @@ Steps
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
 ##  Statical NLP 
+
+--- 
+
 - ### **Naive Bayes**:
   Naive Bayes presents a straightforward yet effective classification approach rooted in `Bayes theorem`, assuming `independence` among features. Here's a simplified rundown:
   - Bayes theorem is a cornerstone of probability theory, revealing the probability of an event based on prior conditions. It's expressed as:
@@ -465,6 +498,8 @@ Message: Don't forget to submit your assignment. | Predicted Label: Not Spam
 Message: URGENT: Your account needs verification. | Predicted Label: Spam
 ```
 
+--- 
+
 - ### **N-gram language model:**
   An n-gram is a sequence of $n$ items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
     - Unigram $(n=1)$: Single word sequences.
@@ -519,6 +554,9 @@ print(next_word)
 ```
 language
 ```
+
+--- 
+
 - ### **Markov Chain:**
   A Markov Chain is a way to model a system where the probability of moving to the next state depends only on the current state.
   - Components of Markov Chain:
@@ -577,6 +615,9 @@ hidden_states, observable_states = hmm.generate_sequence(5)
 print("Hidden States:", hidden_states)
 print("Observable States:", observable_states)
 ```
+
+--- 
+
 - **Conditional Random Fields(CRFs):** Conditional Random Fields (CRFs) are a type of machine learning model used for tasks where we need to predict a sequence of labels for a given sequence of input data. They're particularly handy in scenarios like analyzing text, where understanding the structure of the data is crucial.
    - Imagine you have a sentence, and you want to tag each word with its part of speech (POS). For example, in the sentence `The cat sat on the mat`, you'd want to label `The` as a determiner (DT), `cat` as a noun (NN), and so on. CRFs help you do this efficiently by considering not only the individual words but also the relationships between them.
      - Model label dependencies as `P(Y|X)`, with `Y` as output labels and `X` as input data.
@@ -618,6 +659,8 @@ print(y_pred)
 [['DT', 'NN', 'VBD']]
 ```
 
+--- 
+
 ## **Representation Learning in NLP**
 Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
   - ### **Encoding:**
@@ -639,6 +682,8 @@ Representation learning in the context of NLP is the process of automatically di
 | **Examples**        | Bag-of-Words, TF-IDF, Integer Encoding.                                   | Word2Vec, GloVe,FasText. ELMo.                                 |
 | **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
 | **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
+
+--- 
 
 - ### **One Hot Encoding:**
   One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
@@ -699,6 +744,9 @@ Germany: [0, 0, 1, 0, 0]
 Japan: [0, 0, 0, 1, 0]
 India: [0, 0, 0, 0, 1]
 ```
+
+--- 
+
 - ### **Integer Encoding:**
   Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
    - **Steps:**
@@ -738,6 +786,8 @@ print(encoded)
 ```
 [0, 1, 2, 4, 3]
 ```
+
+--- 
 
 - ### **Bag of words:**
   The Bag of Words (BoW) model in NLP converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
@@ -807,6 +857,10 @@ Vector: [1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]
 Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'have'
  'knowledge' 'love' 'of' 'reading' 'source' 'very' 'wonderful']
 ```
+
+--- 
+
+
 - ### **TF-IDF:**
   TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
    - #### **Components of TF-IDF:**
@@ -914,6 +968,9 @@ some: 0.250
 common: 0.400
 terms.: 0.250
 ```
+
+--- 
+
 - ### **BM25 (Best Matching 25):**
   BM25 (Best Matching 25) is a ranking function used in information retrieval to estimate the relevance of documents to a given search query. It is an extension of the TF-IDF weighting scheme, designed to address some of its limitations while retaining its simplicity and effectiveness.
    - #### **Components of BM25:**
@@ -1038,6 +1095,10 @@ some: 0.440
 common: 0.917
 terms.: 0.440
 ```
+
+--- 
+
+
 - ## **Embeddings in Representation Learning:**
   In NLP, an `embedding` is a way of representing words, phrases, or even entire documents as continuous, dense vectors of numbers. These vectors capture the semantic meaning of the text in such a way that words or phrases with similar meanings are represented by similar vectors.
     - Example: Consider the words `king,` `queen,` `man,` and `woman.` In a well-trained embedding space, these words might be represented by the following vectors (these numbers are just illustrative examples):
@@ -1170,6 +1231,9 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
  -0.03426652  0.03874123 -0.04863291 -0.02591641  0.00344516  0.0478721
   0.06752533 -0.03133888  0.00209786 -0.01114183]
 ```
+
+--- 
+
 
 - ### **GloVe: Global Vectors for Word Representation:**
    GloVe (Global Vectors for Word Representation) is an advanced technique in Natural Language Processing (NLP) that transforms words into numerical vectors by leveraging global word-word co-occurrence statistics from a corpus. Developed by Christopher D. Manning at Stanford University, GloVe provides rich semantic representations of words by capturing their contextual relationships.
@@ -1331,6 +1395,9 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
   0.04485585  0.03791862  0.04784629  0.01865678 -0.02116342 -0.02645371
   0.01796384 -0.01561937]
 ```
+
+--- 
+
 - ### **FastText:**
   FastText, developed by Facebook AI Research (FAIR), is another popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information. This approach is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
   - FastText works by representing each word as a bag of character n-grams, in addition to the word itself. This allows FastText to capture the morphological structure of words, making it more robust, especially for tasks involving rare words or languages with rich morphology.
@@ -1374,6 +1441,9 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 
+--- 
+
+
 - ### **ELMo:**
   ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
  - #### **How ELMo Works:**
@@ -1398,6 +1468,8 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
      
 - [Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
 
+--- 
+
 - ### **BERT:**
   BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
  - #### **How BERT Works:**
@@ -1420,6 +1492,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 
 ## Deep NLP 
+--- 
 - #### **Deep Learning - Basic Neural Network Components:**
    A basic neural network architecture includes:
    - **Input Layer:** Receives input data.
@@ -1521,6 +1594,8 @@ def softmax(z):
     return e_z / np.sum(e_z)
 ```
 
+--- 
+
 - ### **Important Optimization Algorithms for NLP:**
   In NLP, optimization algorithms are crucial for training models effectively. The purpose of optimization algorithms in deep learning is to minimize the loss function, improving the model's ability to make accurate predictions by adjusting its parameters iteratively during training. Below are some of the most important optimization algorithms commonly used in NLP, along with their descriptions and implementations.
  -  #### **Gradient Descent:**
@@ -1601,6 +1676,8 @@ Final loss: [4.41904213e-08]
      - **Advantages**: Speeds up convergence; reduces oscillations near minima.
      - **Disadvantages**: Requires tuning of the momentum parameter (momentum); can overshoot minima.
 
+--- 
+
 - ### **Feedforward Neural Networks (FNN):**
   A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
   - #### **Architecture:** The basic architecture of a Feedforward Neural Network consists of the following components:
@@ -1652,6 +1729,9 @@ print("Output:", output)
 ```
 Output: 0.772853461396208
 ```
+
+--- 
+
 - ### **Recurrent Neural Networks (RNN):**
   A Recurrent Neural Network (RNN) is a type of artificial neural network designed for sequential data. Unlike Feedforward Neural Networks, RNNs have connections that form directed cycles, allowing them to maintain information about previous inputs through internal states. This makes them particularly suitable for tasks where the context or order of data is crucial, such as time series prediction, natural language processing, and speech recognition.
   - #### **Architecture:** The basic architecture of a Recurrent Neural Network consists of the following components:
@@ -1796,6 +1876,9 @@ print("Output:", output)
 ```
 Output: [[0.54412203]]
 ```
+
+--- 
+
 - ### **Gated Recurrent Unit(GRU) Networks:**
   A Gated Recurrent Unit (GRU) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. GRUs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting. GRUs are a simplified version of Long Short-Term Memory (LSTM) networks, with fewer gates and a more streamlined architecture.
    - #### **Architecture:**
@@ -1940,6 +2023,9 @@ Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
    -0.0058728  -0.02651676  0.02246626  0.02886551 -0.01656632
    -0.02470564  0.04360295  0.01756983  0.02010829 -0.01958983]]]
 ```
+
+--- 
+
 - ### **Transformers:**
   Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
 - #### **Secret Sauce: Self-Attention Mechanism**
@@ -2024,6 +2110,8 @@ The Transformer architecture consists of an encoder and a decoder, both composed
    - Disadvantages\Limitations:
       - 1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
       - 2. **Memory Usage:** Requires significant memory to store the attention weights.
+       
+ --- 
 
 - **Transformer Architectures: A Detailed Comparison**
 

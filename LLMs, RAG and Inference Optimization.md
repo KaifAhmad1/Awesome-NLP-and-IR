@@ -591,3 +591,53 @@ DPO offers several key advantages over traditional RLHF methods:
 4. **Performance**: Empirical results demonstrate that DPO achieves better or comparable performance to state-of-the-art RLHF methods with minimal hyperparameter tuning.
 
 
+
+#### Identity Preference Optimization (IPO)
+
+**Identity Preference Optimization (IPO)** is a technique to improve the alignment of language models with human preferences. It builds upon **Direct Preference Optimization (DPO)** by addressing DPO's shortcomings, such as overconfidence and policy degeneration, through identity-based regularization.
+
+#### Motivation
+
+While **Direct Preference Optimization (DPO)** is effective, it often results in:
+- **Overconfident Reward Assignments**: Assigning excessively high rewards, can lead to instability.
+- **Degenerate Policies**: Models can collapse, assigning near-zero probabilities to preferred responses.
+
+**Identity Preference Optimization (IPO)** aims to mitigate these issues by incorporating a regularization term that respects the identity of preference data.
+
+#### Core Concept
+
+IPO enhances DPO by adding an **identity-based regularization term** to the optimization objective. This regularization helps to:
+- Prevent overconfidence in reward assignments.
+- Maintain stable and well-behaved policies during optimization.
+
+#### Implementation Steps
+
+1. **Collect Preference Data:**
+   - Gather preference annotations where each input prompt $x$ has a corresponding preferred response $y_w$ and a non-preferred response $y_\ell$.
+
+2. **Introduce Regularization:**
+   - Add an identity-based regularization term to the objective function, as a smoothing mechanism to reduce overconfidence.
+
+3. **Formulate the Objective Function:**
+   - Define the IPO objective function as:
+
+$$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
+
+   Where:
+     - $\sigma$ is the sigmoid function.
+     - $\mathcal{R}(\pi_\theta)$ is the regularization term.
+     - $\lambda$ is a hyperparameter controlling the regularization strength.
+
+4. **Train the Model:**
+   - Use the modified objective function to train the language model, ensuring robust and stable policies.
+
+#### Benefits of IPO
+
+1. **Enhanced Robustness:**
+   - The regularization term prevents the model from becoming overly confident, ensuring reliable policies.
+
+2. **Improved Stability:**
+   - Regularization maintains stability, preventing policy degeneration.
+
+3. **Better Generalization:**
+   - By avoiding overfitting, IPO improves the model's ability to handle new and unseen prompts.

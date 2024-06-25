@@ -592,21 +592,25 @@ DPO offers several key advantages over traditional RLHF methods:
 
 
 ### Identity Preference Optimization (IPO)
+
 **Identity Preference Optimization (IPO)** is a technique to improve the alignment of language models with human preferences. It builds upon **Direct Preference Optimization (DPO)** by addressing DPO's shortcomings, such as overconfidence and policy degeneration, through identity-based regularization.
 
 #### Motivation
+
 While **Direct Preference Optimization (DPO)** is effective, it often results in:
-- **Overconfident Reward Assignments**: Assigning excessively high rewards, can lead to instability.
+- **Overconfident Reward Assignments**: Assigning excessively high rewards can lead to instability.
 - **Degenerate Policies**: Models can collapse, assigning near-zero probabilities to preferred responses.
 
 **Identity Preference Optimization (IPO)** aims to mitigate these issues by incorporating a regularization term that respects the identity of preference data.
 
 #### Core Concept
+
 IPO enhances DPO by adding an **identity-based regularization term** to the optimization objective. This regularization helps to:
 - Prevent overconfidence in reward assignments.
 - Maintain stable and well-behaved policies during optimization.
 
 #### Implementation Steps
+
 1. **Collect Preference Data:**
    - Gather preference annotations where each input prompt $x$ has a corresponding preferred response $y_w$ and a non-preferred response $y_\ell$.
 
@@ -616,9 +620,9 @@ IPO enhances DPO by adding an **identity-based regularization term** to the opti
 3. **Formulate the Objective Function:**
    - Define the IPO objective function as:
 
-$$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
+     $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
 
-   Where:
+     Where:
      - $\sigma$ is the sigmoid function.
      - $\mathcal{R}(\pi_\theta)$ is the regularization term.
      - $\lambda$ is a hyperparameter controlling the regularization strength.
@@ -627,6 +631,7 @@ $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{
    - Use the modified objective function to train the language model, ensuring robust and stable policies.
 
 #### Benefits of IPO
+
 1. **Enhanced Robustness:**
    - The regularization term prevents the model from becoming overly confident, ensuring reliable policies.
 
@@ -635,3 +640,62 @@ $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{
 
 3. **Better Generalization:**
    - By avoiding overfitting, IPO improves the model's ability to handle new and unseen prompts.
+
+### Kahneman-Tversky Optimization (KTO)
+
+Kahneman-Tversky Optimization (KTO) is an innovative approach designed to align large language models (LLMs) with human feedback by leveraging principles from prospect theory. This methodology optimizes model outputs based on binary desirability signals, offering a practical and scalable solution for real-world applications.
+
+#### Background and Motivation
+
+#### Prospect Theory
+
+Prospect theory, developed by Daniel Kahneman and Amos Tversky, provides insights into how individuals perceive and evaluate uncertain outcomes. Key components include:
+- **Value Function**: Captures human sensitivity to gains and losses, emphasizing loss aversion.
+- **Weighting Function**: Reflects subjective biases in probability perception.
+
+#### Traditional Alignment Methods
+
+Current methods for aligning LLMs with human preferences (RLHF, DPO, SFT) require extensive preference data, which is costly and limited.
+
+#### Understanding HALOs
+
+#### Human-Aware Loss Functions (HALOs)
+
+HALOs incorporate prospect theory insights into loss functions to enhance model alignment with human biases like loss aversion.
+
+#### KTO Methodology
+
+#### Derivation of KTO
+
+KTO leverages the Kahneman-Tversky model to optimize model utility directly using binary desirability signals. Key components include:
+
+- **Implicit Reward**: Derived from the RLHF objective, ensuring alignment with human utility.
+- **Reference Point**: Represents expected rewards under optimal policies across input-output pairs.
+
+The KTO loss function is defined as:
+
+$$ L_{\text{KTO}}(\pi_\theta, \pi_{\text{ref}}) = E_{x,y \sim D}[w(y)(1 - v_{\text{KTO}}(x,y; \beta))] $$
+
+Where:
+- $r_{\text{KTO}}(x,y) = \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)}$
+- $z_{\text{ref}} = E_{x' \sim D}[\beta \text{KL}(\pi_\theta(y'|x') \parallel \pi_{\text{ref}}(y'|x'))]$
+- $\sigma(r_{\text{KTO}}(x, y) - z_{\text{ref}})$ for desirable outputs.
+- $\sigma(z_{\text{ref}} - r_{\text{KTO}}(x, y))$ for undesirable outputs.
+- $w(y)$ weights losses based on desirability ($\lambda_D$ for desirable, $\lambda_U$ for undesirable).
+
+#### Implementation Details
+
+KTO estimates the KL divergence term practically by comparing outputs from unrelated inputs within a batch, ensuring training stability without back-propagating through the KL term.
+
+#### Experimental Results
+
+Empirical evaluations demonstrate that KTO achieves competitive performance compared to DPO across various LLM scales, handling data imbalances effectively and maintaining or improving output quality with weaker binary signals.
+
+#### Advantages of KTO
+
+KTO offers several advantages:
+- **Scalability**: Scales with increasing model size without extensive preference data.
+- **Practicality**: Utilizes readily available binary desirability signals, reducing data collection costs.
+- **Robustness**: Maintains performance across diverse datasets and tasks.
+
+

@@ -738,7 +738,7 @@ KTO offers several advantages:
 
 ---
 
-### Odds Ratio Preference Optimization (ORPO): Detailed Technical Overview
+### Odds Ratio Preference Optimization (ORPO): 
 
 Odds Ratio Preference Optimization (ORPO) represents a cutting-edge algorithm designed to align large language models (LLMs) with human preferences efficiently. This document provides an exhaustive technical overview of ORPO, covering its objectives, methodology, theoretical foundations, empirical results, practical applications, and future directions.
 

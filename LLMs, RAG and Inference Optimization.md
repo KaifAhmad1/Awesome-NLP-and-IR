@@ -866,4 +866,51 @@ In the context of optimizing inference for large language models (LLMs), there a
 - **System-level Optimization:**
   Improving inference engine efficiency and enhancing serving systems with strategies like batching and distributed processing to optimize overall performance.
 
+### Data Level Optimization 
+
+Optimizing Large Language Models (LLMs) is crucial for reducing computational costs and improving performance. Data-level optimization minimizes computational and memory usage through input compression and output organization, broadening LLM applicability across various environments and devices.
+
+#### Input Compression
+
+Input compression techniques shorten model inputs (prompts) without compromising output quality, reducing computational burden and improving performance. Key approaches include prompt pruning, prompt summarization, and retrieval-augmented generation.
+
+- **Prompt Pruning**
+
+  - **DYNAICL**: Dynamically adjusts the number of in-context examples for each input based on a computational budget, using a meta-controller to balance efficiency and performance.  
+    *Example*: In a language translation service, DYNAICL can reduce context sentences dynamically, making the system faster without sacrificing translation quality.
+
+  - **Selective Context**: Merges tokens into units and prunes them based on self-information indicators (e.g., negative log likelihood).  
+    *Example*: In an automated customer support system, Selective Context can prune unnecessary parts of user queries, ensuring faster and more efficient responses.
+
+  - **PCRL**: Implements token-level pruning using reinforcement learning, training a policy LLM by combining faithfulness and compression ratio into the reward function.  
+    *Example*: In a medical diagnosis application, PCRL can trim patient history details to essential information, speeding up the diagnosis process while maintaining accuracy.
+
+- **Prompt Summarization**
+
+  - **RECOMP**: Uses an Abstractive Compressor to generate concise summaries from input questions and retrieved documents, leveraging lightweight compressors distilled from larger LLMs.  
+    *Example*: In a legal research tool, RECOMP can summarize lengthy legal documents into brief, informative summaries, enhancing research efficiency.
+
+  - **SemanticCompression**: Breaks down text into sentences, groups them by topic, and summarizes each group to produce a condensed version of the original prompt.  
+    *Example*: In academic research, SemanticCompression can summarize long articles into concise summaries for quicker review by researchers.
+
+#### Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation (RAG) enhances LLM responses by incorporating external knowledge sources, adding only relevant information to the prompt.
+
+  - **RAG**: Adds relevant retrieved information to the prompt, reducing its length while improving content quality.  
+    *Example*: In a news summarization service, RAG can integrate relevant background information into summaries, ensuring they are concise yet comprehensive.
+
+  - **FLARE**: Proactively decides what information to retrieve based on predictions of upcoming sentences.  
+    *Example*: In a financial analysis tool, FLARE can predict and retrieve relevant financial data, integrating it into reports efficiently.
+
+#### Output Organization
+
+Output organization techniques optimize the generation process by structuring the output content to enable parallel processing, reducing latency and improving efficiency.
+
+- **Skeleton-of-Thought (SoT)** SoT generates a concise skeleton of the answer first, then expands each point in parallel.
+  *Example*: In collaborative writing, SoT outlines main points before expanding them simultaneously, speeding up the drafting process.
+
+- **SGD** SGD organizes sub-problems into a Directed Acyclic Graph (DAG), solving independent sub-problems in parallel.
+  *Example*: An AI coding assistant can break down complex coding tasks into smaller, parallelizable sub-tasks, enhancing developer productivity.
+
 

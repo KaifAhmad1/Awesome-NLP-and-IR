@@ -1004,3 +1004,6 @@ Sparsification increases the sparsity of model parameters or activations to redu
   - **Techniques:**
     - **Bigbird:** Introduces sparse attention patterns combined with global and local context models, optimizing processing efficiency for large-scale document analysis and sequence modeling.
     - **Longformer:** Extends sparse attention mechanisms to handle sequences with thousands of tokens, enabling efficient processing of documents and structured data with reduced computational resources.
+
+
+## Retrieval Augmented Generation (RAG) 

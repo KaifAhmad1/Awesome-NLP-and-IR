@@ -1025,11 +1025,11 @@ Sparsification increases the sparsity of model parameters or activations to redu
  - **Contextual Appropriateness:** Pure generative models might struggle with maintaining context over long conversations or complex queries. RAG’s retrieval component helps maintain context and relevance by providing pertinent information on demand, ensuring responses are consistent and contextually appropriate.
  - **Data Scarcity:** In scenarios with limited domain-specific training data, RAG can leverage external documents to supplement knowledge, improving performance even with smaller datasets by providing additional context and information.
 
-### Types of RAGs 
-- Simple RAG
-- Simple RAG with Memory
-- Branched RAG
-- Adaptive RAG
-- Corrective RAG
-- Self RAG
-- Agentic RAG 
+### Types of RAGs:
+- **Simple RAG**
+- **Simple RAG with Memory**
+- **Branched RAG**
+- **Adaptive RAG**
+- **Corrective RAG**
+- **Self RAG**
+- **Agentic RAG**

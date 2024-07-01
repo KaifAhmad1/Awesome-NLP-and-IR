@@ -1203,33 +1203,33 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 ### Corrective RAG
 
-**Corrective RAG:** Focuses on refining and improving generated responses through iterative feedback and correction mechanisms.
+**Corrective RAG:** focuses on refining and improving generated responses through iterative feedback and correction mechanisms, aiming to produce highly accurate and contextually relevant outputs.
+CRAG's architecture addresses the shortcomings of traditional RAG systems by incorporating corrective mechanisms that iteratively refine the output. The primary components of CRAG include the retriever, generator, feedback loop, and correction module, each playing a vital role in the iterative enhancement of generated responses.
 
 #### Components:
-
-- **Retriever:** Fetches relevant documents based on the user query.
-- **Generator:** Generates initial responses using retrieved documents.
-- **Feedback Loop:** Allows for iterative refinement of responses based on user feedback or additional retrievals.
-- **Correction Module:** Applies corrections to improve the accuracy and relevance of responses.
+- **Retriever:** fetches relevant documents based on the user query. It employs advanced retrieval algorithms to ensure the most pertinent information is selected.
+- **Generator:** produces initial responses by utilising the retrieved documents. It leverages sophisticated language models to generate coherent and contextually accurate outputs.
+- **Feedback Loop:** A cornerstone of CRAG, the feedback loop enables the iterative refinement of responses. It incorporates user feedback and additional retrievals to continuously improve the quality of the generated content.
+- **Correction Module:** The correction module applies necessary corrections to the responses, filtering out inaccuracies and irrelevant information to enhance overall accuracy and relevance.
 
 #### Workflow:
 
 1. **User Query:** The user submits a query.
-2. **Document Retrieval:** The retriever fetches relevant documents.
-3. **Initial Response Generation:** The generator creates an initial response.
-4. **Feedback and Correction:** The feedback loop refines the response based on user feedback and additional information.
+2. **Document Retrieval:**  fetches documents pertinent to the user query, providing the necessary information for generating an initial response.
+3. **Initial Response Generation:**  utilizes the retrieved documents to create an initial response, based on the information available and the capabilities of the language model.
+4. **Feedback and Correction:** Through the feedback loop, the initial response is iteratively refined. User feedback and additional retrievals are incorporated to enhance the accuracy and relevance of the final response.
 
 #### Benefits:
 
-- **Enhanced Accuracy:** Continuously improves response quality through iterative corrections.
-- **User Engagement:** Involves users in the response refinement process, increasing engagement and satisfaction.
-- **Dynamic Adaptation:** Adapts responses in real-time based on feedback and additional information.
+- **Enhanced Accuracy:** CRAG ensures higher accuracy and relevance in generated content by continuously refining responses through iterative corrections.
+- **User Engagement:** By involving users in the response refinement process, CRAG increases engagement and satisfaction, as users can provide feedback that directly impacts the quality of the generated responses.
+- **Dynamic Adaptation:** CRAG adapts responses in real-time based on feedback and additional information, ensuring the generated content remains relevant and accurate.
 
 #### Limitations:
 
-- **Feedback Dependency:** Relies on user feedback for iterative improvements, which may not always be available.
-- **Increased Latency:** The iterative feedback loop can introduce delays in generating the final response.
-- **Complex Implementation:** Requires sophisticated mechanisms to handle feedback and apply corrections effectively.
+- **Feedback Dependency:** CRAG relies on user feedback for iterative improvements. In scenarios where user feedback is unavailable, the system may struggle to refine responses effectively.
+- **Increased Latency:** The iterative feedback loop can introduce delays in generating the final response, potentially affecting the overall user experience.
+- **Complex Implementation:** Implementing CRAG requires sophisticated mechanisms to handle feedback and apply corrections effectively, posing challenges in deployment and maintenance.
 
 ### Self RAG
 

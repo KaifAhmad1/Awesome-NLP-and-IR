@@ -1012,19 +1012,19 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 ![High Level Design of RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RAG%20System%20Design.jpg)
 
-#### Key Components:
+### Key Components:
 
 - **Retriever Model:** Searches and ranks relevant documents or passages from a large external knowledge base.
 - **Generative Model:** Uses transformer-based architectures to generate coherent and contextually appropriate responses, informed by the retrieved information.
 
-#### Benefits of Retrieval-Augmented Generation (RAG):
+### Benefits of Retrieval-Augmented Generation (RAG):
 
 - **Improved Accuracy:** By grounding generative models in retrieved factual information, RAG significantly enhances the accuracy and reliability of outputs, reducing the likelihood of generating incorrect or hallucinated content.
 - **Enhanced Relevance:** The retrieval mechanism ensures that generated responses are contextually appropriate and tailored to the input query, thereby improving the relevance and coherence of the output.
 - **Knowledge Integration:** RAG seamlessly integrates external knowledge bases into the generation process, allowing the model to access and utilize up-to-date and domain-specific information, which enriches the quality of generated text.
 - **Reduced Training Data Requirements:** By leveraging external knowledge, RAG reduces the dependency on large-scale annotated training data. The retrieval component provides relevant context that the model might not have encountered during training, enhancing performance even with smaller datasets.
 
-#### Limitations and Challenges Addressed by RAG:
+### Limitations and Challenges Addressed by RAG:
 
 - **Hallucination in Generative Models:** Generative models can sometimes produce plausible-sounding but incorrect or nonsensical text. RAG mitigates this by grounding generation in retrieved factual content, ensuring outputs are based on real, validated information.
 - **Static Knowledge Limitation:** Traditional generative models are constrained by the knowledge available at the time of training. RAG addresses this by continuously updating its knowledge base through retrieval of recent and relevant information, ensuring outputs remain timely and accurate.
@@ -1054,9 +1054,9 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 #### Workflow:
 
-- **User Query:** The user submits a query.
-- **Document Retrieval:** The retriever fetches relevant documents.
-- **Response Generation:** The generator creates a response using the retrieved documents.
+1. **User Query:** The user submits a query.
+2. **Document Retrieval:** The retriever fetches relevant documents.
+3. **Response Generation:** The generator creates a response using the retrieved documents.
 
 #### Benefits:
 
@@ -1080,10 +1080,10 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 #### Workflow:
 
-- **User Query:** The user submits a query.
-- **Document Retrieval:** The retriever fetches relevant documents.
-- **Memory Retrieval:** The memory module retrieves relevant past interactions.
-- **Response Generation:** The generator creates a response using both the retrieved documents and memory context.
+1. **User Query:** The user submits a query.
+2. **Document Retrieval:** The retriever fetches relevant documents.
+3. **Memory Retrieval:** The memory module retrieves relevant past interactions.
+4. **Response Generation:** The generator creates a response using both the retrieved documents and memory context.
 
 #### Benefits:
 
@@ -1098,31 +1098,165 @@ Sparsification increases the sparsity of model parameters or activations to redu
 - **Privacy Concerns:** Storing user interactions necessitates careful data handling and user consent mechanisms.
 
 ### Branched RAG
+
 **Branched RAG:** Enhances the flexibility and robustness of responses by utilizing multiple retrieval and generation pathways.
 
 #### Components:
+
 - **Multiple Retrievers:** Employs various retrieval mechanisms, such as dense and sparse retrievers, to gather a diverse set of documents or passages.
 - **Multiple Generators:** Utilizes several generative models, each optimized for different types of queries or contexts.
 - **Branch Selector:** Analyzes the query and determines the most appropriate combination of retrievers and generators.
 
 #### Workflow:
-- **User Query:** The user submits a query.
-- **Branch Selection:** The branch selector evaluates the query and selects the optimal retrieval and generation paths.
-- **Document Retrieval:** The chosen retrievers fetch relevant documents or passages.
-- **Response Generation:** The selected generative models create responses based on the retrieved documents.
-- **Response Aggregation:** Combines or selects the best responses from the multiple generation paths to provide the final output.
+
+1. **User Query:** The user submits a query.
+2. **Branch Selection:** The branch selector evaluates the query and selects the optimal retrieval and generation paths.
+3. **Document Retrieval:** The chosen retrievers fetch relevant documents or passages.
+4. **Response Generation:** The selected generative models create responses based on the retrieved documents.
+5. **Response Aggregation:** Combines or selects the best responses from the multiple generation paths to provide the final output.
 
 #### Benefits:
+
 - **Enhanced Flexibility:** Adapts to a wide range of queries by leveraging multiple retrieval and generation strategies.
 - **Increased Robustness:** Diversifies the retrieval and generation process, reducing the risk of errors and improving the overall quality of responses.
 - **Superior Accuracy:** Combines insights from different retrievers and generators to enhance the precision and reliability of responses.
 
 #### Limitations:
+
 - **Higher Complexity:** Managing multiple retrievers and generators increases the complexity of the system architecture.
 - **Greater Resource Demand:** Requires more computational resources due to the parallel retrieval and generation processes.
 - **Integration Challenges:** Ensuring seamless coordination and integration between different components can be challenging.
-  
+
 #### Use Cases:
+
 - **Complex Queries:** Ideal for handling multifaceted queries that benefit from diverse perspectives and information sources.
 - **Domain-Specific Applications:** Can be tailored for specialized domains where different retrievers and generators are optimized for specific types of information.
 - **Advanced Conversational Agents:** Enhances the versatility and adaptability of conversational agents by providing nuanced and contextually rich responses.
+
+### Adaptive RAG
+
+**Adaptive RAG:** Dynamically adjusts retrieval and generation strategies based on the complexity of user queries.
+
+#### Components:
+
+- **Complexity Classifier:** Determines the complexity level of the user query.
+- **Retriever:** Fetches relevant documents or passages based on the classified complexity level.
+- **Generator:** Utilizes pre-trained language models to generate responses according to the complexity level.
+- **Three-tier Strategy:**
+  - **Simple Queries (Level A):** Handled by the generative model alone.
+  - **Moderate Queries (Level B):** Utilize a single-step retrieval and generation approach.
+  - **Complex Queries (Level C):** Employ a multi-step retrieval and generation process.
+
+#### Workflow:
+
+1. **User Query:** The user submits a query.
+2. **Complexity Assessment:** The complexity classifier evaluates the query and determines its complexity level.
+3. **Document Retrieval:** The retriever fetches relevant documents based on the complexity level.
+4. **Response Generation:** The generator creates a response using the retrieved documents, tailored to the complexity level.
+
+#### Benefits:
+
+- **Optimized Performance:** Adapts retrieval and generation strategies to match query complexity, enhancing efficiency and accuracy.
+- **Resource Efficiency:** Reduces computational overhead by avoiding unnecessary complex retrieval processes for simple queries.
+- **Dynamic Adaptability:** Adjusts in real-time to varying query complexities, providing contextually appropriate responses.
+
+#### Limitations:
+
+- **Complexity Classifier Dependency:** The accuracy of the complexity classifier directly impacts the effectiveness of Adaptive RAG. Misclassification can lead to suboptimal strategy selection.
+- **Training Data Requirements:** Building an effective complexity classifier requires a substantial amount of annotated data, which can be resource-intensive.
+- **Generalization:** The classifier may struggle to generalize to unseen queries or new domains without retraining or fine-tuning.
+- **Computational Overhead:** The process of determining query complexity adds an additional computational step, which may affect response time, especially for simple queries.
+
+### Corrective RAG
+
+**Corrective RAG:** Focuses on refining and improving generated responses through iterative feedback and correction mechanisms.
+
+#### Components:
+
+- **Retriever:** Fetches relevant documents based on the user query.
+- **Generator:** Generates initial responses using retrieved documents.
+- **Feedback Loop:** Allows for iterative refinement of responses based on user feedback or additional retrievals.
+- **Correction Module:** Applies corrections to improve the accuracy and relevance of responses.
+
+#### Workflow:
+
+1. **User Query:** The user submits a query.
+2. **Document Retrieval:** The retriever fetches relevant documents.
+3. **Initial Response Generation:** The generator creates an initial response.
+4. **Feedback and Correction:** The feedback loop refines the response based on user feedback and additional retrievals.
+
+#### Benefits:
+
+- **Enhanced Accuracy:** Continuously improves response quality through iterative corrections.
+- **User Engagement:** Involves users in the response refinement process, increasing engagement and satisfaction.
+- **Dynamic Adaptation:** Adapts responses in real-time based on feedback and additional information.
+
+#### Limitations:
+
+- **Feedback Dependency:** Relies on user feedback for iterative improvements, which may not always be available.
+- **Increased Latency:** The iterative feedback loop can introduce delays in generating the final response.
+- **Complex Implementation:** Requires sophisticated mechanisms to handle feedback and apply corrections effectively.
+
+### Self RAG
+
+**Self RAG:** Integrates self-supervised learning techniques to enhance the retrieval and generation process.
+
+#### Components:
+
+- **Retriever:** Fetches relevant documents using self-supervised learning models.
+- **Generator:** Generates responses using self-supervised learning models.
+- **Self-Supervised Learning Module:** Continuously improves retrieval and generation models through self-supervised learning techniques.
+- **Evaluation Module:** Assesses the quality of responses and provides feedback for model improvement.
+
+#### Workflow:
+
+1. **User Query:** The user submits a query.
+2. **Document Retrieval:** The retriever fetches relevant documents using self-supervised learning techniques.
+3. **Response Generation:** The generator creates responses using self-supervised learning techniques.
+4. **Evaluation and Improvement:** The evaluation module assesses responses and provides feedback for continuous model improvement.
+
+#### Benefits:
+
+- **Continuous Improvement:** Self-supervised learning techniques enable continuous improvement of retrieval and generation models.
+- **Reduced Dependency on Labeled Data:** Minimizes the need for large-scale annotated training data by leveraging self-supervised learning.
+- **Enhanced Adaptability:** Adapts to new domains and queries through ongoing self-supervised learning.
+
+#### Limitations:
+
+- **Training Complexity:** Implementing effective self-supervised learning techniques can be complex and resource-intensive.
+- **Evaluation Challenges:** Assessing the quality of self-supervised learning models requires sophisticated evaluation mechanisms.
+- **Computational Overhead:** Continuous self-supervised learning can introduce additional computational overhead.
+
+### Agentic RAG
+
+**Agentic RAG:** Utilizes autonomous agents to manage the retrieval and generation process, enhancing flexibility and efficiency.
+
+#### Components:
+
+- **Autonomous Agents:** Manage different aspects of the retrieval and generation process, such as document retrieval, response generation, and context management.
+- **Coordinator Module:** Orchestrates the activities of autonomous agents to ensure coherent and contextually appropriate responses.
+- **Knowledge Base:** Provides a comprehensive repository of documents and information for retrieval and generation.
+
+#### Workflow:
+
+1. **User Query:** The user submits a query.
+2. **Agent Assignment:** The coordinator module assigns tasks to autonomous agents based on the query.
+3. **Document Retrieval:** Autonomous agents fetch relevant documents from the knowledge base.
+4. **Response Generation:** Autonomous agents generate responses using the retrieved documents.
+5. **Response Aggregation:** The coordinator module aggregates responses from different agents to provide the final output.
+
+#### Benefits:
+
+- **Enhanced Flexibility:** Autonomous agents can handle diverse tasks and adapt to different queries dynamically.
+- **Improved Efficiency:** Delegating tasks to specialized agents can enhance the efficiency of the retrieval and generation process.
+- **Scalability:** The agent-based approach can scale to handle large volumes of queries and complex interactions.
+
+#### Limitations:
+
+- **Coordination Complexity:** Orchestrating the activities of multiple autonomous agents can be complex and requires sophisticated coordination mechanisms.
+- **Resource Requirements:** Deploying and managing multiple autonomous agents may require significant computational resources.
+- **Integration Challenges:** Ensuring seamless integration and communication between agents can be challenging.
+
+---
+
+Adaptive RAG represents a significant advancement in the field of retrieval-augmented generation by dynamically adjusting strategies based on query complexity. This approach optimizes both performance and efficiency, making it a valuable addition to the various types of RAG systems available.

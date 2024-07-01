@@ -1233,33 +1233,30 @@ CRAG's architecture addresses the shortcomings of traditional RAG systems by inc
 
 ### Self RAG
 
-**Self RAG:** Integrates self-supervised learning techniques to enhance the retrieval and generation process.
+**Self RAG:** SELF-RAG introduces an advanced framework for enhancing language models (LMs) by integrating retrieval-based augmentation with a sophisticated self-reflection mechanism. This approach ensures not only fluency but also factual accuracy and contextual relevance in generated text.
 
 #### Components:
 
-- **Retriever:** Fetches relevant documents using self-supervised learning models.
-- **Generator:** Generates responses using self-supervised learning models.
-- **Self-Supervised Learning Module:** Continuously improves retrieval and generation models through self-supervised learning techniques.
-- **Evaluation Module:** Assesses the quality of responses and provides feedback for model improvement.
-
+- **Retrieval-Augmented Generation:** SELF-RAG utilizes a retriever model (e.g., Contriever-MS MARCO) to fetch relevant documents or passages from extensive databases. These retrievals provide crucial contextual information guiding the LM in generating informed and contextually appropriate responses.
+- **Self-Reflection Mechanism:** A unique feature of SELF-RAG is its self-reflection mechanism. This allows the LM to critically assess its own generated outputs against retrieved information and predefined criteria. Through iterative refinement via self-assessment, SELF-RAG enhances the accuracy, factual correctness, and contextual relevance of its generated text.
+- **Training and Fine-Tuning:** SELF-RAG is trained on datasets containing input-output pairs that emphasize instruction-following. These pairs typically include prompts or queries alongside target outputs. During training, the LM learns to integrate retrieval results into its generative process and uses self-reflection tokens embedded within its vocabulary to ensure high-quality outputs.
+  
 #### Workflow:
 
-1. **User Query:** The user submits a query.
-2. **Document Retrieval:** The retriever fetches relevant documents using self-supervised learning techniques.
-3. **Response Generation:** The generator creates responses using self-supervised learning techniques.
-4. **Evaluation and Improvement:** The evaluation module assesses responses and provides feedback for continuous model improvement.
+1. **Training Phase:** SELF-RAG synchronizes retrieval results with its generative capabilities during training. It adjusts its outputs based on retrieved contexts and receives feedback from the critic LM and self-reflection tokens.
+2. **Inference Phase:** In practice, SELF-RAG retrieves relevant documents or passages based on user queries or prompts. The LM synthesizes responses, considers retrieved-context, and applies self-reflection tokens to refine and enhance outputs before finalizing them.
 
 #### Benefits:
 
-- **Continuous Improvement:** Self-supervised learning techniques enable continuous improvement of retrieval and generation models.
-- **Reduced Dependency on Labeled Data:** Minimizes the need for large-scale annotated training data by leveraging self-supervised learning.
-- **Enhanced Adaptability:** Adapts to new domains and queries through ongoing self-supervised learning.
+- **Enhanced Factuality:** By combining retrieval-based augmentation with self-reflection, SELF-RAG improves the factual accuracy and reliability of generated outputs, reducing the risk of misinformation.
+- **Customizability:** Practitioners can adjust SELF-RAG's behaviour during inference using reflection tokens, allowing for tailored outputs that meet specific criteria or metrics. This flexibility enhances its utility in tasks like question answering, summarization, and content generation.
+- **Versatility:** SELF-RAG's comprehensive approach makes it suitable for applications requiring precise and contextually aware text generation, broadening its applicability across diverse fields where accuracy and relevance are crucial.
 
 #### Limitations:
 
-- **Training Complexity:** Implementing effective self-supervised learning techniques can be complex and resource-intensive.
-- **Evaluation Challenges:** Assessing the quality of self-supervised learning models requires sophisticated evaluation mechanisms.
-- **Computational Overhead:** Continuous self-supervised learning can introduce additional computational overhead.
+- **Computational Resources:** Implementing SELF-RAG requires significant computational resources due to the dual process of retrieval and generation. This can limit its deployment on resource-constrained platforms or in real-time applications.
+- **Dependency on Retrieval Quality:** The effectiveness of SELF-RAG heavily depends on the quality and relevance of retrieved documents. In scenarios where retrievals fail to provide accurate or sufficient contextual information, the quality of generated outputs may degrade.
+- **Complexity in Training:** Training SELF-RAG involves intricate processes to align retrieval results with generative tasks and fine-tune self-reflection mechanisms. This complexity may require specialized expertise and extensive tuning for optimal performance.
 
 ### Agentic RAG
 

@@ -1008,6 +1008,7 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 ## Retrieval Augmented Generation (RAG) 
 **Retrieval-Augmented Generation (RAG)** is an advanced technique in NLP that synergizes retrieval-based and generative models to enhance generated text's performance, relevance, and factual accuracy. This approach integrates a retriever model, which identifies relevant documents or passages from a large external knowledge base, with a generative model synthesising this retrieved information into coherent and contextually appropriate responses.
+  ![High Level Design of RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RAG%20System%20Design.jpg)
 #### Key Components:
  - **Retriever Model:** Searches and ranks relevant documents or passages from a large external knowledge base.
  - **Generative Model:** Uses transformer-based architectures to generate coherent and contextually appropriate responses, informed by the retrieved information.

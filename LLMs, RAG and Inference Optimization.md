@@ -1006,27 +1006,33 @@ Sparsification increases the sparsity of model parameters or activations to redu
     - **Longformer:** Extends sparse attention mechanisms to handle sequences with thousands of tokens, enabling efficient processing of documents and structured data with reduced computational resources.
 
 
-## Retrieval Augmented Generation (RAG) 
-**Retrieval-Augmented Generation (RAG)** is an advanced technique in NLP that synergizes retrieval-based and generative models to enhance generated text's performance, relevance, and factual accuracy. This approach integrates a retriever model, which identifies relevant documents or passages from a large external knowledge base, with a generative model synthesising this retrieved information into coherent and contextually appropriate responses.
-  ![High Level Design of RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RAG%20System%20Design.jpg)
+## Retrieval-Augmented Generation (RAG)
+
+**Retrieval-Augmented Generation (RAG)** is an advanced technique in NLP that synergizes retrieval-based and generative models to enhance generated text's performance, relevance, and factual accuracy. This approach integrates a retriever model, which identifies relevant documents or passages from a large external knowledge base, with a generative model synthesizing this retrieved information into coherent and contextually appropriate responses.
+
+![High Level Design of RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RAG%20System%20Design.jpg)
+
 #### Key Components:
- - **Retriever Model:** Searches and ranks relevant documents or passages from a large external knowledge base.
- - **Generative Model:** Uses transformer-based architectures to generate coherent and contextually appropriate responses, informed by the retrieved information.
+
+- **Retriever Model:** Searches and ranks relevant documents or passages from a large external knowledge base.
+- **Generative Model:** Uses transformer-based architectures to generate coherent and contextually appropriate responses, informed by the retrieved information.
 
 #### Benefits of Retrieval-Augmented Generation (RAG):
- - **Improved Accuracy:** By grounding generative models in retrieved factual information, RAG significantly enhances the accuracy and reliability of outputs, reducing the likelihood of generating incorrect or hallucinated content.
- - **Enhanced Relevance:** The retrieval mechanism ensures that generated responses are contextually appropriate and tailored to the input query, thereby improving the relevance and coherence of the output.
- - **Knowledge Integration:** RAG seamlessly integrates external knowledge bases into the generation process, allowing the model to access and utilize up-to-date and domain-specific information, which enriches the quality of generated text.
- - **Reduced Training Data Requirements:** By leveraging external knowledge, RAG reduces the dependency on large-scale annotated training data. The retrieval component provides relevant context that the model might not have encountered during training, enhancing performance even with smaller datasets.
+
+- **Improved Accuracy:** By grounding generative models in retrieved factual information, RAG significantly enhances the accuracy and reliability of outputs, reducing the likelihood of generating incorrect or hallucinated content.
+- **Enhanced Relevance:** The retrieval mechanism ensures that generated responses are contextually appropriate and tailored to the input query, thereby improving the relevance and coherence of the output.
+- **Knowledge Integration:** RAG seamlessly integrates external knowledge bases into the generation process, allowing the model to access and utilize up-to-date and domain-specific information, which enriches the quality of generated text.
+- **Reduced Training Data Requirements:** By leveraging external knowledge, RAG reduces the dependency on large-scale annotated training data. The retrieval component provides relevant context that the model might not have encountered during training, enhancing performance even with smaller datasets.
 
 #### Limitations and Challenges Addressed by RAG:
 
- - **Hallucination in Generative Models:** Generative models can sometimes produce plausible-sounding but incorrect or nonsensical text. RAG mitigates this by grounding generation in retrieved factual content, ensuring outputs are based on real, validated information.
- - **Static Knowledge Limitation:** Traditional generative models are constrained by the knowledge available at the time of training. RAG addresses this by continuously updating its knowledge base through retrieval of recent and relevant information, ensuring outputs remain timely and accurate.
- - **Contextual Appropriateness:** Pure generative models might struggle with maintaining context over long conversations or complex queries. RAG’s retrieval component helps maintain context and relevance by providing pertinent information on demand, ensuring responses are consistent and contextually appropriate.
- - **Data Scarcity:** In scenarios with limited domain-specific training data, RAG can leverage external documents to supplement knowledge, improving performance even with smaller datasets by providing additional context and information.
+- **Hallucination in Generative Models:** Generative models can sometimes produce plausible-sounding but incorrect or nonsensical text. RAG mitigates this by grounding generation in retrieved factual content, ensuring outputs are based on real, validated information.
+- **Static Knowledge Limitation:** Traditional generative models are constrained by the knowledge available at the time of training. RAG addresses this by continuously updating its knowledge base through retrieval of recent and relevant information, ensuring outputs remain timely and accurate.
+- **Contextual Appropriateness:** Pure generative models might struggle with maintaining context over long conversations or complex queries. RAG’s retrieval component helps maintain context and relevance by providing pertinent information on demand, ensuring responses are consistent and contextually appropriate.
+- **Data Scarcity:** In scenarios with limited domain-specific training data, RAG can leverage external documents to supplement knowledge, improving performance even with smaller datasets by providing additional context and information.
 
 ### Types of RAGs:
+
 - **Simple RAG**
 - **Simple RAG with Memory**
 - **Branched RAG**
@@ -1034,3 +1040,59 @@ Sparsification increases the sparsity of model parameters or activations to redu
 - **Corrective RAG**
 - **Self RAG**
 - **Agentic RAG**
+
+### Simple RAG
+
+**Retrieval-Augmented Generation (RAG):** Enhances response quality by combining document retrieval with language generation.
+
+#### Components:
+
+- **Retriever:**
+  - **Dense Retrieval:** Uses embeddings (e.g., BERT, DPR) for similarity search.
+  - **Sparse Retrieval:** Uses keyword matching (e.g., BM25) for finding relevant documents.
+- **Generator:** Utilizes pre-trained language models (e.g., GPT) to generate responses based on the retrieved documents.
+
+#### Workflow:
+
+- **User Query:** The user submits a query.
+- **Document Retrieval:** The retriever fetches relevant documents.
+- **Response Generation:** The generator creates a response using the retrieved documents.
+
+#### Benefits:
+
+- **Relevance:** Provides up-to-date and accurate responses by accessing a vast knowledge base.
+- **Efficiency:** Reduces computational overhead by focusing only on the most relevant documents.
+
+#### Limitations:
+
+- **Reliance on Retriever Quality:** The quality of the final response depends heavily on the relevance of the retrieved documents.
+- **Single Interaction Focus:** Designed for standalone queries rather than ongoing conversations.
+
+### Simple RAG with Memory
+
+**Enhanced RAG:** Incorporates a memory component to store and utilize past interactions, providing better context and continuity.
+
+#### Components:
+
+- **Retriever:** Fetches relevant documents, similar to Simple RAG.
+- **Generator:** Generates responses using retrieved documents and context from memory.
+- **Memory Module:** Stores past interactions, user preferences, and previous responses for contextual reference.
+
+#### Workflow:
+
+- **User Query:** The user submits a query.
+- **Document Retrieval:** The retriever fetches relevant documents.
+- **Memory Retrieval:** The memory module retrieves relevant past interactions.
+- **Response Generation:** The generator creates a response using both the retrieved documents and memory context.
+
+#### Benefits:
+
+- **Contextual Continuity:** Maintains context across multiple interactions, making conversations more coherent and natural.
+- **Personalization:** Remembers user-specific information and preferences to provide tailored responses.
+- **Efficiency:** Reduces redundant retrievals by referencing stored interactions, speeding up response time.
+
+#### Limitations:
+
+- **Complex Memory Management:** Requires sophisticated techniques to manage, update, and retrieve relevant information from memory.
+- **Scalability Issues:** Efficient memory storage and retrieval become more challenging as the number of interactions grows.
+- **Privacy Concerns:** Storing user interactions necessitates careful data handling and user consent mechanisms.

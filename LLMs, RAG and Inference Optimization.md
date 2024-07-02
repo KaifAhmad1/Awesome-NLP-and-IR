@@ -845,8 +845,6 @@ ORPO's efficient preference alignment capabilities have practical implications a
 
 
 
-
-
 ## Efficiency and Inference Optimization
 
 ### LLM Efficiency
@@ -901,7 +899,8 @@ In the context of optimizing inference for large language models (LLMs), there a
 - **System-level Optimization:**
   Improving inference engine efficiency and enhancing serving systems with strategies like batching and distributed processing to optimize overall performance.
 
-### Data Level Optimization 
+
+### Data Level Optimization
 
 Optimizing Large Language Models (LLMs) is crucial for reducing computational costs and improving performance. Data-level optimization minimizes computational and memory usage through input compression and output organization, broadening LLM applicability across various environments and devices.
 
@@ -910,7 +909,6 @@ Optimizing Large Language Models (LLMs) is crucial for reducing computational co
 Input compression techniques shorten model inputs (prompts) without compromising output quality, reducing computational burden and improving performance. Key approaches include prompt pruning, prompt summarization, and retrieval-augmented generation.
 
 - **Prompt Pruning**
-
   - **DYNAICL**: Dynamically adjusts the number of in-context examples for each input based on a computational budget, using a meta-controller to balance efficiency and performance.  
     *Example*: In a language translation service, DYNAICL can reduce context sentences dynamically, making the system faster without sacrificing translation quality.
 
@@ -921,7 +919,6 @@ Input compression techniques shorten model inputs (prompts) without compromising
     *Example*: In a medical diagnosis application, PCRL can trim patient history details to essential information, speeding up the diagnosis process while maintaining accuracy.
 
 - **Prompt Summarization**
-
   - **RECOMP**: Uses an Abstractive Compressor to generate concise summaries from input questions and retrieved documents, leveraging lightweight compressors distilled from larger LLMs.  
     *Example*: In a legal research tool, RECOMP can summarize lengthy legal documents into brief, informative summaries, enhancing research efficiency.
 
@@ -932,22 +929,23 @@ Input compression techniques shorten model inputs (prompts) without compromising
 
 Retrieval-Augmented Generation (RAG) enhances LLM responses by incorporating external knowledge sources, adding only relevant information to the prompt.
 
-  - **RAG**: Adds relevant retrieved information to the prompt, reducing its length while improving content quality.  
-    *Example*: In a news summarization service, RAG can integrate relevant background information into summaries, ensuring they are concise yet comprehensive.
+- **RAG**: Adds relevant retrieved information to the prompt, reducing its length while improving content quality.  
+  *Example*: In a news summarization service, RAG can integrate relevant background information into summaries, ensuring they are concise yet comprehensive.
 
-  - **FLARE**: Proactively decides what information to retrieve based on predictions of upcoming sentences.  
-    *Example*: In a financial analysis tool, FLARE can predict and retrieve relevant financial data, integrating it into reports efficiently.
+- **FLARE**: Proactively decides what information to retrieve based on predictions of upcoming sentences.  
+  *Example*: In a financial analysis tool, FLARE can predict and retrieve relevant financial data, integrating it into reports efficiently.
 
 #### Output Organization
 
 Output organization techniques optimize the generation process by structuring the output content to enable parallel processing, reducing latency and improving efficiency.
 
-- **Skeleton-of-Thought (SoT)** SoT generates a concise skeleton of the answer first, then expands each point in parallel.
+- **Skeleton-of-Thought (SoT)**: SoT generates a concise skeleton of the answer first, then expands each point in parallel.  
   *Example*: In collaborative writing, SoT outlines main points before expanding them simultaneously, speeding up the drafting process.
 
-- **SGD** SGD organizes sub-problems into a Directed Acyclic Graph (DAG), solving independent sub-problems in parallel.
+- **SGD**: SGD organizes sub-problems into a Directed Acyclic Graph (DAG), solving independent sub-problems in parallel.  
   *Example*: An AI coding assistant can break down complex coding tasks into smaller, parallelizable sub-tasks, enhancing developer productivity.
 
+--- 
 
 ### Model Level Optimization
 
@@ -1040,7 +1038,10 @@ Sparsification increases the sparsity of model parameters or activations to redu
     - **Bigbird:** Introduces sparse attention patterns combined with global and local context models, optimizing processing efficiency for large-scale document analysis and sequence modeling.
     - **Longformer:** Extends sparse attention mechanisms to handle sequences with thousands of tokens, enabling efficient processing of documents and structured data with reduced computational resources.
 
-### System-Level Optimizations 
+---
+
+### System-Level Optimizations
+
 System-level optimization in large language models (LLMs) enhances efficiency and performance during model inference. Key areas include refining computational graphs, optimizing operators, and accelerating inference engines to meet the demands of real-time applications.
 
 #### Components of System-Level Optimization
@@ -1048,6 +1049,7 @@ System-level optimization in large language models (LLMs) enhances efficiency an
 #### Inference Engine Optimization
 
 #### Graph and Operator Optimization
+
 - **Runtime Profiling**: Utilize tools like HuggingFace to profile inference runtimes across various models and input contexts. Identify and target dominant operators such as attention and linear layers for optimization.
 - **Attention Operator Optimization**:
   - **Challenges**: Address the quadratic time and space complexities inherent in attention mechanisms.
@@ -1057,9 +1059,10 @@ System-level optimization in large language models (LLMs) enhances efficiency an
   - **Methods**: Employ specialized implementations like FastGEMV or FlatGEMM to efficiently handle reduced dimensions during decoding.
 
 #### Decoding Strategies
+
 Decoding strategies play a critical role in optimizing the performance and efficiency of large language models (LLMs). This document explores three key decoding strategies: autoregressive decoding, speculative decoding, and lookahead decoding. We will delve into their mechanisms, advantages, limitations, and practical applications, providing mathematical insights and examples for clarity.
 
-#### Autoregressive Decoding
+##### Autoregressive Decoding
 
 Autoregressive decoding generates tokens sequentially, where each token is predicted based on the previously generated tokens.
 
@@ -1071,17 +1074,17 @@ Mathematically, this can be expressed as:
 
 $$P(x_1, x_2, \ldots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, x_2, \ldots, x_{t-1})$$
 
-#### Advantages
+**Advantages**
 
 - **Simplicity**: The algorithm is easy to implement.
 - **Accuracy**: Each token is generated with maximum contextual information from all previous tokens.
 
-#### Limitations
+**Limitations**
 
 - **Latency**: The sequential nature leads to high latency, especially for long sequences.
 - **Inefficiency**: Modern GPUs are underutilized as they process one token at a time, resulting in low GPU utilization.
 
-#### Example
+**Example**
 
 Consider the sequence `The quick brown fox`:
 
@@ -1090,37 +1093,38 @@ Consider the sequence `The quick brown fox`:
 3. **Step 3**: Generate `brown` based on `The quick`
 4. **Step 4**: Generate `fox` based on `The quick brown`
 
-#### Speculative Decoding
+##### Speculative Decoding
+
 Speculative decoding aims to reduce latency by employing a `guess-and-verify` strategy using a draft model.
 
 **Steps:**
 1. **Draft Generation**: The draft model predicts multiple tokens ahead in parallel.
 2. **Verification**: The main LLM verifies these predicted tokens and accepts those that match its own predictions.
 
-#### Example
+**Example**
 
 Consider predicting the next tokens for the sequence `The quick brown`:
 
 1. **Draft Model**: Predicts possible continuations like `fox`, `dog`, `cat`.
 2. **Verification**: The main model verifies these options and selects `fox`.
 
-#### Advantages
+**Advantages**
 
 - **Parallelism**: Multiple tokens are generated in parallel, reducing the number of sequential steps.
 - **Speedup**: Can achieve significant speedup if the draft model is accurate.
 
-#### Limitations
+**Limitations**
 
 - **Accuracy Dependence**: Speedup is limited by the accuracy of the draft model.
 - **Complexity**: Developing and maintaining an accurate draft model requires extra training and tuning.
 
-#### Mathematical Insight
+**Mathematical Insight**
 
 If the draft model has an accuracy $A$, the number of steps $S$ required is reduced to:
 
 $$S = \frac{L}{A}$$
 
-#### Lookahead Decoding
+##### Lookahead Decoding
 
 Lookahead decoding breaks the sequential dependency in autoregressive decoding by using the Jacobi iteration method to generate multiple disjoint n-grams in parallel.
 
@@ -1131,12 +1135,12 @@ Lookahead decoding breaks the sequential dependency in autoregressive decoding b
 4. **Verification Branch**: Select and verify n-grams for integration into the sequence.
 5. **Iteration**: Repeat until the sequence is complete.
 
-#### Parameters
+**Parameters**
 
 - **Window Size (W)**: Number of future token positions considered for parallel decoding.
 - **N-gram Size (N)**: Number of steps looked back in the Jacobi iteration trajectory to retrieve n-grams.
 
-#### Example
+**Example**
 
 Generating a sequence with:
 
@@ -1153,16 +1157,16 @@ The verification branch verifies and integrates `quick brown`, resulting in:
 
 - `The quick brown`
 
-#### Advantages
+**Advantages**
 
 - **Reduced Latency**: Significant reduction in the number of decoding steps.
 - **No Draft Model**: Operates without the need for an additional draft model.
 
-#### Limitations
+**Limitations**
 
 - **Computational Overhead**: Each step may involve more computations due to parallel n-gram generation and verification.
 
-#### Mathematical Insight
+**Mathematical Insight**
 
 The number of steps $S$ required is reduced to:
 
@@ -1170,9 +1174,8 @@ $$S = \frac{L}{W \times N}$$
 
 These decoding strategies provide various methods to enhance the efficiency and performance of large language models, each with its unique strengths and considerations.
 
-
-
 #### Graph-Level Optimization
+
 - **Kernel Fusion**:
   - **Concept**: Merge multiple operations into a single kernel to reduce memory access and kernel launch overhead, and enhance parallelism.
   - **Examples**: FlashAttention for fusing attention operations, and DeepSpeed for integrating lightweight operators like residual layers into linear operations.
@@ -1183,32 +1186,36 @@ These decoding strategies provide various methods to enhance the efficiency and 
 ### Challenges and Solutions in System-Level Optimization
 
 #### Memory Management
+
 - **KV Cache Optimization**:
   - **Dynamic Allocation**: Allocate memory based on estimated maximum generation length to minimize wastage.
   - **Paged Storage**: Divide memory into blocks and dynamically map KV cache to reduce fragmentation and optimize usage.
   - **Fine-grained Storage**: Utilize token-level or chunk-based storage to maximize cache utilization.
 
 #### Continuous Batching
+
 - **Strategies**:
   - **Split-and-Fuse Technique**: Segment long prefilling requests and batch them with shorter decoding requests to balance workload and reduce latency.
   - **Iteration-level Batching**: Batch requests at the iteration level to release resources promptly after each iteration, optimizing system utilization.
 
 #### Scheduling Strategies
+
 - **Methods**:
   - **First-Come-First-Serve (FCFS)**: Handle requests based on arrival order, suitable for diverse request lengths.
   - **Decoding Prioritization**: Prioritize decoding requests to improve response times and optimize resource usage.
   - **Preemptive Scheduling**: Use multi-level feedback queues (MLFQ) to predict request completion times and preemptively schedule tasks, minimizing latency and maximizing throughput.
 
 #### Distributed Systems Optimization
+
 - **Techniques**:
   - **Disaggregated Processing**: Separate prefilling and decoding stages to leverage distributed resources more effectively.
   - **Instance Management**: Optimize instance selection and migration strategies in cloud environments to handle dynamic workloads and ensure continuous service availability.
 
 #### Hardware Accelerator Design
+
 - **Methods**:
   - **Mixed-Precision Quantization**: Use lower precision arithmetic for linear operators to enhance energy efficiency without compromising accuracy.
   - **Algorithm-Hardware Co-design**: Tailor algorithms to leverage hardware features like FPGA for memory-intensive decoding stages, optimizing overall system performance.
-
 
 
 

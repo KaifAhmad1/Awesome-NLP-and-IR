@@ -1021,11 +1021,121 @@ System-level optimization in large language models (LLMs) enhances efficiency an
   - **Goals**: Optimize linear transformations for efficiency.
   - **Methods**: Employ specialized implementations like FastGEMV or FlatGEMM to efficiently handle reduced dimensions during decoding.
 
+#### Decoding Strategies
+Decoding strategies play a critical role in optimizing the performance and efficiency of large language models (LLMs). This document explores three key decoding strategies: autoregressive decoding, speculative decoding, and lookahead decoding. We will delve into their mechanisms, advantages, limitations, and practical applications, providing mathematical insights and examples for clarity.
+
+#### Autoregressive Decoding
+
+Autoregressive decoding generates tokens sequentially, where each token is predicted based on the previously generated tokens.
+
+**Steps:**
+1. **Initialization**: Start with an initial input sequence.
+2. **Sequential Token Generation**: For each position $t$ in the sequence, generate the next token $x_t$ based on the tokens $( x_1, x_2, \ldots, x_{t-1} )$ generated so far.
+
+Mathematically, this can be expressed as:
+
+$$P(x_1, x_2, \ldots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, x_2, \ldots, x_{t-1})$$
+
+#### Advantages
+
+- **Simplicity**: The algorithm is easy to implement.
+- **Accuracy**: Each token is generated with maximum contextual information from all previous tokens.
+
+#### Limitations
+
+- **Latency**: The sequential nature leads to high latency, especially for long sequences.
+- **Inefficiency**: Modern GPUs are underutilized as they process one token at a time, resulting in low GPU utilization.
+
+#### Example
+
+Consider the sequence `The quick brown fox`:
+
+1. **Step 1**: Generate `The`
+2. **Step 2**: Generate `quick` based on `The`
+3. **Step 3**: Generate `brown` based on `The quick`
+4. **Step 4**: Generate `fox` based on `The quick brown`
+
 #### Speculative Decoding
-- **Techniques**:
-  - **Speculative Sampling**: Predict subsequent tokens to improve inference speed.
-  - **Lookahead Decoding**: Utilize predictive techniques to maintain accuracy while speeding up the process.
-- **Implementations**: Examples include SSD, REST, and Medusa, which optimize draft model construction and verification methods.
+Speculative decoding aims to reduce latency by employing a `guess-and-verify` strategy using a draft model.
+
+**Steps:**
+1. **Draft Generation**: The draft model predicts multiple tokens ahead in parallel.
+2. **Verification**: The main LLM verifies these predicted tokens and accepts those that match its own predictions.
+
+#### Example
+
+Consider predicting the next tokens for the sequence `The quick brown`:
+
+1. **Draft Model**: Predicts possible continuations like `fox`, `dog`, `cat`.
+2. **Verification**: The main model verifies these options and selects `fox`.
+
+#### Advantages
+
+- **Parallelism**: Multiple tokens are generated in parallel, reducing the number of sequential steps.
+- **Speedup**: Can achieve significant speedup if the draft model is accurate.
+
+#### Limitations
+
+- **Accuracy Dependence**: Speedup is limited by the accuracy of the draft model.
+- **Complexity**: Developing and maintaining an accurate draft model requires extra training and tuning.
+
+#### Mathematical Insight
+
+If the draft model has an accuracy $A$, the number of steps $S$ required is reduced to:
+
+$$S = \frac{L}{A}$$
+
+#### Lookahead Decoding
+
+Lookahead decoding breaks the sequential dependency in autoregressive decoding by using the Jacobi iteration method to generate multiple disjoint n-grams in parallel.
+
+**Steps:**
+1. **Initialization**: Start with an initial guess for all token positions.
+2. **Jacobi Iteration**: Update all positions in parallel based on previous values.
+3. **Lookahead Branch**: Generate new n-grams concurrently.
+4. **Verification Branch**: Select and verify n-grams for integration into the sequence.
+5. **Iteration**: Repeat until the sequence is complete.
+
+#### Parameters
+
+- **Window Size (W)**: Number of future token positions considered for parallel decoding.
+- **N-gram Size (N)**: Number of steps looked back in the Jacobi iteration trajectory to retrieve n-grams.
+
+#### Example
+
+Generating a sequence with:
+
+- **Initial Sequence**: `The quick`
+- **Window Size (W)**: 3 (looking ahead 3 positions)
+- **N-gram Size (N)**: 2 (looking back 2 steps)
+
+The lookahead branch generates:
+
+- `quick brown`
+- `quick fox`
+
+The verification branch verifies and integrates `quick brown`, resulting in:
+
+- `The quick brown`
+
+#### Advantages
+
+- **Reduced Latency**: Significant reduction in the number of decoding steps.
+- **No Draft Model**: Operates without the need for an additional draft model.
+
+#### Limitations
+
+- **Computational Overhead**: Each step may involve more computations due to parallel n-gram generation and verification.
+
+#### Mathematical Insight
+
+The number of steps $S$ required is reduced to:
+
+$$S = \frac{L}{W \times N}$$
+
+These decoding strategies provide various methods to enhance the efficiency and performance of large language models, each with its unique strengths and considerations.
+
+
 
 #### Graph-Level Optimization
 - **Kernel Fusion**:

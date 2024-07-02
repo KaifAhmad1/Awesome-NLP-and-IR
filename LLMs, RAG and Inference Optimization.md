@@ -1209,6 +1209,9 @@ Sparsification increases the sparsity of model parameters or activations to redu
 **Corrective RAG:** focuses on refining and improving generated responses through iterative feedback and correction mechanisms, aiming to produce highly accurate and contextually relevant outputs.
 CRAG's architecture addresses the shortcomings of traditional RAG systems by incorporating corrective mechanisms that iteratively refine the output. The primary components of CRAG include the retriever, generator, feedback loop, and correction module, each playing a vital role in the iterative enhancement of generated responses.
 
+![Corrective RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/CRAG.png)
+
+
 #### Components:
 - **Retriever:** fetches relevant documents based on the user query. It employs advanced retrieval algorithms to ensure the most pertinent information is selected.
 - **Generator:** produces initial responses by utilising the retrieved documents. It leverages sophisticated language models to generate coherent and contextually accurate outputs.

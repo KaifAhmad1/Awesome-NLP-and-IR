@@ -642,7 +642,7 @@ DPO offers several key advantages over traditional RLHF methods:
 3. **Robustness**: DPO is less sensitive to hyperparameter settings, making it easier to implement and tune across different tasks.
 4. **Performance**: Empirical results demonstrate that DPO achieves better or comparable performance to state-of-the-art RLHF methods with minimal hyperparameter tuning.
 
---- 
+---
 
 ### Identity Preference Optimization (IPO)
 
@@ -673,9 +673,9 @@ IPO enhances DPO by adding an **identity-based regularization term** to the opti
 3. **Formulate the Objective Function:**
    - Define the IPO objective function as:
 
-     $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
+  $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \cdot \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
 
-     Where:
+   Where:
      - $\sigma$ is the sigmoid function.
      - $\mathcal{R}(\pi_\theta)$ is the regularization term.
      - $\lambda$ is a hyperparameter controlling the regularization strength.
@@ -694,7 +694,7 @@ IPO enhances DPO by adding an **identity-based regularization term** to the opti
 3. **Better Generalization:**
    - By avoiding overfitting, IPO improves the model's ability to handle new and unseen prompts.
 
---- 
+---
 
 ### Kahneman-Tversky Optimization (KTO)
 
@@ -702,28 +702,25 @@ Kahneman-Tversky Optimization (KTO) is an innovative approach designed to align 
 
 #### Background and Motivation
 
-#### Prospect Theory
+**Prospect Theory**
 
 Prospect theory, developed by Daniel Kahneman and Amos Tversky, provides insights into how individuals perceive and evaluate uncertain outcomes. Key components include:
 - **Value Function**: Captures human sensitivity to gains and losses, emphasizing loss aversion.
 - **Weighting Function**: Reflects subjective biases in probability perception.
 
-#### Traditional Alignment Methods
+**Traditional Alignment Methods**
 
 Current methods for aligning LLMs with human preferences (RLHF, DPO, SFT) require extensive preference data, which is costly and limited.
 
-#### Understanding HALOs
-
-#### Human-Aware Loss Functions (HALOs)
+**Human-Aware Loss Functions (HALOs)**
 
 HALOs incorporate prospect theory insights into loss functions to enhance model alignment with human biases like loss aversion.
 
 #### KTO Methodology
 
-#### Derivation of KTO
+**Derivation of KTO**
 
 KTO leverages the Kahneman-Tversky model to optimize model utility directly using binary desirability signals. Key components include:
-
 - **Implicit Reward**: Derived from the RLHF objective, ensuring alignment with human utility.
 - **Reference Point**: Represents expected rewards under optimal policies across input-output pairs.
 
@@ -761,7 +758,7 @@ Odds Ratio Preference Optimization (ORPO) represents a cutting-edge algorithm de
 
 #### Background and Motivation
 
-#### Objectives
+**Objectives**
 
 The primary goals of ORPO include:
 - **Streamlined Alignment Process**: Eliminate the need for multi-stage training and reference models, simplifying the alignment of LLMs with human preferences.
@@ -770,7 +767,7 @@ The primary goals of ORPO include:
 
 #### Methodology
 
-#### Preliminaries
+**Preliminaries**
 
 For an input sequence $x$ and an output sequence $y$ of length $m$ tokens, the log-likelihood of $y$ given $x$ is calculated as:
 
@@ -780,20 +777,19 @@ The odds of generating $y$ given $x$ is defined as:
 
 $$\text{Odds}(y \mid x) = \frac{P(y \mid x)}{1 - P(y \mid x)}$$
 
-
-#### Objective Function
+**Objective Function**
 
 The ORPO objective function combines two crucial components:
-- **Supervised Fine-tuning (SFT) Loss \( L_{SFT} \)**: Enhances the likelihood of generating tokens in preferred responses.
-- **Relative Ratio Loss \( L_{OR} \)**: Penalizes the likelihood of generating tokens in disfavored responses, formulated as:
+- **Supervised Fine-tuning (SFT) Loss $\L_{SFT}$**: Enhances the likelihood of generating tokens in preferred responses.
+- **Relative Ratio Loss $\L_{OR} \)$**: Penalizes the likelihood of generating tokens in disfavored responses, formulated as:
 
 $$L_{ORPO} = L_{SFT} + \lambda \cdot L_{OR}$$
 
-where \( \lambda \) is a hyperparameter controlling the strength of the penalty.
+where $\lambda$ is a hyperparameter controlling the strength of the penalty.
 
-#### Gradient of ORPO
+**Gradient of ORPO**
 
-The gradient \( \nabla L_{ORPO} \) consists of two essential terms:
+The gradient $\nabla L_{ORPO}$ consists of two essential terms:
 - A term similar to the SFT gradient, focusing on enhancing preferred responses.
 - A regularization term that penalizes the generation of disfavored responses, ensuring alignment with human preferences while maintaining response accuracy.
 
@@ -805,21 +801,21 @@ ORPO's theoretical foundation lies in its use of odds ratios to distinguish betw
 
 ORPO's performance has been extensively evaluated across various preference datasets and benchmarked against state-of-the-art methods, including Reinforcement Learning with Human Feedback (RLHF), Direct Preference Optimization (DPO), and Identity Preference Optimization (IPO).
 
-#### Datasets
+**Datasets**
 
 ORPO has been tested on several datasets, including:
 - **HH-RLHF**: Human preference data used for training and evaluation.
 - **UltraFeedback**: Dataset focused on feedback and evaluation of model responses.
 - **AlpacaEval 2.0**: A comprehensive benchmark for evaluating LLMs across different tasks.
 
-#### Performance Metrics
+**Performance Metrics**
 
 Key performance metrics include:
 - **AlpacaEval 2.0**: ORPO consistently outperformed other methods, demonstrating superior alignment with human preferences.
 - **Instruction-level Evaluation (IFEval)**: Achieved a 66.19% improvement in instructional content evaluation.
 - **MT-Bench**: Scored 7.32, surpassing models with larger parameter sizes.
 
-#### Model Variants
+**Model Variants**
 
 ORPO's effectiveness was validated across various model sizes, including Phi-2 (2.7B), Llama-2 (7B), and Mistral (7B), highlighting its scalability and robust performance across different scales of LLMs.
 

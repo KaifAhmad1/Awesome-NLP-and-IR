@@ -146,14 +146,16 @@ DAE improves model robustness by reconstructing clean inputs from corrupted vers
 
 This technique enhances model performance by learning discriminative features from data pairs, beneficial for tasks like image and text clustering, retrieval.
 
---- 
+---
+### LLM Fine Tuning
 
-   ### **LLM Fine Tuning** 
-   Fine-tuning is the process of adapting a pre-trained language model to specific downstream tasks by further training it on task-specific data. While pre-training provides a strong foundation by learning general language patterns, fine-tuning tailors the model to excel in particular applications, improving its performance on specific tasks.
-   - #### **Why We Need Fine-Tuning:**
-     - **Task Specialization:** Pre-trained models are generalists. Fine-tuning allows these models to specialize in particular tasks such as sentiment analysis, translation, or question answering.
-     - **Improved Performance:** Fine-tuning on task-specific data enhances the model's ability to perform well on that task by leveraging the relevant information it has seen during pretraining.
-     - **Efficiency:** Fine-tuning requires significantly less data and computational resources compared to training a model from scratch, making it a practical approach for many applications.
+Fine-tuning is the process of adapting a pre-trained language model to specific downstream tasks by further training it on task-specific data. While pre-training provides a strong foundation by learning general language patterns, fine-tuning tailors the model to excel in particular applications, improving its performance on specific tasks.
+
+#### Why We Need Fine-Tuning:
+- **Task Specialization:** Pre-trained models are generalists. Fine-tuning allows these models to specialize in particular tasks such as sentiment analysis, translation, or question answering.
+- **Improved Performance:** Fine-tuning on task-specific data enhances the model's ability to perform well on that task by leveraging the relevant information it has seen during pretraining.
+- **Efficiency:** Fine-tuning requires significantly less data and computational resources compared to training a model from scratch, making it a practical approach for many applications.
+
 ### Supervised Fine-Tuning
 
 Supervised fine-tuning adapts a pre-trained model to a specific task using labeled data, refining the general knowledge the model gained during pre-training for particular applications.
@@ -172,12 +174,16 @@ Supervised fine-tuning adapts a pre-trained model to a specific task using label
 4. **Training Process:**
    - **Initialization:** Load pre-trained weights.
    - **Loss Function:** Choose a loss function (e.g., cross-entropy for classification):
+     
      $$\mathcal{L} = -\sum_{i} y_i \log(\hat{y}_i)$$
+     
    - **Optimizer:** Select an optimizer (e.g., Adam, SGD).
 
 5. **Training Loop:**
    - Train the model, including forward propagation, loss calculation, backpropagation, and parameter updates:
+     
      $$\theta = \theta - \eta \nabla_{\theta} \mathcal{L}$$
+     
      where $\theta$ represents model parameters and $\eta$ is the learning rate.
 
 6. **Evaluation and Validation:**
@@ -195,15 +201,16 @@ Supervised fine-tuning adapts a pre-trained model to a specific task using label
 - **Efficiency:** Requires less data and computational resources than training from scratch.
 - **Flexibility:** Allows the same model to be fine-tuned for various tasks.
 
-    
-- ### **Types of Fine-Tuning Methods**
-    - Full Fine-Tuning
-    - Parameter-Efficient Fine-Tuning (PEFT)
-    - Memory-Efficient Fine-Tuning (MEFT)
-    - Alignment-Based Fine-Tuning
+### Types of Fine-Tuning Methods
 
-  ---
- ### Full Fine-Tuning
+- Full Fine-Tuning
+- Parameter-Efficient Fine-Tuning (PEFT)
+- Memory-Efficient Fine-Tuning (MEFT)
+- Alignment-Based Fine-Tuning
+
+---
+
+### Full Fine-Tuning
 
 Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to fit a new task-specific dataset. Here’s how it works:
 
@@ -215,10 +222,10 @@ Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to
 
 3. **Adjusting the Model**: The goal is to make $\theta$ better at the new task by updating all its parameters based on $\mathcal{D}$. This is done by minimizing a measure of how well the model predicts on $\mathcal{D}$, known as the loss function $\mathcal{L}(\theta)$.
 
-   - **Loss Function**: This function $\mathcal{L}(\theta)$ tells us how wrong the model's predictions are compared to the correct answers in `$\mathcal{D}$`.
-   
+   - **Loss Function**: This function $\mathcal{L}(\theta)$ tells us how wrong the model's predictions are compared to the correct answers in $\mathcal{D}$.
+     
      $$\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^N \ell(\theta; x_i, y_i)$$
-   
+     
      Here, $\ell(\theta; x_i, y_i)$ quantifies the error between the model's prediction and the true label $y_i$ for input $x_i$.
 
    - **Optimization**: Techniques like gradient descent are used to adjust $\theta$ to minimize $\mathcal{L}(\theta)$. This means tweaking $\theta$ in small steps to improve its performance on the new task.
@@ -232,29 +239,31 @@ Full fine-tuning involves adjusting all parts of a pre-trained model $\theta$ to
 
 - **Catastrophic Forgetting**: While adjusting to the new dataset, the model might forget some things it learned from its original training. This can lead to poorer performance on tasks it used to handle well.
   
-- **Balancing Act**: It's important to find a balance between adapting to the new data and retaining valuable knowledge from previous training.
+- **Balancing Act**: It's important to balance adapting to the new data and retaining valuable knowledge from previous training.
 
---- 
-
- ### PEFT (Parameter-Efficient Fine-Tuning):
- PEFT is a technique used in machine learning, particularly in deep learning and LLMs, where instead of updating all parameters of a pre-trained model during adaptation to a new task or dataset, only a subset of parameters are adjusted. This approach aims to optimize model performance with fewer trainable parameters compared to full fine-tuning methods.
-- #### **Why PEFT is Needed:**
-PEFT addresses key challenges and practical considerations in machine learning:
-   - **Efficiency:** It reduces computational resources and time required for training by updating only the most relevant parameters, making it feasible to deploy models on hardware with limited capabilities.
-   - **Preservation of Knowledge:** PEFT retains valuable knowledge from pre-training, minimizing changes to the original model architecture while adapting it to new tasks.
-   - **Generalization:** By focusing updates on task-relevant parameters, PEFT can improve model generalization on new datasets by avoiding overfitting.
-- #### **Advantages of PEFT over Full Fine-Tuning:**
-   - **Speed:** Faster convergence during training due to fewer parameters being updated.
-   - **Resource Efficiency:** Reduced memory and computational demands, suitable for deployment on hardware with constraints.
-   - **Flexibility:** Adaptable to various deep learning architectures and scales, including large models with millions or billions of parameters.
-   - **Improved Performance:** Enhanced model efficiency and effectiveness on new tasks, leveraging pre-trained knowledge effectively.
-- #### **Types of PEFT**
-  - Additive PEFT
-  - Selective PEFT
-  - Reparameterized PEFT
-  - Hybrid PEFT
-    
 ---
+
+### PEFT (Parameter-Efficient Fine-Tuning)
+
+PEFT is a technique used in machine learning, particularly in deep learning and LLMs, where instead of updating all parameters of a pre-trained model during adaptation to a new task or dataset, only a subset of parameters are adjusted. This approach aims to optimize model performance with fewer trainable parameters than full fine-tuning methods.
+
+#### Why PEFT is Needed:
+- **Efficiency:** It reduces computational resources and time required for training by updating only the most relevant parameters, making it feasible to deploy models on hardware with limited capabilities.
+- **Preservation of Knowledge:** PEFT retains valuable knowledge from pre-training, minimizing changes to the original model architecture while adapting it to new tasks.
+- **Generalization:** PEFT can improve model generalization on new datasets by avoiding overfitting by focusing updates on task-relevant parameters.
+
+#### Advantages of PEFT over Full Fine-Tuning:
+- **Speed:** Faster convergence during training due to fewer parameters being updated.
+- **Resource Efficiency:** Reduced memory and computational demands, suitable for deployment on hardware with constraints.
+- **Flexibility:** Adaptable to various deep learning architectures and scales, including large models with millions or billions of parameters.
+- **Improved Performance:** Enhanced model efficiency and effectiveness on new tasks, leveraging pre-trained knowledge effectively.
+
+#### Types of PEFT:
+- Additive PEFT
+- Selective PEFT
+- Reparameterized PEFT
+- Hybrid PEFT
+
 
   - ### **Additive PEFT**
     Full fine-tuning of large pre-trained models (PLMs) is computationally expensive and can potentially harm their generalization ability. To address this, a common approach is to leave the pre-trained model largely unchanged and introduce a minimal number of trainable parameters. These additional parameters are strategically positioned within the model architecture, and only these weights are updated during fine-tuning for specific downstream tasks. This approach, called Additive Tuning, significantly reduces storage, memory, and computational resource requirements.

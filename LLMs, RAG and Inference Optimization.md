@@ -499,17 +499,16 @@ To enhance memory efficiency, various techniques have been developed to minimize
 
 These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.
 
---- 
 ## Alignment-Based Fine-Tuning
 
-Alignment-based fine-tuning is the process of adjusting a large language model (LLM) to ensure its behaviour aligns with specific goals, such as ethical guidelines, user preferences, and performance standards. The aim is to create models that generate outputs not only based on statistical accuracy but also per desired ethical, safety, and user-specific criteria.
+Alignment-based fine-tuning is the process of adjusting a large language model (LLM) to ensure its behavior aligns with specific goals, such as ethical guidelines, user preferences, and performance standards. The aim is to create models that generate outputs not only based on statistical accuracy but also per desired ethical, safety, and user-specific criteria.
 
 ### Types of Alignment Methods
 
 - **RLHF**: Enhancing Language Models with Human Feedback
 - **RLAIF**: Leveraging AI Feedback for Training
 
---- 
+---
 
 ### RLHF: Enhancing Language Models with Human Feedback
 
@@ -541,12 +540,14 @@ Reinforcement Learning from Human Feedback (RLHF) is a powerful technique that s
 ##### Mathematical Framework
 
 - Data Format: (prompt, winning_response, losing_response)
-- $s_w = r_{\theta}(x, y_w)$: Reward score for the winning response
-- $s_l = r_{\theta}(x, y_l)$: Reward score for the losing response
+- \( s_w = r_{\theta}(x, y_w) \): Reward score for the winning response
+- \( s_l = r_{\theta}(x, y_l) \): Reward score for the losing response
 
 ##### Loss Function
 
-$$\text{Loss} = -\log(\sigma(s_w - s_l))$$
+$$
+\text{Loss} = -\log(\sigma(s_w - s_l))
+$$
 
 This function encourages the RM to give higher scores to winning responses.
 
@@ -554,7 +555,6 @@ This function encourages the RM to give higher scores to winning responses.
 
 - Achieving consistent scoring among different labelers is challenging.
 - Use comparison data instead of absolute scores for easier and more reliable labeling.
-
 - Starting RM training with an SFT model as the seed improves performance.
 - The RM must be at least as powerful as the LLM it scores.
 
@@ -569,7 +569,6 @@ This function encourages the RM to give higher scores to winning responses.
 - Two hypotheses explain hallucination:
   - Lack of causal understanding by the LLM.
   - Mismatch between the LLM's knowledge and the labeler's knowledge.
-
 - Verify sources to ensure accuracy.
 - Develop better reward functions that penalize hallucinations.
 
@@ -578,7 +577,7 @@ This function encourages the RM to give higher scores to winning responses.
 - RLHF enhances the overall performance and is generally preferred by human evaluators.
 - It refines responses based on human feedback and comparisons, improving the model’s ability to generate high-quality, contextually appropriate responses.
 
---- 
+---
 
 ### RLAIF: Reinforcement Learning from AI Feedback
 
@@ -615,7 +614,8 @@ RLAIF is an advanced approach to training large language models (LLMs) that leve
 - **Ethical and Safe Models**: Adherence to Constitutional AI principles ensures ethical model behavior.
 - **Performance Improvement**: Iterative fine-tuning and RL enhance model performance and stability.
 
---- 
+---
+
 
 ### Direct Preference Optimization (DPO)
 

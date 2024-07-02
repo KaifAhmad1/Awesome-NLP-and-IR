@@ -757,7 +757,7 @@ The primary goals of ORPO include:
 
 For an input sequence $x$ and an output sequence $y$ of length $m$ tokens, the log-likelihood of $y$ given $x$ is calculated as:
 
-$$\log P(y \mid x) = \sum_{t=1}^{m} \log P(y_t \mid y_{<t}, x)$$
+$$log P(y | x) = sum(t=1 to m) log P(y_t | y_<t, x)$$
 
 The odds of generating $y$ given $x$ is defined as:
 

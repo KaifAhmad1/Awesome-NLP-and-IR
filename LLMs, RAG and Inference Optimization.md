@@ -1171,6 +1171,9 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 **Adaptive RAG:** Dynamically adjusts retrieval and generation strategies based on the complexity of user queries.
 
+![Adaptive RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/adaptiverag.png)
+
+
 #### Components:
 
 - **Complexity Classifier:** Determines the complexity level of the user query.

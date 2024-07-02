@@ -1,3 +1,4 @@
+
 # LLMs
 ## **Large Language Models (LLMs):**
 Large Language Models (LLMs) are a significant advancement in the field of natural language processing (NLP). These models are designed to understand and generate human language by leveraging deep learning techniques and vast amounts of data. Unlike simpler models, LLMs can perform a wide range of tasks, from translation and summarization to answering questions and engaging in conversational dialogues.
@@ -757,7 +758,7 @@ The primary goals of ORPO include:
 
 For an input sequence $x$ and an output sequence $y$ of length $m$ tokens, the log-likelihood of $y$ given $x$ is calculated as:
 
-$$log P(y | x) = sum(t=1 to m) log P(y_t | y_<t, x)$$
+$$\log P(y | x) = \sum_{t=1}^{m} \log P(y_t | y_{<t}, x)$$
 
 The odds of generating $y$ given $x$ is defined as:
 

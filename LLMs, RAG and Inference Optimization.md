@@ -1241,6 +1241,9 @@ CRAG's architecture addresses the shortcomings of traditional RAG systems by inc
 
 **Self RAG:** SELF-RAG introduces an advanced framework for enhancing language models (LMs) by integrating retrieval-based augmentation with a sophisticated self-reflection mechanism. This approach ensures not only fluency but also factual accuracy and contextual relevance in generated text.
 
+![Self Reflective RAG](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/Self%20RAG.png)
+
+
 #### Components:
 
 - **Retrieval-Augmented Generation:** SELF-RAG utilizes a retriever model (e.g., Contriever-MS MARCO) to fetch relevant documents or passages from extensive databases. These retrievals provide crucial contextual information guiding the LM in generating informed and contextually appropriate responses.

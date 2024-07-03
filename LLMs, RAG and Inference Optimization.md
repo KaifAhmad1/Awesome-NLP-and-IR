@@ -349,7 +349,7 @@ Selective PEFT methods focus on fine-tuning a subset of existing parameters rath
 
 ### Background of Matrix Decomposition
 
-Matrix decomposition, also known as factorization, breaks down matrices into simpler components, essential across mathematics, engineering, and data science for simplifying operations and revealing underlying structures.
+Matrix decomposition, also known as factorization, breaks down matrices into simpler components. It is essential across mathematics, engineering, and data science for simplifying operations and revealing underlying structures.
 
 - #### Why Matrix Decomposition is Essential:
   1. **Dimensionality Reduction:** Simplifies data/models by retaining key information in lower-dimensional forms, reducing complexity and storage needs.
@@ -363,6 +363,7 @@ Matrix decomposition, also known as factorization, breaks down matrices into sim
   - **Optimization Applications:** Crucial in solving linear equations and iterative algorithms (e.g., SVD in recommendations).
   - **Flexibility:** Various methods (e.g., SVD, QR, LU) cater to different challenges, adaptable to diverse applications.
   - **Feature Transformation:** Enhances feature representation, e.g., in deep learning, via matrix transformations.
+
   
 ---
 
@@ -426,7 +427,7 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
 
 ### Hybrid PEFT
 
-The effectiveness of Parameter-Efficient Fine-Tuning (PEFT) methods varies across tasks. Thus, many studies focus on combining the advantages of different PEFT approaches or unifying them through commonalities. Here are some notable approaches:
+The effectiveness of Parameter-Efficient Fine-Tuning (PEFT) methods varies across tasks. Thus, many studies focus on combining the advantages of different PEFT approaches or unifying them through commonalities. Here are some important approaches:
 
 #### 1. UniPELT
 
@@ -438,7 +439,6 @@ S4 explores design spaces for Adapter (A), Prefix (P), BitFit (B), and LoRA (L),
 
 - **Spindle Grouping**: Divides Transformer layers into four groups $G_i$ for $i \in \{1,2,3,4\}$, with each group applying similar PEFT strategies.
 - **Uniform Parameter Allocation**: Distributes trainable parameters uniformly across layers.
-- **Tuning All Groups**: Ensures all groups are tuned.
 - **Diverse Strategies per Group**: Assigns different PEFT strategies to different groups. Optimal configuration:
   - $G_1$: (A, L)
   - $G_2$: (A, P)
@@ -461,13 +461,12 @@ LLM-Adapters offer a framework incorporating various PEFT techniques into large 
 
 - Effective placements for series adapters, parallel adapters, and LoRA are after MLP layers, alongside MLP layers, and following both Attention and MLP layers, respectively.
 - Smaller LLMs with PEFT can match or surpass larger models on certain tasks.
-- Proper in-distribution fine-tuning enables smaller models to outperform larger ones on specific tasks.
 
 #### 5. Neural Architecture Search (NAS)
 
 NAS is used to discover optimal PEFT combinations:
-- **NOAH:** Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
-- **AUTOPEFT:** Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.
+- **NOAH**: Uses NAS to find the best PEFT configurations for each dataset, employing AutoFormer, a one-shot NAS algorithm. The search space includes Adapter, LoRA, and Visual Prompt Tuning (VPT).
+- **AUTOPEFT**: Defines a search space with serial adapters, parallel adapters, and prefix tuning, using high-dimensional Bayesian optimization for effective NAS. Both NOAH and AUTOPEFT show NAS's potential in optimizing PEFT configurations across various tasks.
 
 --- 
 

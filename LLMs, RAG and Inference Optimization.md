@@ -905,9 +905,6 @@ LLM Efficiency refers to the ability of Large Language Models to perform inferen
   - **Scalability for Large-Scale Deployments:**
     Efficient LLMs enable companies to scale AI services to accommodate more users and handle higher loads without a proportional increase in infrastructure costs. This is essential for applications with a rapidly growing user base or those requiring real-time processing of large datasets.
 
-  - **Environmental Sustainability:**
-    Reducing the energy required for LLM operation contributes to more sustainable AI practices. This aligns with global efforts to reduce environmental impact and promotes greener technology solutions within the tech industry.
-
   - **Enabling Real-Time Applications:**
     Efficient LLMs can power real-time applications such as augmented reality (AR), virtual reality (VR), and real-time analytics, where immediate processing is crucial. These applications benefit greatly from reduced computational loads and faster processing times.
 
@@ -919,7 +916,7 @@ In the context of optimizing inference for large language models (LLMs), there a
   Techniques such as input compression and output organization reduce the input size or complexity and structure output generation for efficiency.
 
 - **Model-level Optimization:**
-  Streamlining model architectures and compressing models through techniques like quantization and pruning to reduce computational demands.
+  Streamlining model architectures and compressing models through quantization and pruning to reduce computational demands.
 
 - **System-level Optimization:**
   Improving inference engine efficiency and enhancing serving systems with strategies like batching and distributed processing to optimize overall performance.
@@ -1242,7 +1239,7 @@ These decoding strategies provide various methods to enhance the efficiency and 
   - **Mixed-Precision Quantization**: Use lower precision arithmetic for linear operators to enhance energy efficiency without compromising accuracy.
   - **Algorithm-Hardware Co-design**: Tailor algorithms to leverage hardware features like FPGA for memory-intensive decoding stages, optimizing overall system performance.
 
-
+--- 
 
 ## Retrieval-Augmented Generation (RAG)
 
@@ -1278,6 +1275,8 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Corrective RAG**
 - **Self RAG**
 - **Agentic RAG**
+
+--- 
 
 ### Simple RAG
 
@@ -1334,6 +1333,8 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Complex Memory Management:** Requires sophisticated techniques to manage, update, and retrieve relevant information from memory.
 - **Scalability Issues:** Efficient memory storage and retrieval become more challenging as the number of interactions grows.
 - **Privacy Concerns:** Storing user interactions necessitates careful data handling and user consent mechanisms.
+
+--- 
 
 ### Branched RAG
 
@@ -1405,6 +1406,8 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Resource Intensiveness**: Requires robust computational infrastructure for efficient operation.
 - **Potential Overload with Extensive Queries**: Handling extensive queries may overwhelm the system, affecting performance and reliability.
 
+--- 
+
 ### Adaptive RAG
 
 **Adaptive RAG:** Dynamically adjusts retrieval and generation strategies based on the complexity of user queries.
@@ -1442,6 +1445,8 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Generalization:** The classifier may struggle to generalize to unseen queries or new domains without retraining or fine-tuning.
 - **Computational Overhead:** The process of determining query complexity adds an additional computational step, which may affect response time, especially for simple queries.
 
+--- 
+
 ### Corrective RAG
 
 **Corrective RAG:** focuses on refining and improving generated responses through iterative feedback and correction mechanisms, aiming to produce highly accurate and contextually relevant outputs.
@@ -1475,6 +1480,8 @@ CRAG's architecture addresses the shortcomings of traditional RAG systems by inc
 - **Increased Latency:** The iterative feedback loop can introduce delays in generating the final response, potentially affecting the overall user experience.
 - **Complex Implementation:** Implementing CRAG requires sophisticated mechanisms to handle feedback and apply corrections effectively, posing challenges in deployment and maintenance.
 
+--- 
+
 ### Self RAG
 
 **Self RAG:** SELF-RAG introduces an advanced framework for enhancing language models (LMs) by integrating retrieval-based augmentation with a sophisticated self-reflection mechanism. This approach ensures not only fluency but also factual accuracy and contextual relevance in generated text.
@@ -1504,6 +1511,8 @@ CRAG's architecture addresses the shortcomings of traditional RAG systems by inc
 - **Computational Resources:** Implementing SELF-RAG requires significant computational resources due to the dual process of retrieval and generation. This can limit its deployment on resource-constrained platforms or in real-time applications.
 - **Dependency on Retrieval Quality:** The effectiveness of SELF-RAG heavily depends on the quality and relevance of retrieved documents. In scenarios where retrievals fail to provide accurate or sufficient contextual information, the quality of generated outputs may degrade.
 - **Complexity in Training:** Training SELF-RAG involves intricate processes to align retrieval results with generative tasks and fine-tune self-reflection mechanisms. This complexity may require specialized expertise and extensive tuning for optimal performance.
+
+--- 
 
 ### Agentic RAG
 
@@ -1576,7 +1585,9 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Deeper Insights**: Ability to handle and synthesize complex data sets for actionable intelligence.
 - **Innovative Solutions**: Opens doors to new applications in various industries.
 
-#### Retrieval-Augmented Generation (RAG) Comparison
+--- 
+
+### Comparision between different RAG Strategies: 
 
 | **Aspect**                | **Components**                                   | **Workflow**                                                                                              | **Benefits**                                                                                          | **Limitations**                                                                                       | **Ideal Use Cases**                                                                                   | **Implementation Complexity**                                                                         | **Scalability**                                                                                       | **Response Time**                                                                                      |
 |---------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|

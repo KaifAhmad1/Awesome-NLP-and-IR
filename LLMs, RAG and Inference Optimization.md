@@ -266,30 +266,56 @@ PEFT is a technique used in machine learning, particularly in deep learning and 
 
 
 ---
-### Additive PEFT
 
-Full fine-tuning of large pre-trained models (PLMs) is computationally expensive and can potentially harm their generalization ability. To address this, a common approach is to leave the pre-trained model largely unchanged and introduce a minimal number of trainable parameters. These additional parameters are strategically positioned within the model architecture, and only these weights are updated during fine-tuning for specific downstream tasks. This approach, called Additive Tuning, significantly reduces storage, memory, and computational resource requirements.
+### Additive Parameter-Efficient Fine-Tuning (PEFT) Methods for Large Pre-Trained Models
 
-1. #### Adapters
-   Adapter methods involve inserting small adapter layers within Transformer blocks. These layers typically consist of a down-projection matrix $W_{\text{down}}$, a non-linear activation function $\sigma$, and an up-projection matrix $W_{\text{up}}$. Given an input $h_{\text{in}}$, the computation in the adapter module (with residual connection) is:
+Fine-tuning large pre-trained models (PLMs) involves adapting them to specific downstream tasks, but this process can be computationally expensive and may degrade generalization. Additive PEFT methods address these challenges by introducing minimal trainable parameters strategically within the model architecture, preserving the bulk of the pre-trained weights.
 
-   $$\text{Adapter}(x) = W_{\text{up}} \sigma (W_{\text{down}} x) + x$$
+#### 1. Adapters
 
-   #### Adapter Variants
-   - **Serial Adapter**: Each Transformer block is enhanced with adapter modules placed after the self-attention layer and the feed-forward network (FFN) layer.
-   - **Parallel Adapter**: Adapter layers run alongside each Transformer sublayer, maintaining model parallelism and efficiency.
-   - **CoDA**: Combines parallel adapters with a sparse activation mechanism, where a soft top-k selection process identifies important tokens processed by both the frozen pre-trained layer and the adapter branch for efficiency.
+Adapters are small, task-specific layers inserted within Transformer blocks. Each adapter consists of:
+- **Down-projection matrix** $W_{\text{down}}$
+- **Non-linear activation function** $\sigma$
+- **Up-projection matrix** $W_{\text{up}}$
 
-2. #### Soft Prompt-based Fine-tuning
-   Soft prompt-based fine-tuning refines model performance by optimizing continuous vectors, known as soft prompts, appended to the input sequence. This approach leverages the rich information contained within the continuous embedding space, as opposed to discrete token representations.
+The adapter module applies a residual connection to compute:
+$$\text{Adapter}(x) = W_{\text{up}} \sigma (W_{\text{down}} x) + x$$
 
-   #### Prominent Soft Prompt Approaches:
-   - **Prefix-tuning:** Introduced by [35], this method adds learnable vectors to keys and values across all Transformer layers. A reparameterization strategy using an MLP layer ensures stable optimization. Variants such as p-tuning v2 [37] and APT (Adaptive Prefix Tuning) [38] have enhanced this method by removing reparameterization and introducing adaptive mechanisms to control the importance of prefixes in each layer.
+#### Adapter Variants
 
-3. #### Other Additive Methods
-   Several other methods incorporate additional parameters during fine-tuning, aiming to enhance efficiency without modifying the base model’s structure significantly.
+- **Serial Adapter**: Placed after the self-attention and feed-forward network (FFN) layers in each Transformer block.
+- **Parallel Adapter**: Runs alongside each Transformer sublayer, maintaining model parallelism.
+- **CoDA**: Combines parallel adapters with sparse activation mechanisms for computational efficiency.
 
-   - **(IA)^3:** (IA)^3 [53] introduces three learnable rescaling vectors (for key, value, and FFN activations) to scale the activations within the Transformer layers. This integration eliminates extra computational costs during inference.
+#### 2. Soft Prompt-based Fine-tuning
+
+This approach enhances model performance by appending continuous vectors (soft prompts) to input sequences, leveraging the rich information in embedding spaces rather than discrete tokens.
+
+#### Prominent Approaches
+
+- **Prefix-tuning**: Extends the model's capacity by adding learnable vectors to keys and values across all Transformer layers. Variants like p-tuning v2 and Adaptive Prefix Tuning (APT) refine this method further.
+
+#### 3. $IA^3$: Infused Adapter by Inhibiting and Amplifying Inner Activations
+
+$IA^3$ introduces minimal additional parameters while effectively adapting the model to new tasks.
+
+#### Core Principles
+
+1. **Parameter Efficiency**: Minimizes additional parameter overhead to reduce computational costs and memory usage.
+   
+2. **Mixed-Task Batches**: Supports handling mixed-task batches within the same computational graph, optimizing efficiency and flexibility.
+   
+3. **Activation Modification**: Utilizes element-wise rescaling with task-specific vectors ($lk$, $lv$, $lff$) to adjust attention and feed-forward mechanisms dynamically.
+
+#### Implementation Details
+
+- **Controlled Parameter Addition**: Introduces a limited number of new parameters ($dk$, $dv$, $dff$) per Transformer layer block to maintain computational efficiency and model stability.
+
+#### Advantages and Performance
+
+1. **Superior Accuracy**: Outperforms traditional fine-tuning methods in few-shot learning scenarios by preserving the model's pre-trained weights.
+   
+2. **Practical Application**: Simplifies deployment in production environments by maintaining robust performance across diverse tasks without extensive retraining.
 
 ---
 

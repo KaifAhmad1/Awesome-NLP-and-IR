@@ -1305,6 +1305,8 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Reliance on Retriever Quality:** The quality of the final response depends heavily on the relevance of the retrieved documents.
 - **Single Interaction Focus:** Designed for standalone queries rather than ongoing conversations.
 
+--- 
+
 ### Simple RAG with Memory
 
 **Enhanced RAG:** Incorporates a memory component to store and utilize past interactions, providing better context and continuity.

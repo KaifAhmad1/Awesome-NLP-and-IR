@@ -365,9 +365,9 @@ Matrix decomposition, also known as factorization, breaks down matrices into sim
   - **Optimization Applications:** Crucial in solving linear equations and iterative algorithms (e.g., SVD in recommendations).
   - **Flexibility:** Various methods (e.g., SVD, QR, LU) cater to different challenges, adaptable to diverse applications.
   - **Feature Transformation:** Enhances feature representation, e.g., in deep learning, via matrix transformations.
+  
 ---
 
----
 ### Reparameterized PEFT
 
 #### LoRA: Low-Rank Adaptation

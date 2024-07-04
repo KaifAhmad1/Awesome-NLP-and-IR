@@ -1614,7 +1614,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 **Objective**: Determine whether a given query requires retrieval to enhance the response. This step ensures that the system only performs retrieval when necessary, optimizing resource use.
 
 **Methods**:
-- **Classification Models**: Use models to classify queries into categories like `sufficient` or `insufficient,` indicating whether retrieval is needed.
+- **Classification Models**: Use models to classify queries into categories like `sufficient` or `insufficient`, indicating whether retrieval is needed.
 - **Task-Based Categorization**: Categorize queries based on the task or domain, determining the need for retrieval based on specific criteria.
 
 **Impact**:
@@ -1623,7 +1623,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 **Best Practice**:
 - **Implement Query Classification**: Using a robust query classification mechanism can significantly improve system efficiency.
-- **Reported Improvements**: Implementing query classification has shown an overall score increase from $0.428$ to $0.443$ and a reduction in latency from $16.41$ to $11.58$ seconds per query.
+- **Reported Improvements**: Implementing query classification has shown an overall score increase from 0.428 to 0.443 and a reduction in latency from 16.41 to 11.58 seconds per query.
 
 #### Document Processing and Indexing
 
@@ -1634,7 +1634,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Token-Level and Semantic-Level Alternatives**: Other chunking strategies that can be employed depending on the specific requirements and the nature of the documents.
 
 **Optimization Dimensions**:
-- **Chunk Size**: The optimal chunk size is around $512$ tokens, balancing detailed retrieval with manageable computation.
+- **Chunk Size**: The optimal chunk size is around 512 tokens, balancing detailed retrieval with manageable computation.
 - **Chunking Techniques**: Techniques such as `small-to-big` or `sliding window` approaches can be used to ensure chunks are contextually relevant and optimally sized.
 
 **Impact**:
@@ -1672,7 +1672,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Hybrid Approaches**: Combine sparse `BM25` and dense `Contriever` retrieval methods to leverage their complementary strengths.
 
 **Best Practices**:
-- **Best Performance**: The `Hybrid with HyDE` method achieves the highest RAG score $(0.58)$, combining the strengths of different retrieval techniques.
+- **Best Performance**: The `Hybrid with HyDE` method achieves the highest RAG score (0.58), combining the strengths of different retrieval techniques.
 - **Balanced Efficiency**: Use `Hybrid` or `Original` methods for a balance between performance and computational efficiency.
 
 #### Reranking and Contextual Curation
@@ -1693,7 +1693,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 ##### Repacking
 
-- **Recommendation**: Use the `Reverse` configuration to position relevant context closer to the query, resulting in a higher RAG score $(0.560)$.
+- **Recommendation**: Use the `Reverse` configuration to position relevant context closer to the query, resulting in a higher RAG score (0.560).
 
 ##### Summarization
 

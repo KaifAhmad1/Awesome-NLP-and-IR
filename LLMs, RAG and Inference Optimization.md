@@ -1650,6 +1650,10 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Recommendation**: Use `LLM-Embedder` for a balanced performance-to-size ratio, ensuring effective embeddings without excessive computational cost.
 - **Alternatives**: `BAAI/bge-large-en`, `text-embedding-ada-002` can be used depending on specific needs and resources.
 
+##### Embedding Quantization 
+- **Binary Quantization:** Converts floating-point embeddings to binary format, reducing memory usage and computation time at the cost of some precision.
+- **Scaler int8 Quantization:** Converts embeddings to 8-bit integers, balancing between reduced memory usage and maintaining sufficient precision for effective retrieval.
+
 ##### Vector Databases
 
 - **Key Criteria**: Support for multiple index types, billion-scale data, hybrid search capabilities, and being cloud-native.

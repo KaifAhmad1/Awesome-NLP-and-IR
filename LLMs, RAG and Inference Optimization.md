@@ -565,14 +565,12 @@ Reinforcement Learning from Human Feedback (RLHF) is a powerful technique that s
 ##### Mathematical Framework
 
 - Data Format: (prompt, winning_response, losing_response)
-- \( s_w = r_{\theta}(x, y_w) \): Reward score for the winning response
-- \( s_l = r_{\theta}(x, y_l) \): Reward score for the losing response
+- $s_w = r_{\theta}(x, y_w)$: Reward score for the winning response
+- $s_l = r_{\theta}(x, y_l)$: Reward score for the losing response
 
 ##### Loss Function
 
-$$
-\text{Loss} = -\log(\sigma(s_w - s_l))
-$$
+$$\text{Loss} = -\log(\sigma(s_w - s_l))$$
 
 This function encourages the RM to give higher scores to winning responses.
 

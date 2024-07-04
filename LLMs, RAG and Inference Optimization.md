@@ -696,7 +696,7 @@ IPO enhances DPO by adding an **identity-based regularization term** to the opti
 3. **Formulate the Objective Function:**
    - Define the IPO objective function as:
 
-  $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \cdot \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
+   $$\mathcal{L}_{\text{ipo}}(\pi_\theta; \mathcal{D}_{\text{pref}}) = \mathbb{E}_{(y_w, y_\ell, x) \sim \mathcal{D}_{\text{pref}}} \left[ - \log \sigma \left( \beta \log \frac{\pi_\theta(y_w)}{\pi_\theta(y_\ell)} \cdot \frac{\pi_{\text{ref}}(y_\ell)}{\pi_{\text{ref}}(y_w)} \right) \right] + \lambda \mathcal{R}(\pi_\theta)$$
 
    Where:
      - $\sigma$ is the sigmoid function.

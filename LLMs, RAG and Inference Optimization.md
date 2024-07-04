@@ -1685,6 +1685,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 - **MonoT5**: Provides the highest average score for reranking, ensuring the most relevant documents are prioritized.
 - **TILDEv2**: Offers balanced performance with good efficiency, making it a suitable alternative for certain use cases.
+- **Advanced Techniques:** `Cross Encoders` and `Multivector Bi Encoder (e.g., ColBERT)` enhance reranking precision and efficiency, adapting well to diverse retrieval scenarios.
 
 **Impact**:
 - **Crucial for Performance**: Omitting reranking leads to significant performance drops, highlighting its importance.

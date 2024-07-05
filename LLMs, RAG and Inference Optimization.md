@@ -1597,7 +1597,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 
 ---
-## Retrieval-Augmented Generation (RAG) Optimization and Best Practices
+## RAG Optimization and Best Practices
 
 ### Challenges
 
@@ -1611,7 +1611,7 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 #### Query Classification
 
-**Definition**: Identifying if a query requires retrieval for enhancing the response.
+Identifying if a query requires retrieval for enhancing the response.
 
 **Objective**: Determine whether a given query requires retrieval to enhance the response. This step ensures that the system only performs retrieval when necessary, optimizing resource use.
 
@@ -1628,12 +1628,11 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Reported Improvements**: Implementing query classification has shown an overall score increase from 0.428 to 0.443 and a reduction in latency from 16.41 to 11.58 seconds per query.
 
 #### Document Processing and Indexing
-
-**Definition**: The process of organizing and preparing documents for efficient retrieval.
+The process of organizing and preparing documents for efficient retrieval.
 
 ##### Chunking
 
-**Definition**: Dividing documents into smaller, manageable pieces for better retrieval precision.
+Dividing documents into smaller, manageable pieces for better retrieval precision.
 
 **Methods**:
 - **Sentence-Level Chunking**: Divides documents into individual sentences, balancing granularity and coherence. This method ensures that each chunk is semantically meaningful.
@@ -1648,46 +1647,45 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Computational Load**: Manages computational load by optimizing chunk sizes and techniques.
 
 ##### Metadata Addition
-
-**Definition**: Adding additional information to document chunks to enhance retrieval and post-processing.
+Adding additional information to document chunks to enhance retrieval and post-processing.
 
 - **Enhance Chunks**: Adding titles, keywords, and hypothetical questions to document chunks can improve both retrieval and post-processing capabilities, making the information more accessible and relevant.
 
 ##### Embedding Models
 
-**Definition**: Converting text into vector representations for efficient similarity search.
+Converting text into vector representations for efficient similarity search.
 
 - **Recommendation**: Use `LLM-Embedder` for a balanced performance-to-size ratio, ensuring effective embeddings without excessive computational cost.
 - **Alternatives**: `BAAI/bge-large-en`, `text-embedding-ada-002` can be used depending on specific needs and resources.
 
 ##### Embedding Quantization
 
-**Definition**: Reducing the size of embeddings to save memory and computational resources.
+Reducing the size of embeddings to save memory and computational resources.
 
 - **Binary Quantization**: Converts floating-point embeddings to binary format, reducing memory usage and computation time at the cost of some precision.
 - **Scaler int8 Quantization**: Converts embeddings to 8-bit integers, balancing between reduced memory usage and maintaining sufficient precision for effective retrieval.
 
 ##### Vector Databases
 
-**Definition**: Databases optimized for storing and retrieving high-dimensional vectors.
+Databases optimized for storing and retrieving high-dimensional vectors.
 
 - **Key Criteria**: Support for multiple index types, billion-scale data, hybrid search capabilities, and being cloud-native.
 - **Recommendation**: Milvus is recommended as it meets all these criteria, providing robust and scalable vector database capabilities.
 
 ### Retrieval Optimization
 
-**Definition**: Enhancing the process of fetching relevant documents or information.
+Enhancing the process of fetching relevant documents or information.
 
 ##### Source Selection and Granularity
 
-**Definition**: Choosing diverse sources and determining the appropriate level of detail for retrieval.
+Choosing diverse sources and determining the appropriate level of detail for retrieval.
 
 - **Diversify Sources**: Utilize a mix of web, databases, and APIs to ensure comprehensive and diverse information retrieval.
 - **Granular Retrieval Units**: Optimize retrieval units (tokens, sentences, documents) based on context and requirements to enhance relevance and precision.
 
 ##### Retrieval Methods
 
-**Definition**: Techniques to improve the accuracy and relevance of the retrieved information.
+Techniques to improve the accuracy and relevance of the retrieved information.
 
 - **Query Transformation Techniques**:
   - **Query Rewriting**: Reformulate queries to better match the indexed content, improving retrieval results.
@@ -1702,11 +1700,11 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 ### Reranking and Contextual Curation
 
-**Definition**: Reordering retrieved documents based on relevance and context.
+Reordering retrieved documents based on relevance and context.
 
 ##### Reranking Methods
 
-**Definition**: Techniques to reorder retrieved documents to prioritize the most relevant ones.
+Techniques to reorder retrieved documents to prioritize the most relevant ones.
 
 - **MonoT5**: Provides the highest average score for reranking, ensuring the most relevant documents are prioritized.
 - **TILDEv2**: Offers balanced performance with good efficiency, making it a suitable alternative for certain use cases.
@@ -1721,68 +1719,63 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 ##### Repacking and Summarization
 
-**Definition**: Arranging and condensing retrieved information to make it more useful.
+**Repacking**: Arranging retrieved documents to position the most relevant information closer to the query.
 
 ##### Repacking
-
-**Definition**: Rearranging retrieved documents to position the most relevant information closer to the query.
 
 - **Recommendation**: Use the `Reverse` configuration to position relevant context closer to the query, resulting in a higher RAG score (0.560).
 
 ##### Summarization
 
-**Definition**: Condensing retrieved information into a shorter, coherent form.
+**Summarization**: Condensing retrieved information into a shorter, coherent form.
 
 - **Method**: Utilize Recomp for the best performance, ensuring that the summarized content is concise and relevant.
 - **Alternative**: Consider removing summarization to reduce latency if the generator's length constraints allow, balancing performance and response time.
 
 ### Generation Optimization
 
-**Definition**: Enhancing the process of creating text based on the retrieved information.
+Enhancing the process of creating text based on the retrieved information.
 
 ##### Language Model Fine-Tuning
-
-**Definition**: Adapting a language model to improve its performance on specific tasks.
+Adapting a language model to improve its performance on specific tasks.
 
 - **Adapt Models**: Fine-tune models based on retrieved contexts to ensure that the generated content is relevant and coherent.
 - **Maintain Consistency**: Ensure coherence and style consistency across responses to provide a seamless user experience.
 
 ##### Co-Training Strategies
 
-**Definition**: Training retriever and generator models together to improve their performance.
+**Co-Training Strategies**: Training retriever and generator models together to improve their performance.
 
 - **Implement Techniques**: Use strategies like RA-DIT (Retriever-Augmented Deep Interactive Training) to enhance the interaction between retriever and generator.
 - **Synchronize Interactions**: Synchronize retriever and generator interactions for improved overall performance and efficiency.
 
 ### Advanced Augmentation Techniques
-
-**Definition**: Innovative methods to further enhance the RAG system.
+Innovative methods to further enhance the RAG system.
 
 ##### Iterative Refinement
 
-**Definition**: Continuously improving retrieval queries based on previous interactions.
+**Iterative Refinement**: Continuously improving retrieval queries based on previous interactions.
 
 - **Refine Queries**: Continuously refine retrieval queries based on previous interactions to improve accuracy and relevance over time.
 
 ##### Recursive Retrieval
 
-**Definition**: Using retrieved results to iteratively improve query relevance.
+**Recursive Retrieval**: Using retrieved results to iteratively improve query relevance.
 
 - **Implement Adaptive Strategies**: Enhance query relevance iteratively by adapting retrieval strategies based on previous results, leading to better overall performance.
 
 ##### Hybrid Approaches
 
-**Definition**: Combining different methods to leverage their strengths for better performance.
+**Hybrid Approaches**: Combining different methods to leverage their strengths for better performance.
 
 - **Explore Combinations**: Combine RAG with reinforcement learning to leverage the strengths of both approaches, creating a more robust and adaptable system.
 
 ### Evaluation and Optimization Metrics
 
-**Definition**: Metrics and benchmarks to measure and optimize system performance.
+**Evaluation and Optimization Metrics**: Metrics and benchmarks to measure and optimize system performance.
 
 ##### Performance Metrics
-
-**Definition**: Standard measures to evaluate the effectiveness of the generated responses.
+Standard measures to evaluate the effectiveness of the generated responses.
 
 - **Standard Metrics**:
   - **Exact Match (EM)**: Measures the exactness of the generated response, ensuring that it matches the expected answer.
@@ -1791,21 +1784,25 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
   - **ROUGE**: Assesses the overlap between the generated text and reference texts, measuring content relevance.
 
 - **Task-Specific Metrics**:
-  - **Faithfulness**: Ensures that the generated content is accurate and faithful to the source information.
+  - **RECALL@N**: Measures how often the relevant information is included in the top-N retrieved results, focusing on retrieval effectiveness.
+  - **nDCG**: Evaluates the ranking quality of the retrieved documents, ensuring that the most relevant documents are prioritized.
+  - **Latency**: Measures the time taken to generate a response, ensuring that the system meets performance requirements.
+
+- **Custom Metrics**:
   - **Context Relevancy**: Evaluates the relevance of the context to the query, ensuring that retrieved information is pertinent.
   - **Answer Relevancy**: Assesses how relevant the answer is to the question, focusing on the quality of the response.
   - **Answer Correctness**: Measures the correctness of the generated answer, ensuring factual accuracy.
 
 ##### Benchmarking
 
-**Definition**: Using standardized datasets and custom metrics to evaluate system performance.
+Using standardized datasets and custom metrics to evaluate system performance.
 
 - **Use Standard Datasets**: Employ datasets like RGB and RECALL for evaluation, providing a standardized benchmark for performance.
 - **Develop Custom Metrics**: Create tailored metrics for specific tasks to ensure accurate and relevant assessment, adapting to the unique requirements of different applications.
 
 ### Multimodal Extension
 
-**Definition**: Integrating multiple types of data (e.g., text, images) to enhance the RAG system.
+Integrating multiple types of data (e.g., text, images) to enhance the RAG system.
 
 ##### Current Capabilities
 
@@ -1818,12 +1815,12 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 
 ##### Future Directions
 
-- **Expand Modalities**: Include video and speech in multimodal extensions to further enhance the system's capabilities and applications.
+- **Expand Modalities****: Include video and speech in multimodal extensions to further enhance the system's capabilities and applications.
 - **Cross-Modal Retrieval**: Explore techniques for cross-modal retrieval to create more sophisticated and integrated information retrieval.
 
 ### Best Practices Summary
 
-**Definition**: Recommended configurations for optimal performance and efficiency.
+Recommended configurations for optimal performance and efficiency.
 
 ##### Best Performance Configuration
 
@@ -1843,9 +1840,9 @@ Despite their advanced capabilities, LLM Agents have limitations, such as suscep
 - **Summarization**: Recomp or omission for reduced latency.
 - **Result**: Provides reduced latency with comparable performance to the best performance configuration.
 
-#### Future Research Directions
+### Future Research Directions
+Areas of potential development and exploration for enhancing RAG systems.
 
 - **Cost-Effective Databases**: Develop cost-effective vector database construction methods to manage large-scale data efficiently, addressing the challenges of scalability and cost.
 - **Extended Multimodal Applications**: Extend RAG applications to include a broader range of data types and modalities, enhancing the system's versatility and applicability.
 - **Domain-Specific Optimizations**: Investigate optimizations tailored to specific domains to enhance the effectiveness of RAG systems, ensuring that they can adapt to various contexts and requirements.
-

@@ -470,12 +470,7 @@ NAS is used to discover optimal PEFT combinations:
 
 --- 
 
-### Memory-Efficient PEFT Methods
-
-Fine-tuning large language models (LLMs) demands substantial training memory due to their immense size. Although many parameter-efficient fine-tuning (PEFT) methods aim to reduce the number of parameters, they still incur significant memory overhead during training because gradient computation and backpropagation remain necessary. For instance, popular PEFT techniques like adapters and LoRA only reduce memory usage to about 70% compared to full model fine-tuning. Memory efficiency is a crucial factor that cannot be overlooked.
-
-To enhance memory efficiency, various techniques have been developed to minimize the need for caching gradients for the entire LLM during fine-tuning, thereby reducing memory usage. Notable examples include:
-
+### Memory-Efficient Fine Tuning 
 
 #### 4. LoRA-FA (LoRA with Frozen Activations)
 
@@ -972,7 +967,6 @@ ReFT is versatile and can be applied to various natural language processing task
 - **Performance:** Despite the efficiency, ReFT achieves performance levels comparable to or better than traditional finetuning and other PEFT methods.
 - **Flexibility:** ReFT can be easily integrated with existing models, requiring minimal modifications to their architecture.
 
-These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.
 
 --- 
 

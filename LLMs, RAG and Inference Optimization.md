@@ -476,22 +476,6 @@ Fine-tuning large language models (LLMs) demands substantial training memory due
 
 To enhance memory efficiency, various techniques have been developed to minimize the need for caching gradients for the entire LLM during fine-tuning, thereby reducing memory usage. Notable examples include:
 
-#### 1. Side-Tuning and Ladder-Side Tuning (LST)
-
-- **Side-Tuning** introduces a learnable network branch parallel to the backbone model. By confining backpropagation to this parallel branch, the need to store gradient information for the main model's weights is eliminated, significantly reducing memory requirements.
-- **Ladder-Side Tuning (LST)** further refines this approach by adding a ladder structure where fine-tuning occurs exclusively within the additional branches, bypassing the main model’s gradient storage needs.
-
-#### 2. Res-Tuning and Res-Tuning-Bypass
-
-- **Res-Tuning** separates the PEFT tuners (e.g., prompt tuning, adapters) from the backbone model, allowing independent fine-tuning of these modules.
-- **Res-Tuning-Bypass** enhances this by creating a bypass network in parallel with the backbone model, removing the data flow from the decoupled tuners to the backbone. This eliminates the requirement for gradient caching within the backbone model during backpropagation.
-
-
-#### 3. Memory-Efficient Fine-Tuning (MEFT)
-
-- MEFT is inspired by reversible models, which do not require caching intermediate activations during the forward pass. Instead, these activations are recalculated from the final output during backpropagation.
-- MEFT transforms an LLM into its reversible counterpart without additional pre-training. This involves careful initialization of new parameters to maintain the pre-trained model’s performance, ensuring effective fine-tuning.
-- MEFT introduces three methods to significantly reduce memory demands for storing activations, achieving performance comparable to traditional fine-tuning methods.
 
 #### 4. LoRA-FA (LoRA with Frozen Activations)
 
@@ -545,10 +529,89 @@ LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced techniqu
 - **Rapid Prototyping**: Facilitates quicker development cycles by reducing training times.
 
 
-#### 5. HyperTuning
+#### 5. HyperTuning: A Concise Guide
 
-- Employs a HyperModel to generate PEFT parameters using only a few shot examples, avoiding extensive gradient-based optimization directly on larger models.
-- This method achieves results comparable to full model fine-tuning while substantially reducing memory usage.
+HyperTuning is an advanced method for fine-tuning large language models efficiently. It utilizes hypermodels to generate task-specific tuning parameters, optimizing performance while reducing computational requirements. This method integrates Parameter-Efficient Fine-Tuning (PEFT) techniques such as Prefix Tuning and LoRA (Low-Rank Adaptation).
+
+#### Key Concepts
+
+#### Parameter-Efficient Fine-Tuning (PEFT)
+
+1. **Prefix Tuning**:
+   - Adds learnable prefix tokens to each transformer layer's input.
+   - Modifies the attention mechanism without changing the model parameters.
+
+2. **LoRA (Low-Rank Adaptation)**:
+   - Adjusts the linear maps within the model in a low-rank manner.
+   - Significantly reduces the number of parameters to be updated.
+
+#### HyperModels
+
+- Hypermodels generate parameters for other models.
+- In HyperTuning, a hypermodel processes few-shot examples to generate PEFT parameters for the downstream model.
+
+#### HyperTuning Framework
+
+#### Architecture
+
+- **HyperT5**:
+  - **Encoder**: Processes few-shot input examples.
+  - **Decoder**: Generates token representations.
+  - **MLPs**: Convert token representations into PEFT parameters.
+  - Integrates Prefix Tuning and LoRA for parameter generation.
+
+#### HyperPretraining
+
+- **Objective**: Prepare the hypermodel to generate effective PEFT parameters using Context-Augmented Conditional Language Modeling (CACLM).
+- **Process**:
+  1. **Data Preparation**: Sample and segment sequences from a pretraining corpus.
+  2. **Segmentation**: Split sequences into parts (A, B, C, and D).
+  3. **Training**:
+     - **Hypermodel**: Uses segments A and D.
+     - **Downstream Model**: Uses segments B and C.
+
+#### Multi-Task Fine-Tuning (MTF)
+
+- **Training Setup**:
+  - Few-shot inputs for the hypermodel.
+  - Target example for the downstream model with generated PEFT parameters.
+  - Only hypermodel parameters are updated during training.
+
+- **Datasets**:
+  - **P3**: 62 task datasets for multi-task learning.
+  - **MetaICL**: Few-shot learning tasks dataset.
+  - **Super-NaturalInstructions (S-NI)**: Over 1,600 task datasets for evaluation.
+
+#### Evaluation and Results
+
+- **Metrics**:
+  - **P3**: Multiple-choice accuracy.
+  - **MetaICL**: ROUGE or Macro-F1 scores.
+  - **S-NI**: ROUGE-L scores.
+
+- **Performance**:
+  - **P3**: HyperT5 with Prefix and LoRA performs nearly as well as full fine-tuning.
+  - **MetaICL**: Significant improvement with HyperTuning.
+  - **S-NI**: Outperforms standalone PEFT methods and approaches full fine-tuning performance.
+
+#### Intuition
+
+HyperTuning uses hypermodels to generate task-specific parameters dynamically, minimizing the need for extensive fine-tuning. This approach makes the downstream model adaptable to various tasks with minimal computational overhead.
+
+#### Benefits
+
+- **Efficiency**: Reduces computational costs by minimizing parameter updates.
+- **Performance**: Achieves high task performance, comparable to full fine-tuning.
+- **Versatility**: Applicable to a wide range of NLP tasks.
+
+#### Applications
+
+HyperTuning is ideal for scenarios requiring high-performance NLP models with limited computational resources. It is suitable for real-time applications, mobile devices, and environments needing quick adaptation to new tasks.
+
+#### Conclusion
+
+HyperTuning is a novel method combining hypermodels and PEFT techniques to fine-tune large language models efficiently. It strikes a balance between computational efficiency and task performance, making it a promising solution for diverse NLP applications.
+
 
 #### 6. PEFT Plug-in
 

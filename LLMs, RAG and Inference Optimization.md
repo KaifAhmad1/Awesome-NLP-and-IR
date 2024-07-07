@@ -727,8 +727,7 @@ ReFT can be implemented using different techniques to adjust hidden representati
 
 Given a model with hidden representation $H \in \mathbb{R}^{d \times n}$:
 
-- **Transformation:** Apply a low-rank projection $ L $:
-  $$H' = H + UV^T H$$
+- **Transformation:** Apply a low-rank projection $$L :H' = H + UV^T H$$
   - **Low-rank Projection:** Defined as:
     $$L(H) = UV^T$$
     - $U \in \mathbb{R}^{d \times r}$ (low-rank matrix 1)

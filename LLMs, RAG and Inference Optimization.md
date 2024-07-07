@@ -514,11 +514,79 @@ To enhance memory efficiency, various techniques have been developed to minimize
 - Implements an in-place solution for the ZO gradient estimator, reducing memory consumption during inference.
 - MeZO enables efficient fine-tuning of LLMs with up to 30 billion parameters on a single GPU with 80GB of memory, maintaining performance comparable to traditional backpropagation-based fine-tuning methods.
 
-#### 8. QLoRA (Quantized LoRA)
+#### 8. QLoRA: Quantized Low-Rank Adaptation
 
-- QLoRA extends the principles of LoRA by introducing quantization techniques to further reduce memory usage.
-- By quantizing the activation data, QLoRA reduces the memory footprint required to store activations during fine-tuning.
-- This method leverages lower precision data representations while preserving fine-tuning performance, making it highly efficient in memory-constrained environments.
+QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to efficiently fine-tune large language models. It integrates quantization, double quantization, low-rank adaptation (LoRA), and paged attention to address computational and storage challenges.
+
+#### Key Concepts
+
+1. **Quantization**
+
+   Quantization reduces the precision of model parameters from 32-bit floating point to lower precision formats like 8-bit or 4-bit integers, decreasing memory and computational requirements.
+
+2. **Double Quantization**
+
+   Double quantization refines the quantization process by adding an intermediate step:
+
+   $$\mathbf{w}' = \mathbf{Q}_2(\mathbf{Q}_1(\mathbf{w}))$$
+
+   where $\mathbf{Q}_1$ and $\mathbf{Q}_2$ are the first and second quantization functions, respectively.
+
+3. **Low-Rank Adaptation (LoRA)**
+
+   LoRA introduces trainable low-rank matrices to adjust pre-trained model weights during fine-tuning:
+
+   $$\mathbf{W}_{\text{adapted}} = \mathbf{W} + \alpha \mathbf{AB}$$
+
+   where:
+
+   - $\mathbf{W}$ is the original weight matrix.
+   - $\mathbf{A}$ and $\mathbf{B}$ are low-rank matrices.
+   - $\alpha$ is a scaling factor.
+
+4. **Paged Attention**
+
+   Paged attention optimizes memory usage during transformer model attention mechanisms by dividing the attention matrix into smaller, manageable pages.
+
+#### How QLoRA Works
+
+- **Quantization of Pre-trained Model:**
+
+  Parameters are quantized using double quantization:
+
+  $$\mathbf{W}' = \mathbf{Q}_2(\mathbf{Q}_1(\mathbf{W}))$$
+
+- **Application of LoRA:**
+
+  Apply LoRA to the quantized model:
+
+  $$\mathbf{W}_{\text{adapted}}' = \mathbf{W}' + \alpha \mathbf{AB}$$
+
+- **Implementation of Paged Attention:**
+
+  Use paged attention during fine-tuning and inference:
+
+  $$\mathbf{A} = \bigcup_{i=1}^{n} \mathbf{A}_i$$
+
+  where $\mathbf{A}_i$ represents a page of the attention matrix.
+
+#### Benefits of QLoRA
+
+- **Efficiency:**
+  - Reduces computational and memory resources.
+  - Allows fine-tuning on consumer-grade hardware.
+
+- **Scalability:**
+  - Enables fine-tuning of very large models.
+
+- **Performance:**
+  - Maintains competitive performance.
+  - Preserves accuracy through double quantization and efficient memory usage with paged attention.
+
+#### Practical Applications
+
+- **Domain-Specific Adaptation:** Tailoring large language models for medical, legal, or customer service applications.
+- **Resource-Efficient Deployment:** Reducing operational costs by lowering resource requirements for deploying large models.
 
 
 #### 9. Expert-Specialized Fine-Tuning for Sparse Large Language Models

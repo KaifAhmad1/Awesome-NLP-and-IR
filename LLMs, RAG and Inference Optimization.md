@@ -621,13 +621,93 @@ The key idea is that not all parts of the weight matrices are equally important 
 2. **Optimizer Efficiency**
    - Focusing on selected sub-matrices reduces the memory for storing gradients in optimizers like Adam.
 
-## Conclusion
-Sparse Matrix Tuning (SMT) advances LLM fine-tuning by targeting the most critical sub-matrices within weight matrices. This approach achieves high performance with significantly lower computational and memory costs, making it feasible to fine-tune large models on more modest hardware setups while maintaining or enhancing task performance.
 
+#### 11. Representation Finetuning (ReFT)
+Representation Finetuning (ReFT) is an innovative technique designed to adapt large language models (LLMs) for specific tasks by modifying their internal representations rather than their parameters. This method aims to balance computational efficiency with high performance, making it an appealing alternative to traditional finetuning approaches.
 
+#### Motivation
 
+#### Challenges with Traditional Finetuning
+- **Resource Intensity:** Adjusting the parameters of a large model can be computationally expensive and memory-intensive.
+- **Parameter-Efficient Finetuning (PEFT):** While PEFT methods reduce the number of trainable parameters, they still require modifying the model's parameters, which can be cumbersome and less efficient.
 
+#### Advantages of ReFT
+- **Focus:** ReFT adjusts the hidden representations (activations) of a frozen base model, offering a resource-efficient way to adapt the model to specific tasks.
+- **Efficiency:** By not directly modifying model parameters, ReFT reduces computational and memory overhead.
 
+#### Core Concepts
+
+1. **Frozen Base Model**
+   - **Definition:** The model's original parameters remain unchanged during finetuning.
+   - **Benefit:** Significantly reduces the computational burden associated with training large models.
+
+2. **Hidden Representations**
+   - **Definition:** Intermediate states produced by the model's layers during the forward pass.
+   - **Importance:** Contains rich semantic information for task-specific adaptation.
+
+3. **Low-dimensional Subspace**
+   - **Definition:** ReFT operates within a constrained subspace of the hidden representations.
+   - **Benefit:** Ensures computational efficiency and prevents overfitting by limiting adjustments.
+
+#### Methods
+
+ReFT can be implemented using different techniques to adjust hidden representations. Two notable methods are Low-rank Linear Subspace ReFT (LoReFT) and Direct ReFT (DiReFT).
+
+#### Low-rank Linear Subspace ReFT (LoReFT)
+
+#### Mathematical Formulation
+
+Given a model with hidden representation $H \in \mathbb{R}^{d \times n}$:
+
+- **Transformation:** Apply a low-rank projection $ L $:
+  $$H' = H + UV^T H$$
+  - **Low-rank Projection:** Defined as:
+    $$L(H) = UV^T$$
+    - $U \in \mathbb{R}^{d \times r}$ (low-rank matrix 1)
+    - $V \in \mathbb{R}^{r \times d}$ (low-rank matrix 2)
+    - $r \ll d$ (rank of the projection)
+
+#### Direct ReFT (DiReFT)
+
+#### Mathematical Formulation
+
+Given a model with hidden representation $H$:
+
+- **Transformation:** Directly adjust $H$ with matrix $W$:
+  $$H' = H + W$$
+  - $W \in \mathbb{R}^{d \times n}$ (learned adjustment matrix)
+
+#### Implementation Steps
+
+1. **Extract Hidden Representations**
+   - During the forward pass, extract the hidden representations $H$ from a specific layer of the frozen base model.
+
+2. **Apply Transformation**
+   - **LoReFT:**
+     - Define low-rank matrices $U$ and $V$.
+     - Compute the transformation: $H' = H + UV^T H$
+   - **DiReFT:**
+     - Define the adjustment matrix $W$.
+     - Apply the transformation: $H' = H + W$
+
+3. **Task-specific Finetuning**
+   - Use the modified hidden states $H'$ for the downstream task.
+   - Optionally adjust the parameters of the task-specific head if needed.
+
+#### Applications
+
+ReFT is versatile and can be applied to various natural language processing tasks:
+
+- Commonsense Reasoning
+- Arithmetic Reasoning
+- Instruction-following
+- Natural Language Understanding tasks like sentiment analysis, question answering, and text classification.
+
+#### Benefits
+
+- **Efficiency:** By not adjusting the model's parameters, ReFT significantly lowers computational and memory overhead.
+- **Performance:** Despite the efficiency, ReFT achieves performance levels comparable to or better than traditional finetuning and other PEFT methods.
+- **Flexibility:** ReFT can be easily integrated with existing models, requiring minimal modifications to their architecture.
 
 These memory-efficient PEFT methods are crucial advancements in optimizing the fine-tuning process for large language models, addressing the challenge of high memory consumption while maintaining or even improving performance metrics.
 

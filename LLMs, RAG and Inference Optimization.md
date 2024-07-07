@@ -548,6 +548,11 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
 
    Paged attention optimizes memory usage during transformer model attention mechanisms by dividing the attention matrix into smaller, manageable pages.
 
+5. **4-bit NormalFloat (NF4)**
+
+   4-bit NormalFloat (NF4) is a new data type that is information-theoretically optimal for quantizing normally distributed weights.
+
+
 #### How QLoRA Works
 
 - **Quantization of Pre-trained Model:**

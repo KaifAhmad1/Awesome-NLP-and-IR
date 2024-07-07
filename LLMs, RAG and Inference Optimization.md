@@ -613,16 +613,97 @@ HyperTuning is ideal for scenarios requiring high-performance NLP models with li
 HyperTuning is a novel method combining hypermodels and PEFT techniques to fine-tune large language models efficiently. It strikes a balance between computational efficiency and task performance, making it a promising solution for diverse NLP applications.
 
 
-#### 6. PEFT Plug-in
+#### 7. Zero-Redundancy Optimizer (ZeRO) and Memory-Efficient Zeroth-Order Optimizer (MeZO)
 
-- Trains PEFT modules on smaller language models first, which is more memory-efficient.
-- These trained modules are then integrated into LLMs during inference, circumventing the necessity for gradient-based optimization on larger models, resulting in significant memory savings.
+---
 
-#### 7. MeZO (Memory-Efficient Zeroth-Order Optimizer)
+#### Zero-Redundancy Optimizer (ZeRO)
 
-- Fine-tunes LLMs through forward passes only, using a zeroth-order (ZO) gradient estimator.
-- Implements an in-place solution for the ZO gradient estimator, reducing memory consumption during inference.
-- MeZO enables efficient fine-tuning of LLMs with up to 30 billion parameters on a single GPU with 80GB of memory, maintaining performance comparable to traditional backpropagation-based fine-tuning methods.
+#### Introduction
+ZeRO (Zero Redundancy Optimizer) is a memory optimization technique designed to enable the training of large-scale language models by distributing memory loads across multiple devices.
+
+#### Key Concepts
+
+1. **Optimizer State Partitioning**
+   - **Optimizer states**: Momentum, variance (e.g., in Adam).
+   - **Partitioning**: States are divided among $d$ devices.
+   - **Memory reduction**: $\mathcal{O}\left(\frac{|O|}{d}\right)$, where $|O|$ is the size of optimizer states.
+
+2. **Gradient Partitioning**
+   - **Gradients**: Computed during backpropagation.
+   - **Partitioning**: Gradients are split across devices.
+   - **Memory reduction**: $\mathcal{O}\left(\frac{|G|}{d}\right)$, where $|G|$ is the size of gradients.
+
+3. **Parameter Partitioning**
+   - **Parameters**: Model weights.
+   - **Partitioning**: Parameters are distributed across devices.
+   - **Memory reduction**: $\mathcal{O}\left(\frac{|P|}{d}\right)$, where $|P|$ is the size of parameters.
+
+#### Three Stages of ZeRO
+
+1. **Stage 1: Optimizer State Partitioning**
+   - Distributes optimizer states to reduce memory per device.
+
+2. **Stage 2: Gradient Partitioning**
+   - Further reduces memory by partitioning gradients.
+
+3. **Stage 3: Parameter Partitioning**
+   - Combines all partitioning techniques for maximal memory efficiency.
+   - **Memory per Device**: $\mathcal{O}\left(\frac{|P| + |O| + |G|}{d}\right)$.
+
+#### Benefits
+- **Scalability**: Supports training larger models.
+- **Efficiency**: Reduces memory redundancy.
+- **Flexibility**: Works with various distributed training setups.
+
+---
+
+#### Memory-Efficient Zeroth-Order Optimizer (MeZO)
+
+#### Introduction
+MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, relying only on forward passes, eliminating the need for backpropagation and reducing memory usage.
+
+#### Key Concepts
+
+1. **Gradient Estimation**
+   - **Zeroth-order optimization**: Estimates gradients using only loss function evaluations.
+   - **Formula**:
+     $$\hat{\nabla} \mathcal{L}(\theta) = \frac{\mathcal{L}(\theta + \delta \mathbf{u}) - \mathcal{L}(\theta - \delta \mathbf{u})}{2\delta} \mathbf{u}$$
+     where $\delta$ is a small scalar perturbation and $\mathbf{u}$ is a random direction vector.
+
+#### MeZO Algorithm
+
+1. **Initialization**: Start with parameters $\theta_0$.
+2. **Forward Passes**: Compute $\mathcal{L}(\theta + \delta \mathbf{u})$ and $\mathcal{L}(\theta - \delta \mathbf{u})$.
+3. **Gradient Estimate**: Use the zeroth-order formula.
+4. **Parameter Update**:
+   $$\theta_{t+1} = \theta_t - \eta \hat{\nabla} \mathcal{L}(\theta_t)$$
+   where $\eta$ is the learning rate.
+
+#### Memory Efficiency
+- **In-Place Updates**: Parameters are updated without storing intermediate states.
+- **No Backpropagation**: Reduces memory overhead.
+
+#### Performance and Compatibility
+- **Efficiency**: Comparable to traditional fine-tuning methods.
+- **PEFT Compatibility**: Works with techniques like LoRA and prefix tuning.
+- **Non-Differentiable Objectives**: Can optimize non-differentiable objectives.
+
+#### Practical Use and Benefits
+
+1. **Training Larger Models**
+   - **ZeRO and MeZO** enable training on limited hardware by optimizing memory use.
+
+2. **Resource Efficiency**
+   - **ZeRO**'s distributed memory and **MeZO**'s forward-pass-only technique ensure efficient resource use.
+
+3. **Flexibility**
+   - Compatible with various optimization and fine-tuning strategies.
+
+4. **Cost Reduction**
+   - Lower memory requirements reduce overall training costs.
+
+--- 
 
 #### 8. QLoRA: Quantized Low-Rank Adaptation
 

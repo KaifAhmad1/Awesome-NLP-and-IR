@@ -472,7 +472,7 @@ NAS is used to discover optimal PEFT combinations:
 
 ### Memory-Efficient Fine Tuning 
 
-#### 4. LoRA-FA (LoRA with Frozen Activations)
+#### 1. LoRA-FA (LoRA with Frozen Activations)
 
 #### Introduction
 LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced technique for fine-tuning large language models (LLMs). By leveraging low-rank matrix approximations and selectively freezing activations during training, this approach reduces computational and memory demands, enhancing efficiency without compromising performance.
@@ -524,7 +524,7 @@ LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced techniqu
 - **Rapid Prototyping**: Facilitates quicker development cycles by reducing training times.
 
 
-#### 5. HyperTuning: A Concise Guide
+#### 2. HyperTuning: A Concise Guide
 
 HyperTuning is an advanced method for fine-tuning large language models efficiently. It utilizes hypermodels to generate task-specific tuning parameters, optimizing performance while reducing computational requirements. This method integrates Parameter-Efficient Fine-Tuning (PEFT) techniques such as Prefix Tuning and LoRA (Low-Rank Adaptation).
 
@@ -608,7 +608,7 @@ HyperTuning is ideal for scenarios requiring high-performance NLP models with li
 HyperTuning is a novel method combining hypermodels and PEFT techniques to fine-tune large language models efficiently. It strikes a balance between computational efficiency and task performance, making it a promising solution for diverse NLP applications.
 
 
-#### 7. Zero-Redundancy Optimizer (ZeRO) and Memory-Efficient Zeroth-Order Optimizer (MeZO)
+#### 3. Zero-Redundancy Optimizer (ZeRO) and Memory-Efficient Zeroth-Order Optimizer (MeZO)
 
 ---
 
@@ -700,7 +700,7 @@ MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, r
 
 --- 
 
-#### 8. QLoRA: Quantized Low-Rank Adaptation
+#### 4. QLoRA: Quantized Low-Rank Adaptation
 
 QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to efficiently fine-tune large language models. It integrates quantization, double quantization, low-rank adaptation (LoRA), and paged attention to address computational and storage challenges.
 
@@ -780,7 +780,7 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
 - **Resource-Efficient Deployment:** Reducing operational costs by lowering resource requirements for deploying large models.
 
 
-#### 9. Expert-Specialized Fine-Tuning for Sparse Large Language Models
+#### 5. Expert-Specialized Fine-Tuning for Sparse Large Language Models
 As large language models (LLMs) become increasingly complex, efficient customization techniques are critical. Traditional parameter-efficient fine-tuning (PEFT) methods cater to dense models, while sparse models, particularly those utilizing the Mixture-of-Experts (MoE) architecture, necessitate specialized approaches. This document introduces Expert-Specialized Fine-Tuning (ESFT), a method designed to enhance the tuning efficiency and performance of MoE LLMs.
 
 #### Key Findings
@@ -832,7 +832,7 @@ As large language models (LLMs) become increasingly complex, efficient customiza
 - **Effectiveness**: ESFT enabled effective adaptation to these new and specialized tasks.
 
 
-#### 10. Sparse Matrix Tuning in Large Language Model Fine-Tuning
+#### 6. Sparse Matrix Tuning in Large Language Model Fine-Tuning
 Large Language Models (LLMs) are powerful but require significant computational resources for fine-tuning. Traditional methods involve adjusting all model parameters, which is often costly in terms of memory and computation. Parameter-efficient fine-tuning (PEFT) methods like LoRA (Low-Rank Adaptation) aim to reduce these costs but usually fall short in performance compared to full fine-tuning. Sparse Matrix Tuning (SMT) offers a middle ground, aiming to achieve high performance while minimizing resource usage.
 
 #### Sparse Matrix Tuning (SMT) Approach
@@ -881,7 +881,7 @@ The key idea is that not all parts of the weight matrices are equally important 
    - Focusing on selected sub-matrices reduces the memory for storing gradients in optimizers like Adam.
 
 
-#### 11. Representation Finetuning (ReFT)
+#### 7. Representation Finetuning (ReFT)
 Representation Finetuning (ReFT) is an innovative technique designed to adapt large language models (LLMs) for specific tasks by modifying their internal representations rather than their parameters. This method aims to balance computational efficiency with high performance, making it an appealing alternative to traditional finetuning approaches.
 
 #### Motivation
@@ -966,7 +966,6 @@ ReFT is versatile and can be applied to various natural language processing task
 - **Efficiency:** By not adjusting the model's parameters, ReFT significantly lowers computational and memory overhead.
 - **Performance:** Despite the efficiency, ReFT achieves performance levels comparable to or better than traditional finetuning and other PEFT methods.
 - **Flexibility:** ReFT can be easily integrated with existing models, requiring minimal modifications to their architecture.
-
 
 --- 
 

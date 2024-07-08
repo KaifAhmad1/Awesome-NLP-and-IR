@@ -423,6 +423,62 @@ AdaLoRA reformulates $\Delta W$ with a singular value decomposition (SVD).
   - This approach allows the model to dynamically adjust the rank within each LoRA module, effectively managing its parameter counts.
   - AdaLoRA delivers superior performance by leveraging a predefined training budget for pruning, orthogonality maintenance, and learning module-specific ranks dynamically.
 
+#### DoRA: Weight-Decomposed Low-Rank Adaptation
+
+DoRA (Weight-Decomposed Low-Rank Adaptation) is an advanced parameter-efficient fine-tuning (PEFT) method designed to enhance the performance of models like LoRA (Low-Rank Adaptation). It improves learning capacity and stability while maintaining efficiency and avoiding extra inference costs.
+
+- **Key Concepts:**
+  1. **Weight Decomposition**:
+     - **Magnitude**: Represents the scale of the weights.
+     - **Direction**: Represents the orientation of the weights in the parameter space.
+
+  2. **Directional Updates**:
+     - Utilizes LoRA to update the directional component of the weights, enabling efficient fine-tuning with fewer trainable parameters.
+
+  3. **Learning Capacity**:
+     - By focusing on both magnitude and direction, DoRA closely resembles the learning capacity of full fine-tuning.
+
+- **Implementation Steps:**
+  1. **Weight Decomposition**:
+     - Decompose the pre-trained weight matrix $W$ into magnitude ($m$) and directional ($V$) components:
+       $$W = m \cdot \frac{V}{\|V\|_c}$$
+       where $\| \cdot \|_c$ denotes the vector-wise norm across each column.
+
+  2. **Fine-Tuning with LoRA**:
+     - Apply LoRA to update the directional component:
+       $$\Delta W = B \cdot A$$
+       where $B$ and $A$ are low-rank matrices trained to adapt the directional component.
+
+  3. **Magnitude Updates**:
+     - Make the magnitude component ($m$) trainable, allowing it to adjust during fine-tuning.
+
+  4. **Combine Components**:
+     - After fine-tuning, combine the updated magnitude and directional components:
+       $$W' = m \cdot \frac{W_0 + \Delta V}{\|W_0 + \Delta V\|_c}$$
+       where $W_0$ is the initial pre-trained weight matrix and $\Delta V$ represents the directional updates.
+
+- **Benefits of DoRA:**
+  1. **Enhanced Learning Capacity**:
+     - Closely mimics full fine-tuning by adapting both magnitude and direction.
+
+  2. **Stability**:
+     - Simplifies optimization, making training more stable and less sensitive to initialization.
+
+  3. **Efficiency**:
+     - No additional inference overhead, ensuring efficient model deployment.
+
+- **Applications:**
+  - DoRA consistently outperforms LoRA across various tasks and model architectures, including:
+    1. **Commonsense Reasoning**:
+       - Improvements on models like LLaMA, LLaVA, and VL-BART.
+
+    2. **Visual Instruction Tuning**:
+       - Better performance on vision-language tasks.
+
+    3. **Image/Video-Text Understanding**:
+       - Enhanced results on multimodal data benchmarks.
+
+
 ---
 
 ### Hybrid PEFT

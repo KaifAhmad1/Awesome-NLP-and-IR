@@ -471,6 +471,7 @@ NAS is used to discover optimal PEFT combinations:
 --- 
 
 ### Memory-Efficient Fine Tuning 
+Memory-Efficient Fine-Tuning (MEFT) is an umbrella term that encompasses various strategies and techniques aimed at fine-tuning large language models (LLMs) and other deep learning models in a way that minimizes memory consumption. This is crucial for making the deployment and adaptation of large models feasible on hardware with limited memory resources, such as GPUs with lower VRAM or even edge devices.
 
 #### 1. LoRA-FA (LoRA with Frozen Activations)
 

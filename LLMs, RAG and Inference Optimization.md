@@ -267,7 +267,7 @@ PEFT is a technique used in machine learning, particularly in deep learning and 
 
 ---
 
-### Additive Parameter-Efficient Fine-Tuning (PEFT) Methods for Large Pre-Trained Models
+### Additive PEFT
 
 Fine-tuning large pre-trained models (PLMs) involves adapting them to specific downstream tasks, but this process can be computationally expensive and may degrade generalization. Additive PEFT methods address these challenges by introducing minimal trainable parameters strategically within the model architecture, preserving the bulk of the pre-trained weights.
 
@@ -470,80 +470,83 @@ NAS is used to discover optimal PEFT combinations:
 
 --- 
 
-### Memory-Efficient Fine Tuning 
-Memory-Efficient Fine-Tuning (MEFT) is an umbrella term that encompasses various strategies and techniques aimed at fine-tuning large language models (LLMs) and other deep learning models in a way that minimizes memory consumption. This is crucial for making the deployment and adaptation of large models feasible on hardware with limited memory resources, such as GPUs with lower VRAM or even edge devices.
+### Memory-Efficient Fine Tuning
+
+Memory-Efficient Fine-Tuning (MEFT) is an umbrella term encompassing various strategies and techniques aimed at fine-tuning large language models (LLMs) and other deep learning models in a way that minimizes memory consumption. This is crucial for making the deployment and adaptation of large models feasible on hardware with limited memory resources, such as GPUs with lower VRAM or even edge devices.
 
 #### Types of MEFT:
-- LoRA-FA (LoRA with Frozen Activations)
-- HyperTuning
-- Memory-Efficient Zeroth-Order Optimizer (MeZO)
-- QLoRA: Quantized Low-Rank Adaptation
-- Expert-Specialized Fine-Tuning
-- Sparse Matrix Tuning
-- Representation Finetuning (ReFT)
 
---- 
+1. LoRA-FA (LoRA with Frozen Activations)
+2. HyperTuning
+3. Memory-Efficient Zeroth-Order Optimizer (MeZO)
+4. QLoRA: Quantized Low-Rank Adaptation
+5. Expert-Specialized Fine-Tuning
+6. Sparse Matrix Tuning
+7. Representation Finetuning (ReFT)
+
+---
 
 #### 1. LoRA-FA (LoRA with Frozen Activations)
 
-#### Introduction
+##### Introduction
+
 LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced technique for fine-tuning large language models (LLMs). By leveraging low-rank matrix approximations and selectively freezing activations during training, this approach reduces computational and memory demands, enhancing efficiency without compromising performance.
 
-#### Core Concepts
+##### Core Concepts
 
-#### Low-Rank Adaptation (LoRA)
+###### Low-Rank Adaptation (LoRA)
 - **Objective**: Reduce the number of trainable parameters in large models.
 - **Method**: Decompose weight matrices $W$ into two low-rank matrices $A$ and $B$ such that $W \approx A \times B$.
 - **Benefit**: Lowers parameter count and computational complexity.
 
-#### Frozen Activations
+###### Frozen Activations
 - **Objective**: Decrease computational load by freezing specific layer activations.
 - **Method**: Selectively freeze activations of chosen layers, skipping gradient computation for these layers during backpropagation.
 - **Benefit**: Saves computational resources and memory by reducing forward and backward passes.
 
-#### Implementation Details
+##### Implementation Details
 
-#### Architecture Modifications
+###### Architecture Modifications
 - **Base Model**: Applicable to any large pre-trained model (e.g., BERT, GPT).
 - **Layer Modification**: Introduce low-rank matrices $A$ and $B$ in target layers.
-- **Freezing Strategy**: Determine which layers’ activations to freeze based on computational cost and task-specific performance impact.
+- **Freezing Strategy**: Determine which layers' activations to freeze based on computational cost and task-specific performance impact.
 
-#### Training Procedure
+###### Training Procedure
 1. **Initialization**: Start with a pre-trained model and initialize low-rank matrices $A$ and $B$.
 2. **Activation Freezing**: Select layers for activation freezing, either statically or dynamically.
 3. **Fine-Tuning**: Train with adjusted learning rates and batch sizes to optimize the low-rank components while keeping frozen layers unchanged.
 
-#### Hyperparameters
+###### Hyperparameters
 - **Rank (r)**: Balances performance and efficiency; critical for low-rank matrices.
 - **Learning Rate (lr)**: Typically lower than standard rates for stable convergence.
 - **Freezing Strategy**: Requires empirical evaluation or computational profiling to select optimal layers for freezing.
 
-#### Advantages and Challenges
+##### Advantages and Challenges
 
-#### Advantages
+###### Advantages
 - **Computational Efficiency**: Reduces training resource requirements.
 - **Scalability**: Enables fine-tuning of larger models on resource-constrained hardware.
 - **Performance**: Maintains or enhances model performance compared to full fine-tuning.
 
-#### Challenges
+###### Challenges
 - **Layer Selection**: Identifying which activations to freeze is crucial and can impact performance.
 - **Hyperparameter Tuning**: Optimizing rank and learning rate is complex and essential.
 - **Implementation Complexity**: Managing low-rank matrices and frozen activations adds complexity to the training pipeline.
 
-#### Applications
+##### Applications
 - **Fine-Tuning Large Models**: Adapt extensive pre-trained models to specific tasks with minimized computational costs.
 - **Resource-Constrained Environments**: Suitable for deploying models in settings with limited computational resources.
 - **Rapid Prototyping**: Facilitates quicker development cycles by reducing training times.
 
---- 
+---
 
 #### 2. HyperTuning
 
 HyperTuning is an advanced method for fine-tuning large language models efficiently. It utilizes hypermodels to generate task-specific tuning parameters, optimizing performance while reducing computational requirements. This method integrates Parameter-Efficient Fine-Tuning (PEFT) techniques such as Prefix Tuning and LoRA (Low-Rank Adaptation).
 
-#### Key Concepts
+##### Key Concepts
 
-#### Parameter-Efficient Fine-Tuning (PEFT)
+###### Parameter-Efficient Fine-Tuning (PEFT)
 
 1. **Prefix Tuning**:
    - Adds learnable prefix tokens to each transformer layer's input.
@@ -553,14 +556,14 @@ HyperTuning is an advanced method for fine-tuning large language models efficien
    - Adjusts the linear maps within the model in a low-rank manner.
    - Significantly reduces the number of parameters to be updated.
 
-#### HyperModels
+###### HyperModels
 
 - Hypermodels generate parameters for other models.
 - In HyperTuning, a hypermodel processes few-shot examples to generate PEFT parameters for the downstream model.
 
-#### HyperTuning Framework
+##### HyperTuning Framework
 
-#### Architecture
+###### Architecture
 
 - **HyperT5**:
   - **Encoder**: Processes few-shot input examples.
@@ -568,7 +571,7 @@ HyperTuning is an advanced method for fine-tuning large language models efficien
   - **MLPs**: Convert token representations into PEFT parameters.
   - Integrates Prefix Tuning and LoRA for parameter generation.
 
-#### HyperPretraining
+###### HyperPretraining
 
 - **Objective**: Prepare the hypermodel to generate effective PEFT parameters using Context-Augmented Conditional Language Modeling (CACLM).
 - **Process**:
@@ -578,7 +581,7 @@ HyperTuning is an advanced method for fine-tuning large language models efficien
      - **Hypermodel**: Uses segments A and D.
      - **Downstream Model**: Uses segments B and C.
 
-#### Multi-Task Fine-Tuning (MTF)
+###### Multi-Task Fine-Tuning (MTF)
 
 - **Training Setup**:
   - Few-shot inputs for the hypermodel.
@@ -590,7 +593,7 @@ HyperTuning is an advanced method for fine-tuning large language models efficien
   - **MetaICL**: Few-shot learning tasks dataset.
   - **Super-NaturalInstructions (S-NI)**: Over 1,600 task datasets for evaluation.
 
-#### Evaluation and Results
+##### Evaluation and Results
 
 - **Metrics**:
   - **P3**: Multiple-choice accuracy.
@@ -602,34 +605,34 @@ HyperTuning is an advanced method for fine-tuning large language models efficien
   - **MetaICL**: Significant improvement with HyperTuning.
   - **S-NI**: Outperforms standalone PEFT methods and approaches full fine-tuning performance.
 
-#### Intuition
+##### Intuition
 
 HyperTuning uses hypermodels to generate task-specific parameters dynamically, minimizing the need for extensive fine-tuning. This approach makes the downstream model adaptable to various tasks with minimal computational overhead.
 
-#### Benefits
+##### Benefits
 
 - **Efficiency**: Reduces computational costs by minimizing parameter updates.
 - **Performance**: Achieves high task performance, comparable to full fine-tuning.
 - **Versatility**: Applicable to a wide range of NLP tasks.
 
-#### Applications
+##### Applications
 
 HyperTuning is ideal for scenarios requiring high-performance NLP models with limited computational resources. It is suitable for real-time applications, mobile devices, and environments needing quick adaptation to new tasks.
 
-#### Conclusion
+##### Conclusion
 
 HyperTuning is a novel method combining hypermodels and PEFT techniques to fine-tune large language models efficiently. It strikes a balance between computational efficiency and task performance, making it a promising solution for diverse NLP applications.
 
---- 
+---
 
 #### 3. Zero-Redundancy Optimizer (ZeRO) and Memory-Efficient Zeroth-Order Optimizer (MeZO)
 
-#### Zero-Redundancy Optimizer (ZeRO)
+##### Zero-Redundancy Optimizer (ZeRO)
 
-#### Introduction
+###### Introduction
 ZeRO (Zero Redundancy Optimizer) is a memory optimization technique designed to enable the training of large-scale language models by distributing memory loads across multiple devices.
 
-#### Key Concepts
+###### Key Concepts
 
 1. **Optimizer State Partitioning**
    - **Optimizer states**: Momentum, variance (e.g., in Adam).
@@ -646,7 +649,7 @@ ZeRO (Zero Redundancy Optimizer) is a memory optimization technique designed to 
    - **Partitioning**: Parameters are distributed across devices.
    - **Memory reduction**: $\mathcal{O}\left(\frac{|P|}{d}\right)$, where $|P|$ is the size of parameters.
 
-#### Three Stages of ZeRO
+###### Three Stages of ZeRO
 
 1. **Stage 1: Optimizer State Partitioning**
    - Distributes optimizer states to reduce memory per device.
@@ -658,18 +661,18 @@ ZeRO (Zero Redundancy Optimizer) is a memory optimization technique designed to 
    - Combines all partitioning techniques for maximal memory efficiency.
    - **Memory per Device**: $\mathcal{O}\left(\frac{|P| + |O| + |G|}{d}\right)$.
 
-#### Benefits
+###### Benefits
 - **Scalability**: Supports training larger models.
 - **Efficiency**: Reduces memory redundancy.
 - **Flexibility**: Works with various distributed training setups.
 
 
-#### Memory-Efficient Zeroth-Order Optimizer (MeZO)
+##### Memory-Efficient Zeroth-Order Optimizer (MeZO)
 
-#### Introduction
+###### Introduction
 MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, relying only on forward passes, eliminating the need for backpropagation and reducing memory usage.
 
-#### Key Concepts
+###### Key Concepts
 
 1. **Gradient Estimation**
    - **Zeroth-order optimization**: Estimates gradients using only loss function evaluations.
@@ -677,7 +680,7 @@ MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, r
      $$\hat{\nabla} \mathcal{L}(\theta) = \frac{\mathcal{L}(\theta + \delta \mathbf{u}) - \mathcal{L}(\theta - \delta \mathbf{u})}{2\delta} \mathbf{u}$$
      where $\delta$ is a small scalar perturbation and $\mathbf{u}$ is a random direction vector.
 
-#### MeZO Algorithm
+###### MeZO Algorithm
 
 1. **Initialization**: Start with parameters $\theta_0$.
 2. **Forward Passes**: Compute $\mathcal{L}(\theta + \delta \mathbf{u})$ and $\mathcal{L}(\theta - \delta \mathbf{u})$.
@@ -686,16 +689,16 @@ MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, r
    $$\theta_{t+1} = \theta_t - \eta \hat{\nabla} \mathcal{L}(\theta_t)$$
    where $\eta$ is the learning rate.
 
-#### Memory Efficiency
+###### Memory Efficiency
 - **In-Place Updates**: Parameters are updated without storing intermediate states.
 - **No Backpropagation**: Reduces memory overhead.
 
-#### Performance and Compatibility
+###### Performance and Compatibility
 - **Efficiency**: Comparable to traditional fine-tuning methods.
 - **PEFT Compatibility**: Works with techniques like LoRA and prefix tuning.
 - **Non-Differentiable Objectives**: Can optimize non-differentiable objectives.
 
-#### Practical Use and Benefits
+##### Practical Use and Benefits
 
 1. **Training Larger Models**
    - **ZeRO and MeZO** enable training on limited hardware by optimizing memory use.
@@ -709,13 +712,13 @@ MeZO (Memory-Efficient Zeroth-Order Optimizer) uses zeroth-order optimization, r
 4. **Cost Reduction**
    - Lower memory requirements reduce overall training costs.
 
---- 
+---
 
 #### 4. QLoRA: Quantized Low-Rank Adaptation
 
 QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to efficiently fine-tune large language models. It integrates quantization, double quantization, low-rank adaptation (LoRA), and paged attention to address computational and storage challenges.
 
-#### Key Concepts
+##### Key Concepts
 
 1. **Quantization**
 
@@ -750,7 +753,7 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
    4-bit NormalFloat (NF4) is a new data type that is information-theoretically optimal for quantizing normally distributed weights.
 
 
-#### How QLoRA Works
+##### How QLoRA Works
 
 - **Quantization of Pre-trained Model:**
 
@@ -772,7 +775,7 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
 
   where $\mathbf{A}_i$ represents a page of the attention matrix.
 
-#### Benefits of QLoRA
+##### Benefits of QLoRA
 
 - **Efficiency:**
   - Reduces computational and memory resources.
@@ -785,78 +788,78 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
   - Maintains competitive performance.
   - Preserves accuracy through double quantization and efficient memory usage with paged attention.
 
-#### Practical Applications
+##### Practical Applications
 
 - **Domain-Specific Adaptation:** Tailoring large language models for medical, legal, or customer service applications.
 - **Resource-Efficient Deployment:** Reducing operational costs by lowering resource requirements for deploying large models.
 
---- 
+---
 
 #### 5. Expert-Specialized Fine-Tuning for Sparse Large Language Models
 As large language models (LLMs) become increasingly complex, efficient customization techniques are critical. Traditional parameter-efficient fine-tuning (PEFT) methods cater to dense models, while sparse models, particularly those utilizing the Mixture-of-Experts (MoE) architecture, necessitate specialized approaches. This document introduces Expert-Specialized Fine-Tuning (ESFT), a method designed to enhance the tuning efficiency and performance of MoE LLMs.
 
-#### Key Findings
+##### Key Findings
 
-#### Concentration of Expert Activation
+###### Concentration of Expert Activation
 - **Observation**: Custom tasks often activate a small, specific set of experts within the model.
 - **Implication**: Different tasks tend to activate distinct sets of experts, underscoring the need for task-specific tuning.
 
-#### Efficiency of Expert-Specialized Fine-Tuning (ESFT)
+###### Efficiency of Expert-Specialized Fine-Tuning (ESFT)
 - **Method**: ESFT fine-tunes only the most relevant experts for a given task, keeping others frozen.
 - **Result**: This targeted approach improves tuning efficiency and achieves performance comparable to or better than full-parameter fine-tuning.
 
-#### Advantages of MoE Architecture
+###### Advantages of MoE Architecture
 - **Design**: MoE models with finer-grained experts can select more relevant expert combinations.
 - **Benefit**: Improved efficiency and effectiveness in training and inference.
 
 
-#### Methods
+##### Methods
 
-#### Mixture-of-Experts (MoE) for Transformers
+###### Mixture-of-Experts (MoE) for Transformers
 - **Architecture**: MoE replaces traditional Feed-Forward Networks (FFNs) with multiple experts. Each token is processed by the most relevant experts based on learned affinity scores.
 - **Advancements**: Includes fine-grained segmentation and shared expert isolation, enhancing efficiency through specialization.
 
-#### Probing Task-Specific Expert Specialization
+###### Probing Task-Specific Expert Specialization
 - **Findings**: A small subset of experts is activated for most tasks, and different tasks activate distinct sets of experts.
 - **Implications**: Task-specific tuning is essential to maximize the potential of MoE models.
 
-#### Expert-Specialized Fine-Tuning (ESFT)
+###### Expert-Specialized Fine-Tuning (ESFT)
 - **Approach**: Select and fine-tune only the most relevant experts for a given task.
 - **Selection Metrics**: Average gate score and token selection ratio are used to identify relevant experts.
 - **Benefits**: Reduces computational resources needed for fine-tuning while maintaining or improving performance.
 
-#### Benefits of ESFT
+##### Benefits of ESFT
 
-#### Maintaining Expert Specialization
+###### Maintaining Expert Specialization
 - By updating only relevant experts, ESFT preserves the pre-trained specialization of other experts, preventing performance degradation in non-relevant tasks.
 
-#### Resource Efficiency
+###### Resource Efficiency
 - ESFT significantly reduces storage and computational resources, making it ideal for resource-constrained environments.
 
-#### Experimental Evaluation
+##### Experimental Evaluation
 
-#### Enhancing Existing Abilities
+###### Enhancing Existing Abilities
 - **Domains**: Tested on tasks where LLMs had pre-existing proficiency, such as math and code.
 - **Results**: Showed significant performance improvements.
 
-#### Adapting to New Tasks
+###### Adapting to New Tasks
 - **Specialized Tasks**: Evaluated on tasks like text-to-JSON intent recognition, text summarization, legal judgment prediction, and low-resource translation.
 - **Effectiveness**: ESFT enabled effective adaptation to these new and specialized tasks.
 
---- 
+---
 
 #### 6. Sparse Matrix Tuning in Large Language Model Fine-Tuning
 Large Language Models (LLMs) are powerful but require significant computational resources for fine-tuning. Traditional methods involve adjusting all model parameters, which is often costly in terms of memory and computation. Parameter-efficient fine-tuning (PEFT) methods like LoRA (Low-Rank Adaptation) aim to reduce these costs but usually fall short in performance compared to full fine-tuning. Sparse Matrix Tuning (SMT) offers a middle ground, aiming to achieve high performance while minimizing resource usage.
 
-#### Sparse Matrix Tuning (SMT) Approach
+##### Sparse Matrix Tuning (SMT) Approach
 SMT identifies and updates only the most important sub-matrices within the model's weight matrices, reducing computational and memory costs without sacrificing performance.
 
-##### Intuition Behind SMT
+###### Intuition Behind SMT
 The key idea is that not all parts of the weight matrices are equally important for a given task. By focusing on the most significant sub-matrices, SMT achieves efficient fine-tuning.
 
-#### How SMT Works
+##### How SMT Works
 
-#### Identifying Important Sub-matrices
+###### Identifying Important Sub-matrices
 1. **Warm-up Phase**: SMT begins with a warm-up phase of 100 iterations, monitoring the gradients of the weight matrices to identify significant changes. This can be expressed as:
 
    $$\Delta W_{i,j} = \frac{\partial L}{\partial W_{i,j}}$$
@@ -869,11 +872,11 @@ The key idea is that not all parts of the weight matrices are equally important 
 
    where $\theta$ is a predefined threshold indicating significant change.
 
-#### Fine-tuning Selected Sub-matrices
+###### Fine-tuning Selected Sub-matrices
 1. **Targeted Updates**: Only the selected sub-matrices are updated during fine-tuning, drastically reducing the number of trainable parameters.
 2. **Freezing Remaining Parameters**: The rest of the model's parameters remain unchanged, reducing memory and computational costs.
 
-#### Benefits of SMT
+##### Benefits of SMT
 
 1. **Performance**
    - SMT matches or exceeds the performance of full fine-tuning and surpasses other PEFT methods like LoRA and DoRA in various benchmarks.
@@ -885,7 +888,7 @@ The key idea is that not all parts of the weight matrices are equally important 
 3. **Consistent Performance**
    - SMT maintains high performance without the performance decline seen in other PEFT methods as the number of trainable parameters increases.
 
-#### Implementation Details
+##### Implementation Details
 
 1. **Custom Sparse Linear Layers**
    - These layers compute necessary gradients only for selected sub-matrices, reducing memory and computation requirements for backpropagation and parameter updates.
@@ -893,22 +896,22 @@ The key idea is that not all parts of the weight matrices are equally important 
 2. **Optimizer Efficiency**
    - Focusing on selected sub-matrices reduces the memory for storing gradients in optimizers like Adam.
 
---- 
+---
 
 #### 7. Representation Finetuning (ReFT)
 Representation Finetuning (ReFT) is an innovative technique designed to adapt large language models (LLMs) for specific tasks by modifying their internal representations rather than their parameters. This method aims to balance computational efficiency with high performance, making it an appealing alternative to traditional finetuning approaches.
 
-#### Motivation
+##### Motivation
 
-#### Challenges with Traditional Finetuning
+###### Challenges with Traditional Finetuning
 - **Resource Intensity:** Adjusting the parameters of a large model can be computationally expensive and memory-intensive.
 - **Parameter-Efficient Finetuning (PEFT):** While PEFT methods reduce the number of trainable parameters, they still require modifying the model's parameters, which can be cumbersome and less efficient.
 
-#### Advantages of ReFT
+###### Advantages of ReFT
 - **Focus:** ReFT adjusts the hidden representations (activations) of a frozen base model, offering a resource-efficient way to adapt the model to specific tasks.
 - **Efficiency:** By not directly modifying model parameters, ReFT reduces computational and memory overhead.
 
-#### Core Concepts
+##### Core Concepts
 
 1. **Frozen Base Model**
    - **Definition:** The model's original parameters remain unchanged during finetuning.
@@ -922,13 +925,13 @@ Representation Finetuning (ReFT) is an innovative technique designed to adapt la
    - **Definition:** ReFT operates within a constrained subspace of the hidden representations.
    - **Benefit:** Ensures computational efficiency and prevents overfitting by limiting adjustments.
 
-#### Methods
+##### Methods
 
 ReFT can be implemented using different techniques to adjust hidden representations. Two notable methods are Low-rank Linear Subspace ReFT (LoReFT) and Direct ReFT (DiReFT).
 
-#### Low-rank Linear Subspace ReFT (LoReFT)
+###### Low-rank Linear Subspace ReFT (LoReFT)
 
-#### Mathematical Formulation
+###### Mathematical Formulation
 
 Given a model with hidden representation $H \in \mathbb{R}^{d \times n}$:
 
@@ -939,9 +942,9 @@ Given a model with hidden representation $H \in \mathbb{R}^{d \times n}$:
     - $V \in \mathbb{R}^{r \times d}$ (low-rank matrix 2)
     - $r \ll d$ (rank of the projection)
 
-#### Direct ReFT (DiReFT)
+###### Direct ReFT (DiReFT)
 
-#### Mathematical Formulation
+###### Mathematical Formulation
 
 Given a model with hidden representation $H$:
 
@@ -949,7 +952,7 @@ Given a model with hidden representation $H$:
   $$H' = H + W$$
   - $W \in \mathbb{R}^{d \times n}$ (learned adjustment matrix)
 
-#### Implementation Steps
+##### Implementation Steps
 
 1. **Extract Hidden Representations**
    - During the forward pass, extract the hidden representations $H$ from a specific layer of the frozen base model.
@@ -966,7 +969,7 @@ Given a model with hidden representation $H$:
    - Use the modified hidden states $H'$ for the downstream task.
    - Optionally adjust the parameters of the task-specific head if needed.
 
-#### Applications
+##### Applications
 
 ReFT is versatile and can be applied to various natural language processing tasks:
 
@@ -975,7 +978,7 @@ ReFT is versatile and can be applied to various natural language processing task
 - Instruction-following
 - Natural Language Understanding tasks like sentiment analysis, question answering, and text classification.
 
-#### Benefits
+##### Benefits
 
 - **Efficiency:** By not adjusting the model's parameters, ReFT significantly lowers computational and memory overhead.
 - **Performance:** Despite the efficiency, ReFT achieves performance levels comparable to or better than traditional finetuning and other PEFT methods.

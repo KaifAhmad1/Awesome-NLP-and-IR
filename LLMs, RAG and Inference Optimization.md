@@ -473,6 +473,15 @@ NAS is used to discover optimal PEFT combinations:
 ### Memory-Efficient Fine Tuning 
 Memory-Efficient Fine-Tuning (MEFT) is an umbrella term that encompasses various strategies and techniques aimed at fine-tuning large language models (LLMs) and other deep learning models in a way that minimizes memory consumption. This is crucial for making the deployment and adaptation of large models feasible on hardware with limited memory resources, such as GPUs with lower VRAM or even edge devices.
 
+#### Types of MEFT:
+- LoRA-FA (LoRA with Frozen Activations)
+- HyperTuning
+- Memory-Efficient Zeroth-Order Optimizer (MeZO)
+- QLoRA: Quantized Low-Rank Adaptation
+- Expert-Specialized Fine-Tuning
+- Sparse Matrix Tuning
+- Representation Finetuning (ReFT)
+
 --- 
 
 #### 1. LoRA-FA (LoRA with Frozen Activations)
@@ -528,7 +537,7 @@ LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced techniqu
 
 --- 
 
-#### 2. HyperTuning: A Concise Guide
+#### 2. HyperTuning
 
 HyperTuning is an advanced method for fine-tuning large language models efficiently. It utilizes hypermodels to generate task-specific tuning parameters, optimizing performance while reducing computational requirements. This method integrates Parameter-Efficient Fine-Tuning (PEFT) techniques such as Prefix Tuning and LoRA (Low-Rank Adaptation).
 

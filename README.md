@@ -7,8 +7,8 @@ Welcome to your ultimate resource hub for concepts and papers related to:
 - **Natural Language Processing (NLP)**
 - **Large Language Models (LLMs)**
 - **LLM Efficiency**
-- **Vector Search**
-- **Information Retrieval (IR)**
+- **Vector Search and Information Retrieval** 
+- **Retrieval Augmented Generation, RAG Optimization and Best Practices**
 
 Find everything you need in one concise, well-organized place.
 

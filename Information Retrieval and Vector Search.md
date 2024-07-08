@@ -1,5 +1,6 @@
 # Vector Search: A Comprehensive Overview
 ---
+<a name="what-is-a-vector"></a>
 - **What is a Vector?:** In mathematics, a vector is a quantity defined by both magnitude and direction. Vectors are represented as arrays of numbers, which correspond to coordinates in a multidimensional space. They are foundational in various fields, including physics, engineering, and computer science.
   - Typically represented as $V = [v1, v2, v3, ...., vn]$ where $n$ is the magnitude of the vector in high dimensional space.
    - #### **Basic Properties of Vectors:**

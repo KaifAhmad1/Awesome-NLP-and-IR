@@ -13,7 +13,6 @@ Welcome to your ultimate resource hub for concepts and papers related to:
 Find everything you need in one concise, well-organized place.
 
 ## Table of Contents
-
 1. **Introduction**
     - Overview
     - Purpose

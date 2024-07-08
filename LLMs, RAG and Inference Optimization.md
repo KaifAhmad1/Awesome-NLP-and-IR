@@ -1356,51 +1356,38 @@ In the context of optimizing inference for large language models (LLMs), there a
 - **System-level Optimization:**
   Improving inference engine efficiency and enhancing serving systems with strategies like batching and distributed processing to optimize overall performance.
 
+--- 
 
 ### Data Level Optimization
 
-Optimizing Large Language Models (LLMs) is crucial for reducing computational costs and improving performance. Data-level optimization minimizes computational and memory usage through input compression and output organization, broadening LLM applicability across various environments and devices.
+Optimizing Large Language Models (LLMs) is essential for reducing computational costs and improving performance. Data-level optimization minimizes computational and memory usage through input compression and output organization, broadening LLM applicability across various environments and devices.
 
 #### Input Compression
 
-Input compression techniques shorten model inputs (prompts) without compromising output quality, reducing computational burden and improving performance. Key approaches include prompt pruning, prompt summarization, and retrieval-augmented generation.
+Input compression techniques shorten model inputs (prompts) without compromising output quality. This reduction in input size lessens the computational burden and enhances performance. Key methods include prompt pruning, prompt summarization, and retrieval-augmented generation.
 
-- **Prompt Pruning**
-  - **DYNAICL**: Dynamically adjusts the number of in-context examples for each input based on a computational budget, using a meta-controller to balance efficiency and performance.  
-    *Example*: In a language translation service, DYNAICL can reduce context sentences dynamically, making the system faster without sacrificing translation quality.
+- **Prompt Pruning**: This method removes non-essential parts of the input, keeping only the most crucial information. It ensures high output quality while reducing input size.
+  - **DYNAICL**: Dynamically adjusts the number of examples provided in the context for each input based on a computational budget. It uses a meta-controller to find a balance between efficiency (reduced computation) and performance (output quality).
+  - **Selective Context**: This technique merges tokens into larger units and prunes them based on their information value, often measured by metrics like negative log likelihood. The goal is to retain the most informative parts and discard less relevant ones.
+  - **PCRL (Prompt Compression using Reinforcement Learning)**: Uses reinforcement learning to prune tokens at a granular level. The model is trained with a reward function that balances the accuracy of the retained information (faithfulness) and the extent of compression.
 
-  - **Selective Context**: Merges tokens into units and prunes them based on self-information indicators (e.g., negative log likelihood).  
-    *Example*: In an automated customer support system, Selective Context can prune unnecessary parts of user queries, ensuring faster and more efficient responses.
+- **Prompt Summarization**: This approach condenses the input into a shorter, more manageable form while preserving essential information. It improves processing speed and reduces resource usage.
+  - **RECOMP (Retrieval-based Compression)**: Employs an Abstractive Compressor to create concise summaries from input questions and retrieved documents. It uses lighter compressors distilled from larger LLMs to maintain high-quality summaries.
+  - **SemanticCompression**: Breaks down the text into sentences, groups them by topic, and summarizes each group. This method produces a condensed version of the original prompt, ensuring coherence and relevance.
 
-  - **PCRL**: Implements token-level pruning using reinforcement learning, training a policy LLM by combining faithfulness and compression ratio into the reward function.  
-    *Example*: In a medical diagnosis application, PCRL can trim patient history details to essential information, speeding up the diagnosis process while maintaining accuracy.
+#### Retrieval-Augmented Generation (RAG)
 
-- **Prompt Summarization**
-  - **RECOMP**: Uses an Abstractive Compressor to generate concise summaries from input questions and retrieved documents, leveraging lightweight compressors distilled from larger LLMs.  
-    *Example*: In a legal research tool, RECOMP can summarize lengthy legal documents into brief, informative summaries, enhancing research efficiency.
+Retrieval-Augmented Generation enhances LLM responses by incorporating relevant information retrieved from external knowledge sources. This technique ensures that only pertinent information is included in the prompt, thus improving response quality and reducing length.
 
-  - **SemanticCompression**: Breaks down text into sentences, groups them by topic, and summarizes each group to produce a condensed version of the original prompt.  
-    *Example*: In academic research, SemanticCompression can summarize long articles into concise summaries for quicker review by researchers.
-
-#### Retrieval-Augmented Generation
-
-Retrieval-Augmented Generation (RAG) enhances LLM responses by incorporating external knowledge sources, adding only relevant information to the prompt.
-
-- **RAG**: Adds relevant retrieved information to the prompt, reducing its length while improving content quality.  
-  *Example*: In a news summarization service, RAG can integrate relevant background information into summaries, ensuring they are concise yet comprehensive.
-
-- **FLARE**: Proactively decides what information to retrieve based on predictions of upcoming sentences.  
-  *Example*: In a financial analysis tool, FLARE can predict and retrieve relevant financial data, integrating it into reports efficiently.
+- **RAG**: Adds relevant information from retrieved sources to the prompt, enhancing the quality and relevance of the response while keeping the input concise.
+- **FLARE (Future-Looking Augmented Retrieval)**: Predicts the necessary information for upcoming sentences and retrieves it proactively. This method ensures that the most relevant data is included in the response, enhancing efficiency and accuracy.
 
 #### Output Organization
 
-Output organization techniques optimize the generation process by structuring the output content to enable parallel processing, reducing latency and improving efficiency.
+Output organization techniques structure the generation process, allowing for parallel processing of the output content. This reduces latency and improves overall efficiency.
 
-- **Skeleton-of-Thought (SoT)**: SoT generates a concise skeleton of the answer first, then expands each point in parallel.  
-  *Example*: In collaborative writing, SoT outlines main points before expanding them simultaneously, speeding up the drafting process.
-
-- **SGD**: SGD organizes sub-problems into a Directed Acyclic Graph (DAG), solving independent sub-problems in parallel.  
-  *Example*: An AI coding assistant can break down complex coding tasks into smaller, parallelizable sub-tasks, enhancing developer productivity.
+- **Skeleton-of-Thought (SoT)**: Initially generates a concise outline (skeleton) of the answer, detailing the main points. Each point is then expanded simultaneously, facilitating faster and more organized content generation.
+- **SGD (Sub-Problem Directed Graph)**: Structures sub-problems into a Directed Acyclic Graph (DAG), enabling parallel solving of independent sub-problems. This method breaks down complex tasks into manageable sub-tasks, enhancing processing speed and efficiency.
 
 --- 
 

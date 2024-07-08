@@ -473,6 +473,8 @@ NAS is used to discover optimal PEFT combinations:
 ### Memory-Efficient Fine Tuning 
 Memory-Efficient Fine-Tuning (MEFT) is an umbrella term that encompasses various strategies and techniques aimed at fine-tuning large language models (LLMs) and other deep learning models in a way that minimizes memory consumption. This is crucial for making the deployment and adaptation of large models feasible on hardware with limited memory resources, such as GPUs with lower VRAM or even edge devices.
 
+--- 
+
 #### 1. LoRA-FA (LoRA with Frozen Activations)
 
 #### Introduction
@@ -524,6 +526,7 @@ LoRA-FA, or Low-Rank Adaptation with Frozen Activations, is an advanced techniqu
 - **Resource-Constrained Environments**: Suitable for deploying models in settings with limited computational resources.
 - **Rapid Prototyping**: Facilitates quicker development cycles by reducing training times.
 
+--- 
 
 #### 2. HyperTuning: A Concise Guide
 
@@ -608,10 +611,9 @@ HyperTuning is ideal for scenarios requiring high-performance NLP models with li
 
 HyperTuning is a novel method combining hypermodels and PEFT techniques to fine-tune large language models efficiently. It strikes a balance between computational efficiency and task performance, making it a promising solution for diverse NLP applications.
 
+--- 
 
 #### 3. Zero-Redundancy Optimizer (ZeRO) and Memory-Efficient Zeroth-Order Optimizer (MeZO)
-
----
 
 #### Zero-Redundancy Optimizer (ZeRO)
 
@@ -652,7 +654,6 @@ ZeRO (Zero Redundancy Optimizer) is a memory optimization technique designed to 
 - **Efficiency**: Reduces memory redundancy.
 - **Flexibility**: Works with various distributed training setups.
 
----
 
 #### Memory-Efficient Zeroth-Order Optimizer (MeZO)
 
@@ -780,6 +781,7 @@ QLoRA (Quantized Low-Rank Adaptation) is an advanced technique designed to effic
 - **Domain-Specific Adaptation:** Tailoring large language models for medical, legal, or customer service applications.
 - **Resource-Efficient Deployment:** Reducing operational costs by lowering resource requirements for deploying large models.
 
+--- 
 
 #### 5. Expert-Specialized Fine-Tuning for Sparse Large Language Models
 As large language models (LLMs) become increasingly complex, efficient customization techniques are critical. Traditional parameter-efficient fine-tuning (PEFT) methods cater to dense models, while sparse models, particularly those utilizing the Mixture-of-Experts (MoE) architecture, necessitate specialized approaches. This document introduces Expert-Specialized Fine-Tuning (ESFT), a method designed to enhance the tuning efficiency and performance of MoE LLMs.
@@ -832,6 +834,7 @@ As large language models (LLMs) become increasingly complex, efficient customiza
 - **Specialized Tasks**: Evaluated on tasks like text-to-JSON intent recognition, text summarization, legal judgment prediction, and low-resource translation.
 - **Effectiveness**: ESFT enabled effective adaptation to these new and specialized tasks.
 
+--- 
 
 #### 6. Sparse Matrix Tuning in Large Language Model Fine-Tuning
 Large Language Models (LLMs) are powerful but require significant computational resources for fine-tuning. Traditional methods involve adjusting all model parameters, which is often costly in terms of memory and computation. Parameter-efficient fine-tuning (PEFT) methods like LoRA (Low-Rank Adaptation) aim to reduce these costs but usually fall short in performance compared to full fine-tuning. Sparse Matrix Tuning (SMT) offers a middle ground, aiming to achieve high performance while minimizing resource usage.
@@ -881,6 +884,7 @@ The key idea is that not all parts of the weight matrices are equally important 
 2. **Optimizer Efficiency**
    - Focusing on selected sub-matrices reduces the memory for storing gradients in optimizers like Adam.
 
+--- 
 
 #### 7. Representation Finetuning (ReFT)
 Representation Finetuning (ReFT) is an innovative technique designed to adapt large language models (LLMs) for specific tasks by modifying their internal representations rather than their parameters. This method aims to balance computational efficiency with high performance, making it an appealing alternative to traditional finetuning approaches.

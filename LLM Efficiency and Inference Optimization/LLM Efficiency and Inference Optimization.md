@@ -262,14 +262,16 @@ Attention mechanisms manage information flow across tokens in a sequence, essent
     - **Optimized Performance:** Achieves comparable results to traditional attention mechanisms with lower computational and memory costs.
     - **Real-Time Processing:** Suitable for applications that require fast, real-time processing or are deployed on hardware with limited resources.
 
-##### Transformer Alternates
+#### Transformer Alternatives
 
 Introducing novel architectures or modifications to existing ones provides alternatives with improved efficiency:
 
-- **State Space Models (SSM) and Mamba:**
-  - **Overview:** Selective State Space Models (SSMs) are advanced neural network architectures designed to effectively manage sequence data by focusing on relevant segments. Mamba represents an optimized implementation of SSMs, enhancing their practicality and efficiency in diverse applications.
-  - **Challenges in Sequence Modeling**
+#### State Space Models (SSM) and Mamba
 
+##### Overview
+Selective State Space Models (SSMs) are advanced neural network architectures designed to effectively manage sequence data by focusing on relevant segments. Mamba represents an optimized implementation of SSMs, enhancing their practicality and efficiency in diverse applications.
+
+##### Challenges in Sequence Modeling
 - **Attention Models**
   - Complex and computationally expensive.
   - Challenges in scalability for long sequences.
@@ -278,16 +280,14 @@ Introducing novel architectures or modifications to existing ones provides alter
   - Struggle with long-term dependencies.
   - Limited in retaining context over extended sequences.
 
-**Selective SSMs Mechanics**
-
+##### Selective SSMs Mechanics
 - **Selective Parameterization**
-  - Dynamically adjusts parameters $(Δ, 𝑩, 𝑪)$ based on input sequences.
+  - Dynamically adjusts parameters $(\Delta, 𝑩, 𝑪)$ based on input sequences.
   
 - **Context Compression**
   - Filters irrelevant data to maintain compressed yet informative representations.
 
-**Efficient Implementation Techniques**
-
+##### Efficient Implementation Techniques
 - **Kernel Fusion**
   - Reduces memory operations by consolidating computations into single kernels.
   
@@ -297,16 +297,14 @@ Introducing novel architectures or modifications to existing ones provides alter
 - **Recomputation**
   - Saves memory during backpropagation by re-computing intermediate states.
 
-**Mamba Architecture**
-
+##### Mamba Architecture
 - **Simplified Design**
   - Includes linear projections, selective SSM layer, SiLU activation, and optional LayerNorm.
   
 - **Integration**
   - Retains selective focus and context compression for practical deployment.
 
-**Key Properties and Benefits**
-
+##### Key Properties and Benefits
 - **Handling Variable Spacing**
   - Manages sequences with varying spacing between relevant data.
   
@@ -316,8 +314,7 @@ Introducing novel architectures or modifications to existing ones provides alter
 - **Boundary Resetting**
   - Resets state at sequence boundaries for accurate segment processing.
 
-**Practical Applications**
-
+##### Practical Applications
 - **Natural Language Processing (NLP)**
   - Language modeling, machine translation, and text generation.
   
@@ -327,49 +324,44 @@ Introducing novel architectures or modifications to existing ones provides alter
 - **Speech Recognition**
   - Efficient processing of long audio sequences for speech recognition.
 
-- **RWKV: Reinventing RNNs for the Transformer Era**
+#### RWKV: Reinventing RNNs for the Transformer Era
 
 RWKV is a novel neural network architecture designed to merge the strengths of Recurrent Neural Networks (RNNs) and Transformers, aiming to enhance computational efficiency and performance scalability.
 
 ##### Motivation
 Transformers have become the go-to architecture for natural language processing (NLP) tasks due to their ability to handle long-range dependencies and parallelize computations. However, they suffer from quadratic scaling in memory and computation with respect to sequence length. RNNs, while offering linear scalability, face challenges in parallelization and struggle with long-range dependencies. RWKV addresses these issues by combining the parallelizability of Transformers during training with the efficiency of RNNs during inference.
 
----
-
 ##### Architecture
 
-RWKV integrates core components from both RNNs and Transformers to create a hybrid model with the following key elements:
-
-##### 1. Time-Mixing and Channel-Mixing Blocks
+##### Time-Mixing and Channel-Mixing Blocks
 - **Time-Mixing:** Captures temporal dependencies.
 - **Channel-Mixing:** Interacts with different feature dimensions.
 
-##### 2. Core Elements
+##### Core Elements
 - **Receptance (R):** Gating mechanism to control information flow.
 - **Weight (W):** Trainable positional weight decay vector.
 - **Key (K) & Value (V):** Analogous to keys and values in attention mechanisms.
 
-##### 3. Token Shift
+##### Token Shift
 - **Mechanism:** Linear projections of current and previous timestep inputs.
 - **Function:** Enhances handling of sequential data through token shifts.
 
-##### 4. WKV Operator
+##### WKV Operator
 - **Function:** Computes weighted sums similar to attention mechanisms with time-dependent updates.
 - **Advantage:** Improves numerical stability and mitigates gradient issues.
 
-##### 5. Output Gating
+##### Output Gating
 - **Mechanism:** Uses the sigmoid of the receptance to control output.
 - **Function:** Ensures efficient information flow.
-
 
 ##### Training and Inference
 
 ##### Training (Transformer-like)
 - **Parallelization:** Parallel computation akin to Transformers.
-- **Complexity:** O(BT d^2), where B is batch size, T is sequence length, and d is feature dimension.
+- **Complexity:** $O(BT d^2)$, where B is batch size, T is sequence length, and d is feature dimension.
 
 ##### Inference (RNN-like)
-- **Mechanism:** Output at state t is used as input at state t+1.
+- **Mechanism:** Output at state $t$ is used as input at state $t+1$.
 - **Advantage:** Efficient autoregressive decoding with constant computational and memory complexity.
 
 ##### Performance and Efficiency
@@ -382,13 +374,56 @@ RWKV integrates core components from both RNNs and Transformers to create a hybr
 - **Inference:** Maintains constant computational and memory complexity.
 - **Optimization:** Custom CUDA kernels for efficient WKV computation.
 
+#### Extended Long Short-Term Memory (xLSTM)
+
+Extended Long Short-Term Memory (xLSTM) represents a significant advancement over traditional LSTM networks, enhancing their capability to manage sequential data effectively. While LSTMs have proven adept at learning long-term dependencies, xLSTM builds upon this foundation with innovative features aimed at boosting performance, scalability, and stability.
+
+##### Innovations in xLSTM
+
+###### Exponential Gating
+xLSTM introduces exponential gating, a novel mechanism for more precise control over information flow within the network. This enhancement improves adaptability and performance across various tasks.
+
+###### Enhanced Memory Structures
+xLSTM incorporates new memory structures, such as sLSTM (Scalar LSTM) and mLSTM (Matrix LSTM), to expand memory capacity and computational efficiency.
+
+##### Understanding sLSTM and mLSTM
+
+###### sLSTM (Scalar LSTM)
+- **Memory Integration**: Combines inputs from multiple memory cells to enhance information processing.
+- **Dynamic Updates**: Employs exponential gates for flexible and stable memory updates.
+
+###### mLSTM (Matrix LSTM)
+- **Matrix-Based Memory**: Uses matrices instead of scalar memory cells, significantly increasing storage capacity.
+- **Efficient Updates**: Updates matrices using covariance rules, optimizing storage and retrieval of information.
+
+##### Architectural Design of xLSTM
+
+xLSTM organizes these advancements into cohesive residual blocks, which are stacked to form deeper networks capable of handling complex tasks efficiently.
+
+###### xLSTM Blocks
+- **Residual Structure**: Utilizes either sLSTM or mLSTM units within residual blocks.
+- **Projection Techniques**: Applies pre and post up-projection methods for non-linear data processing and dimensional scaling.
+
+##### Applications and Performance
+
+###### Applications
+- **Language Modeling**: Excels in large-scale language modeling tasks.
+- **Sequence Tasks**: Applied in text generation, sequence-to-sequence translation.
+- **Industrial Implementation**: Suitable for edge devices due to its efficiency in computation and memory usage.
+
+###### Performance Enhancements
+xLSTM improves storage management and computational efficiency, making it ideal for applications requiring extensive memory and parallel processing capabilities.
 
 
-- **Parameterization Improvements:**
-  - **Overview:** Enhances computational efficiency by diagonalizing transition matrices and optimizing weight structures within transformer architectures.
-  - **Techniques:**
-    - **S4 (Structured Sparse Stability Selection):** Diagonalizes transition matrices to reduce computational complexity, improving convergence rates and model stability.
-    - **Diagonalized S4 (DSS):** Further refines S4 by incorporating diagonal elements into transition matrices, enhancing efficiency for sequential modeling tasks.
+#### Parameterization Improvements
+
+##### Overview
+Enhances computational efficiency by diagonalizing transition matrices and optimizing weight structures within transformer architectures.
+
+##### Techniques
+- **S4 (Structured Sparse Stability Selection)**: Diagonalizes transition matrices to reduce computational complexity, improving convergence rates and model stability.
+- **Diagonalized S4 (DSS)**: Further refines S4 by incorporating diagonal elements into transition matrices, enhancing efficiency for sequential modeling tasks.
+
 
 #### 2. Model Compression Techniques
 

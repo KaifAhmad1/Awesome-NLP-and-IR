@@ -432,9 +432,10 @@ Steps
 ```
 [More detailed video explanation by Huggingface](https://huggingface.co/docs/transformers/en/tokenizer_summary)
 
+--- 
+
 ##  Statical NLP 
 
---- 
 
 - ### **Naive Bayes**:
   Naive Bayes presents a straightforward yet effective classification approach rooted in `Bayes theorem`, assuming `independence` among features. Here's a simplified rundown:

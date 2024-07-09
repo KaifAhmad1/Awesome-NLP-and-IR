@@ -327,7 +327,60 @@ Introducing novel architectures or modifications to existing ones provides alter
 - **Speech Recognition**
   - Efficient processing of long audio sequences for speech recognition.
 
+- **RWKV: Reinventing RNNs for the Transformer Era**
 
+RWKV is a novel neural network architecture designed to merge the strengths of Recurrent Neural Networks (RNNs) and Transformers, aiming to enhance computational efficiency and performance scalability.
+
+##### Motivation
+Transformers have become the go-to architecture for natural language processing (NLP) tasks due to their ability to handle long-range dependencies and parallelize computations. However, they suffer from quadratic scaling in memory and computation with respect to sequence length. RNNs, while offering linear scalability, face challenges in parallelization and struggle with long-range dependencies. RWKV addresses these issues by combining the parallelizability of Transformers during training with the efficiency of RNNs during inference.
+
+---
+
+##### Architecture
+
+RWKV integrates core components from both RNNs and Transformers to create a hybrid model with the following key elements:
+
+##### 1. Time-Mixing and Channel-Mixing Blocks
+- **Time-Mixing:** Captures temporal dependencies.
+- **Channel-Mixing:** Interacts with different feature dimensions.
+
+##### 2. Core Elements
+- **Receptance (R):** Gating mechanism to control information flow.
+- **Weight (W):** Trainable positional weight decay vector.
+- **Key (K) & Value (V):** Analogous to keys and values in attention mechanisms.
+
+##### 3. Token Shift
+- **Mechanism:** Linear projections of current and previous timestep inputs.
+- **Function:** Enhances handling of sequential data through token shifts.
+
+##### 4. WKV Operator
+- **Function:** Computes weighted sums similar to attention mechanisms with time-dependent updates.
+- **Advantage:** Improves numerical stability and mitigates gradient issues.
+
+##### 5. Output Gating
+- **Mechanism:** Uses the sigmoid of the receptance to control output.
+- **Function:** Ensures efficient information flow.
+
+
+##### Training and Inference
+
+##### Training (Transformer-like)
+- **Parallelization:** Parallel computation akin to Transformers.
+- **Complexity:** O(BT d^2), where B is batch size, T is sequence length, and d is feature dimension.
+
+##### Inference (RNN-like)
+- **Mechanism:** Output at state t is used as input at state t+1.
+- **Advantage:** Efficient autoregressive decoding with constant computational and memory complexity.
+
+##### Performance and Efficiency
+
+##### Scalability
+- **Capacity:** Models up to 14 billion parameters, making it one of the largest dense RNNs trained.
+- **Performance:** Comparable to similarly sized Transformers.
+
+##### Computational Efficiency
+- **Inference:** Maintains constant computational and memory complexity.
+- **Optimization:** Custom CUDA kernels for efficient WKV computation.
 
 
 

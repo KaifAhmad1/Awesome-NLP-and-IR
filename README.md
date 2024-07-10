@@ -83,8 +83,7 @@ Find everything you need in one concise, well-organized place.
       - [Transformer Architectures: A Detailed Comparison](#dictionary-based-approaches)
          
        
-  
-  **Large Language Models(LLMs)**
+**Large Language Models(LLMs)**
 - [Architecture](#preprocessing)
 - [LLM Pretraining](#preprocessing)
   - [Self Supervised Learning](#case-folding)
@@ -94,6 +93,18 @@ Find everything you need in one concise, well-organized place.
       - [Causal Language Modeling](#dictionary-based-approaches)
       - [Denoising Autoencoders](#dictionary-based-approaches)
       - [Contrastive Learning](#dictionary-based-approaches)
+- [LLM FineTuning](#preprocessing)
+  - [Supervised Fine Tuning](#preprocessing)
+  - [Full Fine-Tuning](#dictionary-based-approaches)
+  - [PEFT (Parameter-Efficient Fine-Tuning)](#dictionary-based-approaches)
+      - [Additive PEFT](#dictionary-based-approaches)
+      - [Selective PEFT](#dictionary-based-approaches)
+      - [Background of Matrix Decomposition](#dictionary-based-approaches)
+      - [Reparameterized PEFT](#dictionary-based-approaches)
+      - [Hybrid PEFT](#dictionary-based-approaches)
+
+
+
 
 
 

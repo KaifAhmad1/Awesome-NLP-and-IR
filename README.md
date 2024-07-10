@@ -12,9 +12,9 @@ Welcome to your ultimate resource hub for concepts and papers related to:
 
 Find everything you need in one concise, well-organized place.
 
-# Table of Contents
+## Table of Contents
 
-## Natural Language Processing (NLP)
+### Natural Language Processing (NLP)
 
 - [Preprocessing](#preprocessing)
   - [Case Folding](#case-folding)
@@ -49,7 +49,7 @@ Find everything you need in one concise, well-organized place.
       - [Unigram Tokenization](#unigram-tokenization)
       - [SentencePiece Tokenization](#sentencepiece-tokenization)
 
-## Statistical NLP
+### Statistical NLP
 
 - [Naive Bayes](#naive-bayes)
 - [N-gram Language Model](#n-gram-language-model)
@@ -57,7 +57,7 @@ Find everything you need in one concise, well-organized place.
 - [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
 - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
 
-## Representation Learning in NLP
+### Representation Learning in NLP
 
 - [Encoding / Sparse Vectors](#encoding--sparse-vectors)
   - [One Hot Encoding](#one-hot-encoding)
@@ -72,7 +72,7 @@ Find everything you need in one concise, well-organized place.
   - [ELMo](#elmo)
   - [BERT](#bert)
 
-## Deep NLP
+### Deep NLP
 
 - [Different Activation Functions](#different-activation-functions)
 - [Optimization Algorithms](#optimization-algorithms)
@@ -86,7 +86,7 @@ Find everything you need in one concise, well-organized place.
   - [Key Components of Transformer Architecture](#key-components-of-transformer-architecture)
   - [Transformer Architectures: A Detailed Comparison](#transformer-architectures-a-detailed-comparison)
 
-## Large Language Models (LLMs)
+### Large Language Models (LLMs)
 
 - [Architecture](#architecture)
 - [LLM Pretraining](#llm-pretraining)
@@ -137,8 +137,8 @@ Find everything you need in one concise, well-organized place.
       - [Odds Ratio Preference Optimization (ORPO)](#learned-parameter-adaptation)
       - [Alignment Techniques Comparision](#learned-parameter-adaptation)
 
-  **LLM Efficiency**
+  ### LLM Efficiency
   
-  **Vector Search and Information Retrieval**
+  ### Vector Search and Information Retrieval
 
-  **Retrieval Augmented Generation, RAG Optimization and Best Practices**
+  ### Retrieval Augmented Generation, RAG Optimization and Best Practices

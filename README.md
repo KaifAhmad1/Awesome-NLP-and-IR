@@ -12,9 +12,9 @@ Welcome to your ultimate resource hub for concepts and papers related to:
 
 Find everything you need in one concise, well-organized place.
 
-## Table of Contents
+# Table of Contents
 
-**Natural Language Processing (NLP)**
+## Natural Language Processing (NLP)
 
 - [Preprocessing](#preprocessing)
   - [Case Folding](#case-folding)
@@ -48,60 +48,72 @@ Find everything you need in one concise, well-organized place.
       - [WordPiece Tokenization](#wordpiece-tokenization)
       - [Unigram Tokenization](#unigram-tokenization)
       - [SentencePiece Tokenization](#sentencepiece-tokenization)
-- [Statical NLP](#statical-nlp)
-  - [Naive Bayes](#naive-bayes)
-  - [N-gram Language Model](#n-gram-language-model)
-  - [Markov Chain](#markov-chain)
-  - [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
-  - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
-- [Representation Learning in NLP](#statical-nlp)
-  - [Encoding \ Sparse Vectors](#correcting-spelling-errors)
-      - [One Hot Encoding](#dictionary-based-approaches)
-      - [Integer Encoding](#dictionary-based-approaches)
-      - [Bag of Words](#dictionary-based-approaches)
-      - [TF-IDF](#dictionary-based-approaches)
-      - [BM25](#dictionary-based-approaches)
 
-  - [Embedding \ Dense Vectors](#correcting-spelling-errors)
-      - [Word2Vec](#dictionary-based-approaches)
-      - [GloVe](#dictionary-based-approaches)
-      - [FastText](#dictionary-based-approaches)
-      - [ELMo](#dictionary-based-approaches)
-      - [BERT](#dictionary-based-approaches)
-    
-- [Deep NLP](#statical-nlp)
-  - [Different Activation Functions](#correcting-spelling-errors)
-  - [Optimization Algorithms](#correcting-spelling-errors)
-      - [Comparision of Gradient Descent](#dictionary-based-approaches)
-  - [Feedforward Neural Networks (FNN)](#correcting-spelling-errors)
-  - [Recurrent Neural Networks (RNN)](#correcting-spelling-errors)
-      - [Long Short-Term Memory (LSTM)](#dictionary-based-approaches)
-      - [Gated Recurrent Unit(GRU)](#dictionary-based-approaches)
-      - [Bidirectional RNNs](#dictionary-based-approaches)
-  - [Transformers](#dictionary-based-approaches)
-      - [Key Components of Transformer Architecture](#dictionary-based-approaches)
-      - [Transformer Architectures: A Detailed Comparison](#dictionary-based-approaches)
-         
-       
-**Large Language Models(LLMs)**
-- [Architecture](#preprocessing)
-- [LLM Pretraining](#preprocessing)
-  - [Self Supervised Learning](#case-folding)
-      - [Masked Language Modeling](#dictionary-based-approaches)
-      - [Masked Multimodal Language Modeling](#dictionary-based-approaches)
-      - [Next Sentence Prediction](#dictionary-based-approaches)
-      - [Causal Language Modeling](#dictionary-based-approaches)
-      - [Denoising Autoencoders](#dictionary-based-approaches)
-      - [Contrastive Learning](#dictionary-based-approaches)
-- [LLM FineTuning](#preprocessing)
-  - [Supervised Fine Tuning](#preprocessing)
-  - [Full Fine-Tuning](#dictionary-based-approaches)
-  - [PEFT (Parameter-Efficient Fine-Tuning)](#dictionary-based-approaches)
-      - [Additive PEFT](#dictionary-based-approaches)
-      - [Selective PEFT](#dictionary-based-approaches)
-      - [Background of Matrix Decomposition](#dictionary-based-approaches)
-      - [Reparameterized PEFT](#dictionary-based-approaches)
-      - [Hybrid PEFT](#dictionary-based-approaches)
+## Statistical NLP
+
+- [Naive Bayes](#naive-bayes)
+- [N-gram Language Model](#n-gram-language-model)
+- [Markov Chain](#markov-chain)
+- [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
+- [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
+
+## Representation Learning in NLP
+
+- [Encoding / Sparse Vectors](#encoding--sparse-vectors)
+  - [One Hot Encoding](#one-hot-encoding)
+  - [Integer Encoding](#integer-encoding)
+  - [Bag of Words](#bag-of-words)
+  - [TF-IDF](#tf-idf)
+  - [BM25](#bm25)
+- [Embedding / Dense Vectors](#embedding--dense-vectors)
+  - [Word2Vec](#word2vec)
+  - [GloVe](#glove)
+  - [FastText](#fasttext)
+  - [ELMo](#elmo)
+  - [BERT](#bert)
+
+## Deep NLP
+
+- [Different Activation Functions](#different-activation-functions)
+- [Optimization Algorithms](#optimization-algorithms)
+  - [Comparison of Gradient Descent](#comparison-of-gradient-descent)
+- [Feedforward Neural Networks (FNN)](#feedforward-neural-networks-fnn)
+- [Recurrent Neural Networks (RNN)](#recurrent-neural-networks-rnn)
+  - [Long Short-Term Memory (LSTM)](#long-short-term-memory-lstm)
+  - [Gated Recurrent Unit (GRU)](#gated-recurrent-unit-gru)
+  - [Bidirectional RNNs](#bidirectional-rnns)
+- [Transformers](#transformers)
+  - [Key Components of Transformer Architecture](#key-components-of-transformer-architecture)
+  - [Transformer Architectures: A Detailed Comparison](#transformer-architectures-a-detailed-comparison)
+
+## Large Language Models (LLMs)
+
+- [Architecture](#architecture)
+- [LLM Pretraining](#llm-pretraining)
+  - [Self-Supervised Learning](#self-supervised-learning)
+    - [Masked Language Modeling](#masked-language-modeling)
+    - [Masked Multimodal Language Modeling](#masked-multimodal-language-modeling)
+    - [Next Sentence Prediction](#next-sentence-prediction)
+    - [Causal Language Modeling](#causal-language-modeling)
+    - [Denoising Autoencoders](#denoising-autoencoders)
+    - [Contrastive Learning](#contrastive-learning)
+- [LLM Fine-Tuning](#llm-fine-tuning)
+  - [Supervised Fine Tuning](#supervised-fine-tuning)
+  - [Full Fine-Tuning](#full-fine-tuning)
+  - [PEFT (Parameter-Efficient Fine-Tuning)](#peft-parameter-efficient-fine-tuning)
+    - [Additive PEFT](#additive-peft)
+      - [Sparse Regularization](#sparse-regularization)
+      - [Structured Regularization](#structured-regularization)
+    - [Selective PEFT](#selective-peft)
+      - [Task-Specific Parameter Identification](#task-specific-parameter-identification)
+      - [Parameter Masking](#parameter-masking)
+    - [Background of Matrix Decomposition](#background-of-matrix-decomposition)
+      - [Singular Value Decomposition (SVD)](#singular-value-decomposition-svd)
+      - [Low-Rank Approximations](#low-rank-approximations)
+    - [Reparameterized PEFT](#reparameterized-peft)
+      - [Parameter Transformation](#parameter-transformation)
+      - [Learned Parameter Adaptation](#learned-parameter-adaptation)
+    - [Hybrid PEFT](#hybrid-peft)
 
 
 

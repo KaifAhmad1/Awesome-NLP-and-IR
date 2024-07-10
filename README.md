@@ -49,3 +49,8 @@ Find everything you need in one concise, well-organized place.
 
   **Large Language Models(LLMs)**
 
+  **LLM Efficiency**
+  
+  **Vector Search and Information Retrieval**
+
+  **Retrieval Augmented Generation, RAG Optimization and Best Practices**

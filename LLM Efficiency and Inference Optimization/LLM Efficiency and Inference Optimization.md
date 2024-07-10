@@ -449,13 +449,11 @@ Sparsification increases the sparsity of model parameters or activations to redu
 
 ---
 
-### System-Level Optimizations
+## System-Level Optimizations
 
 System-level optimization in large language models (LLMs) enhances efficiency and performance during model inference. Key areas include refining computational graphs, optimizing operators, and accelerating inference engines to meet the demands of real-time applications.
 
-#### Components of System-Level Optimization
-
-#### Inference Engine Optimization
+### Inference Engine Optimization
 
 #### Graph and Operator Optimization
 
@@ -477,23 +475,23 @@ Autoregressive decoding generates tokens sequentially, where each token is predi
 
 **Steps:**
 1. **Initialization**: Start with an initial input sequence.
-2. **Sequential Token Generation**: For each position $t$ in the sequence, generate the next token $x_t$ based on the tokens $( x_1, x_2, \ldots, x_{t-1} )$ generated so far.
+2. **Sequential Token Generation**: For each position $t$ in the sequence, generate the next token $x_t$ based on the tokens $(x_1, x_2, \ldots, x_{t-1})$ generated so far.
 
 Mathematically, this can be expressed as:
 
-$$P(x_1, x_2, \ldots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, x_2, \ldots, x_{t-1})$$
+$$
+P(x_1, x_2, \ldots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, x_2, \ldots, x_{t-1})
+$$
 
-**Advantages**
-
+**Advantages**:
 - **Simplicity**: The algorithm is easy to implement.
 - **Accuracy**: Each token is generated with maximum contextual information from all previous tokens.
 
-**Limitations**
-
+**Limitations**:
 - **Latency**: The sequential nature leads to high latency, especially for long sequences.
 - **Inefficiency**: Modern GPUs are underutilized as they process one token at a time, resulting in low GPU utilization.
 
-**Example**
+**Example**:
 
 Consider the sequence `The quick brown fox`:
 
@@ -506,50 +504,49 @@ Consider the sequence `The quick brown fox`:
 
 Speculative decoding aims to reduce latency by employing a `guess-and-verify` strategy using a draft model.
 
-**Steps:**
+**Steps**:
 1. **Draft Generation**: The draft model predicts multiple tokens ahead in parallel.
 2. **Verification**: The main LLM verifies these predicted tokens and accepts those that match its own predictions.
 
-**Example**
+**Example**:
 
 Consider predicting the next tokens for the sequence `The quick brown`:
 
 1. **Draft Model**: Predicts possible continuations like `fox`, `dog`, `cat`.
 2. **Verification**: The main model verifies these options and selects `fox`.
 
-**Advantages**
-
+**Advantages**:
 - **Parallelism**: Multiple tokens are generated in parallel, reducing the number of sequential steps.
 - **Speedup**: Can achieve significant speedup if the draft model is accurate.
 
-**Limitations**
-
+**Limitations**:
 - **Accuracy Dependence**: Speedup is limited by the accuracy of the draft model.
 - **Complexity**: Developing and maintaining an accurate draft model requires extra training and tuning.
 
-**Mathematical Insight**
+**Mathematical Insight**:
 
 If the draft model has an accuracy $A$, the number of steps $S$ required is reduced to:
 
-$$S = \frac{L}{A}$$
+$$
+S = \frac{L}{A}
+$$
 
 ##### Lookahead Decoding
 
 Lookahead decoding breaks the sequential dependency in autoregressive decoding by using the Jacobi iteration method to generate multiple disjoint n-grams in parallel.
 
-**Steps:**
+**Steps**:
 1. **Initialization**: Start with an initial guess for all token positions.
 2. **Jacobi Iteration**: Update all positions in parallel based on previous values.
 3. **Lookahead Branch**: Generate new n-grams concurrently.
 4. **Verification Branch**: Select and verify n-grams for integration into the sequence.
 5. **Iteration**: Repeat until the sequence is complete.
 
-**Parameters**
-
+**Parameters**:
 - **Window Size (W)**: Number of future token positions considered for parallel decoding.
 - **N-gram Size (N)**: Number of steps looked back in the Jacobi iteration trajectory to retrieve n-grams.
 
-**Example**
+**Example**:
 
 Generating a sequence with:
 
@@ -566,20 +563,20 @@ The verification branch verifies and integrates `quick brown`, resulting in:
 
 - `The quick brown`
 
-**Advantages**
-
+**Advantages**:
 - **Reduced Latency**: Significant reduction in the number of decoding steps.
 - **No Draft Model**: Operates without the need for an additional draft model.
 
-**Limitations**
-
+**Limitations**:
 - **Computational Overhead**: Each step may involve more computations due to parallel n-gram generation and verification.
 
-**Mathematical Insight**
+**Mathematical Insight**:
 
 The number of steps $S$ required is reduced to:
 
-$$S = \frac{L}{W \times N}$$
+$$
+S = \frac{L}{W \times N}
+$$
 
 These decoding strategies provide various methods to enhance the efficiency and performance of large language models, each with its unique strengths and considerations.
 
@@ -625,4 +622,3 @@ These decoding strategies provide various methods to enhance the efficiency and 
 - **Methods**:
   - **Mixed-Precision Quantization**: Use lower precision arithmetic for linear operators to enhance energy efficiency without compromising accuracy.
   - **Algorithm-Hardware Co-design**: Tailor algorithms to leverage hardware features like FPGA for memory-intensive decoding stages, optimizing overall system performance.
-

@@ -54,7 +54,13 @@ Find everything you need in one concise, well-organized place.
   - [Markov Chain](#markov-chain)
   - [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
   - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
-
+- [Representation Learning in NLP](#statical-nlp)
+  - [Encoding \ Sparse Vectors](#correcting-spelling-errors)
+      - [One Hot Encoding](#dictionary-based-approaches)
+      - [Integer Encoding](#dictionary-based-approaches)
+      - [Bag of Words](#dictionary-based-approaches)
+      - [TF-IDF](#dictionary-based-approaches)
+      - [BM25](#dictionary-based-approaches)
 
   **Large Language Models(LLMs)**
 

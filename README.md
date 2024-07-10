@@ -85,6 +85,18 @@ Find everything you need in one concise, well-organized place.
        
   
   **Large Language Models(LLMs)**
+- [Architecture](#preprocessing)
+- [LLM Pretraining](#preprocessing)
+  - [Self Supervised Learning](#case-folding)
+      - [Masked Language Modeling](#dictionary-based-approaches)
+      - [Masked Multimodal Language Modeling](#dictionary-based-approaches)
+      - [Next Sentence Prediction](#dictionary-based-approaches)
+      - [Causal Language Modeling](#dictionary-based-approaches)
+      - [Denoising Autoencoders](#dictionary-based-approaches)
+      - [Contrastive Learning](#dictionary-based-approaches)
+
+
+
 
   **LLM Efficiency**
   

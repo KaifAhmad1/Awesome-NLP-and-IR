@@ -13,7 +13,9 @@ Welcome to your ultimate resource hub for concepts and papers related to:
 Find everything you need in one concise, well-organized place.
 
 ## Table of Contents
-  **Natural Language Processing (NLP)**
+
+**Natural Language Processing (NLP)**
+
 - [Preprocessing](#preprocessing)
   - [Case Folding](#case-folding)
   - [Contraction Mapping](#contraction-mapping)
@@ -47,6 +49,12 @@ Find everything you need in one concise, well-organized place.
       - [Unigram Tokenization](#unigram-tokenization)
       - [SentencePiece Tokenization](#sentencepiece-tokenization)
 - [Statical NLP](#statical-nlp)
+  - [Naive Bayes](#naive-bayes)
+  - [N-gram Language Model](#n-gram-language-model)
+  - [Markov Chain](#markov-chain)
+  - [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
+  - [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
+
 
   **Large Language Models(LLMs)**
 

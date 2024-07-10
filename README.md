@@ -75,9 +75,13 @@ Find everything you need in one concise, well-organized place.
       - [Comparision of Gradient Descent](#dictionary-based-approaches)
   - [Feedforward Neural Networks (FNN)](#correcting-spelling-errors)
   - [Recurrent Neural Networks (RNN)](#correcting-spelling-errors)
-      - [Types of RNNs](#dictionary-based-approaches)
+      - [Long Short-Term Memory (LSTM)](#dictionary-based-approaches)
+      - [Gated Recurrent Unit(GRU)](#dictionary-based-approaches)
+      - [Bidirectional RNNs](#dictionary-based-approaches)
+  - [Transformers](#dictionary-based-approaches)
+      - [Key Components of Transformer Architecture](#dictionary-based-approaches)
+      - [Transformer Architectures: A Detailed Comparison](#dictionary-based-approaches)
          
-    
        
   
   **Large Language Models(LLMs)**

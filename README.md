@@ -46,6 +46,7 @@ Find everything you need in one concise, well-organized place.
       - [WordPiece Tokenization](#wordpiece-tokenization)
       - [Unigram Tokenization](#unigram-tokenization)
       - [SentencePiece Tokenization](#sentencepiece-tokenization)
+- [Statical NLP](#statical-nlp)
 
   **Large Language Models(LLMs)**
 

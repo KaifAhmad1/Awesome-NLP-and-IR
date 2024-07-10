@@ -1,6 +1,6 @@
-## Efficiency and Inference Optimization
+# Efficiency and Inference Optimization
 
-### LLM Efficiency
+## LLM Efficiency
 
 LLM Efficiency refers to the ability of Large Language Models to perform inference tasks—such as generating text, answering questions, or making predictions—using minimal computational and memory resources. This involves optimizing the model to reduce the time, energy, and hardware needed to deliver high-performance results.
 
@@ -51,11 +51,11 @@ In the context of optimizing inference for large language models (LLMs), there a
 
 --- 
 
-### Data Level Optimization
+## Data Level Optimization
 
 Optimizing Large Language Models (LLMs) is essential for reducing computational costs and improving performance. Data-level optimization minimizes computational and memory usage through input compression and output organization, broadening LLM applicability across various environments and devices.
 
-#### Input Compression
+### Input Compression
 
 Input compression techniques shorten model inputs (prompts) without compromising output quality. This reduction in input size lessens the computational burden and enhances performance. Key methods include prompt pruning, prompt summarization, and retrieval-augmented generation.
 
@@ -68,14 +68,14 @@ Input compression techniques shorten model inputs (prompts) without compromising
   - **RECOMP (Retrieval-based Compression)**: Employs an Abstractive Compressor to create concise summaries from input questions and retrieved documents. It uses lighter compressors distilled from larger LLMs to maintain high-quality summaries.
   - **SemanticCompression**: Breaks down the text into sentences, groups them by topic, and summarizes each group. This method produces a condensed version of the original prompt, ensuring coherence and relevance.
 
-#### Retrieval-Augmented Generation (RAG)
+### Retrieval-Augmented Generation (RAG)
 
 Retrieval-Augmented Generation enhances LLM responses by incorporating relevant information retrieved from external knowledge sources. This technique ensures that only pertinent information is included in the prompt, thus improving response quality and reducing length.
 
 - **RAG**: Adds relevant information from retrieved sources to the prompt, enhancing the quality and relevance of the response while keeping the input concise.
 - **FLARE (Future-Looking Augmented Retrieval)**: Predicts the necessary information for upcoming sentences and retrieves it proactively. This method ensures that the most relevant data is included in the response, enhancing efficiency and accuracy.
 
-#### Output Organization
+### Output Organization
 
 Output organization techniques structure the generation process, allowing for parallel processing of the output content. This reduces latency and improves overall efficiency.
 
@@ -84,21 +84,20 @@ Output organization techniques structure the generation process, allowing for pa
 
 --- 
 
-### Model Level Optimization
+## Model Level Optimization
 
 Model-level optimization refers to techniques aimed at improving the efficiency, speed, and resource utilization of large language models (LLMs) during both training and inference phases. The goal is to achieve high-performance results while reducing computational costs, memory requirements, and energy consumption. This optimization typically involves refining model architectures, enhancing computational efficiency, and employing strategies like model compression.
 
-#### 1. Efficient Structure Design
+### Efficient Structure Design
 
 Efficient structure design focuses on optimizing the architecture of LLMs to reduce computational complexity and memory usage while maintaining or improving performance. This involves intricate adjustments to both feed-forward networks (FFNs) and attention mechanisms, which are fundamental components of transformer-based models.
 
-##### Feed Forward Networks (FFNs) in Large Language Models (LLMs)
+#### Feed Forward Networks (FFNs) in Large Language Models (LLMs)
 
 Feed Forward Networks (FFNs) play a crucial role in the architecture of Large Language Models (LLMs), contributing significantly to their parameter count and computational load. To enhance the efficiency and effectiveness of FFNs, advanced techniques such as Mixture-of-Experts (MoE) and Switch Transformers have been developed.
 
----
 
-##### Mixture-of-Experts (MoE)
+#### Mixture-of-Experts (MoE)
 
 **Overview:**
 Mixture-of-Experts (MoE) is a neural network architecture that utilizes multiple parallel FFNs, known as "experts," along with a trainable routing module to dynamically allocate computational resources. MoE allows the model to scale its capacity by activating only a subset of experts for each input, thus enhancing efficiency for diverse tasks.
@@ -139,9 +138,8 @@ Mixture-of-Experts (MoE) is a neural network architecture that utilizes multiple
      - Replace large, dense matrices with decomposed, smaller ones.
      - Adjust the training process to accommodate the new structure.
 
----
 
-##### Switch Transformers
+#### Switch Transformers
 
 **Overview:**
 Switch Transformers are a variant of MoE that optimize the routing of tokens to experts, enhancing computational efficiency and throughput. By dynamically assigning tokens to experts based on learned criteria, Switch Transformers improve overall model performance and computational efficiency.
@@ -189,11 +187,8 @@ Switch Transformers are a variant of MoE that optimize the routing of tokens to 
     
 By employing these advanced techniques, LLMs can achieve greater efficiency and effectiveness, making them more practical and powerful for real-world applications.
 
----
 
-
-
-##### Attention Mechanisms
+### Attention Mechanisms
 
 Attention mechanisms manage information flow across tokens in a sequence, essential for capturing contextual dependencies. Strategies include:
 
@@ -262,13 +257,11 @@ Attention mechanisms manage information flow across tokens in a sequence, essent
     - **Optimized Performance:** Achieves comparable results to traditional attention mechanisms with lower computational and memory costs.
     - **Real-Time Processing:** Suitable for applications that require fast, real-time processing or are deployed on hardware with limited resources.
 
-#### Transformer Alternatives
+### Transformer Alternatives
 
 Introducing novel architectures or modifications to existing ones provides alternatives with improved efficiency:
 
 #### State Space Models (SSM) and Mamba
-
-##### Overview
 Selective State Space Models (SSMs) are advanced neural network architectures designed to effectively manage sequence data by focusing on relevant segments. Mamba represents an optimized implementation of SSMs, enhancing their practicality and efficiency in diverse applications.
 
 ##### Challenges in Sequence Modeling
@@ -325,7 +318,6 @@ Selective State Space Models (SSMs) are advanced neural network architectures de
   - Efficient processing of long audio sequences for speech recognition.
 
 #### RWKV: Reinventing RNNs for the Transformer Era
-
 RWKV is a novel neural network architecture designed to merge the strengths of Recurrent Neural Networks (RNNs) and Transformers, aiming to enhance computational efficiency and performance scalability.
 
 ##### Motivation
@@ -416,8 +408,6 @@ xLSTM improves storage management and computational efficiency, making it ideal 
 
 
 #### Parameterization Improvements
-
-##### Overview
 Enhances computational efficiency by diagonalizing transition matrices and optimizing weight structures within transformer architectures.
 
 ##### Techniques
@@ -425,11 +415,11 @@ Enhances computational efficiency by diagonalizing transition matrices and optim
 - **Diagonalized S4 (DSS)**: Further refines S4 by incorporating diagonal elements into transition matrices, enhancing efficiency for sequential modeling tasks.
 
 
-#### 2. Model Compression Techniques
+### Model Compression Techniques
 
-Model compression techniques aim to reduce the computational and memory footprint of pre-trained LLMs without compromising performance. These techniques include:
+Model compression techniques aim to reduce pre-trained LLMs' computational and memory footprint without compromising performance. These techniques include:
 
-##### Quantization
+#### Quantization
 
 Quantization converts model weights and activations from high bit-width to lower bit-width representations:
 
@@ -441,7 +431,7 @@ Quantization converts model weights and activations from high bit-width to lower
   - **Overview:** Integrates quantization constraints during model training, optimizing model parameters and activation ranges to minimize accuracy loss during conversion to low bit-width representations.
   - **Techniques:** Includes methods like fine-tuning quantization parameters and optimizing bit-width allocation based on task-specific requirements, enhancing model robustness and efficiency.
 
-##### Sparsification
+#### Sparsification
 
 Sparsification increases the sparsity of model parameters or activations to reduce computational complexity:
 

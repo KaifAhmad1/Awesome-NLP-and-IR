@@ -62,6 +62,13 @@ Find everything you need in one concise, well-organized place.
       - [TF-IDF](#dictionary-based-approaches)
       - [BM25](#dictionary-based-approaches)
 
+  - [Embedding \ Dense Vectors](#correcting-spelling-errors)
+      - [Word2Vec](#dictionary-based-approaches)
+      - [GloVe](#dictionary-based-approaches)
+      - [FastText](#dictionary-based-approaches)
+      - [ELMo](#dictionary-based-approaches)
+      - [BERT](#dictionary-based-approaches)
+   
   **Large Language Models(LLMs)**
 
   **LLM Efficiency**

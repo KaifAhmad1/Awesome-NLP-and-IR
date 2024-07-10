@@ -68,7 +68,18 @@ Find everything you need in one concise, well-organized place.
       - [FastText](#dictionary-based-approaches)
       - [ELMo](#dictionary-based-approaches)
       - [BERT](#dictionary-based-approaches)
-   
+    
+- [Deep NLP](#statical-nlp)
+  - [Different Activation Functions](#correcting-spelling-errors)
+  - [Optimization Algorithms](#correcting-spelling-errors)
+      - [Comparision of Gradient Descent](#dictionary-based-approaches)
+  - [Feedforward Neural Networks (FNN)](#correcting-spelling-errors)
+  - [Recurrent Neural Networks (RNN)](#correcting-spelling-errors)
+      - [Types of RNNs](#dictionary-based-approaches)
+         
+    
+       
+  
   **Large Language Models(LLMs)**
 
   **LLM Efficiency**

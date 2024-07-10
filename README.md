@@ -120,10 +120,22 @@ Find everything you need in one concise, well-organized place.
       - [MAM Adapter](#learned-parameter-adaptation)
       - [LLM-Adapters](#learned-parameter-adaptation)
       - [Neural Architecture Search (NAS)](#learned-parameter-adaptation)
-
-
-
-
+  - [MEFT (Memory-Efficient Fine Tuning)](#peft-parameter-efficient-fine-tuning)
+      - [LoRA-FA (LoRA with Frozen Activations)](#learned-parameter-adaptation)
+      - [HyperTuning](#learned-parameter-adaptation)
+      - [Memory-Efficient Zeroth-Order Optimizer (MeZO)](#learned-parameter-adaptation)
+      - [QLoRA: Quantized Low-Rank Adaptation](#learned-parameter-adaptation)
+      - [Expert-Specialized Fine-Tuning](#learned-parameter-adaptation)
+      - [Sparse Matrix Tuning](#learned-parameter-adaptation)
+      - [Representation Finetuning (ReFT)](#learned-parameter-adaptation)
+   - [Alignment-Based Fine-Tuning)](#peft-parameter-efficient-fine-tuning)
+      - [RLHF](#learned-parameter-adaptation)
+      - [RLAIF](#learned-parameter-adaptation)
+      - [Direct Preference Optimization (DPO)](#learned-parameter-adaptation)
+      - [Identity Preference Optimization (IPO)](#learned-parameter-adaptation)
+      - [Kahneman-Tversky Optimization (KTO)](#learned-parameter-adaptation)
+      - [Odds Ratio Preference Optimization (ORPO)](#learned-parameter-adaptation)
+      - [Alignment Techniques Comparision](#learned-parameter-adaptation)
 
   **LLM Efficiency**
   

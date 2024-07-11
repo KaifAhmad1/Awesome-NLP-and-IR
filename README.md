@@ -14,6 +14,23 @@ This repository is a comprehensive, well-structured, and user-friendly guide des
 
 Explore and leverage this repository to deepen your understanding, enhance your projects, and stay updated with the cutting-edge developments in NLP and IR.
 
+### Repository Structure 
+```
+Awesome-NLP-and-IR
+│
+├── README.md
+├── LLM Efficiency and Inference Optimization
+│   └── LLM Efficiency and Inference Optimization.md
+├── LLMs Pretraining and FineTuning
+│   └── LLMs, Pretraining and FineTuning.md
+├── NLP
+│   └── NLP.md
+├── RAG and RAG Optimization
+│   └── RAG, Optimization and Best Practices.md
+├── Vector Search and IR
+│   └── Vector Search and IR.md
+└── images
+```
 
 ## Table of Contents
 

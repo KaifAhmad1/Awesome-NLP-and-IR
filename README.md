@@ -207,17 +207,21 @@ Find everything you need in one concise, well-organized place.
       - [LSH Forest](#sparse-regularization)
       - [Composite Indexing in ANN](#sparse-regularization)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   ### Retrieval Augmented Generation, RAG Optimization and Best Practices
+- [RAG](#preprocessing)
+  - [Benefits of RAG](#preprocessing)
+  - [Limitations and Challenges Addressed by RAG](#preprocessing)
+  - [Types of RAG](#preprocessing)
+      - [Simple RAG](#sparse-regularization)
+      - [Simple RAG with Memory](#sparse-regularization)
+      - [Branched RAG](#sparse-regularization)
+      - [Adaptive RAG](#sparse-regularization)
+      - [Corrective RAG](#sparse-regularization)
+      - [Self RAG](#sparse-regularization)
+      - [Agentic RAG](#sparse-regularization)
+- [RAG Optimization and Best Practices](#preprocessing)
+  
+
+
+
+

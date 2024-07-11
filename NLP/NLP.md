@@ -1,4 +1,3 @@
-# NLP 
 ## Preprocessing 
 
 --- 
@@ -17,7 +16,7 @@
     
  ---
  
-- ### **Contraction Mapping**
+### Contraction Mapping
   Contraction mapping refers to the process of expanding contractions, which are shortened forms of words or phrases, into their complete versions. For example:
    - **For Example**
      - `I'm` becomes `I am`
@@ -48,7 +47,7 @@
 
   ---
   
-- ### **Correcting Spelling Errors:**
+### Correcting Spelling Errors
   Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
 - #### 1. **Dictionary-based approaches:**
   Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.
@@ -76,7 +75,7 @@ Corrected sentence: I have a problem with my spelling.
 
 --- 
 
-- ### **Deduplication / Duplicate Removal:**
+### Deduplication / Duplicate Removal:
   Deduplication in the context of Natural Language Processing (NLP) involves identifying and removing duplicate entries in a dataset. This process is crucial for ensuring data quality and accuracy, especially when dealing with large text corpora.
 - #### 1. **Using Pandas for Deduplication:**
  ``` Python
@@ -119,7 +118,7 @@ Deduplicated DataFrame:
 --- 
 
 
-- #### 2. **Using Fuzzy Matching for Deduplication:**
+#### 2. Using Fuzzy Matching for Deduplication
   Fuzzy matching in NLP refers to the process of finding strings that are approximately equal to a given pattern. It is particularly useful in scenarios where exact matches are not possible due to typographical errors, variations in spelling, or other inconsistencies in the text data. Fuzzy matching is widely used in applications like data deduplication, record linkage, and spell-checking.
      - The `fuzzywuzzy` library in Python is commonly used for fuzzy matching. It uses the Levenshtein Distance to calculate the differences between sequences.
  ``` Python 
@@ -149,7 +148,7 @@ Best match for 'This is a smaple sentnce.': ('This is a sample sentence.', 94)
 --- 
 
 
-- ### **Expanding Abbreviations and Acronyms:**
+### Expanding Abbreviations and Acronyms
   Expanding abbreviations and acronyms is an important task in Natural Language Processing (NLP) to enhance the understanding and processing of text. Here are some key methods and approaches used to achieve this:
 - #### 1. **Dictionary-Based Methods:**
   These methods involve using precompiled lists of abbreviations and their expansions. The dictionary can be curated manually or generated from various sources such as online databases or domain-specific corpora.

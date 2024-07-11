@@ -34,16 +34,17 @@ Awesome-NLP-and-IR
 
 
 ## Table of Contents
-- [Preprocessing](#preprocessing)
-  - [Case Folding](#case-folding)
-  - [Contraction Mapping](#contraction-mapping)
-  - [Correcting Spelling Errors](#correcting-spelling-errors)
-  - [Deduplication / Duplicate Removal](#deduplication--duplicate-removal)
-  - [Expanding Abbreviations and Acronyms](#expanding-abbreviations-and-acronyms)
-  - [Stemming](#stemming)
-  - [Lemmatization](#lemmatization)
-  - [Noise Removing](#noise-removing)
-  - [Tokenization](#tokenization)
+- [Preprocessing](NLP/NLP.md#preprocessing)
+  - [Case Folding](NLP/NLP.md#case-folding)
+  - [Contraction Mapping](NLP/NLP.md#contraction-mapping)
+  - [Correcting Spelling Errors](NLP/NLP.md#correcting-spelling-errors)
+  - [Deduplication / Duplicate Removal](NLP/NLP.md#deduplication--duplicate-removal)
+  - [Expanding Abbreviations and Acronyms](NLP/NLP.md#expanding-abbreviations-and-acronyms)
+  - [Stemming](NLP/NLP.md#stemming)
+  - [Lemmatization](NLP/NLP.md#lemmatization)
+  - [Noise Removing](NLP/NLP.md#noise-removing)
+  - [Tokenization](NLP/NLP.md#tokenization)
+
 
 ## Table of Contents
 

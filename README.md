@@ -95,17 +95,17 @@ Awesome-NLP-and-IR
     
 ### Deep NLP
 
-- [Different Activation Functions](#different-activation-functions)
-- [Optimization Algorithms](#optimization-algorithms)
-  - [Comparison of Gradient Descent](#comparison-of-gradient-descent)
-- [Feedforward Neural Networks (FNN)](#feedforward-neural-networks-fnn)
-- [Recurrent Neural Networks (RNN)](#recurrent-neural-networks-rnn)
-  - [Long Short-Term Memory (LSTM)](#long-short-term-memory-lstm)
-  - [Gated Recurrent Unit (GRU)](#gated-recurrent-unit-gru)
-  - [Bidirectional RNNs](#bidirectional-rnns)
-- [Transformers](#transformers)
-  - [Key Components of Transformer Architecture](#key-components-of-transformer-architecture)
-  - [Transformer Architectures: A Detailed Comparison](#transformer-architectures-a-detailed-comparison)
+- [Different Activation Functions](NLP/NLP.md#different-activation-functions)
+- [Optimization Algorithms](NLP/NLP.md#optimization-algorithms)
+  - [Comparison of Gradient Descent](NLP/NLP.md#comparison-of-gradient-descent)
+- [Feedforward Neural Networks (FNN)](NLP/NLP.md#feedforward-neural-networks-fnn)
+- [Recurrent Neural Networks (RNN)](NLP/NLP.md#recurrent-neural-networks-rnn)
+  - [Long Short-Term Memory (LSTM)](NLP/NLP.md#long-short-term-memory-lstm)
+  - [Gated Recurrent Unit (GRU)](NLP/NLP.md#gated-recurrent-unit-gru)
+  - [Bidirectional RNNs](NLP/NLP.md#bidirectional-rnns)
+- [Transformers](NLP/NLP.md#transformers)
+  - [Key Components of Transformer Architecture](NLP/NLP.md#key-components-of-transformer-architecture)
+  - [Transformer Architectures: A Detailed Comparison](NLP/NLP.md#transformer-architectures-a-detailed-comparison)
 
 ### Large Language Models (LLMs)
 

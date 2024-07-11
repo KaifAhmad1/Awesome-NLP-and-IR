@@ -138,8 +138,18 @@ Find everything you need in one concise, well-organized place.
       - [Alignment Techniques Comparision](#learned-parameter-adaptation)
 
   ### LLM Efficiency
-  - [LLM Efficiency,Need and Benefits](#preprocessing)
-  - [Data Level Optimization](#preprocessing)
+- [LLM Efficiency,Need and Benefits](#preprocessing)
+- [Data Level Optimization](#preprocessing)
+  - [Input Compression](#learned-parameter-adaptation)
+      - [Prompt Pruning](#sparse-regularization)
+      - [Prompt Summarization](#sparse-regularization)
+  - [Retrieval-Augmented Generation (RAG)](#learned-parameter-adaptation)
+  - [Output Organization](#learned-parameter-adaptation)
+      - [Skeleton-of-Thought (SoT)](#sparse-regularization)
+      - [SGD (Sub-Problem Directed Graph)](#sparse-regularization)
+
+
+
   ### Vector Search and Information Retrieval
 
   ### Retrieval Augmented Generation, RAG Optimization and Best Practices

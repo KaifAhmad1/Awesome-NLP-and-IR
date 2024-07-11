@@ -138,7 +138,8 @@ Find everything you need in one concise, well-organized place.
       - [Alignment Techniques Comparision](#learned-parameter-adaptation)
 
   ### LLM Efficiency
-  
+  - [LLM Efficiency,Need and Benefits](#preprocessing)
+  - [Data Level Optimization](#preprocessing)
   ### Vector Search and Information Retrieval
 
   ### Retrieval Augmented Generation, RAG Optimization and Best Practices

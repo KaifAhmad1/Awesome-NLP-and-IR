@@ -147,8 +147,22 @@ Find everything you need in one concise, well-organized place.
   - [Output Organization](#learned-parameter-adaptation)
       - [Skeleton-of-Thought (SoT)](#sparse-regularization)
       - [SGD (Sub-Problem Directed Graph)](#sparse-regularization)
-
-
+- [Model Level Optimization](#preprocessing)
+  - [Efficient Structure Design](#learned-parameter-adaptation)
+      - [Mixture-of-Experts (MoE)](#sparse-regularization)
+      - [Switch Transformers](#sparse-regularization)
+  - [Attention Mechanisms](#learned-parameter-adaptation)
+      - [Multi Query Attention (MQA)](#sparse-regularization)
+      - [Group Query Attention (GQA)](#sparse-regularization)
+      - [Sliding Window Attention](#sparse-regularization)
+      - [Low-Complexity Attention Models](#sparse-regularization)
+      - [Low-Rank Attention](#sparse-regularization)
+      - [Flash Attention](#sparse-regularization)
+  - [Transformer Alternatives](#learned-parameter-adaptation)
+      - [State Space Models (SSM) and Mamba](#sparse-regularization)
+      - [RWKV: Reinventing RNNs for the Transformer Era](#sparse-regularization)
+      - [Extended Long Short-Term Memory (xLSTM)](#sparse-regularization)
+      - [Parameterization Improvements](#sparse-regularization)
 
   ### Vector Search and Information Retrieval
 

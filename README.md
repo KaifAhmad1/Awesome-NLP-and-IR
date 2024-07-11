@@ -17,8 +17,6 @@ Explore and leverage this repository to deepen your understanding, enhance your 
 
 ## Table of Contents
 
-### Natural Language Processing (NLP)
-
 - [Preprocessing](#preprocessing)
   - [Case Folding](#case-folding)
   - [Contraction Mapping](#contraction-mapping)

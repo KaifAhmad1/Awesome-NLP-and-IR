@@ -32,6 +32,19 @@ Awesome-NLP-and-IR
 └── images
 ```
 
+
+## Table of Contents
+- [Preprocessing](#preprocessing)
+  - [Case Folding](#case-folding)
+  - [Contraction Mapping](#contraction-mapping)
+  - [Correcting Spelling Errors](#correcting-spelling-errors)
+  - [Deduplication / Duplicate Removal](#deduplication--duplicate-removal)
+  - [Expanding Abbreviations and Acronyms](#expanding-abbreviations-and-acronyms)
+  - [Stemming](#stemming)
+  - [Lemmatization](#lemmatization)
+  - [Noise Removing](#noise-removing)
+  - [Tokenization](#tokenization)
+
 ## Table of Contents
 
 - [Preprocessing](#preprocessing)

@@ -70,28 +70,28 @@ Awesome-NLP-and-IR
 
 ### Statistical NLP
 
-- [Naive Bayes](#naive-bayes)
-- [N-gram Language Model](#n-gram-language-model)
-- [Markov Chain](#markov-chain)
-- [Hidden Markov Model (HMM)](#hidden-markov-model-hmm)
-- [Conditional Random Fields (CRFs)](#conditional-random-fields-crfs)
+- [Naive Bayes](NLP/NLP.md#naive-bayes)
+- [N-gram Language Model](NLP/NLP.md#n-gram-language-model)
+- [Markov Chain](NLP/NLP.md#markov-chain)
+- [Hidden Markov Model (HMM)](NLP/NLP.md#hidden-markov-model-hmm)
+- [Conditional Random Fields (CRFs)](NLP/NLP.md#conditional-random-fields-crfs)
 
 ### Representation Learning in NLP
 
-- [Encoding / Sparse Vectors](#encoding--sparse-vectors)
-  - [One Hot Encoding](#one-hot-encoding)
-  - [Integer Encoding](#integer-encoding)
-  - [Bag of Words](#bag-of-words)
-  - [TF-IDF](#tf-idf)
-  - [BM25](#bm25)
-- [Embedding / Dense Vectors](#embedding--dense-vectors)
-  - [Word2Vec](#word2vec)
-  - [GloVe](#glove)
-  - [FastText](#fasttext)
-  - [ELMo](#elmo)
-  - [BERT](#bert)
-- [Hybrid](#embedding--dense-vectors)
-  - [SPLADE](#word2vec)
+- [Encoding / Sparse Vectors](NLP/NLP.md#encoding--sparse-vectors)
+  - [One Hot Encoding](NLP/NLP.md#one-hot-encoding)
+  - [Integer Encoding](NLP/NLP.md#integer-encoding)
+  - [Bag of Words](NLP/NLP.md#bag-of-words)
+  - [TF-IDF](NLP/NLP.md#tf-idf)
+  - [BM25](NLP/NLP.md#bm25)
+- [Embedding / Dense Vectors](NLP/NLP.md#embedding--dense-vectors)
+  - [Word2Vec](NLP/NLP.md#word2vec)
+  - [GloVe](NLP/NLP.md#glove)
+  - [FastText](NLP/NLP.md#fasttext)
+  - [ELMo](NLP/NLP.md#elmo)
+  - [BERT](NLP/NLP.md#bert)
+- [Hybrid](NLP/NLP.md#embedding--dense-vectors)
+  - [SPLADE](NLP/NLP.md#word2vec)
     
 ### Deep NLP
 

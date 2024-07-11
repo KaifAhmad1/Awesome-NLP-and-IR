@@ -74,7 +74,9 @@ Explore and leverage this repository to deepen your understanding, enhance your 
   - [FastText](#fasttext)
   - [ELMo](#elmo)
   - [BERT](#bert)
-
+- [Hybrid](#embedding--dense-vectors)
+  - [SPLADE](#word2vec)
+    
 ### Deep NLP
 
 - [Different Activation Functions](#different-activation-functions)

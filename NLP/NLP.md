@@ -1,7 +1,8 @@
+<a name="preprocessing"></a>
 ## Preprocessing 
 
 --- 
-
+<a name="case-folding"></a>
 ### Case Folding 
    Case folding/lowercasing is a preprocessing technique in Natural Language Processing (NLP) that standardizes the text by converting all characters to a single case, typically lowercase. This step is essential for various NLP tasks as it ensures uniformity and consistency in text data, thereby enhancing the performance of downstream applications.
    - **For Example**
@@ -15,7 +16,7 @@
     ```
     
  ---
- 
+<a name="contraction-mapping"></a>
 ### Contraction Mapping
   Contraction mapping refers to the process of expanding contractions, which are shortened forms of words or phrases, into their complete versions. For example:
    - **For Example**
@@ -46,8 +47,9 @@
   ```
 
   ---
-  
+<a name="correcting-spelling-errors"></a>
 ### Correcting Spelling Errors
+
   Correcting spelling errors in Natural Language Processing (NLP) is a common task aimed at improving text quality and accuracy. This process involves identifying and replacing misspelled words with their correct counterparts using various techniques such as:
 - #### 1. **Dictionary-based approaches:**
   Utilizing a dictionary to look up correct spellings and suggest replacements for misspelled words.

@@ -179,5 +179,45 @@ Find everything you need in one concise, well-organized place.
       - [Hardware Accelerator Design](#sparse-regularization)
 
   ### Vector Search and Information Retrieval
+- [Vector Search](#preprocessing)
+  - [Vector Reoresentation in ML](#preprocessing)
+  - [Distance Metrics](#preprocessing)
+      - [Euclidean Distance](#sparse-regularization)
+      - [Manhattan Distance](#sparse-regularization)
+      - [Cosine Similarity](#sparse-regularization)
+      - [Jaccard Similarity](#sparse-regularization)
+      - [Hamming Distance](#sparse-regularization)
+      - [Earth Mover's Distance (EMD)](#sparse-regularization)
+  - [Vector Search Techniques and Their Applications](#preprocessing)
+  - [Nearest Neighbor Search](#preprocessing)
+  - [Problems with High Dimensional Data](#preprocessing)
+  - [Linear Search](#preprocessing)
+  - [Dimensionality Reduction](#preprocessing)
+      - [Principal Component Analysis](#sparse-regularization)
+      - [t-Distributed Stochastic Neighbor Embedding (t-SNE)](#sparse-regularization)
+  - [Approximate Nearest Neighbor (ANN) Search](#preprocessing)
+      - [Trade-Off Between Accuracy and Efficiency](#sparse-regularization)
+      - [Flat Indexing](#sparse-regularization)
+      - [Inverted Index](#sparse-regularization)
+      - [Locality-Sensitive Hashing (LSH)](#sparse-regularization)
+      - [Quantization and their types](#sparse-regularization)
+      - [Tree-Based Indexing in ANN](#sparse-regularization)
+      - [Random Projection in ANN](#sparse-regularization)
+      - [Graph-based Indexing for ANN Search](#sparse-regularization)
+      - [LSH Forest](#sparse-regularization)
+      - [Composite Indexing in ANN](#sparse-regularization)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ### Retrieval Augmented Generation, RAG Optimization and Best Practices

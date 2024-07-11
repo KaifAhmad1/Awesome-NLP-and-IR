@@ -163,6 +163,20 @@ Find everything you need in one concise, well-organized place.
       - [RWKV: Reinventing RNNs for the Transformer Era](#sparse-regularization)
       - [Extended Long Short-Term Memory (xLSTM)](#sparse-regularization)
       - [Parameterization Improvements](#sparse-regularization)
+  - [Model Compression Techniques](#learned-parameter-adaptation)
+      - [Quantization](#sparse-regularization)
+      - [Sparsification](#sparse-regularization)
+- [System Level Optimization](#preprocessing)
+  - [Inference Engine Optimization](#learned-parameter-adaptation)
+      - [Graph and Operator Optimization](#sparse-regularization)
+      - [Different Decoding Strategies like Greedy, Speculative and Lookahead](#sparse-regularization)
+      - [Graph-Level Optimization](#sparse-regularization)
+  - [Challenges and Solutions in System-Level Optimization](#learned-parameter-adaptation)
+      - [KV Cache Optimization](#sparse-regularization)
+      - [Continuous Batching](#sparse-regularization)
+      - [Scheduling Strategies](#sparse-regularization)
+      - [Distributed Systems Optimization](#sparse-regularization)
+      - [Hardware Accelerator Design](#sparse-regularization)
 
   ### Vector Search and Information Retrieval
 

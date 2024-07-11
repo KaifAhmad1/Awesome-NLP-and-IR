@@ -61,12 +61,12 @@ Awesome-NLP-and-IR
     - [Handling Emojis and Emoticons](NLP/NLP.md#handling-emojis-and-emoticons)
     - [Removing Non-Linguistic Symbols](NLP/NLP.md#removing-non-linguistic-symbols)
   - [Tokenization](NLP/NLP.md#tokenization)
-    - [Word Tokenization](#word-tokenization)
-    - [Subword Tokenization](#subword-tokenization)
-      - [Byte Pair Encoding (BPE)](#byte-pair-encoding-bpe)
-      - [WordPiece Tokenization](#wordpiece-tokenization)
-      - [Unigram Tokenization](#unigram-tokenization)
-      - [SentencePiece Tokenization](#sentencepiece-tokenization)
+    - [Word Tokenization](NLP/NLP.md#word-tokenization)
+    - [Subword Tokenization](NLP/NLP.md#subword-tokenization)
+      - [Byte Pair Encoding (BPE)](NLP/NLP.md#byte-pair-encoding-bpe)
+      - [WordPiece Tokenization](NLP/NLP.md#wordpiece-tokenization)
+      - [Unigram Tokenization](NLP/NLP.md#unigram-tokenization)
+      - [SentencePiece Tokenization](NLP/NLP.md#sentencepiece-tokenization)
 
 ### Statistical NLP
 

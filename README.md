@@ -294,7 +294,7 @@ Contributions are welcome! Please feel free to submit issues, fork the repositor
 
 ## License
 
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This repository is licensed under the Apache License. See the [LICENSE](LICENSE) file for more information.
 
 ```
 {

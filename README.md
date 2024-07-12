@@ -2,7 +2,7 @@
 
 Welcome to your ultimate resource hub for concepts and papers related to:
 
-### 📘 Topic Covered
+### 📘 Topics Covered
 
 - **Natural Language Processing (NLP)**
 - **Large Language Models (LLMs)**

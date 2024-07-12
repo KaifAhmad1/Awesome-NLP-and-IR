@@ -2,6 +2,8 @@
 
 Welcome to your ultimate resource hub for concepts and papers related to:
 
+### 📘 Topic Covered
+
 - **Natural Language Processing (NLP)**
 - **Large Language Models (LLMs)**
 - **LLM Efficiency and Inference Optimization**
@@ -287,11 +289,11 @@ Awesome-NLP-and-IR
 
 
 
-## Contributions
+### 🤝 Contributions
 
 Contributions are welcome! Please feel free to submit issues, fork the repository, and make pull requests to enhance the repository.
 
-## License
+### 📄 License
 
 This repository is licensed under the Apache License. See the [LICENSE](LICENSE) file for more information.
 

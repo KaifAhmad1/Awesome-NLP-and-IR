@@ -200,6 +200,7 @@ Awesome-NLP-and-IR
   - [Model Compression Techniques](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#model-compression-techniques)
       - [Quantization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#quantization)
       - [Sparsification](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#sparsification)
+      - [Pruning](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#pruning)
 - [System Level Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#system-level-optimization)
   - [Inference Engine Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#inference-engine-optimization)
       - [Graph and Operator Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#graph-and-operator-optimization)

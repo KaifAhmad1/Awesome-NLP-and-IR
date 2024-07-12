@@ -1,12 +1,10 @@
 # 🚀 Awesome NLP and IR
 
-## A Unified Repository
-
 Welcome to your ultimate resource hub for concepts and papers related to:
 
 - **Natural Language Processing (NLP)**
 - **Large Language Models (LLMs)**
-- **LLM Efficiency**
+- **LLM Efficiency and Inference Optimization**
 - **Vector Search and Information Retrieval**
 - **Retrieval Augmented Generation, RAG Optimization and Best Practices**
 
@@ -14,7 +12,8 @@ This repository is a comprehensive, well-structured, and user-friendly guide des
 
 Explore and leverage this repository to deepen your understanding, enhance your projects, and stay updated with the cutting-edge developments in NLP and IR.
 
-### Repository Structure 
+## Repository Structure
+
 ```
 Awesome-NLP-and-IR
 │

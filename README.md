@@ -285,3 +285,27 @@ Awesome-NLP-and-IR
       - [Benchmark Datasets](RAG-and-RAG-Optimization/RAG-and-Optimization.md#benchmark-datasets)
     - [Tools and Platforms for Optimization](RAG-and-RAG-Optimization/RAG-and-Optimization.md#tools-and-platforms-for-optimization)
     - [Recommendations for Implementing RAG Systems](RAG-and-RAG-Optimization/RAG-and-Optimization.md#recommendations-for-implementing-rag-systems)
+
+
+
+## Contributions
+
+Contributions are welcome! Please feel free to submit issues, fork the repository, and make pull requests to enhance the repository.
+
+## License
+
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+```
+{
+  "title": "🚀 Awesome NLP and IR",
+  "author": "Mohammad Kaif",
+  "date": "July 2024",
+  "sections": [
+    {
+      "type": "introduction",
+      "content": "Welcome to the ultimate resource hub for:\n\n- **Natural Language Processing (NLP)**\n- **Large Language Models (LLMs)**\n- **LLM Efficiency**\n- **Vector Search and Information Retrieval**\n- **Retrieval Augmented Generation (RAG) Optimization and Best Practices**\n\nThis repository offers a comprehensive, well-structured, and user-friendly guide to the latest advancements, research papers, techniques, and best practices in these fields. Ideal for researchers and developers alike."
+    }
+  ]
+}
+```

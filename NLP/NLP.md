@@ -616,48 +616,121 @@ print("Observable States:", observable_states)
 
 --- 
 
-- **Conditional Random Fields(CRFs):** Conditional Random Fields (CRFs) are a type of machine learning model used for tasks where we need to predict a sequence of labels for a given sequence of input data. They're particularly handy in scenarios like analyzing text, where understanding the structure of the data is crucial.
-   - Imagine you have a sentence, and you want to tag each word with its part of speech (POS). For example, in the sentence `The cat sat on the mat`, you'd want to label `The` as a determiner (DT), `cat` as a noun (NN), and so on. CRFs help you do this efficiently by considering not only the individual words but also the relationships between them.
-     - Model label dependencies as `P(Y|X)`, with `Y` as output labels and `X` as input data.
-     - Utilize feature functions to learn these relationships during training.
-     - Predict label sequences for new data during inference.
+### Conditional Random Fields (CRFs)
 
-``` Python 
-!pip install sklearn-crfsuite
+Conditional Random Fields (CRFs) are a type of probabilistic graphical model, specifically used for structured prediction problems. They are particularly effective in applications where context and sequential information are crucial, such as natural language processing tasks like named entity recognition (NER), part-of-speech tagging, and information extraction.
+
+#### Key Concepts:
+
+- **Graphical Model:** CRFs are undirected graphical models used to calculate the conditional probability of a label sequence given an observation sequence. They can be visualized as a graph where nodes represent random variables (labels and observations) and edges represent dependencies between them.
+
+- **Sequence Modeling:** Unlike simpler models like Naive Bayes or HMMs, CRFs consider the context of the entire sequence when making predictions. This allows CRFs to model the dependencies between neighboring labels more effectively.
+
+#### Mathematical Formulation:
+
+Given an input sequence of observations $\mathbf{x} = (x_1, x_2, \ldots, x_T)$ and a corresponding sequence of labels $\mathbf{y} = (y_1, y_2, \ldots, y_T)$, the CRF model calculates the conditional probability $P(\mathbf{y}|\mathbf{x})$.
+
+The probability of a particular label sequence given the observations is defined as:
+
+$$P(\mathbf{y}|\mathbf{x}) = \frac{1}{Z(\mathbf{x})} \exp\left( \sum_{t=1}^{T} \sum_{k=1}^{K} \lambda_k f_k(y_t, y_{t-1}, \mathbf{x}, t) \right)$$
+
+where:
+- $\mathbf{y}$ is the sequence of labels.
+- $\mathbf{x}$ is the sequence of observations.
+- $f_k$ are the feature functions.
+- $\lambda_k$ are the weights associated with the feature functions.
+- $Z(\mathbf{x})$ is the normalization factor (partition function) ensuring that the probabilities sum to 1.
+
+#### Feature Functions:
+
+Feature functions $f_k(y_t, y_{t-1}, \mathbf{x}, t)$ can depend on the current and previous labels, the entire sequence of observations, and the current position in the sequence. These functions help capture the characteristics of the data and dependencies between labels.
+
+#### Training CRFs:
+
+Training CRFs involves optimizing the weights $\lambda_k$ to maximize the likelihood of the training data. This is typically done using gradient-based optimization methods. The objective is to find the set of weights that best explain the observed data by maximizing the conditional log-likelihood:
+
+$$\mathcal{L}(\lambda) = \sum_{i=1}^{N} \log P(\mathbf{y}^{(i)}|\mathbf{x}^{(i)}; \lambda) - \frac{1}{2\sigma^2} \sum_{k} \lambda_k^2$$
+
+where $\sigma^2$ is a regularization parameter to prevent overfitting.
+
+#### Inference:
+
+The goal of inference in CRFs is to find the most likely sequence of labels $\mathbf{y}$ given an observation sequence $\mathbf{x}$. This is typically done using algorithms such as the Viterbi algorithm or belief propagation.
+
+#### Applications:
+
+- **Named Entity Recognition (NER):** Identifying entities like names, organizations, and locations in text.
+- **Part-of-Speech Tagging:** Assigning parts of speech to each word in a sentence.
+- **Chunking:** Dividing a text into syntactically correlated parts like noun or verb phrases.
+- **Information Extraction:** Extracting structured information from unstructured text.
+
+#### Example:
+
+Here's an example of implementing CRFs for sequence labeling using the `sklearn-crfsuite` library in Python:
+
+```python
 import sklearn_crfsuite
 from sklearn_crfsuite import metrics
 
-# Training data
-X_train = [
-   [('The', 'DT'), ('cat', 'NN'), ('sat', 'VBD')],
-   [('A', 'DT'), ('dog', 'NN'), ('barked', 'VBD')]
-]
-y_train = [['DT', 'NN', 'VBD'], ['DT', 'NN', 'VBD']]
+# Example data
+train_sents = [[{'word': 'John', 'pos': 'NNP'}, {'word': 'is', 'pos': 'VBZ'}, {'word': 'from', 'pos': 'IN'}, {'word': 'New', 'pos': 'NNP'}, {'word': 'York', 'pos': 'NNP'}]]
+train_labels = [['B-PER', 'O', 'O', 'B-LOC', 'I-LOC']]
 
-# Test data
-X_test = [[('The', 'DT'), ('dog', 'NN'), ('barked', 'VBD')]]
-y_test = [['DT', 'NN', 'VBD']]
+def word2features(sent, i):
+    word = sent[i]['word']
+    postag = sent[i]['pos']
+    features = {
+        'bias': 1.0,
+        'word.lower()': word.lower(),
+        'postag': postag,
+    }
+    if i > 0:
+        word1 = sent[i-1]['word']
+        postag1 = sent[i-1]['pos']
+        features.update({
+            '-1:word.lower()': word1.lower(),
+            '-1:postag': postag1,
+        })
+    else:
+        features['BOS'] = True
 
-# Create a CRF model
+    if i < len(sent)-1:
+        word1 = sent[i+1]['word']
+        postag1 = sent[i+1]['pos']
+        features.update({
+            '+1:word.lower()': word1.lower(),
+            '+1:postag': postag1,
+        })
+    else:
+        features['EOS'] = True
+
+    return features
+
+def sent2features(sent):
+    return [word2features(sent, i) for i in range(len(sent))]
+
+def sent2labels(sent):
+    return [label for label in sent]
+
+X_train = [sent2features(s) for s in train_sents]
+y_train = train_labels
+
 crf = sklearn_crfsuite.CRF(
-   algorithm='lbfgs',
-   c1=0.1,
-   c2=0.1,
-   max_iterations=100,
-   all_possible_transitions=True
+    algorithm='lbfgs',
+    c1=0.1,
+    c2=0.1,
+    max_iterations=100,
+    all_possible_transitions=True
 )
-
-# Train the model
 crf.fit(X_train, y_train)
 
+test_sents = [[{'word': 'Jane', 'pos': 'NNP'}, {'word': 'is', 'pos': 'VBZ'}, {'word': 'from', 'pos': 'IN'}, {'word': 'Los', 'pos': 'NNP'}, {'word': 'Angeles', 'pos': 'NNP'}]]
+X_test = [sent2features(s) for s in test_sents]
 y_pred = crf.predict(X_test)
+
 print(y_pred)
 ```
-```
-[['DT', 'NN', 'VBD']]
-```
-
---- 
+---
 
 ## **Representation Learning in NLP**
 Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.

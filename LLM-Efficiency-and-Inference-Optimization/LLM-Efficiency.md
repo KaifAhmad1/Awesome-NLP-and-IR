@@ -514,8 +514,8 @@ System-level optimization in large language models (LLMs) enhances efficiency an
 #### Graph and Operator Optimization
 Optimizing the computational graph and operators is crucial for enhancing the efficiency and performance of large language models (LLMs) during inference. This involves profiling runtime performance, addressing specific challenges in key operations, and implementing advanced techniques to streamline computations.
 
-### Runtime Profiling
-**Objective:** Identify performance bottlenecks and dominant operators in the inference process to target for optimization.
+##### Runtime Profiling
+Identify performance bottlenecks and dominant operators in the inference process to target for optimization.
 
 **Tools:** Utilize profiling tools like HuggingFace's transformers library, TensorBoard, and other performance monitoring utilities to analyze inference runtimes across various models and input contexts.
 
@@ -524,8 +524,8 @@ Optimizing the computational graph and operators is crucial for enhancing the ef
 2. **Collect Data:** Gather detailed runtime data for each layer and operation.
 3. **Identify Bottlenecks:** Determine which operators (e.g., attention, linear layers) consume the most time and resources.
 
-### Attention Operator Optimization
-**Challenges:** Attention mechanisms typically have quadratic time and space complexities, which can become prohibitive as the input sequence length increases, leading to significant memory usage and computational overhead.
+##### Attention Operator Optimization
+Attention mechanisms typically have quadratic time and space complexities, which can become prohibitive as the input sequence length increases, leading to significant memory usage and computational overhead.
 
 **Techniques:**
 1. **FlashAttention:** Implement custom attention mechanisms like FlashAttention to improve efficiency.
@@ -539,8 +539,8 @@ Optimizing the computational graph and operators is crucial for enhancing the ef
 3. **Low-Rank Approximations:** Decompose the attention matrix into lower-rank components to reduce computational complexity.
     - **Techniques:** Use methods like Singular Value Decomposition (SVD) or Principal Component Analysis (PCA).
 
-### Linear Operator Optimization
-**Goals:** Enhance the efficiency of linear transformations, which are fundamental operations in LLMs. These transformations can be particularly costly during the decoding phase.
+##### Linear Operator Optimization
+Enhance the efficiency of linear transformations, which are fundamental operations in LLMs. These transformations can be particularly costly during the decoding phase.
 
 **Methods:**
 1. **FastGEMV:** Implement Fast General Matrix-Vector Multiplication (GEMV) techniques to speed up linear operations.

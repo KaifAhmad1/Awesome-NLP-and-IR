@@ -424,11 +424,11 @@ Model compression techniques aim to reduce pre-trained LLMs' computational and m
 Quantization converts model weights and activations from high bit-width to lower bit-width representations:
 
 - **Post-Training Quantization (PTQ):**
-  - **Overview:** Applies quantization to pre-trained models without requiring retraining, utilizing techniques such as GPTQ and LUT-GEMM to optimize performance on embedded systems and low-power devices.
+  - Applies quantization to pre-trained models without requiring retraining, utilizing techniques such as GPTQ and LUT-GEMM to optimize performance on embedded systems and low-power devices.
   - **Applications:** Enables efficient deployment of LLMs in resource-constrained environments while preserving model accuracy and functionality.
 
 - **Quantization-Aware Training (QAT):**
-  - **Overview:** Integrates quantization constraints during model training, optimizing model parameters and activation ranges to minimize accuracy loss during conversion to low bit-width representations.
+  - Integrates quantization constraints during model training, optimizing model parameters and activation ranges to minimize accuracy loss during conversion to low bit-width representations.
   - **Techniques:** Includes methods like fine-tuning quantization parameters and optimizing bit-width allocation based on task-specific requirements, enhancing model robustness and efficiency.
 
 #### Sparsification
@@ -436,16 +436,32 @@ Quantization converts model weights and activations from high bit-width to lower
 Sparsification increases the sparsity of model parameters or activations to reduce computational complexity:
 
 - **Weight Pruning:**
-  - **Overview:** Removes less critical weights from the model, reducing memory footprint and computational overhead during inference.
+  - Removes less critical weights from the model, reducing memory footprint and computational overhead during inference.
   - **Techniques:**
     - **Structured Pruning:** Removes entire units or channels from neural networks based on importance criteria, optimizing model efficiency without sacrificing performance.
     - **Unstructured Pruning:** Targets individual weights based on magnitude or relevance, suitable for fine-grained optimization of LLMs with diverse architecture designs.
 
 - **Sparse Attention:**
-  - **Overview:** Reduces computational overhead in attention mechanisms by limiting the number of tokens attended to at each step.
+  - Reduces computational overhead in attention mechanisms by limiting the number of tokens attended to at each step.
   - **Techniques:**
     - **Bigbird:** Introduces sparse attention patterns combined with global and local context models, optimizing processing efficiency for large-scale document analysis and sequence modeling.
     - **Longformer:** Extends sparse attention mechanisms to handle sequences with thousands of tokens, enabling efficient processing of documents and structured data with reduced computational resources.
+
+#### Pruning
+
+Pruning reduces the number of parameters in a model by removing less important connections:
+
+- **Magnitude-Based Pruning:**
+  - Eliminates weights with magnitudes below a certain threshold, simplifying the model without significant loss in performance.
+  - **Techniques:**
+    - **Global Pruning:** Prunes weights across the entire network based on their global importance, ensuring the most critical weights are retained.
+    - **Layer-Wise Pruning:** Applies pruning independently within each layer to maintain balanced sparsity throughout the model, allowing for fine-grained control over model complexity.
+
+- **Structured Pruning:**
+  - Removes entire structures such as neurons, channels, or attention heads, leading to more efficient architectures.
+  - **Techniques:**
+    - **Channel Pruning:** Eliminates less important channels in convolutional layers, reducing the computational cost while retaining performance, often determined by evaluating channel importance.
+    - **Head Pruning:** Reduces the number of attention heads in transformer models, optimizing the model for faster inference without significant accuracy loss, based on attention head importance metrics.
 
 ---
 

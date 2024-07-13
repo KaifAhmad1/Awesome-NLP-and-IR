@@ -186,6 +186,7 @@ Awesome-NLP-and-IR
       - [State Space Models (SSM) and Mamba](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#state-space-models-ssm-and-mamba)
       - [RWKV: Reinventing RNNs for the Transformer Era](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#rwkv-reinventing-rnns-for-the-transformer-era)
       - [Extended Long Short-Term Memory (xLSTM)](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#extended-long-short-term-memory-xlstm)
+      - [Funnel-Transformer](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#funnel-transformer)
       - [Parameterization Improvements](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#parameterization-improvements)
   - [Model Compression Techniques](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#model-compression-techniques)
       - [Quantization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#quantization)

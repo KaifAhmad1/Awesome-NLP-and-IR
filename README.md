@@ -77,13 +77,13 @@ Awesome-NLP-and-IR
 
 ### Representation Learning in NLP
 
-- [Encoding / Sparse Vectors](NLP/NLP.md#encoding--sparse-vectors)
+- [Encoding/Sparse Vectors](NLP/NLP.md#encoding--sparse-vectors)
   - [One Hot Encoding](NLP/NLP.md#one-hot-encoding)
   - [Integer Encoding](NLP/NLP.md#integer-encoding)
   - [Bag of Words](NLP/NLP.md#bag-of-words)
   - [TF-IDF](NLP/NLP.md#tf-idf)
   - [BM25](NLP/NLP.md#bm25)
-- [Embedding / Dense Vectors](NLP/NLP.md#embedding--dense-vectors)
+- [Embedding/Dense Vectors](NLP/NLP.md#embedding--dense-vectors)
   - [Word2Vec](NLP/NLP.md#word2vec)
   - [GloVe](NLP/NLP.md#glove)
   - [FastText](NLP/NLP.md#fasttext)
@@ -91,7 +91,8 @@ Awesome-NLP-and-IR
   - [BERT](NLP/NLP.md#bert)
 - [Hybrid](NLP/NLP.md#embedding--dense-vectors)
   - [SPLADE](NLP/NLP.md#word2vec)
-- [Encoding vs Embedding Comparision](NLP/NLP.md#embedding--dense-vectors)  
+- [Encoding vs Embedding Comparision](NLP/NLP.md#encoding-vs-embedding-comparision)
+  
 ### Deep NLP
 
 - [Different Activation Functions](NLP/NLP.md#different-activation-functions)

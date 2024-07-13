@@ -91,7 +91,7 @@ Awesome-NLP-and-IR
   - [BERT](NLP/NLP.md#bert)
 - [Hybrid](NLP/NLP.md#embedding--dense-vectors)
   - [SPLADE](NLP/NLP.md#word2vec)
-    
+- [Encoding vs Embedding Comparision](NLP/NLP.md#embedding--dense-vectors)  
 ### Deep NLP
 
 - [Different Activation Functions](NLP/NLP.md#different-activation-functions)

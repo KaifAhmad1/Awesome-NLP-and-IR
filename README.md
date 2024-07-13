@@ -233,7 +233,8 @@ Awesome-NLP-and-IR
       - [Graph-based Indexing for ANN Search](VectorSearch-and-IR/VectorSearch-and-IR.md#graph-based-indexing-for-ann-search)
       - [LSH Forest](VectorSearch-and-IR/VectorSearch-and-IR.md#lsh-forest)
       - [Composite Indexing in ANN](VectorSearch-and-IR/VectorSearch-and-IR.md#composite-indexing-in-ann)
-  
+      - [Comparision between Different Indexing Techniques](VectorSearch-and-IR/VectorSearch-and-IR.md#comparision-between-different-indexing-techniques)
+
 ### Retrieval Augmented Generation, RAG Optimization, and Best Practices
 
 - [RAG](RAG-and-RAG-Optimization/RAG-and-Optimization.md#rag)

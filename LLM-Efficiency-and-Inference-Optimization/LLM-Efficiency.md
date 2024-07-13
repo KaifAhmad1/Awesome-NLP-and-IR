@@ -407,6 +407,46 @@ xLSTM organizes these advancements into cohesive residual blocks, which are stac
 xLSTM improves storage management and computational efficiency, making it ideal for applications requiring extensive memory and parallel processing capabilities.
 
 
+
+#### Funnel-Transformer
+
+The Funnel-Transformer represents a significant evolution in transformer-based architectures, addressing key challenges of computational efficiency and scalability in natural language processing (NLP). Integrating innovative sequence compression techniques and efficient resource utilization enhances performance and practicality across a range of NLP tasks.
+
+##### Key Benefits
+
+- **Efficiency and Scalability:**
+  - *Sequence Compression:* Utilizes progressive pooling operations to compress sequence lengths systematically across layers, reducing computational complexity while preserving information relevance.
+  - *Resource Optimization:* Enables deeper model architectures or broader model widths without proportional increases in computational demand, making it feasible to handle longer sequences and larger datasets efficiently.
+
+- **Enhanced Performance:**
+  - *Improved Computational Efficiency:* Achieves superior computational efficiency compared to conventional transformer models, particularly beneficial for tasks requiring single-vector representations like text classification.
+  - *Adaptability:* Maintains or exceeds the performance benchmarks of traditional transformers across a variety of NLP tasks, demonstrating versatility and robustness.
+
+##### Architecture
+
+##### Encoder Design
+
+- **Layer Composition:** Structured with multiple transformer blocks, each incorporating self-attention and feedforward layers.
+- **Compression Mechanism:** Integrates strided pooling operations after each block to progressively reduce sequence lengths, optimizing computational resources while retaining semantic coherence.
+
+##### Decoder Framework
+
+- **Functionality:** Includes a decoder component for tasks necessitating token-level predictions, such as masked language modeling.
+- **Reconstruction Strategies:** Utilizes up-sampling methodologies and residual connections to reconstruct full-length sequences from compressed representations, ensuring accurate and detailed output generation.
+
+##### Methodologies
+
+##### Sequence Compression Strategies
+
+- **Pooling Operations:** Applies strided mean pooling to summarize and condense sequence information effectively.
+- **Query-Only Mechanism:** Utilizes compressed sequences as query inputs during self-attention computations, streamlining attention mechanisms and enhancing computational efficiency.
+
+##### Resource Optimization Techniques
+
+- **Model Scaling:** Leverages computational savings from sequence compression to augment model depth or width, enhancing model capacity and task performance.
+- **Parameter Management:** Implements strategies such as parameter sharing to manage increased model complexity effectively while maintaining computational efficiency.
+
+
 #### Parameterization Improvements
 Enhances computational efficiency by diagonalizing transition matrices and optimizing weight structures within transformer architectures.
 

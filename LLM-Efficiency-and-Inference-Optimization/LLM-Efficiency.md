@@ -92,103 +92,100 @@ Model-level optimization refers to techniques aimed at improving the efficiency,
 
 ### Efficient Structure Design
 
-Efficient structure design focuses on optimizing the architecture of LLMs to reduce computational complexity and memory usage while maintaining or improving performance. This involves intricate adjustments to both feed-forward networks (FFNs) and attention mechanisms, which are fundamental components of transformer-based models.
+Efficient structure design focuses on optimizing the architecture of Large Language Models (LLMs) to reduce computational complexity and memory usage while maintaining or improving performance. This involves intricate adjustments to both feed-forward networks (FFNs) and attention mechanisms, which are fundamental components of transformer-based models.
 
 #### Feed Forward Networks (FFNs) in Large Language Models (LLMs)
 
-Feed Forward Networks (FFNs) play a crucial role in the architecture of Large Language Models (LLMs), contributing significantly to their parameter count and computational load. To enhance the efficiency and effectiveness of FFNs, advanced techniques such as Mixture-of-Experts (MoE) and Switch Transformers have been developed.
-
+Feed Forward Networks (FFNs) play a crucial role in the architecture of LLMs, contributing significantly to their parameter count and computational load. To enhance the efficiency and effectiveness of FFNs, advanced techniques such as Mixture-of-Experts (MoE) and Switch Transformers have been developed.
 
 #### Mixture-of-Experts (MoE)
 
-**Overview:**
 Mixture-of-Experts (MoE) is a neural network architecture that utilizes multiple parallel FFNs, known as "experts," along with a trainable routing module to dynamically allocate computational resources. MoE allows the model to scale its capacity by activating only a subset of experts for each input, thus enhancing efficiency for diverse tasks.
 
 ##### Key Components
 
 1. **Experts:**
-   - **Description:** Multiple FFNs operating in parallel.
-   - **Function:** Each expert specializes in different aspects of the input data, enabling the model to handle a variety of tasks effectively.
+   - Multiple FFNs operating in parallel.
+   - Each expert specializes in different aspects of the input data, enabling the model to handle a variety of tasks effectively.
 
 2. **Routing Module:**
-   - **Description:** A trainable component that determines which experts should be activated for a given input.
-   - **Function:** Routes tokens to the most appropriate experts based on learned criteria, optimizing computational resource allocation.
+   - A trainable component that determines which experts should be activated for a given input.
+   - Routes tokens to the most appropriate experts based on learned criteria, optimizing computational resource allocation.
 
 ##### Techniques
 
 1. **MoEfication:**
-   - **Description:** Converts non-MoE LLMs into MoE versions using pre-trained weights.
-   - **Benefits:** Reduces training costs and computational overhead by leveraging existing pre-trained models.
+   - Converts non-MoE LLMs into MoE versions using pre-trained weights.
+   - Reduces training costs and computational overhead by leveraging existing pre-trained models.
    - **Process:** 
      - Extract pre-trained weights from a dense LLM.
      - Integrate these weights into an MoE architecture.
      - Fine-tune the MoE model to ensure compatibility and optimal performance.
 
 2. **Sparse Upcycling:**
-   - **Description:** Initializes MoE-based LLMs from dense model checkpoints.
-   - **Benefits:** Facilitates efficient training and deployment by starting with a pre-trained dense model and converting it into a sparse MoE model.
+   - Initializes MoE-based LLMs from dense model checkpoints.
+   - Facilitates efficient training and deployment by starting with a pre-trained dense model and converting it into a sparse MoE model.
    - **Process:**
      - Use a dense model checkpoint as the starting point.
      - Convert the dense parameters into a sparse format suitable for an MoE setup.
      - Fine-tune the sparse MoE model to maintain or improve performance.
 
 3. **Matrix Product Operators (MPOE):**
-   - **Description:** Decomposes large weight matrices into smaller ones using structured methods like tensor decompositions (e.g., Tensor Train).
-   - **Benefits:** Reduces parameter count while maintaining the model's expressiveness.
+   - Decomposes large weight matrices into smaller ones using structured methods like tensor decompositions (e.g., Tensor Train).
+   - Reduces parameter count while maintaining the model's expressiveness.
    - **Process:**
      - Apply tensor decomposition techniques to the weight matrices.
      - Replace large, dense matrices with decomposed, smaller ones.
      - Adjust the training process to accommodate the new structure.
 
-
 #### Switch Transformers
 
-**Overview:**
 Switch Transformers are a variant of MoE that optimize the routing of tokens to experts, enhancing computational efficiency and throughput. By dynamically assigning tokens to experts based on learned criteria, Switch Transformers improve overall model performance and computational efficiency.
 
-###### Key Components
+##### Key Components
 
 1. **Dynamic Token Routing:**
-   - **Description:** Dynamically routes tokens to experts based on learned criteria rather than a static assignment.
-   - **Function:** Ensures tokens are processed by the most relevant experts, reducing redundant computations.
+   - Dynamically routes tokens to experts based on learned criteria rather than a static assignment.
+   - Ensures tokens are processed by the most relevant experts, reducing redundant computations.
 
 2. **Routing Module:**
-   - **Description:** Optimized for dynamic and efficient token assignment.
-   - **Function:** Continuously learns and updates routing criteria based on token characteristics and model performance.
+   - Optimized for dynamic and efficient token assignment.
+   - Continuously learns and updates routing criteria based on token characteristics and model performance.
 
 ##### Techniques
 
 1. **Dynamic Token Routing:**
-   - **Description:** Switch Transformers dynamically route tokens to experts based on learned criteria.
-   - **Benefits:** Improves computational efficiency by ensuring that tokens are processed by the most relevant experts, reducing redundant computations.
+   - Switch Transformers dynamically route tokens to experts based on learned criteria.
+   - Improves computational efficiency by ensuring that tokens are processed by the most relevant experts, reducing redundant computations.
    - **Process:**
      - Implement a routing algorithm that evaluates tokens and assigns them to appropriate experts.
      - Continuously update the routing criteria based on model performance and token characteristics.
 
-2. **Enhanced Throughput:**
-   - **Description:** Efficiency gains from dynamic routing lead to higher computational throughput.
-   - **Benefits:** Allows for faster processing times and the ability to handle larger volumes of data more effectively.
-   - **Process:**
-     - Optimize the routing mechanism to minimize latency.
-     - Ensure that experts can handle assigned tokens promptly and efficiently.
-
-3. **Scalability:**
-   - **Description:** Switch Transformers are designed to scale efficiently with the number of experts.
-   - **Benefits:** Ensures the model can grow in complexity and capability without a proportional increase in computational resources.
-   - **Process:**
-     - Design the model architecture to support the addition of more experts.
-     - Implement scalable routing and communication protocols between experts.
-
-4. **BASE (Bespoke Assignment of Structure Expertise):**
-   - **Description:** A variant of MoE that customizes expert routing based on task-specific requirements.
-   - **Benefits:** Optimizes model performance by tailoring the routing process to the specific needs of each task.
+2. **BASE (Bespoke Assignment of Structure Expertise):**
+   - A variant of MoE that customizes expert routing based on task-specific requirements.
+   - Optimizes model performance by tailoring the routing process to the specific needs of each task.
    - **Process:**
      - Analyze the specific requirements of different tasks.
-     - Develop routing strategies that align with these requirements
+     - Develop routing strategies that align with these requirements.
      - Continuously refine the routing process based on task performance metrics.
-    
-By employing these advanced techniques, LLMs can achieve greater efficiency and effectiveness, making them more practical and powerful for real-world applications.
 
+#### Key Differences Between MoE and Switch Transformers
+
+1. **Routing Strategy:**
+   - **MoE:** Utilizes a static routing mechanism where each token is assigned to a predetermined set of experts.
+   - **Switch Transformers:** Employ dynamic token routing, assigning tokens to experts based on learned criteria and current token characteristics.
+
+2. **Efficiency and Throughput:**
+   - **MoE:** Can be less efficient due to static routing, potentially leading to redundant computations.
+   - **Switch Transformers:** Enhance efficiency and throughput by dynamically assigning tokens to the most relevant experts, minimizing redundant computations.
+
+3. **Scalability:**
+   - **MoE:** May face challenges in scaling due to static expert assignments and potential bottlenecks.
+   - **Switch Transformers:** Designed to scale more efficiently with an increasing number of experts, using dynamic routing to balance the load.
+
+4. **Customization:**
+   - **MoE:** Experts are generally assigned in a more uniform manner without specific customization for tasks.
+   - **Switch Transformers:** Can be customized for specific tasks
 --- 
 
 ### Attention Mechanisms

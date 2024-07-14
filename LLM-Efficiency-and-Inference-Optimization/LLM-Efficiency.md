@@ -672,12 +672,45 @@ These decoding strategies provide various methods to enhance the efficiency and 
 
 #### Graph-Level Optimization
 
-- **Kernel Fusion**:
-  - **Concept**: Merge multiple operations into a single kernel to reduce memory access and kernel launch overhead, and enhance parallelism.
-  - **Examples**: FlashAttention for fusing attention operations, and DeepSpeed for integrating lightweight operators like residual layers into linear operations.
-- **MoE (Mixture of Experts) FFN Optimization**:
-  - **Focus**: Optimize block-sparse operations and develop tailored GPU kernels.
-  - **Purpose**: Handle non-standard neural network architectures like MoE FFNs more efficiently.
+##### Kernel Fusion
+
+Kernel fusion is a crucial technique for optimizing the inference process of large language models (LLMs). It enhances performance by reducing the overhead associated with multiple GPU kernel launches, combining several operations into a single kernel to minimize launch costs and boost computational efficiency.
+
+##### Kernel Launch Overhead
+
+Each GPU kernel launch incurs overhead from:
+- **Context Switching**: Switching between tasks or threads.
+- **Kernel Scheduling**: Allocating GPU resources and scheduling the kernel.
+- **Data Synchronization**: Synchronizing data between CPU and GPU.
+
+During LLM inference, numerous small operations like matrix multiplications, element-wise additions, activations, and normalizations each traditionally require a separate kernel launch, leading to significant cumulative overhead.
+
+##### Principle of Kernel Fusion
+
+Kernel fusion combines multiple operations into a single kernel, resulting in:
+- **Reduced Kernel Launches**: Fewer kernel initiations mean lower overhead.
+- **Optimized Memory Usage**: Decreases the frequency of reading and writing data to global memory.
+- **Enhanced Cache Locality**: Keeps intermediate results in registers or shared memory, improving access speeds.
+
+##### Types of Kernel Fusion
+
+1. **Horizontal Fusion**: Combines multiple independent operations that can be executed in parallel (e.g., fusing element-wise additions with activations).
+2. **Vertical Fusion**: Merges sequential operations that depend on each other’s outputs (e.g., fusing matrix multiplication with subsequent addition and activation).
+3. **Input Fusion**: Integrates operations sharing the same input data (e.g., fusing operations that read the same tensor but perform different computations).
+4. **Output Fusion**: Combines operations producing data used together in subsequent computations (e.g., fusing operations contributing to the final output tensor).
+
+##### Implementation of Kernel Fusion
+
+1. **Dependency Analysis**: Identify dependencies between operations to determine fusibility.
+2. **Code Generation**: Generate fused kernels manually or using frameworks like TVM and TensorRT.
+3. **Optimization**: Fine-tune fused kernels for performance, optimizing memory access patterns, loop unrolling, and shared memory utilization.
+
+##### Examples in LLM Inference
+
+1. **Attention Mechanisms**: Fusing matrix multiplications and softmax operations involved in attention mechanisms.
+2. **Layer Normalization**: Fusing mean, variance, normalization, and scaling operations.
+3. **Feed-Forward Networks**: Fusing dense layers, activation functions, and dropout operations.
+
 
 ### Challenges and Solutions in System-Level Optimization
 

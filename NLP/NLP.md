@@ -997,49 +997,55 @@ print("Vocabulary:", vocabulary)
 
 
 #### TF-IDF
-  TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
-   - #### **Components of TF-IDF:**
-      - #### **Term Frequency (TF):** Measures how frequently a term occurs in a document.
-          - Term Frequency is calculated as:
-            $$\text{TF}(t, d) = \frac{f(t, d)}{\sum_{t' \in d} f(t', d)}$$
-      - where:
-          - $f(t,d)$ is the raw count of term $t$ in document $d$.
-          - The denominator is the total number of terms in document $d$.
-      - Example:
-          - If the term `data` appears $3$ times in a document with $100$ words, the term frequency TF for `data` would be: $TF(data, d) = 3 / 100 = 0.03$
-     
-      - #### **Inverse Document Frequency (IDF):** Measures how frequently a term occurs in a document.
-          - Inverse Document Frequency is calculated as:
-            $$\text{IDF}(t, D) = \log \left( \frac{N}{| \{ d \in D : t \in d \} |} \right)$$
-      - where:
-          - $N$ is the total number of documents.
-          - $| \{ d \in D : t \in d \} |$ is the number of documents containing the term $t$.
-      - Example:
-          - If the corpus contains $10,000$ documents, and the term `data` appears in $100$ of these documents, the inverse document frequency IDF for `data` would be:
-          - $IDF(data, D) = log(10000 / 100) = log(100) = 2$
-            
-      - #### **Calculating TF-IDF:**
-          - The TF-IDF score for a term $t$ in a document $d$ is given by:
-            $$\text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)$$
-      - Example:
-          - Using the previous values:
-          - $TF(data, d) = 0.03$
-          - $IDF(data, D) = 2$
-          - The TF-IDF score for `data` in the document would be:
-          - $TF-IDF(data, d, D) = 0.03 * 2 = 0.06$
 
-   - Advantages:
-      - 1. Simple and easy to understand
-      - 2. Effective in identifying relevant terms and their weights
-      - 3. Distinguishes between common and rare terms
-      - 4. Language-independent
+TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
 
-   - Limitations:
-      - 1. Doesn't consider semantics or term context
-      - 2. May struggle with very long documents due to term frequency saturation. In lengthy documents, even insignificant terms can surface frequently, resulting in elevated and saturated term frequencies. Consequently, TF-IDF may encounter challenges in effectively distinguishing and assigning significant weights to important terms.
-      - 3. Ignores term dependencies and phrase
-      - 4. Needs large document collections for reliable IDF
-``` Python
+- #### **Components of TF-IDF:**
+
+  - #### **Term Frequency (TF):** \
+    Measures how frequently a term occurs in a document.
+    - Term Frequency is calculated as:
+      $$\text{TF}(t, d) = \frac{f(t, d)}{\sum_{t' \in d} f(t', d)}$$
+    - where:
+      - $f(t,d)$ is the raw count of term $t$ in document $d$.
+      - The denominator is the total number of terms in document $d$.
+    - Example:
+      - If the term `data` appears $3$ times in a document with $100$ words, the term frequency TF for `data` would be: $TF(data, d) = 3 / 100 = 0.03$
+
+  - #### **Inverse Document Frequency (IDF):**
+    Measures how frequently a term occurs in a document.
+    - Inverse Document Frequency is calculated as:
+      $$\text{IDF}(t, D) = \log \left( \frac{N}{| \{ d \in D : t \in d \} |} \right)$$
+    - where:
+      - $N$ is the total number of documents.
+      - $| \{ d \in D : t \in d \} |$ is the number of documents containing the term $t$.
+    - Example:
+      - If the corpus contains $10,000$ documents, and the term `data` appears in $100$ of these documents, the inverse document frequency IDF for `data` would be:
+      - $IDF(data, D) = \log(10000 / 100) = \log(100) = 2$
+
+  - #### **Calculating TF-IDF:**
+    - The TF-IDF score for a term $t$ in a document $d$ is given by:
+      $$\text{TF-IDF}(t, d, D) = \text{TF}(t, d) \times \text{IDF}(t, D)$$
+    - Example:
+      - Using the previous values:
+      - $TF(data, d) = 0.03$
+      - $IDF(data, D) = 2$
+      - The TF-IDF score for `data` in the document would be:
+      - $TF-IDF(data, d, D) = 0.03 * 2 = 0.06$
+
+- Advantages:
+  - 1. Simple and easy to understand
+  - 2. Effective in identifying relevant terms and their weights
+  - 3. Distinguishes between common and rare terms
+  - 4. Language-independent
+
+- Limitations:
+  - 1. Doesn't consider semantics or term context
+  - 2. May struggle with very long documents due to term frequency saturation. In lengthy documents, even insignificant terms can surface frequently, resulting in elevated and saturated term frequencies. Consequently, TF-IDF may encounter challenges in effectively distinguishing and assigning significant weights to important terms.
+  - 3. Ignores term dependencies and phrase
+  - 4. Needs large document collections for reliable IDF
+
+``` python
 from collections import Counter
 
 def calculate_tf_idf(corpus):
@@ -1071,37 +1077,7 @@ for doc_index, doc_scores in tfidf_scores.items():
     print(f"Document {doc_index}:")
     for term, score in doc_scores.items():
         print(f"{term}: {score:.3f}")
-```
-```
-Document 1:
-This: 0.500
-is: 0.312
-document: 0.250
-1.: 0.312
-It: 0.500
-contains: 0.500
-some: 0.312
-terms.: 0.312
-Document 2:
-Document: 0.312
-2: 0.500
-has: 0.500
-different: 0.500
-terms: 0.250
-than: 0.500
-document: 0.250
-1.: 0.312
-Document 3:
-Document: 0.250
-3: 0.400
-is: 0.250
-another: 0.400
-example: 0.400
-document: 0.200
-with: 0.400
-some: 0.250
-common: 0.400
-terms.: 0.250
+
 ```
 
 --- 

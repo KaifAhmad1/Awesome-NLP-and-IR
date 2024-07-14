@@ -711,6 +711,8 @@ $$
 
 These decoding strategies provide various methods to enhance the efficiency and performance of large language models, each with its unique strengths and considerations.
 
+--- 
+
 #### Graph-Level Optimization
 
 ##### Kernel Fusion
@@ -753,11 +755,12 @@ Kernel fusion combines multiple operations into a single kernel, resulting in:
 3. **Feed-Forward Networks**: Fusing dense layers, activation functions, and dropout operations.
 
 
+--- 
+
 ### Challenges and Solutions in System-Level Optimization
 
 System-level optimization addresses numerous challenges in memory management, continuous batching, scheduling strategies, distributed systems optimization, and hardware accelerator design. Below is a detailed overview of these challenges and their corresponding solutions.
 
----
 
 #### 1. Memory Management
 
@@ -783,7 +786,6 @@ Efficiently managing memory to minimize wastage and fragmentation, particularly 
   Implement token-level or chunk-based storage for the KV cache.
   - **Benefit**: Enhances cache utilization by providing more precise control over memory allocation, making it possible to use smaller memory segments more effectively.
 
----
 
 #### 2. Continuous Batching
 
@@ -804,7 +806,6 @@ Managing the trade-off between workload balancing and latency reduction when han
   Batch requests at the iteration level, releasing resources after each iteration.
   - **Benefit**: Ensures prompt resource utilization by not holding resources idle between iterations, which improves throughput and reduces response times.
 
----
 
 #### 3. Scheduling Strategies
 
@@ -829,7 +830,6 @@ Optimizing task scheduling to minimize latency and maximize throughput.
   Implement multi-level feedback queues (MLFQ) to predict request completion times and adjust task priorities dynamically.
   - **Benefit**: Enhances efficiency by preemptively scheduling tasks based on their progress and estimated completion times, minimizing overall latency and maximizing throughput.
 
----
 
 #### 4. Distributed Systems Optimization
 
@@ -850,7 +850,6 @@ Managing resources efficiently in a distributed system to handle dynamic workloa
   Optimize instance selection and migration strategies in cloud environments.
   - **Benefit**: Dynamically allocate resources based on current workloads, ensuring high availability and optimal performance even during peak demand periods.
 
----
 
 #### 5. Hardware Accelerator Design
 
@@ -871,4 +870,3 @@ Improving the performance and energy efficiency of hardware accelerators used in
   Develop algorithms that leverage specific hardware features, such as FPGAs (Field-Programmable Gate Arrays).
   - **Benefit**: Enhances performance by ensuring algorithms are designed to take full advantage of the capabilities of the hardware, particularly for memory-intensive tasks.
 
----

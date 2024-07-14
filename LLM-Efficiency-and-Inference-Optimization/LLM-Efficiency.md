@@ -88,6 +88,8 @@ Output organization techniques structure the generation process, allowing for pa
 
 Model-level optimization refers to techniques aimed at improving the efficiency, speed, and resource utilization of large language models (LLMs) during both training and inference phases. The goal is to achieve high-performance results while reducing computational costs, memory requirements, and energy consumption. This optimization typically involves refining model architectures, enhancing computational efficiency, and employing strategies like model compression.
 
+--- 
+
 ### Efficient Structure Design
 
 Efficient structure design focuses on optimizing the architecture of LLMs to reduce computational complexity and memory usage while maintaining or improving performance. This involves intricate adjustments to both feed-forward networks (FFNs) and attention mechanisms, which are fundamental components of transformer-based models.
@@ -187,6 +189,7 @@ Switch Transformers are a variant of MoE that optimize the routing of tokens to 
     
 By employing these advanced techniques, LLMs can achieve greater efficiency and effectiveness, making them more practical and powerful for real-world applications.
 
+--- 
 
 ### Attention Mechanisms
 
@@ -256,6 +259,8 @@ Attention mechanisms manage information flow across tokens in a sequence, essent
   - **Advantages:**
     - **Optimized Performance:** Achieves comparable results to traditional attention mechanisms with lower computational and memory costs.
     - **Real-Time Processing:** Suitable for applications that require fast, real-time processing or are deployed on hardware with limited resources.
+
+--- 
 
 ### Transformer Alternatives
 
@@ -407,7 +412,6 @@ xLSTM organizes these advancements into cohesive residual blocks, which are stac
 xLSTM improves storage management and computational efficiency, making it ideal for applications requiring extensive memory and parallel processing capabilities.
 
 
-
 #### Funnel-Transformer
 
 The Funnel-Transformer represents a significant evolution in transformer-based architectures, addressing key challenges of computational efficiency and scalability in natural language processing (NLP). Integrating innovative sequence compression techniques and efficient resource utilization enhances performance and practicality across a range of NLP tasks.
@@ -454,6 +458,7 @@ Enhances computational efficiency by diagonalizing transition matrices and optim
 - **S4 (Structured Sparse Stability Selection)**: Diagonalizes transition matrices to reduce computational complexity, improving convergence rates and model stability.
 - **Diagonalized S4 (DSS)**: Further refines S4 by incorporating diagonal elements into transition matrices, enhancing efficiency for sequential modeling tasks.
 
+--- 
 
 ### Model Compression Techniques
 

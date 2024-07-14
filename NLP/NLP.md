@@ -1557,51 +1557,83 @@ FastText, developed by Facebook AI Research (FAIR), is a popular technique for w
 
 
 #### ELMo
-  ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
- - #### **How ELMo Works:**
-   - #### **Contextualized Embeddings/Dynamic Representations:**
-     Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank.`
-   - #### **Deep, Bi-directional Language Model:**
-     - **Bi-directional LSTMs:** ELMo uses a deep bi-directional Long Short-Term Memory (bi-LSTM) network to model the word sequences. It reads the text both forward (left-to-right) and backward (right-to-left), capturing context from both directions.
-     - **Layered Approach:** ELMo's architecture consists of multiple layers of LSTMs. Each layer learns increasingly complex representations, from surface-level characteristics to deeper syntactic and semantic features.
-   - #### **Pre-trained on Large Corpora:**
-     - **Massive Pre-training:** ELMo models are pre-trained on large datasets, such as the 1 Billion Word Benchmark, to learn rich linguistic patterns and structures.
-     - **Fine-tuning for Specific Tasks:** After pre-training, these embeddings can be fine-tuned on specific NLP tasks, allowing ELMo to adapt to the nuances of the target task.
+ELMo, short for `Embeddings from Language Models`, is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
 
-   - Advantages:
-       - 1. Produces context-specific embeddings for more accurate word meaning.
-       - 2. Captures complex syntactic and semantic information.
-       - 3. Outperforms static embeddings on various NLP tasks
+#### How ELMo Works
 
-   - Limitations:
-      - 1. Requires significant resources for training and inference.
-      - 2. Pre-training and fine-tuning are time-consuming.
-      - 3. Large memory requirements pose deployment challenges.
-     
-- [Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
+##### Contextualized Embeddings/Dynamic Representations
+Unlike static embeddings that assign a single vector to each word regardless of context, ELMo generates different vectors for a word depending on its usage in different sentences. This means that the word `bank` will have different embeddings when used in `river bank` and `savings bank`.
 
---- 
+##### Deep, Bi-directional Language Model
+- **Bi-directional LSTMs:** ELMo uses a deep bi-directional Long Short-Term Memory (bi-LSTM) network to model the word sequences. It reads the text both forward (left-to-right) and backward (right-to-left), capturing context from both directions.
+- **Layered Approach:** ELMo's architecture consists of multiple layers of LSTMs. Each layer learns increasingly complex representations, from surface-level characteristics to deeper syntactic and semantic features.
+
+##### Pre-trained on Large Corpora
+- **Massive Pre-training:** ELMo models are pre-trained on large datasets, such as the 1 Billion Word Benchmark, to learn rich linguistic patterns and structures.
+- **Fine-tuning for Specific Tasks:** After pre-training, these embeddings can be fine-tuned on specific NLP tasks, allowing ELMo to adapt to the nuances of the target task.
+
+##### Architecture
+- **Token Embeddings:** The input tokens are first embedded using a character-level convolutional neural network (CNN) to capture morphological information.
+- **Contextualization:** The token embeddings are passed through a bi-directional LSTM to generate contextualized representations.
+- **Layer Aggregation:** The final ELMo representation is a linear combination of the representations from each LSTM layer, with task-specific weights.
+
+##### Training Procedure
+- **Character-Level Embeddings:** Character convolutions are used to convert the input text into initial word embeddings.
+- **Bi-directional LSTM Layers:** Two layers of bi-LSTM are used to capture contextual information in both forward and backward directions.
+- **Objective Function:** ELMo is trained using a language modeling objective where the model predicts the next word in a sequence given the previous context (forward) and the previous word given the next context (backward).
+
+##### Advantages
+1. Produces context-specific embeddings for more accurate word meaning.
+2. Captures complex syntactic and semantic information.
+3. Outperforms static embeddings on various NLP tasks.
+
+##### Limitations
+1. Requires significant resources for training and inference.
+2. Pre-training and fine-tuning are time-consuming.
+3. Large memory requirements pose deployment challenges.
+
+[Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
+
+---
 
 #### BERT
-  BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
- - #### **How BERT Works:**
-   - #### **Bidirectional Contextualization:**
-     Unlike traditional models that read text sequentially, BERT uses Transformers to process text from both the left and the right simultaneously, capturing the full context of each word.
-   - #### **Transformer Architecture:**
-     - **Self-Attention Mechanism:** BERT's architecture relies on the self-attention mechanism within Transformers, which allows the model to weigh the importance of different words in a sentence, regardless of their position.
-     - **Layers of Transformers:** BERT consists of multiple layers of Transformer encoders, each providing a progressively richer representation of the text.
-   - #### **Pre-training and Fine-tuning:**
-     - **Pre-training Tasks:** BERT is pre-trained on large corpora using two unsupervised tasks: `Masked Language Modeling (MLM)` and `Next Sentence Prediction (NSP)`. MLM involves predicting masked words in a sentence, while NSP involves predicting the relationship between two sentences.
-     - **Fine-tuning:** After pre-training, BERT can be fine-tuned on specific NLP tasks (e.g., question answering, sentiment analysis) by adding a task-specific output layer.
-   - Advantages:
-       - 1. Produces embeddings that consider the context from both directions
-       - 2. Captures intricate syntactic and semantic details.
-       - 3. Excels in a wide range of NLP tasks, setting new performance benchmarks.
-   - Limitations:
-      - 1. Requires substantial computational resources for both training and inference.
-      - 2. Pre-training on large datasets is time-consuming and computationally expensive.
-      - 3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
-- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+BERT, short for `Bidirectional Encoder Representations from Transformers`, is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
+
+#### How BERT Works
+
+##### Bidirectional Contextualization
+Unlike traditional models that read text sequentially, BERT uses Transformers to process text from both the left and the right simultaneously, capturing the full context of each word.
+
+##### Transformer Architecture
+- **Self-Attention Mechanism:** BERT's architecture relies on the self-attention mechanism within Transformers, which allows the model to weigh the importance of different words in a sentence, regardless of their position.
+- **Layers of Transformers:** BERT consists of multiple layers of Transformer encoders, each providing a progressively richer representation of the text.
+
+##### Pre-training and Fine-tuning
+- **Pre-training Tasks:** BERT is pre-trained on large corpora using two unsupervised tasks: `Masked Language Modeling (MLM)` and `Next Sentence Prediction (NSP)`. MLM involves predicting masked words in a sentence, while NSP involves predicting the relationship between two sentences.
+- **Fine-tuning:** After pre-training, BERT can be fine-tuned on specific NLP tasks (e.g., question answering, sentiment analysis) by adding a task-specific output layer.
+
+
+##### Architecture
+- **Input Representation:** The input to BERT includes token embeddings, segment embeddings, and positional embeddings. Token embeddings represent the words in the sentence, segment embeddings distinguish between different sentences in a pair, and positional embeddings represent the position of each token in the sequence.
+- **Transformer Encoders:** BERT uses a stack of Transformer encoders. Each encoder layer consists of a multi-head self-attention mechanism and a feed-forward neural network.
+- **Self-Attention:** The self-attention mechanism allows BERT to focus on different parts of the sentence when computing the representation for each word. Multi-head attention means multiple attention mechanisms run in parallel, providing different representations at different positions.
+
+##### Training Procedure
+- **Masked Language Modeling (MLM):** BERT randomly masks some tokens in the input sequence and trains the model to predict the masked tokens. This forces the model to rely on the context provided by surrounding tokens.
+- **Next Sentence Prediction (NSP):** BERT is trained on pairs of sentences and learns to predict if the second sentence in the pair is the actual next sentence in the original document. This task helps the model understand sentence relationships.
+
+##### Advantages
+1. Produces embeddings that consider the context from both directions.
+2. Captures intricate syntactic and semantic details.
+3. Excels in a wide range of NLP tasks, setting new performance benchmarks.
+
+##### Limitations
+1. Requires substantial computational resources for both training and inference.
+2. Pre-training on large datasets is time-consuming and computationally expensive.
+3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
+
+[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+
 
 
 ### Encooding vs Embedding 

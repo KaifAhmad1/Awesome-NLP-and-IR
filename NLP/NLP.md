@@ -2077,24 +2077,24 @@ output = rnn(x, Wx, Wh, Wy, b, by)
 print("Output:", output)
 
 ``` 
-- ### **Different types of RNNs:**
+### Different types of RNNs
   Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
-   - #### 1. **Vanilla RNNs\RNNs:**
+   ##### 1. **Vanilla RNNs\RNNs:**
      I have talked about above. 
-   - #### 2. **LSTMs:**
-   - #### 3. **GRUs:**
-   - #### 4. **Bidirectional LSTMs and GRUs:**
+   ##### 2. **LSTMs:**
+   ##### 3. **GRUs:**
+   ##### 4. **Bidirectional LSTMs and GRUs:**
   
-- ### **Long Short-Term Memory (LSTM) Networks:**
+  ### Long Short-Term Memory (LSTM) Networks
   A Long Short-Term Memory (LSTM) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. LSTMs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting.
-  - #### **Architecture:**
-    The basic architecture of an LSTM network consists of the following components:
+   #### Architecture
+   The basic architecture of an LSTM network consists of the following components:
     - **Input Gate:** This gate is responsible for controlling the flow of new information into the cell state. It consists of a sigmoid layer and a point-wise multiplication operation.
     - **Forget Gate:** This gate determines what information to discard from the previous cell state. It also consists of a sigmoid layer and a point-wise multiplication operation.
     - **Cell State:** This is the internal memory of the LSTM network, which stores information over long periods.
     - **Output Gate:** This gate determines the output of the LSTM network based on the cell state and the hidden state.
     - **Hidden State:** This is the internal state of the LSTM network, which captures short-term dependencies in the data.
-   - #### **Mathematically:**
+    #### Mathematically
      The LSTM network can be represented mathematically as follows:
      $$\text{Input Gate: }i = σ(Wi * x + Ui * h + bi)$$
      $$\text{Forget Gate: }f = σ(Wf * x + Uf * h + bf)$$
@@ -2162,16 +2162,16 @@ Output: [[0.54412203]]
 
 --- 
 
-- ### **Gated Recurrent Unit(GRU) Networks:**
+### Gated Recurrent Unit(GRU) Networks
   A Gated Recurrent Unit (GRU) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. GRUs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting. GRUs are a simplified version of Long Short-Term Memory (LSTM) networks, with fewer gates and a more streamlined architecture.
-   - #### **Architecture:**
-     The basic architecture of a GRU consists of the following components:
+  #### Architecture
+   The basic architecture of a GRU consists of the following components:
       - **Reset Gate:** This gate determines what information to discard from the previous hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
       - **Update Gate:** This gate determines what information to update in the hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
       - **Hidden State:** This is the internal state of the GRU network, which captures short-term dependencies in the data.
       - **Output:** This is the output of the GRU network, which is calculated based on the hidden state.
-   - #### **Mathematically:**
-     The GRU network can be represented mathematically as follows
+ #### Mathematically
+ The GRU network can be represented mathematically as follows
      $$\text{Reset Gate: }r = σ(Wr * x + Ur * h + br)$$
      $$\text{Update Gate: }z = σ(Wz * x + Uz * h + bz)$$
      $$\text{Hidden State: }h = (1 - z) * h_prev + z * tanh(W * x + U * h + b)$$
@@ -2223,17 +2223,14 @@ b = np.array([[0.3]])
 output = gru(x, Wz, Uz, Wr, Ur, W, U, bz, br, b)
 print("Output:", output)
 ```
-```
-Output: [[0.40272816]]
-```
-- ### **Bidirectional RNNs:**
+### Bidirectional RNNs
   Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
-   - #### **Architecture:**
-     BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
-    - #### **Types:**
+#### Architecture
+ BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
+    -#### Types
       - **LSTM (Long Short-Term Memory):** Effective for learning long-term dependencies, ideal for tasks like language modeling and speech recognition.
       - **GRU (Gated Recurrent Unit):** Simpler and more computationally efficient than LSTMs, suitable for tasks like text classification and sentiment analysis.
-    - #### Mathematical Representation:
+    #### Mathematical Representation:
       $$\text{Forward RNN: }h_forward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
       $$\text{Backward RNN: }h_backward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
       $$\text{Output: }y = Concat(h_forward, h_backward)$$
@@ -2271,142 +2268,117 @@ model.fit(x, x, epochs=10)
 y_pred = model.predict(x)
 print("Output:", y_pred)
 ```
-```
-Epoch 1/10
-1/1 [==============================] - 14s 14s/step - loss: 0.1366
-Epoch 2/10
-1/1 [==============================] - 0s 21ms/step - loss: 0.1362
-Epoch 3/10
-1/1 [==============================] - 0s 21ms/step - loss: 0.1358
-Epoch 4/10
-1/1 [==============================] - 0s 23ms/step - loss: 0.1353
-Epoch 5/10
-1/1 [==============================] - 0s 28ms/step - loss: 0.1349
-Epoch 6/10
-1/1 [==============================] - 0s 19ms/step - loss: 0.1345
-Epoch 7/10
-1/1 [==============================] - 0s 20ms/step - loss: 0.1341
-Epoch 8/10
-1/1 [==============================] - 0s 23ms/step - loss: 0.1337
-Epoch 9/10
-1/1 [==============================] - 0s 22ms/step - loss: 0.1333
-Epoch 10/10
-1/1 [==============================] - 0s 21ms/step - loss: 0.1328
-1/1 [==============================] - 2s 2s/step
-Output: [[[ 0.00630986  0.01720074  0.01832638  0.00959984  0.02938063
-   -0.00989505  0.01275288  0.04869077  0.00156058 -0.00256061
-   -0.01736601 -0.05287949  0.05367433  0.06530365 -0.03861162
-   -0.04156534  0.09283099  0.03927685  0.05287885 -0.03797476]
-  [ 0.0087546   0.01840007  0.02062777  0.01294859  0.02938948
-   -0.00448973  0.01563004  0.04745301  0.00184349  0.00214797
-   -0.00804165 -0.0242324   0.03008071  0.03599263 -0.01945202
-   -0.01689252  0.04573838  0.02196954  0.02946377 -0.01660443]
-  [ 0.01434947  0.02994058  0.03340437  0.0187251   0.04273633
-   -0.0080414   0.02500243  0.07809883  0.00132269  0.00235718
-   -0.0058728  -0.02651676  0.02246626  0.02886551 -0.01656632
-   -0.02470564  0.04360295  0.01756983  0.02010829 -0.01958983]]]
-```
 
 --- 
 
-- ### **Transformers:**
-  Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
-- #### **Secret Sauce: Self-Attention Mechanism**
-  Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
-  - #### **Steps:**
-    - #### 1. **Input Sentence:**
-      We start with the sentence: `She opened the door to the garden.`
-    - #### 2. **Convert Words to Vectors:**
-      We start with the sentence: `She opened the door to the garden.` Each word in this sentence is represented as a vector after being passed through an embedding layer. Let's use simplified vector representations for clarity:
-      - She: $[1, 0, 0]$
-      - opened: $[0, 1, 0]$
-      - the: $[0, 0, 1]$
-      - door: $[1, 1, 0]$
-      - to: $[1, 0, 1]$
-      - the: $[0, 1, 1]$
-      - garden: $[1, 1, 1]$
-    - #### 3. **Creating Q, K, and V Matrices:**
-      For each word, we create three vectors: $Query (Q), Key (K)$, and $Value (V)$. These vectors are derived by multiplying the word vector by three different weight matrices $(W_Q, W_K, W_V)$.
-       - **Query (Q):** Represents the word we are currently processing.
-       - **Key (K):** Represents the words we compare the current word against.
-       - **Value (V):** Represents the actual content of the words
-         -  These vectors are derived by multiplying the word vector by weight matrices $(W_Q, W_K, W_V)$.
-         - Example for "opened":
-          - $Q_opened = [0, 1, 0] * W_Q$
-          - $K_opened = [0, 1, 0] * W_K$
-          - $V_opened = [0, 1, 0] * W_V$
-     - #### 4. **Calculating Attention Scores:** Dot product of the Query vector of the word with Key vectors of all words.
-      - Example for `opened`:
-        - Score for $She = Q_opened · K_She$
-        - Score for $opened = Q_opened · K_opened$
-        - Score for $the = Q_opened · K_the$
-     - #### 5. **Applying Softmax:**
-        - Pass attention scores through the Softmax function to get attention weights.
-          - Softmax formula: $$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$$
-     - #### 6. **Weighted Sum of Values:**
-        - Multiply Value vectors by their corresponding attention weights.
-          - Example for `opened`:
-          - $$Weighted sum = softmax(Scores) * [V_She, V_opened, V_the, V_door, V_to, V_the, V_garden]$$
-  - By iteratively performing these steps for all words in the input sentence, the self-attention mechanism captures intricate relationships and dependencies across the entire sequence, facilitating effective sequence-to-sequence processing tasks like language translation or text generation.
+### Transformers
+Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
 
-- ### **Key Components of Transformer Architecture:** 
+#### Secret Sauce: Self-Attention Mechanism
+Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
+
+#### Steps
+1. #### Input Sentence
+   We start with the sentence: `She opened the door to the garden.`
+
+2. #### Convert Words to Vectors
+   Each word in the sentence is represented as a vector after being passed through an embedding layer. Let's use simplified vector representations for clarity:
+   - She: $[1, 0, 0]$
+   - opened: $[0, 1, 0]$
+   - the: $[0, 0, 1]$
+   - door: $[1, 1, 0]$
+   - to: $[1, 0, 1]$
+   - the: $[0, 1, 1]$
+   - garden: $[1, 1, 1]$
+
+3. #### Creating Q, K, and V Matrices
+   For each word, we create three vectors: Query (Q), Key (K), and Value (V). These vectors are derived by multiplying the word vector by three different weight matrices $(W_Q, W_K, W_V)$.
+   - **Query (Q):** Represents the word we are currently processing.
+   - **Key (K):** Represents the words we compare the current word against.
+   - **Value (V):** Represents the actual content of the words.
+   - Example for "opened":
+     - $Q_{\text{opened}} = [0, 1, 0] \times W_Q$
+     - $K_{\text{opened}} = [0, 1, 0] \times W_K$
+     - $V_{\text{opened}} = [0, 1, 0] \times W_V$
+
+4. #### Calculating Attention Scores
+   Dot product of the Query vector of the word with Key vectors of all words.
+   - Example for `opened`:
+     - Score for $She = Q_{\text{opened}} \cdot K_{\text{She}}$
+     - Score for $opened = Q_{\text{opened}} \cdot K_{\text{opened}}$
+     - Score for $the = Q_{\text{opened}} \cdot K_{\text{the}}$
+
+5. #### Applying Softmax
+   Pass attention scores through the Softmax function to get attention weights.
+   - Softmax formula: $$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$$
+
+6. #### Weighted Sum of Values
+   Multiply Value vectors by their corresponding attention weights.
+   - Example for `opened`:
+     - $$\text{Weighted sum} = \text{softmax}(\text{Scores}) \times [V_{\text{She}}, V_{\text{opened}}, V_{\text{the}}, V_{\text{door}}, V_{\text{to}}, V_{\text{the}}, V_{\text{garden}}]$$
+
+By iteratively performing these steps for all words in the input sentence, the self-attention mechanism captures intricate relationships and dependencies across the entire sequence, facilitating effective sequence-to-sequence processing tasks like language translation or text generation.
+
+### Key Components of Transformer Architecture
 The Transformer architecture consists of an encoder and a decoder, both composed of multiple identical layers. Each layer in both the encoder and decoder contains two main sub-layers: a multi-head self-attention mechanism and a position-wise fully connected feed-forward network.
-  - #### **Encoder:**
-    The encoder processes the input sequence and generates a set of feature representations for each element in the sequence. It consists of:
-    - **Input Embedding:** Converts input tokens into dense vectors.
-    - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order.
-    - **Multi-Head Self-Attention:** Allows the model to focus on different parts of the sequence simultaneously. Each head processes the sequence differently, and the results are concatenated and linearly transformed.
-    - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
-    - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
-    - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
-   - #### **Mathematically:**
-     Mathematically, for each sub-layer:
-     - **Self-Attention:**
-     $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
-     - **Where:**
-       - $Q$, $K$, and $V$ are the query, key, and value matrices, respectively.
-       - $d_k$ is the dimension of the key/query vectors.
-     - **Feed-Forward Network:**
-     $$\text{FFN}(x) = \text{max}(0, xW_1 + b_1) W_2 + b_2$$
 
-  - #### **Decoder:**
-    The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
-    - **Output Embedding:** Converts output tokens into dense vectors.
-    - **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order. Similar to the encoder's positional encoding.
-    - **Masked Multi-Head Self-Attention:** Prevents attending to future tokens by masking them.
-    - **Multi-Head Attention:** Attends to the encoder's output representations.
-    - **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
-    - **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
-    - **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
-   - #### **Mathematically:** Mathematically, for each sub-layer:
-     - **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
-     $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
-     - **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
-     $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W_O$$
-     - **Where:**
+#### Encoder
+The encoder processes the input sequence and generates a set of feature representations for each element in the sequence. It consists of:
+- **Input Embedding:** Converts input tokens into dense vectors.
+- **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order.
+- **Multi-Head Self-Attention:** Allows the model to focus on different parts of the sequence simultaneously. Each head processes the sequence differently, and the results are concatenated and linearly transformed.
+- **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
+- **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
+- **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
+
+Mathematically, for each sub-layer:
+- **Self-Attention:**
+  $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
+  - Where:
+    - $Q$, $K$, and $V$ are the query, key, and value matrices, respectively.
+    - $d_k$ is the dimension of the key/query vectors.
+- **Feed-Forward Network:**
+  $$\text{FFN}(x) = \text{max}(0, xW_1 + b_1) W_2 + b_2$$
+
+#### Decoder
+The decoder generates the output sequence, one token at a time, using the encoded representations and the previously generated tokens. It consists of:
+- **Output Embedding:** Converts output tokens into dense vectors.
+- **Positional Encoding:** Adds information about the position of each token in the sequence, since the model does not inherently capture sequence order. Similar to the encoder's positional encoding.
+- **Masked Multi-Head Self-Attention:** Prevents attending to future tokens by masking them.
+- **Multi-Head Attention:** Attends to the encoder's output representations.
+- **Feed-Forward Network:** Applies two linear transformations with a ReLU activation in between, applied to each position separately.
+- **Layer Normalization:** Normalizes the output of each sub-layer (attention and feed-forward).
+- **Residual Connection:** Adds the input of each sub-layer to its output, aiding in training deeper networks.
+
+Mathematically, for each sub-layer:
+- **Attention Mechanism:** The attention mechanism allows the model to weigh the importance of different tokens when processing a sequence. In the Transformer, the scaled dot-product attention is used:
+  $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
+- **Multi-Head Attention:** To allow the model to focus on different positions and features, the Transformer uses multi-head attention:
+  $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W_O$$
+  - Where:
     $$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
 
-   - Advantages:
-       - 1. **Parallelization:** Unlike RNNs, Transformers can process all tokens in a sequence simultaneously, allowing for faster training.
-       - 2. **Long-Range Dependencies:** The self-attention mechanism can capture long-range dependencies more effectively than RNNs.
-       - 3. **Scalability:** Scales well with larger datasets and model sizes.
-   - Disadvantages\Limitations:
-      - 1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
-      - 2. **Memory Usage:** Requires significant memory to store the attention weights.
-       
- --- 
+#### Advantages:
+1. **Parallelization:** Unlike RNNs, Transformers can process all tokens in a sequence simultaneously, allowing for faster training.
+2. **Long-Range Dependencies:** The self-attention mechanism can capture long-range dependencies more effectively than RNNs.
+3. **Scalability:** Scales well with larger datasets and model sizes.
 
-- **Transformer Architectures: A Detailed Comparison**
+#### Disadvantages/Limitations:
+1. **Computational Cost:** Self-attention has a quadratic complexity with respect to the sequence length, making it computationally expensive for long sequences.
+2. **Memory Usage:** Requires significant memory to store the attention weights.
 
+---
+
+### Transformer Architectures: A Detailed Comparison
 Transformers have become a dominant architecture in the field of natural language processing (NLP), with various flavours and applications. Below is a comparison of the key differences between the three main transformer architectures:
 
 | **Aspect**                           | **Encoder-Style Transformer**                                     | **Decoder-Style Transformer**                                     | **Encoder-Decoder Style Transformer**                               |
 |--------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
 | **Structure**                        | Multiple layers of encoders, without any decoders                 | Multiple layers of decoders, without any encoders                 | Separate stacks of encoders and decoders                           |
 | **Primary Usage**                    | Representation learning and classification tasks                  | Generative tasks (e.g., autoregressive text generation)           | Sequence-to-sequence tasks (e.g., translation, summarization)      |
-| **Examples**               | BERT , RoBERTa, DistilBERT   | GPT Series by OpenAI, Llama Series by Meta, Mistral Etc.                          | Transformer, BART, T5          |
+| **Examples**                         | BERT, RoBERTa, DistilBERT                                         | GPT Series by OpenAI, LLaMA Series by Meta, Mistral, etc.         | Transformer, BART, T5                                              |
 | **Attention Mechanism**              | Self-attention within each encoder layer                          | Self-attention within each decoder layer, with masked attention   | Self-attention in encoders, cross-attention in decoders            |
-| **Training Objective**               | Masked language modeling and next sentence prediction             | Causal Language modeling (predicting the next token)                     | Supervised learning with source and target sequences               |
+| **Training Objective**               | Masked language modeling and next sentence prediction             | Causal language modeling (predicting the next token)              | Supervised learning with source and target sequences               |
 | **Advantages**                       | - Good at capturing bidirectional context                         | - Effective at generating coherent text                           | - Effective at learning mappings between input and output sequences|
 |                                      | - Effective for understanding tasks (e.g., sentiment analysis)    | - Can handle long text generation                                 | - Handles both input and output dependencies effectively           |
 |                                      | - Pre-training can be easily adapted to various downstream tasks  |                                                                   | - Versatile for various tasks                                      |
@@ -2415,6 +2387,4 @@ Transformers have become a dominant architecture in the field of natural languag
 | **Applications**                     | - Text classification                                             | - Text generation                                                 | - Machine translation                                              |
 |                                      | - Named entity recognition                                        | - Dialogue systems                                                | - Text summarization                                               |
 |                                      | - Sentence embedding                                              | - Story completion                                                | - Speech recognition                                               |
-
-This table provides a clear comparison of the different transformer architectures, their use cases, techniques, advantages, and limitations.
 

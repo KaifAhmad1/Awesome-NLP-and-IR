@@ -815,29 +815,12 @@ print(y_pred)
 
 ## **Representation Learning in NLP**
 Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
-  - ### **Encoding \ Sparse Vectors:**
-    In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: $104, 101, 108, 108, 111$.
-  - ### **Embedding \ Dense Vectors:**
-    In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like $[0.25, 0.8, -0.5, ...]$, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
-
-| Feature             | Encoding                                                | Embedding                                               |
-| :------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
-| **Definition**      | Convert text to numerical forms (e.g., one-hot, TF-IDF). | Represent words in continuous vector space.            |
-| **Purpose**         | Prepare text for ML models.                              | Capture semantic meanings in text.                     |
-| **Dimensionality**  | Fixed (vocabulary size).                                 | Variable (semantic dimensionality).                    |
-| **Data Type**       | Discrete (words/characters).                            | Continuous (semantic vectors).                         |
-| **Transformation**  | Tokenization, vectorization.                             | Trained on large text corpora with NNs.                |
-| **Representation**  | Numeric/sparse vectors.                                  | Dense vectors capture semantic meanings.               |
-| **Application**     | Classification, Name Entity Recognition.                     | Semantic search, Sentiment Analysis, Summarization.                    |
-| **Complexity**      | Simple algorithms.                                      | Complex models, resource-intensive.                    |
-| **Information Preservation** | Preserves basic structure.                          | Retains semantic and contextual info.                  |
-| **Examples**        | Bag-of-Words, TF-IDF, Integer Encoding.                                   | Word2Vec, GloVe,FasText. ELMo.                                 |
-| **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
-| **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
+### Encoding\Sparse Vectors
+   In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: $104, 101, 108, 108, 111$.
 
 --- 
 
-- ### **One Hot Encoding:**
+#### One Hot Encoding
   One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
    - Consider a dataset containing information about countries and their official languages:
       - **Countries**: USA, France, Germany, Japan, India
@@ -899,7 +882,7 @@ India: [0, 0, 0, 0, 1]
 
 --- 
 
-- ### **Integer Encoding:**
+#### Integer Encoding
   Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
    - **Steps:**
       1. **Assign integers to each unique category:**
@@ -941,7 +924,7 @@ print(encoded)
 
 --- 
 
-- ### **Bag of words:**
+#### Bag of words
   The Bag of Words (BoW) model in NLP converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
   -  This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
   -  #### **Process Steps:**
@@ -1013,7 +996,7 @@ Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'ha
 --- 
 
 
-- ### **TF-IDF:**
+#### TF-IDF
   TF-IDF is a numerical statistic used in information retrieval and text mining. It reflects the importance of a word in a document relative to a collection of documents (corpus). TF-IDF is often used as a weighting factor in search engine algorithms and text analysis.
    - #### **Components of TF-IDF:**
       - #### **Term Frequency (TF):** Measures how frequently a term occurs in a document.
@@ -1123,7 +1106,7 @@ terms.: 0.250
 
 --- 
 
-- ### **BM25 (Best Matching 25):**
+#### BM25 (Best Matching 25)
   BM25 (Best Matching 25) is a ranking function used in information retrieval to estimate the relevance of documents to a given search query. It is an extension of the TF-IDF weighting scheme, designed to address some of its limitations while retaining its simplicity and effectiveness.
    - #### **Components of BM25:**
       - #### **Term Frequency (TF):** Measures how frequently a term occurs in a document, similar to TF in TF-IDF.
@@ -1250,8 +1233,9 @@ terms.: 0.440
 
 --- 
 
-
-- ## **Embeddings in Representation Learning:**
+### Embedding\Dense Vectors
+   In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like $[0.25, 0.8, -0.5, ...]$, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
+#### Embeddings in Representation Learning
   In NLP, an `embedding` is a way of representing words, phrases, or even entire documents as continuous, dense vectors of numbers. These vectors capture the semantic meaning of the text in such a way that words or phrases with similar meanings are represented by similar vectors.
     - Example: Consider the words `king,` `queen,` `man,` and `woman.` In a well-trained embedding space, these words might be represented by the following vectors (these numbers are just illustrative examples):
         - king = $[0.25, 0.75, 0.10, 0.60]$
@@ -1260,7 +1244,7 @@ terms.: 0.440
         - woman = $[0.25, 0.70, 0.10, 0.55]$
     - In this vector space, the embeddings for `king` and `queen` are closer to each other than to `man` and `woman,` capturing the relationship between royalty. Similarly, the difference between `king` and `man` is similar to the difference between `queen` and `woman,` capturing the gender relationship.
 
-- ### **Word2Vec:**
+#### Word2Vec
   Word2vec is a popular technique in Natural Language Processing (NLP) that transforms words into numerical vectors, capturing their meanings and relationships. Developed by Tomas Mikolov and his team at Google in 2013, Word2vec comes in two main models: Continuous Bag-of-Words (CBOW) and Skip-Gram.
    - #### **How Word2vec Works:**
        - #### **Continuous Bag-of-Words (CBOW):**
@@ -1387,7 +1371,7 @@ Vector for 'word2vec': [-0.03828416  0.04326824 -0.01323479 -0.03898887 -0.01828
 --- 
 
 
-- ### **GloVe: Global Vectors for Word Representation:**
+#### GloVe: Global Vectors for Word Representation
    GloVe (Global Vectors for Word Representation) is an advanced technique in Natural Language Processing (NLP) that transforms words into numerical vectors by leveraging global word-word co-occurrence statistics from a corpus. Developed by Christopher D. Manning at Stanford University, GloVe provides rich semantic representations of words by capturing their contextual relationships.
   - #### **How GloVe Works:**
       - #### **Word Co-occurrence Matrix:**
@@ -1550,7 +1534,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 --- 
 
-- ### **FastText:**
+#### FastText
   FastText, developed by Facebook AI Research (FAIR), is another popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information. This approach is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
   - FastText works by representing each word as a bag of character n-grams, in addition to the word itself. This allows FastText to capture the morphological structure of words, making it more robust, especially for tasks involving rare words or languages with rich morphology.
     - #### **How FastText Works:**
@@ -1596,7 +1580,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 --- 
 
 
-- ### **ELMo:**
+#### ELMo
   ELMo, short for `Embeddings from Language Models,` is a deep contextualized word representation technique developed by the Allen Institute for AI. Unlike traditional word embeddings like Word2Vec and FastText, which generate static embeddings, ELMo creates word representations that dynamically change based on the context in which the words appear. This approach significantly enhances the performance of various Natural Language Processing (NLP) tasks by providing a more nuanced understanding of words and their meanings.
  - #### **How ELMo Works:**
    - #### **Contextualized Embeddings/Dynamic Representations:**
@@ -1622,7 +1606,7 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 
 --- 
 
-- ### **BERT:**
+#### BERT
   BERT, short for `Bidirectional Encoder Representations from Transformers,` is a revolutionary language representation model developed by Google AI. Unlike previous models that process text in a unidirectional manner, BERT captures context from both directions simultaneously, providing a deeper understanding of language. This approach has set new benchmarks in various Natural Language Processing (NLP) tasks by offering more precise and comprehensive word representations.
  - #### **How BERT Works:**
    - #### **Bidirectional Contextualization:**
@@ -1642,6 +1626,29 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
       - 2. Pre-training on large datasets is time-consuming and computationally expensive.
       - 3. The large model size demands significant memory, complicating deployment in resource-constrained environments.
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+
+
+### Encooding vs Embedding 
+
+| Feature             | Encoding                                                | Embedding                                               |
+| :------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
+| **Definition**      | Convert text to numerical forms (e.g., one-hot, TF-IDF). | Represent words in continuous vector space.            |
+| **Purpose**         | Prepare text for ML models.                              | Capture semantic meanings in text.                     |
+| **Dimensionality**  | Fixed (vocabulary size).                                 | Variable (semantic dimensionality).                    |
+| **Data Type**       | Discrete (words/characters).                            | Continuous (semantic vectors).                         |
+| **Transformation**  | Tokenization, vectorization.                             | Trained on large text corpora with NNs.                |
+| **Representation**  | Numeric/sparse vectors.                                  | Dense vectors capture semantic meanings.               |
+| **Application**     | Classification, Name Entity Recognition.                     | Semantic search, Sentiment Analysis, Summarization.                    |
+| **Complexity**      | Simple algorithms.                                      | Complex models, resource-intensive.                    |
+| **Information Preservation** | Preserves basic structure.                          | Retains semantic and contextual info.                  |
+| **Examples**        | Bag-of-Words, TF-IDF, Integer Encoding.                                   | Word2Vec, GloVe,FasText. ELMo.                                 |
+| **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
+| **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
+
+
+
+
+
 
 ## **Hybrid Representation Learning (Sparse + Dense)**
 

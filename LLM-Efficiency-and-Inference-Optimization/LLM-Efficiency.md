@@ -714,96 +714,120 @@ Kernel fusion combines multiple operations into a single kernel, resulting in:
 
 ### Challenges and Solutions in System-Level Optimization
 
-System-level optimization involves tackling various challenges and implementing effective solutions in memory management, continuous batching, scheduling strategies, distributed systems optimization, and hardware accelerator design. Below is a detailed and structured overview of these challenges and solutions.
+System-level optimization addresses numerous challenges in memory management, continuous batching, scheduling strategies, distributed systems optimization, and hardware accelerator design. Below is a detailed overview of these challenges and their corresponding solutions.
 
 ---
 
 #### 1. Memory Management
 
-Efficiently managing memory to minimize wastage and fragmentation, especially for the KV (Key-Value) cache.
+Efficiently managing memory to minimize wastage and fragmentation, particularly in the context of the Key-Value (KV) cache.
+
+**Challenges**:
+
+- Memory wastage due to static allocation.
+- Fragmentation of memory, leading to inefficient utilization.
+- Ineffective handling of dynamic workloads.
 
 **Solutions**:
 
 - **Dynamic Allocation**:
-  - **Approach**: Allocate memory dynamically based on the estimated maximum generation length.
-  - **Benefit**: Minimizes memory wastage by scaling the allocation according to the actual needs of the application.
+  Allocate memory dynamically based on the estimated maximum generation length.
+  - **Benefit**: Reduces memory wastage by scaling the allocation according to real-time requirements, ensuring that only the necessary amount of memory is allocated.
 
 - **Paged Storage**:
-  - **Approach**: Divide memory into blocks (pages) and dynamically map the KV cache to these pages.
-  - **Benefit**: Reduces fragmentation and optimizes memory usage by ensuring that memory is allocated and deallocated in manageable units.
+  Divide memory into blocks (pages) and dynamically map the KV cache to these pages.
+  - **Benefit**: Minimizes fragmentation by managing memory in fixed-size pages, which simplifies allocation and deallocation processes.
 
 - **Fine-grained Storage**:
-  - **Approach**: Use token-level or chunk-based storage for the KV cache.
-  - **Benefit**: Maximizes cache utilization by allowing more granular control over memory allocation, ensuring that smaller memory segments can be used more effectively.
+  Implement token-level or chunk-based storage for the KV cache.
+  - **Benefit**: Enhances cache utilization by providing more precise control over memory allocation, making it possible to use smaller memory segments more effectively.
 
 ---
 
 #### 2. Continuous Batching
 
-Balancing workload and reducing latency while handling multiple requests simultaneously.
+Managing the trade-off between workload balancing and latency reduction when handling multiple simultaneous requests.
+
+**Challenges**:
+
+- High latency due to long-running tasks monopolizing resources.
+- Inefficiency in processing concurrent requests of varying lengths.
 
 **Solutions**:
 
 - **Split-and-Fuse Technique**:
-  - **Approach**: Segment long prefilling requests and batch them with shorter decoding requests.
-  - **Benefit**: Balances the workload by ensuring longer tasks do not monopolize resources, allowing shorter tasks to be processed concurrently and reducing overall latency.
+  Segment long prefilling requests and batch them with shorter decoding requests.
+  - **Benefit**: Balances the workload by preventing long tasks from dominating the system, enabling shorter tasks to be processed concurrently, thus reducing overall latency.
 
 - **Iteration-level Batching**:
-  - **Approach**: Batch requests at the iteration level to release resources promptly after each iteration.
-  - **Benefit**: Optimizes system utilization by ensuring that resources are not held idle between iterations, improving throughput and response times.
+  Batch requests at the iteration level, releasing resources after each iteration.
+  - **Benefit**: Ensures prompt resource utilization by not holding resources idle between iterations, which improves throughput and reduces response times.
 
 ---
 
 #### 3. Scheduling Strategies
 
-Efficiently scheduling tasks to minimize latency and maximize throughput.
+Optimizing task scheduling to minimize latency and maximize throughput.
+
+**Challenges**:
+
+- Inefficient task prioritization leading to suboptimal resource utilization.
+- High latency for critical tasks due to poor scheduling policies.
 
 **Solutions**:
 
 - **First-Come-First-Serve (FCFS)**:
-  - **Approach**: Handle requests based on their arrival order.
-  - **Benefit**: Provides a straightforward and fair scheduling approach, suitable for diverse request lengths.
+  Process requests in the order they arrive.
+  - **Benefit**: Provides a simple and fair scheduling method, ensuring all tasks are treated equally, which is effective for workloads with varied request lengths.
 
 - **Decoding Prioritization**:
-  - **Approach**: Prioritize decoding requests over others.
-  - **Benefit**: Improves response times for decoding tasks, optimizing resource usage by ensuring critical tasks are completed faster.
+  Prioritize decoding requests over others.
+  - **Benefit**: Reduces latency for critical decoding tasks, ensuring they are processed faster and improving overall system responsiveness.
 
 - **Preemptive Scheduling**:
-  - **Approach**: Use multi-level feedback queues (MLFQ) to predict request completion times and preemptively schedule tasks.
-  - **Benefit**: Minimizes latency and maximizes throughput by dynamically adjusting the priority of tasks based on their progress and estimated completion times.
+  Implement multi-level feedback queues (MLFQ) to predict request completion times and adjust task priorities dynamically.
+  - **Benefit**: Enhances efficiency by preemptively scheduling tasks based on their progress and estimated completion times, minimizing overall latency and maximizing throughput.
 
 ---
 
 #### 4. Distributed Systems Optimization
 
-Efficiently managing resources in a distributed system to handle dynamic workloads and ensure continuous service availability.
+Managing resources efficiently in a distributed system to handle dynamic workloads and maintain continuous service availability.
+
+**Challenges**:
+
+- Inefficiencies in resource utilization across distributed systems.
+- Difficulty in maintaining high availability during peak workloads.
 
 **Solutions**:
 
 - **Disaggregated Processing**:
-  - **Approach**: Separate prefilling and decoding stages to leverage distributed resources more effectively.
-  - **Benefit**: Improves overall efficiency and scalability by allowing different stages of processing to be handled by specialized resources.
+  Separate prefilling and decoding stages to leverage distributed resources more effectively.
+  - **Benefit**: Improves scalability and efficiency by allowing each stage of processing to be handled by specialized resources, optimizing overall performance.
 
 - **Instance Management**:
-  - **Approach**: Optimize instance selection and migration strategies in cloud environments.
-  - **Benefit**: Ensures resources are dynamically allocated based on current workloads, maintaining high availability and performance.
+  Optimize instance selection and migration strategies in cloud environments.
+  - **Benefit**: Dynamically allocate resources based on current workloads, ensuring high availability and optimal performance even during peak demand periods.
 
 ---
 
 #### 5. Hardware Accelerator Design
 
-Enhancing the performance and energy efficiency of hardware accelerators used in system-level optimization.
+Improving the performance and energy efficiency of hardware accelerators used in system-level optimization.
+
+**Challenges**:
+
+- High energy consumption due to inefficient hardware usage.
+- Suboptimal performance due to generic hardware design not tailored to specific tasks.
 
 **Solutions**:
 
 - **Mixed-Precision Quantization**:
-  - **Approach**: Use lower precision arithmetic for linear operators.
-  - **Benefit**: Enhances energy efficiency without compromising accuracy, as many computations can be performed with reduced precision while maintaining acceptable levels of accuracy.
+  Utilize lower precision arithmetic for linear operators where possible.
+  - **Benefit**: Reduces energy consumption while maintaining acceptable accuracy levels, as many computations can be performed with lower precision without significant loss of accuracy.
 
 - **Algorithm-Hardware Co-design**:
-  - **Approach**: Tailor algorithms to leverage hardware features like FPGAs (Field-Programmable Gate Arrays).
-  - **Benefit**: Optimizes overall system performance by ensuring algorithms are designed to make the best use of specific hardware capabilities, particularly for memory-intensive decoding stages.
+  Develop algorithms that leverage specific hardware features, such as FPGAs (Field-Programmable Gate Arrays).
+  - **Benefit**: Enhances performance by ensuring algorithms are designed to take full advantage of the capabilities of the hardware, particularly for memory-intensive tasks.
 
 ---
-
-Each of these areas presents unique challenges and requires specific solutions to optimize system performance. By addressing memory management, continuous batching, scheduling strategies, distributed systems optimization, and hardware accelerator design, a more efficient and effective system-level optimization can be achieved.

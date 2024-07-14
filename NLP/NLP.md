@@ -1916,38 +1916,61 @@ Final loss: [4.41904213e-08]
 
 --- 
 
-- ### **Feedforward Neural Networks (FNN):**
-  A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
-  - #### **Architecture:** The basic architecture of a Feedforward Neural Network consists of the following components:
-    - 1. **Input Layer**: This layer receives the input data. Each node in this layer represents one feature of the input.
-    - 2. **Hidden Layers**: These layers process the input data. There can be one or more hidden layers in an FNN. Each node in a hidden layer applies a weighted sum of its inputs and an activation function.
-    - 3. **Output Layer**: This layer produces the final output of the network. The number of nodes in this layer corresponds to the number of output classes or the required output dimensions.
+### Feedforward Neural Networks (FNN)
 
-- #### **Mathematically:**
-  - For a single hidden layer network:
-    $$\text{Input Layer: } x$$
-    $$\text{Hidden Layer: } h = \sigma(W_1 x + b_1)$$
-    $$\text{Output Layer: } y = W_2 h + b_2$$
-    - Where:
-      - $W1$ is the weight matrix connecting the input layer to the hidden layer
-      - $b1$ is the bias vector for the hidden layer
-      - $σ$ is an activation function (e.g. ReLU, Sigmoid)
-      - $W2$ is the weight matrix connecting the hidden layer to the output layer
-      - $b2$ is the bias vector for the output layer
-   - Advantages:
-       - 1. Easy to implement and understand.
-       - 2. Can approximate any continuous function with enough layers and units.
-       - 3. Effective for classification and regression on structured data.
-       - 4. Predictable and easier to debug due to one-way data flow.
-   - Limitations:
-      - 1. Not suitable for sequential data like time series or text.
-      - 2. Cannot retain information from previous inputs.
-      - 3. Prone to overfitting, especially with limited data
+A Feedforward Neural Network (FNN) is the simplest form of artificial neural network. In this type of network, the information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network, making it straightforward to understand and implement.
 
- ``` Python 
+#### Architecture
+
+The basic architecture of a Feedforward Neural Network consists of the following components:
+
+1. **Input Layer**: This layer receives the input data. Each node in this layer represents one feature of the input.
+2. **Hidden Layers**: These layers process the input data. There can be one or more hidden layers in an FNN. Each node in a hidden layer applies a weighted sum of its inputs and an activation function.
+3. **Output Layer**: This layer produces the final output of the network. The number of nodes in this layer corresponds to the number of output classes or the required output dimensions.
+
+#### Mathematically
+
+For a single hidden layer network:
+
+$$
+\text{Input Layer: } x
+$$
+
+$$
+\text{Hidden Layer: } h = \sigma(W_1 x + b_1)
+$$
+
+$$
+\text{Output Layer: } y = W_2 h + b_2
+$$
+
+Where:
+
+- $W_1$ is the weight matrix connecting the input layer to the hidden layer
+- $b_1$ is the bias vector for the hidden layer
+- $\sigma$ is an activation function (e.g. ReLU, Sigmoid)
+- $W_2$ is the weight matrix connecting the hidden layer to the output layer
+- $b_2$ is the bias vector for the output layer
+
+#### Advantages
+
+1. Easy to implement and understand.
+2. Can approximate any continuous function with enough layers and units.
+3. Effective for classification and regression on structured data.
+4. Predictable and easier to debug due to one-way data flow.
+
+#### Limitations
+
+1. Not suitable for sequential data like time series or text.
+2. Cannot retain information from previous inputs.
+3. Prone to overfitting, especially with limited data.
+
+```python
 import numpy as np
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
+
 def feedforward_nn(x, W1, b1, W2, b2):
     h = sigmoid(np.dot(W1, x) + b1)
     y = sigmoid(np.dot(W2, h) + b2)
@@ -1960,49 +1983,73 @@ W1 = np.array([[0.2, 0.8, 0.5], [0.3, 0.4, 0.2]])
 b1 = np.array([0.1, 0.2])
 W2 = np.array([0.6, 0.9])
 b2 = 0.3
+
 # Forward pass
 output = feedforward_nn(x, W1, b1, W2, b2)
 print("Output:", output)
- ```
-```
-Output: 0.772853461396208
-```
+``` 
 
 --- 
 
-- ### **Recurrent Neural Networks (RNN):**
-  A Recurrent Neural Network (RNN) is a type of artificial neural network designed for sequential data. Unlike Feedforward Neural Networks, RNNs have connections that form directed cycles, allowing them to maintain information about previous inputs through internal states. This makes them particularly suitable for tasks where the context or order of data is crucial, such as time series prediction, natural language processing, and speech recognition.
-  - #### **Architecture:** The basic architecture of a Recurrent Neural Network consists of the following components:
-    - 1. **Input Layer**:  This layer receives the input data. In the context of sequences, each input is often processed one time step at a time.
-    - 2. **Hidden Layers**: These layers process the input data and maintain a memory of previous inputs. Each node in a hidden layer takes input not only from the current time step but also from the hidden state of the previous time step.
-    - 3. **Cell State:** This is a vector that stores the internal memory of the network. The cell state is updated at each time step based on the current input and the previous cell state
-    - 3. **Output Layer**: This layer produces the final output of the network for each time step. The number of nodes in this layer corresponds to the desired output dimensions.
+### Recurrent Neural Networks (RNN)
 
-  - #### **Mathematically:**
-   - For a single hidden layer RNN:
-     $$\text{Input Layer: }x$$
-     $$\text{Hidden State: }h = σ(Wx * x + Wh * h + b)$$
-     $$\text{Cell State: }c = f(c_prev, x)$$ 
-     $$\text{Output Layer: }y = σ(Wy * h + b)$$
-   - Where:
-      - $Wx$ is the weight matrix connecting the input layer to the hidden state
-      - $Wh$ is the weight matrix connecting the hidden state to itself
-      - $b$ is the bias vector for the hidden state
-      - $f$ is the forget gate function (e.g. sigmoid)
-      - $Wy$ is the weight matrix connecting the hidden state to the output layer
-      - $σ$ is an activation function (e.g. ReLU, Sigmoid)
+A Recurrent Neural Network (RNN) is a type of artificial neural network designed for sequential data. Unlike Feedforward Neural Networks, RNNs have connections that form directed cycles, allowing them to maintain information about previous inputs through internal states. This makes them particularly suitable for tasks where the context or order of data is crucial, such as time series prediction, natural language processing, and speech recognition.
+
+#### Architecture
+
+The basic architecture of a Recurrent Neural Network consists of the following components:
+
+1. **Input Layer**: This layer receives the input data. In the context of sequences, each input is often processed one time step at a time.
+2. **Hidden Layers**: These layers process the input data and maintain a memory of previous inputs. Each node in a hidden layer takes input not only from the current time step but also from the hidden state of the previous time step.
+3. **Cell State**: This is a vector that stores the internal memory of the network. The cell state is updated at each time step based on the current input and the previous cell state.
+4. **Output Layer**: This layer produces the final output of the network for each time step. The number of nodes in this layer corresponds to the desired output dimensions.
+
+#### Mathematical Representation
+
+For a single hidden layer RNN:
+
+- **Input Layer**: $x$
+- **Hidden State**: $h = \sigma(W_x \cdot x + W_h \cdot h + b)$
+- **Cell State**: $c = f(c_{\text{prev}}, x)$
+- **Output Layer**: $y = \sigma(W_y \cdot h + b)$
+
+Where:
+- $W_x$ is the weight matrix connecting the input layer to the hidden state
+- $W_h$ is the weight matrix connecting the hidden state to itself
+- $b$ is the bias vector for the hidden state
+- $f$ is the forget gate function (e.g., sigmoid)
+- $W_y$ is the weight matrix connecting the hidden state to the output layer
+- $\sigma$ is an activation function (e.g., ReLU, Sigmoid)
+
+$$
+h = \sigma(W_x \cdot x + W_h \cdot h + b)
+$$
+
+$$
+c = f(c_{\text{prev}}, x)
+$$
+
+$$
+y = \sigma(W_y \cdot h + b)
+$$
+
 ![RNN illustrated with this Image example](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/RNN.png)
 
-   - Advantages:
-       - 1. Suitable for sequential data like time series or text.
-       - 2. Can retain information from previous inputs
-       - 3. Effective for modeling temporal dependencies in data.
-   - Disadvantages\Limitations:
-      - 1. Prone to vanishing gradients, which can make training difficult.
-      - 2. Difficult to train due to the complex recurrent connections.
-      - 3. Not suitable for very long sequences.
+#### Advantages
 
-``` Python 
+1. Suitable for sequential data like time series or text.
+2. Can retain information from previous inputs.
+3. Effective for modeling temporal dependencies in data.
+
+#### Disadvantages/Limitations
+
+1. Prone to vanishing gradients, which can make training difficult.
+2. Difficult to train due to the complex recurrent connections.
+3. Not suitable for very long sequences.
+
+#### Example Code
+
+```python
 import numpy as np
 
 def sigmoid(x):
@@ -2028,10 +2075,8 @@ by = np.array([[0.2]])
 # Forward pass
 output = rnn(x, Wx, Wh, Wy, b, by)
 print("Output:", output)
-```
-```
-Output: [[0.53499449]]
-```
+
+``` 
 - ### **Different types of RNNs:**
   Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
    - #### 1. **Vanilla RNNs\RNNs:**

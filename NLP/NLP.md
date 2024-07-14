@@ -2077,47 +2077,81 @@ output = rnn(x, Wx, Wh, Wy, b, by)
 print("Output:", output)
 
 ``` 
-### Different types of RNNs
-  Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
-   ##### 1. **Vanilla RNNs\RNNs:**
-     I have talked about above. 
-   ##### 2. **LSTMs:**
-   ##### 3. **GRUs:**
-   ##### 4. **Bidirectional LSTMs and GRUs:**
-  
-  ### Long Short-Term Memory (LSTM) Networks
-  A Long Short-Term Memory (LSTM) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. LSTMs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting.
-   #### Architecture
-   The basic architecture of an LSTM network consists of the following components:
-    - **Input Gate:** This gate is responsible for controlling the flow of new information into the cell state. It consists of a sigmoid layer and a point-wise multiplication operation.
-    - **Forget Gate:** This gate determines what information to discard from the previous cell state. It also consists of a sigmoid layer and a point-wise multiplication operation.
-    - **Cell State:** This is the internal memory of the LSTM network, which stores information over long periods.
-    - **Output Gate:** This gate determines the output of the LSTM network based on the cell state and the hidden state.
-    - **Hidden State:** This is the internal state of the LSTM network, which captures short-term dependencies in the data.
-    #### Mathematically
-     The LSTM network can be represented mathematically as follows:
-     $$\text{Input Gate: }i = σ(Wi * x + Ui * h + bi)$$
-     $$\text{Forget Gate: }f = σ(Wf * x + Uf * h + bf)$$
-     $$\text{Cell State: }c = f * c_prev + i * tanh(Wc * x + Uc * h + bc)$$
-     $$\text{Output Gate: }o = σ(Wo * x + Uo * h + bo)$$
-     $$\text{Hidden State: }h = o * tanh(c)$$
-     $$\text{Output: }y = Wo * h + bo$$
-   - **Where:**
-      - $Wi, Wf, Wc, Wo$ are the weight matrices for the input, forget, cell, and output gates, respectively.
-      - $Ui, Uf, Uc, Uo$ are the recurrent weight matrices for the input, forget, cell, and output gates, respectively.
-      - $bi, bf, bc, bo$ are the bias vectors for the input, forget, cell, and output gates, respectively.
-      - $σ$ is the sigmoid activation function.
-      - $tanh$ is the hyperbolic tangent activation function.
-   - Advantages:
-       - 1. LSTMs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
-       - 2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
-       - 3. LSTMs can handle sequential data with varying lengths.
-   - Limitations:
-      - 1. LSTMs are computationally expensive to train and require large amounts of data.
-      - 2. They can be difficult to interpret and visualize due to their complex architecture.
-      - 3. LSTMs can suffer from overfitting if not regularized properly.
-       
-``` Python 
+### Different Types of RNNs
+
+Over the years, several variants of RNNs have been developed to address various challenges and improve their performance. Here are some of the most prominent RNN variants:
+
+#### 1. Vanilla RNNs/RNNs
+- I have talked about them above.
+
+#### 2. LSTMs
+
+#### 3. GRUs
+
+#### 4. Bidirectional LSTMs and GRUs
+
+### Long Short-Term Memory (LSTM) Networks
+
+A Long Short-Term Memory (LSTM) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. LSTMs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting.
+
+#### Architecture
+
+The basic architecture of an LSTM network consists of the following components:
+
+- **Input Gate:** This gate is responsible for controlling the flow of new information into the cell state. It consists of a sigmoid layer and a point-wise multiplication operation.
+- **Forget Gate:** This gate determines what information to discard from the previous cell state. It also consists of a sigmoid layer and a point-wise multiplication operation.
+- **Cell State:** This is the internal memory of the LSTM network, which stores information over long periods.
+- **Output Gate:** This gate determines the output of the LSTM network based on the cell state and the hidden state.
+- **Hidden State:** This is the internal state of the LSTM network, which captures short-term dependencies in the data.
+
+#### Mathematically
+
+The LSTM network can be represented mathematically as follows:
+
+$$
+\text{Input Gate: } i = σ(W_i \cdot x + U_i \cdot h + b_i)
+$$
+
+$$
+\text{Forget Gate: } f = σ(W_f \cdot x + U_f \cdot h + b_f)
+$$
+
+$$
+\text{Cell State: } c = f \cdot c_{\text{prev}} + i \cdot \tanh(W_c \cdot x + U_c \cdot h + b_c)
+$$
+
+$$
+\text{Output Gate: } o = σ(W_o \cdot x + U_o \cdot h + b_o)
+$$
+
+$$
+\text{Hidden State: } h = o \cdot \tanh(c)
+$$
+
+$$
+\text{Output: } y = W_o \cdot h + b_o
+$$
+
+- **Where:**
+  - $W_i, W_f, W_c, W_o$ are the weight matrices for the input, forget, cell, and output gates, respectively.
+  - $U_i, U_f, U_c, U_o$ are the recurrent weight matrices for the input, forget, cell, and output gates, respectively.
+  - $b_i, b_f, b_c, b_o$ are the bias vectors for the input, forget, cell, and output gates, respectively.
+  - $σ$ is the sigmoid activation function.
+  - $\tanh$ is the hyperbolic tangent activation function.
+
+#### Advantages
+
+1. LSTMs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
+2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
+3. LSTMs can handle sequential data with varying lengths.
+
+#### Limitations
+
+1. LSTMs are computationally expensive to train and require large amounts of data.
+2. They can be difficult to interpret and visualize due to their complex architecture.
+3. LSTMs can suffer from overfitting if not regularized properly.
+
+```python
 import numpy as np
 
 def sigmoid(x):
@@ -2156,41 +2190,62 @@ bo = np.array([[0.4]])
 output = lstm(x, Wi, Ui, Wf, Uf, Wc, Uc, Wo, Uo, bi, bf, bc, bo)
 print("Output:", output)
 ```
-```
-Output: [[0.54412203]]
-```
 
 --- 
 
-### Gated Recurrent Unit(GRU) Networks
-  A Gated Recurrent Unit (GRU) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. GRUs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting. GRUs are a simplified version of Long Short-Term Memory (LSTM) networks, with fewer gates and a more streamlined architecture.
-  #### Architecture
-   The basic architecture of a GRU consists of the following components:
-      - **Reset Gate:** This gate determines what information to discard from the previous hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
-      - **Update Gate:** This gate determines what information to update in the hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
-      - **Hidden State:** This is the internal state of the GRU network, which captures short-term dependencies in the data.
-      - **Output:** This is the output of the GRU network, which is calculated based on the hidden state.
- #### Mathematically
- The GRU network can be represented mathematically as follows
-     $$\text{Reset Gate: }r = σ(Wr * x + Ur * h + br)$$
-     $$\text{Update Gate: }z = σ(Wz * x + Uz * h + bz)$$
-     $$\text{Hidden State: }h = (1 - z) * h_prev + z * tanh(W * x + U * h + b)$$
-     $$\text{Output: }y = W * h + b$$
-   - **Where:**
-     - $Wr, Wz, W$ are the weight matrices for the reset, update, and output gates, respectively.
-     - $Ur, Uz, U$ are the recurrent weight matrices for the reset, update, and output gates, respectively.
-     - $br, bz, b$ are the bias vectors for the reset, update, and output gates, respectively.
-     - $σ$ is the sigmoid activation function.
-     - $tanh$ is the hyperbolic tangent activation function.
-   - Advantages:
-       - 1. GRUs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
-       - 2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
-       - 3. GRUs have a simpler architecture compared to LSTMs, with fewer parameters to train, making them computationally more efficient.
-   - Limitations:
-      - 1. GRUs, like LSTMs, can be computationally expensive to train and require large amounts of data.
-      - 2. They can be difficult to interpret and visualize due to their complex architecture.
-      - 3. GRUs can suffer from overfitting if not regularized properly.
-``` Python 
+### Gated Recurrent Unit (GRU) Networks
+
+A Gated Recurrent Unit (GRU) network is a type of Recurrent Neural Network (RNN) designed to handle the vanishing gradient problem that occurs in traditional RNNs. GRUs are capable of learning long-term dependencies in data, making them particularly useful for tasks such as language modeling, speech recognition, and time series forecasting. GRUs are a simplified version of Long Short-Term Memory (LSTM) networks, with fewer gates and a more streamlined architecture.
+
+#### Architecture
+
+The basic architecture of a GRU consists of the following components:
+
+- **Reset Gate:** This gate determines what information to discard from the previous hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
+- **Update Gate:** This gate determines what information to update in the hidden state. It consists of a sigmoid layer and a point-wise multiplication operation.
+- **Hidden State:** This is the internal state of the GRU network, which captures short-term dependencies in the data.
+- **Output:** This is the output of the GRU network, which is calculated based on the hidden state.
+
+#### Mathematically
+
+The GRU network can be represented mathematically as follows:
+
+$$
+\text{Reset Gate: } r = σ(W_r \cdot x + U_r \cdot h + b_r)
+$$
+
+$$
+\text{Update Gate: } z = σ(W_z \cdot x + U_z \cdot h + b_z)
+$$
+
+$$
+\text{Hidden State: } h = (1 - z) \cdot h_{\text{prev}} + z \cdot \tanh(W \cdot x + U \cdot (r \cdot h) + b)
+$$
+
+$$
+\text{Output: } y = W \cdot h + b
+$$
+
+- **Where:**
+  - $W_r, W_z, W$ are the weight matrices for the reset, update, and output gates, respectively.
+  - $U_r, U_z, U$ are the recurrent weight matrices for the reset, update, and output gates, respectively.
+  - $b_r, b_z, b$ are the bias vectors for the reset, update, and output gates, respectively.
+  - $σ$ is the sigmoid activation function.
+  - $tanh$ is the hyperbolic tangent activation function.
+
+#### Advantages
+
+1. GRUs are capable of learning long-term dependencies in data, making them suitable for tasks such as language modeling and time series forecasting.
+2. They are less prone to the vanishing gradient problem compared to traditional RNNs.
+3. GRUs have a simpler architecture compared to LSTMs, with fewer parameters to train, making them computationally more efficient.
+
+#### Limitations
+
+1. GRUs, like LSTMs, can be computationally expensive to train and require large amounts of data.
+2. They can be difficult to interpret and visualize due to their complex architecture.
+3. GRUs can suffer from overfitting if not regularized properly.
+
+```python
 import numpy as np
 
 def sigmoid(x):
@@ -2223,37 +2278,58 @@ b = np.array([[0.3]])
 output = gru(x, Wz, Uz, Wr, Ur, W, U, bz, br, b)
 print("Output:", output)
 ```
-### Bidirectional RNNs
-  Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
-#### Architecture
- BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
-    -#### Types
-      - **LSTM (Long Short-Term Memory):** Effective for learning long-term dependencies, ideal for tasks like language modeling and speech recognition.
-      - **GRU (Gated Recurrent Unit):** Simpler and more computationally efficient than LSTMs, suitable for tasks like text classification and sentiment analysis.
-    #### Mathematical Representation:
-      $$\text{Forward RNN: }h_forward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
-      $$\text{Backward RNN: }h_backward = LSTM(x, W, U, b) or GRU(x, W, U, b)$$
-      $$\text{Output: }y = Concat(h_forward, h_backward)$$
-    - Where:
-      - $x$ is the input sequence
-      - $W$, $U$, and $b$ are the weights, recurrent weights, and biases
-      - $h_forward$ and $h_backward$ are the hidden states
-      - $y$ is the output
-    - Advantages:
-       - 1. Capture context from both past and future
-       - 2. Handle variable-length sequential data
-       - 3. Learn long-term dependencies
-    - Disadvantages\Limitations:
-      - 1. Computationally intensive
-      - 2. Require large datasets
-      - 3. Complex architecture can lead to overfitting
 
-```  Python
+### Bidirectional RNNs
+
+Bidirectional Recurrent Neural Networks (BRNNs) improve upon traditional RNNs by considering both past and future information in their predictions. This makes them highly effective for tasks involving sequential data, such as text and time series.
+
+#### Architecture
+
+BRNNs consist of two RNNs: one processes the input sequence forward, and the other processes it backwards. The outputs of these RNNs are concatenated to form the final output, allowing the network to use information from both directions.
+
+#### Types
+
+- **LSTM (Long Short-Term Memory):** Effective for learning long-term dependencies, ideal for tasks like language modeling and speech recognition.
+- **GRU (Gated Recurrent Unit):** Simpler and more computationally efficient than LSTMs, suitable for tasks like text classification and sentiment analysis.
+
+#### Mathematical Representation
+
+$$
+\text{Forward RNN: } h_{\text{forward}} = \text{LSTM}(x, W, U, b) \text{ or } \text{GRU}(x, W, U, b)
+$$
+
+$$
+\text{Backward RNN: } h_{\text{backward}} = \text{LSTM}(x, W, U, b) \text{ or } \text{GRU}(x, W, U, b)
+$$
+
+$$
+\text{Output: } y = \text{Concat}(h_{\text{forward}}, h_{\text{backward}})
+$$
+
+- **Where:**
+  - $x$ is the input sequence
+  - $W$, $U$, and $b$ are the weights, recurrent weights, and biases
+  - $h_{\text{forward}}$ and $h_{\text{backward}}$ are the hidden states
+  - $y$ is the output
+
+#### Advantages
+
+1. Capture context from both past and future.
+2. Handle variable-length sequential data.
+3. Learn long-term dependencies.
+
+#### Disadvantages/Limitations
+
+1. Computationally intensive.
+2. Require large datasets.
+3. Complex architecture can lead to overfitting.
+
+```python
 from keras.models import Sequential
 from keras.layers import LSTM, Bidirectional
 import numpy as np
 
-# input sequence
+# Input sequence
 x = np.array([[[0.5], [0.1], [0.4]]])
 
 # BRNN model
@@ -2267,8 +2343,7 @@ model.fit(x, x, epochs=10)
 # Make predictions
 y_pred = model.predict(x)
 print("Output:", y_pred)
-```
-
+``` 
 --- 
 
 ### Transformers

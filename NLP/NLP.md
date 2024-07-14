@@ -1653,103 +1653,84 @@ Unlike traditional models that read text sequentially, BERT uses Transformers to
 | **Usage in NLP**    | Preprocessing text data.                                | Essential for understanding text semantics.            |
 | **Representation Type** | Results in sparse vectors.                           | Dense vectors capture semantic meanings and context.    |
 
+--- 
 
+### Hybrid Representation Learning (Sparse + Dense)
 
-
-
-
-## **Hybrid Representation Learning (Sparse + Dense)**
-
-### SPLADE
+#### SPLADE
 SPLADE (SPArse Lexical AnD Expansion model) is a state-of-the-art information retrieval model that enhances the matching of queries and documents by combining the strengths of sparse lexical representations and deep learning techniques. It addresses the limitations of traditional retrieval methods and dense models to provide efficient and accurate search results.
 
-### Background
+#### Background
 
-#### Traditional Retrieval Methods
-
+##### Traditional Retrieval Methods
 Techniques like BM25 rely on term frequency (TF) and inverse document frequency (IDF) but often lack contextual understanding and semantic relevance.
 
-#### Dense Models
-
+##### Dense Models
 Models such as BERT provide contextual embeddings but are computationally intensive and not scalable for large datasets.
 
-### Key Concepts
+#### Key Concepts
 
-#### Sparse Representations
-
+##### Sparse Representations
 - Use of sparse term vectors, where only important terms are represented with non-zero weights.
 - Efficient in terms of storage and computation, making it suitable for large-scale retrieval tasks.
 
-#### Term Weighting
-
+##### Term Weighting
 SPLADE assigns importance weights to terms during training, allowing the model to highlight significant terms for better query-document matching.
 
-#### Query and Document Expansion
-
+##### Query and Document Expansion
 The model expands both queries and documents with semantically related terms, enhancing the retrieval process.
 - For instance, a query like "best smartphone" might include terms such as "mobile," "phone," and "top."
 
-### How SPLADE Works
+#### How SPLADE Works
 
-#### Training Phase
+##### Training Phase
 
-##### Based on BERT
-
+###### Based on BERT
 Uses BERT to generate contextual embeddings, capturing the meaning of words within their context.
 
-##### Learning Term Weights
-
+###### Learning Term Weights
 During training, SPLADE learns to assign appropriate weights to terms, emphasizing those that contribute more to relevance.
 
-##### Regularization
-
+###### Regularization
 Techniques such as L1 regularization ensure the representations remain sparse, preventing overfitting and maintaining efficiency.
 
-#### Inference Phase
+##### Inference Phase
 
-##### Query Processing
-
+###### Query Processing
 The input query is expanded and weighted using the trained model, improving its representational richness.
 
-##### Document Processing
-
+###### Document Processing
 Documents are similarly expanded and weighted, ensuring consistency in how terms are represented across queries and documents.
 
-##### Matching and Ranking
-
+###### Matching and Ranking
 SPLADE matches the expanded, weighted query representation against document representations, ranking documents based on their relevance.
 
-### Unique Features
+#### Unique Features
 
-#### Handling Stopwords and Punctuation
-
+##### Handling Stopwords and Punctuation
 The model can assign weights to traditionally ignored terms like stopwords and punctuation if they carry contextual significance.
 
-#### Controlled Vocabulary
-
+##### Controlled Vocabulary
 Experiments show SPLADE's ability to handle a limited set of terms while still capturing relevant signals, demonstrating its robustness.
 
-### Advantages
+#### Advantages
 
-#### Enhanced Matching
-
+##### Enhanced Matching
 The combination of lexical expansion and learned term weights significantly improves the accuracy of query-document matching.
 
-#### Efficiency
-
+##### Efficiency
 Sparse representations allow SPLADE to be efficient and scalable, making it practical for large-scale applications.
 
-#### Contextual Understanding
-
+##### Contextual Understanding
 Leveraging BERT embeddings enables SPLADE to understand and incorporate the context in which terms are used.
 
-### Example Scenario
+#### Example Scenario
 
 For a query like "define androgen receptor," SPLADE processes the query by expanding it with related terms and assigning weights. This expanded and weighted query is then matched against documents that have undergone similar processing, resulting in the retrieval of the most relevant documents.
 
+--- 
 
 ## Deep NLP 
---- 
 - #### **Deep Learning - Basic Neural Network Components:**
    A basic neural network architecture includes:
    - **Input Layer:** Receives input data.

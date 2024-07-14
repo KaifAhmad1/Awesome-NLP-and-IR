@@ -1501,47 +1501,55 @@ Vector for 'glove': [-0.03988282  0.01510394 -0.04516843  0.00921018  0.01995736
 ```
 
 --- 
-
 #### FastText
-  FastText, developed by Facebook AI Research (FAIR), is another popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information. This approach is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
-  - FastText works by representing each word as a bag of character n-grams, in addition to the word itself. This allows FastText to capture the morphological structure of words, making it more robust, especially for tasks involving rare words or languages with rich morphology.
-    - #### **How FastText Works:**
-       - #### **Character n-grams:**
-         - FastText considers all character n-grams of a word, including the word itself and special boundary symbols.
-         - For example, for the word `apple` and assuming `𝑛=3`, the character n-grams would be: `<ap`, `app`, `ppl`, `ple`, `le>`, and `apple` itself.
-       - #### **Vector Representation:**
-         - Each word is represented as the sum of the vectors of its character n-grams.
-         - The vectors for character n-grams are learned alongside the word embeddings during training.
-       - #### **Word Embeddings:**
-         - FastText trains word embeddings by optimizing a classification objective, typically a softmax classifier, over the entire vocabulary.
-         - The context for each word is defined by the bag of its character n-grams.
-       - #### **Training Process:**
-         - FastText employs techniques like hierarchical softmax or negative sampling to efficiently train embeddings on large datasets.
-    - #### **Implementation Steps:**
-       - #### **Data Preparation:**
-         - Tokenize the text data into words.
-         - Preprocess the text by lowercasing and removing punctuation if necessary.
-       - #### **Model Building:**
-         - Use an embedding layer to represent each character n-gram.
-         - Sum the embeddings of all character n-grams to obtain the word representation.
-         - Concatenate word and character n-gram embeddings.
-         - Apply Global Average Pooling to aggregate embeddings.
-       - #### **Training:**
-         - Train the model using a softmax classifier with a cross-entropy loss function.
-         - Use techniques like hierarchical softmax or negative sampling for efficiency.
-       - #### **Evaluation:**
-         - Evaluate the trained model on downstream tasks such as text classification, sentiment analysis, etc.
-   - Advantages:
-       - 1. Uses character n-grams to manage out-of-vocabulary words.
-       - 2. Captures word morphology, useful for languages with rich morphology.
-       - 3. Effective for rare words
-       - 4. Adapts to different word structures.
 
-   - Limitations:
-      - 1. More memory is needed due to character n-grams.
-      - 2. Embeddings are less interpretable and explainable 
-      - 3. Slow inference due to additional computation
-      - 4. Treats words as bags of n-grams, losing some context.
+FastText, developed by Facebook AI Research (FAIR), is a popular technique for word representation in Natural Language Processing (NLP). It extends the concept of word embeddings introduced by Word2Vec by considering subword information, which is particularly useful for handling out-of-vocabulary words and morphologically rich languages.
+
+- #### **How FastText Works:**
+  - #### **Character n-grams:**
+    - FastText represents each word as a bag of character n-grams, including the word itself and special boundary symbols.
+    - For example, for the word `apple` and assuming `n=3`, the character n-grams would be: `<ap`, `app`, `ppl`, `ple`, `le>`, and `apple` itself.
+  
+  - #### **Vector Representation:**
+    - Each word is represented as the sum of the vectors of its character n-grams.
+    - The vectors for character n-grams are learned alongside the word embeddings during training.
+  
+  - #### **Word Embeddings:**
+    - FastText trains word embeddings by optimizing a classification objective, typically a softmax classifier, over the entire vocabulary.
+    - The context for each word is defined by the bag of its character n-grams.
+  
+  - #### **Training Process:**
+    - FastText employs techniques like hierarchical softmax or negative sampling to efficiently train embeddings on large datasets.
+
+- #### **Implementation Steps:**
+  - #### **Data Preparation:**
+    - Tokenize the text data into words.
+    - Preprocess the text by lowercasing and removing punctuation if necessary.
+  
+  - #### **Model Building:**
+    - Use an embedding layer to represent each character n-gram.
+    - Sum the embeddings of all character n-grams to obtain the word representation.
+    - Concatenate word and character n-gram embeddings.
+    - Apply Global Average Pooling to aggregate embeddings.
+  
+  - #### **Training:**
+    - Train the model using a softmax classifier with a cross-entropy loss function.
+    - Use techniques like hierarchical softmax or negative sampling for efficiency.
+  
+  - #### **Evaluation:**
+    - Evaluate the trained model on downstream tasks such as text classification, sentiment analysis, etc.
+
+- #### **Advantages:**
+  1. Uses character n-grams to manage out-of-vocabulary words.
+  2. Captures word morphology, useful for languages with rich morphology.
+  3. Effective for rare words.
+  4. Adapts to different word structures.
+
+- #### **Limitations:**
+  1. Requires more memory due to character n-grams.
+  2. Embeddings are less interpretable and explainable.
+  3. Slower inference due to additional computation.
+  4. Treats words as bags of n-grams, losing some context.
 
 [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606v2)
 

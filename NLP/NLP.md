@@ -579,7 +579,7 @@ Message: URGENT: Your account needs verification. | Predicted Label: Spam
 
 --- 
 
-- ### **N-gram language model:**
+### N-gram language model
   An n-gram is a sequence of $n$ items from a given sample of text or speech. The `items` are typically words or characters, and the sequence can be as short or as long as needed:
     - Unigram $(n=1)$: Single word sequences.
     - Bigram $(n=2)$: Pairs of words.
@@ -636,7 +636,7 @@ language
 
 --- 
 
-- ### **Markov Chain:**
+### Markov Chain
   A Markov Chain is a way to model a system where the probability of moving to the next state depends only on the current state.
   - Components of Markov Chain:
       - #### 1. **States:**
@@ -813,45 +813,55 @@ print(y_pred)
 ```
 ---
 
-## **Representation Learning in NLP**
-Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
-### Encoding\Sparse Vectors
-   In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: $104, 101, 108, 108, 111$.
+## Representation Learning in NLP
 
---- 
+Representation learning in the context of NLP is the process of automatically discovering and encoding the features of text data into numerical vectors that capture the semantic and syntactic properties of the text. These representations make it easier for machine learning models to process and understand the text for various tasks such as classification, translation, and sentiment analysis.
+
+### Encoding & Sparse Vectors
+
+In NLP, encoding is the process of converting text into a different format for processing. For example, converting characters into numerical codes (like ASCII or UTF-8). This is crucial for machines to read and process text data. An example is encoding the word `hello` into its ASCII values: `104, 101, 108, 108, 111`.
+
+---
 
 #### One Hot Encoding
-  One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
-   - Consider a dataset containing information about countries and their official languages:
-      - **Countries**: USA, France, Germany, Japan, India
-      - **Official Languages**: English, French, German, Japanese, Hindi
-    - **Step 1:** We identify the unique categories in the `Official Language` column: English, French, German, Japanese, and Hindi.
-    - **Step 2:** Create Binary Vectors
-         - For each unique category, we create a binary vector:
-             - English:    $[1, 0, 0, 0, 0]$
-             - French:     $[0, 1, 0, 0, 0]$
-             - German:     $[0, 0, 1, 0, 0]$
-             - Japanese:   $[0, 0, 0, 1, 0]$
-             - Hindi: $[0, 0, 0, 0, 1]$
-  
-   - **Step 3:** Assign Values
-        - Now, we assign these binary vectors to each country based on their official language:
-             - USA:        $[1, 0, 0, 0, 0]$
-             - France:     $[0, 1, 0, 0, 0]$
-             - Germany:    $[0, 0, 1, 0, 0]$
-             - Japan:      $[0, 0, 0, 1, 0]$
-             - India:     $[0, 0, 0, 0, 1]$
-- One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
-   - Advantages:
-      - 1. Simple to implement.
-      - 2. Preserves all categorical data.
-   - Limitations:
-      - 1. Increases dimensionality.
-      - 2. Higher computational load.
-      - 3. Ignores ordinal relationships.
-      - 4. May introduce multicollinearity.
 
-``` Python 
+One hot encoding is a technique used to represent categorical variables as binary vectors. Each unique category is represented by a binary vector where only one element is 1 and all others are 0.
+
+- Consider a dataset containing information about countries and their official languages:
+  - **Countries**: USA, France, Germany, Japan, India
+  - **Official Languages**: English, French, German, Japanese, Hindi
+
+  **Step 1:** Identify the unique categories in the `Official Language` column: English, French, German, Japanese, and Hindi.
+
+  **Step 2:** Create Binary Vectors
+  - For each unique category, create a binary vector:
+    - English: `[1, 0, 0, 0, 0]`
+    - French: `[0, 1, 0, 0, 0]`
+    - German: `[0, 0, 1, 0, 0]`
+    - Japanese: `[0, 0, 0, 1, 0]`
+    - Hindi: `[0, 0, 0, 0, 1]`
+  
+  **Step 3:** Assign Values
+  - Assign these binary vectors to each country based on their official language:
+    - USA: `[1, 0, 0, 0, 0]`
+    - France: `[0, 1, 0, 0, 0]`
+    - Germany: `[0, 0, 1, 0, 0]`
+    - Japan: `[0, 0, 0, 1, 0]`
+    - India: `[0, 0, 0, 0, 1]`
+
+One hot encoding is a useful technique for converting categorical data into a format that is suitable for machine learning algorithms. It ensures that each category is represented uniquely without introducing any ordinal relationships between categories.
+
+- **Advantages**:
+  1. Simple to implement.
+  2. Preserves all categorical data.
+
+- **Limitations**:
+  1. Increases dimensionality.
+  2. Higher computational load.
+  3. Ignores ordinal relationships.
+  4. May introduce multicollinearity.
+
+```python
 def one_hot_encoding(categories, data):
     category_to_vector = {category: [0] * len(categories) for category in categories}
     
@@ -868,104 +878,109 @@ official_languages = ['English', 'French', 'German', 'Japanese', 'Hindi']
 
 binary_vectors = one_hot_encoding(languages, official_languages)
 encoded_countries = one_hot_encoding(languages, official_languages)
+
 # Results
 for country, encoded_vector in zip(countries, encoded_countries):
     print(f"{country}: {encoded_vector}")
-```
-```
-USA: [1, 0, 0, 0, 0]
-France: [0, 1, 0, 0, 0]
-Germany: [0, 0, 1, 0, 0]
-Japan: [0, 0, 0, 1, 0]
-India: [0, 0, 0, 0, 1]
-```
-
---- 
+``` 
 
 #### Integer Encoding
-  Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
-   - **Steps:**
-      1. **Assign integers to each unique category:**
-         - English: $0$
-         - French: $1$
-         - German: $2$
-         - Japanese: $3$
-         - Hindi: $4$
 
-     2. **Map countries to their corresponding integer values:**
-         - USA: $0$
-         - France: $1$
-         - Germany: $2$
-         - Japan: $3$
-         - India: $4$
-   - Advantages:
-      - 1. Simple to implement.
-      - 2. Memory efficiency as compared to one hot encoding uses less memory 
-   - Limitations:
-      - 1. Ordinal Misinterpretation
-      - 2. Loss of Information
-      - 3. Not Suitable for High Cardinality
+Integer encoding is a technique used to represent categorical variables as integer values. It assigns a unique integer to each category. For instance, in a dataset of countries and their official languages:
 
-``` Python 
+- **Steps:**
+  1. **Assign integers to each unique category:**
+     - English: $0$
+     - French: $1$
+     - German: $2$
+     - Japanese: $3$
+     - Hindi: $4$
+
+  2. **Map countries to their corresponding integer values:**
+     - USA: $0$
+     - France: $1$
+     - Germany: $2$
+     - Japan: $3$
+     - India: $4$
+
+- **Advantages:**
+  1. Simple to implement.
+  2. Memory efficient as compared to one-hot encoding, which uses more memory.
+
+- **Limitations:**
+  1. Ordinal misinterpretation.
+  2. Loss of information.
+  3. Not suitable for high cardinality.
+
+```python
 from collections import defaultdict
-def integer_encoding(data):
-   categories = sorted(set(data))
-   category_to_int = {cat: i for i, cat in enumerate(categories)}
-   return [category_to_int[d] for d in data]
 
-# Input 
+def integer_encoding(data):
+    categories = sorted(set(data))
+    category_to_int = {cat: i for i, cat in enumerate(categories)}
+    return [category_to_int[d] for d in data]
+
+# Input
 languages = ['English', 'French', 'German', 'Japanese', 'Hindi']
 encoded = integer_encoding(languages)
 print(encoded)
 ```
-```
-[0, 1, 2, 4, 3]
-```
 
 --- 
+#### Bag of Words
 
-#### Bag of words
-  The Bag of Words (BoW) model in NLP converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies.
-  -  This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
-  -  #### **Process Steps:**
-     - #### **Corpus Collection:**
-       Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modelling.
-        - I love reading books. Books are great.
-        - Books are a wonderful source of knowledge.
-        - I have a great love for reading books.
-        - Reading books can be very enlightening. Books are amazing.
-     - #### **Preprocessing:**
-       Executes meticulous text preprocessing tasks, including lowercasing, punctuation removal, and stop word elimination, to maintain standardized data quality.
-        - i love reading books books are great
-        - books are a wonderful source of knowledge
-        - i have a great love for reading books
-        - reading books can be very enlightening books are amazing
-     - #### **Vocabulary Building:**
-       Extracts unique words from the corpus, forming the foundational vocabulary that encompasses diverse linguistic elements.
-        - Vocabulary: [`i`, `love`, `reading`, `books`, `are`, `great`, `a`, `wonderful`, `source`, `of`, `knowledge`, `have`, `for`, `can`, `be`, `very`, `enlightening`, `amazing`]
-     - #### **Vectorization:**
-       Transforms each document into a numerical vector representation based on the established vocabulary. Ensures vector length matches vocabulary size, with elements representing word frequencies, succinctly capturing the document's textual essence.
-        - Sentence 1: `i love reading books books are great` Vector: $[1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$
-        - Sentence 2: `books are a wonderful source of knowledge` Vector: $[0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]$
-        - Sentence 3: `i have a great love for reading books` Vector: $[1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]$
-        - Sentence 4: `reading books can be very enlightening books are amazing` Vector: $[0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]$
+The Bag of Words (BoW) model in NLP converts text into numerical vectors by creating a vocabulary of unique words from a corpus and representing each document by a vector of word frequencies. This method is simple and effective for tasks like text classification and clustering, though it ignores grammar, word order, and context, leading to potential loss of information and high-dimensional, sparse vectors. Despite its limitations, BoW is popular due to its ease of use and effectiveness.
 
-   - Advantages:
-      - 1. Simple to implement.
-      - 2. Efficient conversion of text to numerical data
-      - 3. Effective for basic text classification and clustering
-   - Limitations:
-      - 1. Loss of context
-      - 2. High dimensionality and sparse vectors
-      - 3. Sparse data representations may pose challenges for some algorithms
-``` Python 
+- **Process Steps:**
+  - **Corpus Collection:**
+    Gathers a comprehensive set of text documents to form the corpus, laying the groundwork for analysis and modeling.
+    - I love reading books. Books are great.
+    - Books are a wonderful source of knowledge.
+    - I have a great love for reading books.
+    - Reading books can be very enlightening. Books are amazing.
+    
+  - **Preprocessing:**
+    Executes meticulous text preprocessing tasks, including lowercasing, punctuation removal, and stop word elimination, to maintain standardized data quality.
+    - i love reading books books are great
+    - books are a wonderful source of knowledge
+    - i have a great love for reading books
+    - reading books can be very enlightening books are amazing
+    
+  - **Vocabulary Building:**
+    Extracts unique words from the corpus, forming the foundational vocabulary that encompasses diverse linguistic elements.
+    - Vocabulary: [`i`, `love`, `reading`, `books`, `are`, `great`, `a`, `wonderful`, `source`, `of`, `knowledge`, `have`, `for`, `can`, `be`, `very`, `enlightening`, `amazing`]
+    
+  - **Vectorization:**
+    Transforms each document into a numerical vector representation based on the established vocabulary. Ensures vector length matches vocabulary size, with elements representing word frequencies, succinctly capturing the document's textual essence.
+    - Sentence 1: i  love  reading  books  books  are  great
+      Vector: $[1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$
+    - Sentence 2: books  are  a  wonderful  source  of  knowledge
+      Vector: $[0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]$
+    - Sentence 3: i  have  a  great  love  for  reading  books
+      Vector: $[1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]$
+    - Sentence 4: reading  books  can  be  very  enlightening  books  are  amazing
+      Vector: $[0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]$
+
+- **Advantages:**
+  1. Simple to implement.
+  2. Efficient conversion of text to numerical data.
+  3. Effective for basic text classification and clustering.
+
+- **Limitations:**
+  1. Loss of context.
+  2. High dimensionality and sparse vectors.
+  3. Sparse data representations may pose challenges for some algorithms.
+
+```python
 from sklearn.feature_extraction.text import CountVectorizer
+
 corpus = [
     "I love reading books. Books are great.",
     "Books are a wonderful source of knowledge.",
     "I have a great love for reading books.",
     "Reading books can be very enlightening. Books are amazing."
 ]
+
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(corpus)
 vocabulary = vectorizer.get_feature_names_out()
@@ -974,23 +989,8 @@ for i, document in enumerate(corpus):
     print(f"Sentence {i + 1}: {document}")
     print(f"Vector: {X[i].toarray().tolist()[0]}")
     print()
+
 print("Vocabulary:", vocabulary)
-```
-```
-Sentence 1: I love reading books. Books are great.
-Vector: [0, 1, 0, 2, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0]
-
-Sentence 2: Books are a wonderful source of knowledge.
-Vector: [0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1]
-
-Sentence 3: I have a great love for reading books.
-Vector: [0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0]
-
-Sentence 4: Reading books can be very enlightening. Books are amazing.
-Vector: [1, 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]
-
-Vocabulary: ['amazing' 'are' 'be' 'books' 'can' 'enlightening' 'for' 'great' 'have'
- 'knowledge' 'love' 'of' 'reading' 'source' 'very' 'wonderful']
 ```
 
 --- 

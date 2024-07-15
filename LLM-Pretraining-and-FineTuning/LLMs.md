@@ -1,4 +1,4 @@
-## **Large Language Models (LLMs):**
+## Large Language Models (LLMs)
 Large Language Models (LLMs) are a significant advancement in the field of natural language processing (NLP). These models are designed to understand and generate human language by leveraging deep learning techniques and vast amounts of data. Unlike simpler models, LLMs can perform a wide range of tasks, from translation and summarization to answering questions and engaging in conversational dialogues.
 
 ---
@@ -1300,3 +1300,5 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 | **Implementation Complexity** | High                                       | High                                                | Low                                                | Moderate                                              | Moderate                                             | Moderate                                             |
 | **Robustness**           | High                                              | High                                                | High                                               | High                                                  | High                                                 | High                                                 |
 
+
+## Reference 

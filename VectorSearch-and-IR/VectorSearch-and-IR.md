@@ -569,48 +569,66 @@ Matched indices: []
 
 ---
 
-### **Quantization:** 
-Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
-  - #### **Key Concepts in Quantization** 
-    - **Quantization:** The process of mapping high-dimensional vectors to a finite set of representative points, thereby reducing data complexity.
-    - **Centroids/Codewords:** Representative points used in the quantization process. Each data point is approximated by the nearest centroid.
-       - Consider approximating the value of $π(pi)$, which is approximately $3.14159$. Let's use a simple codebook with two centroids: $C1=3.0$ and $C2=3.2$
-       - The nearest centroid to $π(3.14159)$ is $C2=3.2$ since, $∣3.14159−3.2∣=0.05841$ is less than $∣3.14159−3.0∣=0.14159$
-         - Therefore, $π$ is approximated by $C2$ 
-    - **Codebook:** A collection of centroids that are used to approximate the original data points.
-    - **Quantization Error:** The difference between the original data point and its quantized approximation. Lower quantization error implies higher accuracy in search results.
-        - The quantization error is the squared difference between $π$ and the centroid $C2$
-           - Quatization Error = $(3.14159−3.2)^2$ $=(−0.05841)^2$ $≈0.00341$
-- Quantization helps manage large datasets by simplifying data representation, which in turn speeds up the process of finding similar data points through approximate nearest neighbor search techniques.
-- #### **Types of Quantization:**
-   - #### 1. **Scalar Quantization:**
-     Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
-      - **Example:** Suppose we have a dataset of 2D points $(x, y)$, and we want to quantize each dimension independently. Let's consider quantizing $x$ and $y$ into three levels: ${1.0, 2.0, 3.0}$ for $x$ and ${4.0, 5.0, 6.0}$ for y.
-         - **Quantization Process** Given a point $(2.3, 4.7)$, we quantize $x$ to the nearest level, which is $2.0$, and $y$ to $5.0$. So, the quantized point becomes $(2.0, 5.0)$.
-         - **Quantization Error** To compute the error, we take the sum of squared differences between the original and quantized values:
-           - Quantization Error = $(2.3 - 2.0)^2 + (4.7 - 5.0)^2 = 0.09 + 0.09 = 0.18$
-   - #### 2. **Vector Quantization:**
-     This technique quantizes the entire vector as a whole rather than its individual components, capturing the correlations between different dimensions of the vector. The data points are mapped to the nearest centroid in a set of predefined centroids (codebook) based on the overall similarity.
-      - **Example:**  Consider the same 2D dataset, but this time, we want to quantize the entire vector as a single entity. Let's have centroids ${(1.0, 2.0), (3.0, 4.0)}$.
-         - **Quantization Process** For the point $(2.3, 4.7)$, we find the nearest centroid, which is $(3.0, 4.0)$. Thus, the quantized point becomes $(3.0, 4.0)$.
-         - **Quantization Error** The error is computed as the squared Euclidean distance between the original and quantized vectors:
-           - Quantization Error = $(2.3 - 3.0)^2 + (4.7 - 4.0)^2 = 0.49 + 0.49 = 0.98$
+## Quantization
 
-   - #### 3. **Product Quantization:**
-     Product quantization is an advanced technique designed to handle very large and high-dimensional datasets efficiently by decomposing the original space into lower-dimensional subspaces.
-      - #### **Process**
-        - **Decomposition:** Divide the high-dimensional vector into smaller, non-overlapping sub-vectors.
-        - **Independent Quantization:** Quantize each sub-vector independently using its own set of centroids.
-        - **Complexity Reduction:** Break down the high-dimensional quantization problem into several lower-dimensional problems.
-        - **Centroid Assignment:**
-          - Assign each sub-vector a centroid from a sub-codebook.
-          - Combine these centroids to represent the original vector.
-        - ####  **Example:**
-          Suppose we have a $4D$ vector $(𝑥1, 𝑥2, 𝑥3, 𝑥4)$ and want to perform product quantization by splitting it into two 2D sub-vectors: $(𝑥1, 𝑥2)$ and $(𝑥3, 𝑥4)$. Let's use centroids ${(1.0, 2.0), (3.0, 4.0)}$ for each sub-vector.
-            - **Quantization Process** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(𝑥1, 𝑥2)$ is closest to $(1.0, 2.0)$, and $(𝑥3, 𝑥4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
-            - **Quantization Error** The total error is the sum of errors from quantizing each sub-vector:
-              - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$
-``` python
+Quantization is a crucial technique in Approximate Nearest Neighbor (ANN) search, particularly when dealing with large and high-dimensional datasets. By approximating data points with a limited set of representative points (centroids), quantization reduces storage requirements and computational complexity, facilitating faster and more efficient similarity searches.
+
+### Key Concepts in Quantization
+
+- **Quantization:** The process of mapping high-dimensional vectors to a finite set of representative points, thereby reducing data complexity.
+- **Centroids/Codewords:** Representative points used in the quantization process. Each data point is approximated by the nearest centroid.
+  - Consider approximating the value of $\pi$ (pi), which is approximately $3.14159$. Let's use a simple codebook with two centroids: $C_1 = 3.0$ and $C_2 = 3.2$.
+    - The nearest centroid to $\pi$ ($3.14159$) is $C_2$ ($3.2$) since $|3.14159 - 3.2| = 0.05841$ is less than $|3.14159 - 3.0| = 0.14159$.
+    - Therefore, $\pi$ is approximated by $C_2$.
+- **Codebook:** A collection of centroids that are used to approximate the original data points.
+- **Quantization Error:** The difference between the original data point and its quantized approximation. Lower quantization error implies higher accuracy in search results.
+  - The quantization error is the squared difference between $\pi$ and the centroid $C_2$:
+    - Quantization Error = $(3.14159 - 3.2)^2 = (-0.05841)^2 \approx 0.00341$.
+
+Quantization helps manage large datasets by simplifying data representation, which in turn speeds up the process of finding similar data points through approximate nearest neighbor search techniques.
+
+### Types of Quantization
+
+#### 1. Scalar Quantization
+
+Scalar quantization is a technique where each component of a vector is quantized independently, simplifying the data representation process by breaking down the high-dimensional problem into individual dimensions.
+
+- **Example:** Suppose we have a dataset of 2D points $(x, y)$, and we want to quantize each dimension independently. Let's consider quantizing $x$ and $y$ into three levels: $\{1.0, 2.0, 3.0\}$ for $x$ and $\{4.0, 5.0, 6.0\}$ for $y$.
+  - **Quantization Process:** Given a point $(2.3, 4.7)$, we quantize $x$ to the nearest level, which is $2.0$, and $y$ to $5.0$. So, the quantized point becomes $(2.0, 5.0)$.
+  - **Quantization Error:** To compute the error, we take the sum of squared differences between the original and quantized values:
+    - Quantization Error = $(2.3 - 2.0)^2 + (4.7 - 5.0)^2 = 0.09 + 0.09 = 0.18$.
+
+#### 2. Vector Quantization
+
+This technique quantizes the entire vector as a whole rather than its individual components, capturing the correlations between different dimensions of the vector. The data points are mapped to the nearest centroid in a set of predefined centroids (codebook) based on the overall similarity.
+
+- **Example:** Consider the same 2D dataset, but this time, we want to quantize the entire vector as a single entity. Let's have centroids $\{(1.0, 2.0), (3.0, 4.0)\}$.
+  - **Quantization Process:** For the point $(2.3, 4.7)$, we find the nearest centroid, which is $(3.0, 4.0)$. Thus, the quantized point becomes $(3.0, 4.0)$.
+  - **Quantization Error:** The error is computed as the squared Euclidean distance between the original and quantized vectors:
+    - Quantization Error = $(2.3 - 3.0)^2 + (4.7 - 4.0)^2 = 0.49 + 0.49 = 0.98$.
+
+#### 3. Product Quantization
+
+Product quantization is an advanced technique designed to handle very large and high-dimensional datasets efficiently by decomposing the original space into lower-dimensional subspaces.
+
+##### Process
+
+- **Decomposition:** Divide the high-dimensional vector into smaller, non-overlapping sub-vectors.
+- **Independent Quantization:** Quantize each sub-vector independently using its own set of centroids.
+- **Complexity Reduction:** Break down the high-dimensional quantization problem into several lower-dimensional problems.
+- **Centroid Assignment:**
+  - Assign each sub-vector a centroid from a sub-codebook.
+  - Combine these centroids to represent the original vector.
+
+##### Example
+
+Suppose we have a 4D vector $(x_1, x_2, x_3, x_4)$ and want to perform product quantization by splitting it into two 2D sub-vectors: $(x_1, x_2)$ and $(x_3, x_4)$. Let's use centroids $\{(1.0, 2.0), (3.0, 4.0)\}$ for each sub-vector.
+
+- **Quantization Process:** For the vector $(1.1, 2.2, 3.1, 3.9)$, the sub-vector $(x_1, x_2)$ is closest to $(1.0, 2.0)$, and $(x_3, x_4)$ is closest to $(3.0, 4.0)$. So, the quantized vector becomes $(1.0, 2.0, 3.0, 4.0)$.
+- **Quantization Error:** The total error is the sum of errors from quantizing each sub-vector:
+  - Quantization Error = $(0.1)^2 + (0.2)^2 + (0.1)^2 + (0.1)^2 = 0.01 + 0.04 + 0.01 + 0.01 = 0.07$.
+
+```python
 import numpy as np
 from sklearn.cluster import KMeans
 

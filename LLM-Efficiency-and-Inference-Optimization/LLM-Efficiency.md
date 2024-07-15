@@ -192,70 +192,70 @@ Switch Transformers are a variant of MoE that optimize the routing of tokens to 
 
 Attention mechanisms manage information flow across tokens in a sequence, essential for capturing contextual dependencies. Strategies include:
 
-- **Multi Query Attention (MQA)**
-  - **Overview:** Modifies the traditional multi-head attention mechanism to improve computational efficiency and memory usage.
-  - **Key Components:**
-    - **Multiple Queries:** Similar to multi-head attention, MQA uses multiple query vectors to capture diverse aspects of the input.
-    - **Single Key and Value Set:** Instead of having separate keys and values for each head, MQA shares a single set of keys and values across all heads.
-  - **Mechanism:**
-    1. **Query Generation:** Multiple query vectors are generated for each input token.
-    2. **Shared Keys and Values:** One set of keys and values is generated and shared across all query vectors.
-    3. **Attention Calculation:** Each query vector attends to the shared keys and values, generating attention scores and outputs.
-  - **Advantages:**
-    - **Efficiency:** Reduces the computational load and memory usage by maintaining a single set of keys and values.
-    - **Simplified Model:** Easier to implement and optimize due to fewer parameters compared to standard multi-head attention.
+#### Multi Query Attention (MQA)
+  Modifies the traditional multi-head attention mechanism to improve computational efficiency and memory usage.
+  ##### Key Components
+  - **Multiple Queries:** Similar to multi-head attention, MQA uses multiple query vectors to capture diverse aspects of the input.
+  - **Single Key and Value Set:** Instead of having separate keys and values for each head, MQA shares a single set of keys and values across all heads.
+  ##### Mechanism
+   1. **Query Generation:** Multiple query vectors are generated for each input token.
+   2. **Shared Keys and Values:** One set of keys and values is generated and shared across all query vectors.
+   3. **Attention Calculation:** Each query vector attends to the shared keys and values, generating attention scores and outputs.
+  ##### Advantages
+   - **Efficiency:** Reduces the computational load and memory usage by maintaining a single set of keys and values.
+   - **Simplified Model:** Easier to implement and optimize due to fewer parameters compared to standard multi-head attention.
 
-- **Group Query Attention (GQA)**
-  - **Overview:** Provides a middle ground between standard multi-head attention and MQA by grouping heads and sharing keys and values within groups.
-  - **Key Components:**
-    - **Grouped Heads:** Heads are divided into groups, each sharing a set of keys and values.
-    - **Multiple Groups:** Each group has its own distinct set of keys and values, allowing for diverse feature capture.
-  - **Mechanism:**
-    1. **Query Generation:** Queries are divided into groups, with each group generating multiple query vectors.
-    2. **Grouped Keys and Values:** Each group generates its own set of keys and values.
-    3. **Attention Calculation:** Within each group, query vectors attend to their respective keys and values, producing group-specific attention outputs.
-  - **Advantages:**
-    - **Balanced Efficiency:** More efficient than standard multi-head attention but more flexible than MQA.
-    - **Diverse Attention:** Allows capturing diverse features through grouped attention mechanisms.
+  #### Group Query Attention (GQA)
+  Provides a middle ground between standard multi-head attention and MQA by grouping heads and sharing keys and values within groups.
+  ##### Key Components
+   - **Grouped Heads:** Heads are divided into groups, each sharing a set of keys and values.
+   - **Multiple Groups:** Each group has its own distinct set of keys and values, allowing for diverse feature capture.
+  ##### Mechanism
+   1. **Query Generation:** Queries are divided into groups, with each group generating multiple query vectors.
+   2. **Grouped Keys and Values:** Each group generates its own set of keys and values.
+   3. **Attention Calculation:** Within each group, query vectors attend to their respective keys and values, producing group-specific attention outputs.
+  ##### Advantages
+   - **Balanced Efficiency:** More efficient than standard multi-head attention but more flexible than MQA.
+   - **Diverse Attention:** Allows capturing diverse features through grouped attention mechanisms.
 
-- **Sliding Window Attention**
-  - **Overview:** Optimizes attention mechanisms for long sequences by restricting attention to a local context.
-  - **Key Components:**
-    - **Fixed-Size Window:** Each token attends to a fixed number of neighboring tokens within a window.
-    - **Local Context Emphasis:** Focuses on local context, which is often more relevant in tasks like text processing.
-  - **Mechanism:**
-    1. **Window Definition:** A fixed-size window is defined around each token.
-    2. **Local Attention Calculation:** Each token calculates attention scores and outputs based only on tokens within its window.
-    3. **Sliding Mechanism:** The window slides across the sequence, ensuring every token has a local context.
-  - **Advantages:**
-    - **Scalability:** Handles long sequences more efficiently by reducing the attention scope.
-    - **Lower Computational Cost:** Significantly reduces memory and computational requirements compared to full sequence attention.
+#### Sliding Window Attention
+  Optimizes attention mechanisms for long sequences by restricting attention to a local context.
+ ##### Key Components
+   - **Fixed-Size Window:** Each token attends to a fixed number of neighboring tokens within a window.
+   - **Local Context Emphasis:** Focuses on local context, which is often more relevant in tasks like text processing.
+ ##### Mechanism
+   1. **Window Definition:** A fixed-size window is defined around each token.
+   2. **Local Attention Calculation:** Each token calculates attention scores and outputs based only on tokens within its window.
+   3. **Sliding Mechanism:** The window slides across the sequence, ensuring every token has a local context.
+ ##### Advantages
+   - **Scalability:** Handles long sequences more efficiently by reducing the attention scope.
+   - **Lower Computational Cost:** Significantly reduces memory and computational requirements compared to full sequence attention.
 
-- **Low-Complexity Attention Models:**
-  - **Overview:** Simplifies attention computations using techniques like kernel approximations and linear dot products, reducing the quadratic complexity typically associated with attention mechanisms.
-  - **Examples:**
-    - **Performers:** Approximates the softmax operation using linear projections, significantly reducing computational overhead while maintaining performance for various NLP tasks.
-    - **Random Feature Attention (RFA):** Uses randomized projections to approximate attention mechanisms, suitable for large-scale deployment where efficiency is paramount.
+#### Low-Complexity Attention Models
+  Simplifies attention computations using techniques like kernel approximations and linear dot products, reducing the quadratic complexity typically associated with attention mechanisms.
+  ##### Examples
+   - **Performers:** Approximates the softmax operation using linear projections, significantly reducing computational overhead while maintaining performance for various NLP tasks.
+   - **Random Feature Attention (RFA):** Uses randomized projections to approximate attention mechanisms, suitable for large-scale deployment where efficiency is paramount.
 
-- **Low-Rank Attention:**
-  - **Overview:** Reduces the dimensionality of key (K) and value (V) matrices in attention mechanisms, optimizing computational efficiency without sacrificing expressive power.
-  - **Techniques:**
-    - **Linformer:** Uses low-rank factorization to reduce the memory footprint of attention mechanisms, suitable for processing long sequences with constrained computational resources.
-    - **Longformer:** Introduces sparse attention patterns combined with low-rank factorization, enabling efficient processing of documents with thousands of tokens.
+#### Low-Rank Attention
+  Reduces the dimensionality of key (K) and value (V) matrices in attention mechanisms, optimizing computational efficiency without sacrificing expressive power.
+  ##### Techniques
+   - **Linformer:** Uses low-rank factorization to reduce the memory footprint of attention mechanisms, suitable for processing long sequences with constrained computational resources.
+   - **Longformer:** Introduces sparse attention patterns combined with low-rank factorization, enabling efficient processing of documents with thousands of tokens.
 
-- **Flash Attention**
-  - **Overview:** An optimized implementation of the attention mechanism that improves speed and memory usage, making it suitable for real-time applications.
-  - **Key Components:**
-    - **Tiling:** Processes input in small, manageable blocks to optimize memory usage.
-    - **Memory Management:** Implements advanced memory management techniques to reduce overhead.
-    - **High Throughput:** Designed for high-speed processing while maintaining accuracy.
-  - **Mechanism:**
-    1. **Input Tiling:** The input sequence is divided into smaller tiles or blocks.
-    2. **Efficient Computation:** Attention is computed within these tiles using optimized algorithms.
-    3. **Memory Optimization:** Careful management of memory resources to avoid bottlenecks and reduce latency.
-  - **Advantages:**
-    - **Optimized Performance:** Achieves comparable results to traditional attention mechanisms with lower computational and memory costs.
-    - **Real-Time Processing:** Suitable for applications that require fast, real-time processing or are deployed on hardware with limited resources.
+#### Flash Attention
+  An optimized implementation of the attention mechanism that improves speed and memory usage, making it suitable for real-time applications.
+  ##### Key Components
+   - **Tiling:** Processes input in small, manageable blocks to optimize memory usage.
+   - **Memory Management:** Implements advanced memory management techniques to reduce overhead.
+   - **High Throughput:** Designed for high-speed processing while maintaining accuracy.
+  ##### Mechanism
+   1. **Input Tiling:** The input sequence is divided into smaller tiles or blocks.
+   2. **Efficient Computation:** Attention is computed within these tiles using optimized algorithms.
+   3. **Memory Optimization:** Careful management of memory resources to avoid bottlenecks and reduce latency.
+  ##### Advantages
+   - **Optimized Performance:** Achieves comparable results to traditional attention mechanisms with lower computational and memory costs.
+   - **Real-Time Processing:** Suitable for applications that require fast, real-time processing or are deployed on hardware with limited resources.
 
 --- 
 

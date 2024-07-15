@@ -387,6 +387,7 @@ Matrix decomposition, also known as factorization, breaks down matrices into sim
 ---
 
 ### Reparameterized PEFT
+Reparameterized PEFT optimizes the fine-tuning process by restructuring a model's parameters. This approach reduces the number of parameters requiring updates, cutting computational and memory costs while maintaining or improving performance. By introducing efficient parameter modifications, PEFT enhances the scalability and effectiveness of fine-tuning operations.
 
 #### LoRA: Low-Rank Adaptation
 

@@ -329,7 +329,7 @@ plt.show()
 
 --- 
 
-- ### **Approximate Nearest Neighbor (ANN) Search:**
+### Approximate Nearest Neighbor (ANN) Search
   Approximate Nearest Neighbor (ANN) search is a technique used to find points in a high-dimensional space that are approximately closest to a given query point. This method is particularly crucial when dealing with large datasets where exact nearest neighbor search becomes computationally infeasible. ANN search balances between accuracy and computational efficiency, making it an invaluable tool in various fields such as machine learning, data mining, and information retrieval.
    - #### 1. **ANN Search in Machine Learning** ANN search is crucial for high-dimensional data tasks, such as:
      - **Feature Matching in Computer Vision:** Identifies similar features across images for tasks like image stitching, object recognition, and 3D reconstruction.
@@ -342,7 +342,7 @@ plt.show()
      - **Semantic Search:** Retrieves documents or information semantically similar to a user's query by representing text data as vectors.
      - **Multimedia Retrieval:** Finds similar images, videos, or audio files based on content rather than metadata, using high-dimensional vectors.
 
-- ### **Trade-Off Between Accuracy and Efficiency in ANN Search**
+### Trade-Off Between Accuracy and Efficiency in ANN Search
   In Approximate Nearest Neighbor (ANN) search, balancing accuracy and efficiency is crucial, especially for large-scale and high-dimensional datasets. While the aim is to quickly find the nearest neighbors with high precision, achieving both accuracy and speed is challenging due to computational constraints.
   - **Accuracy vs. Efficiency**
     - **Accuracy:** Ensures the search results closely match the exact nearest neighbors. High accuracy is vital for tasks requiring precise similarity measures but demands extensive computations, making it resource-intensive and slow.
@@ -355,7 +355,7 @@ plt.show()
      - **Reduced Computational Complexity:** Techniques that reduce the number of dimensions or approximate distances help manage the computational load, making it feasible to process high-dimensional data effectively. This is crucial in fields like image and video processing, natural language processing, and genomics.
      - **Handling Sparsity:** High-dimensional spaces often lead to sparse data distributions. Efficient ANN search methods are designed to navigate this sparsity, finding relevant neighbors without exhaustive searches.
 
-- ### **Techniques to Balance Accuracy and Efficiency**
+### Techniques to Balance Accuracy and Efficiency
    - Flat Indexing 
    - Inverted Index
    - Locality-Sensitive Hashing (LSH)
@@ -369,7 +369,7 @@ plt.show()
 
 --- 
 
-### **Flat Indexing:**
+### Flat Indexing
 Flat indexing, also referred to as brute-force or exhaustive indexing, entails storing all dataset vectors within a single index structure, typically an array or list. Each vector is assigned a unique identifier or index within this structure. Upon receiving a query vector, the index is sequentially traversed, and the similarity between the query and each dataset vector is computed. This iterative process continues until all vectors are assessed, ultimately identifying the closest matches to the query.
   - #### **How it works:**
      - **Index Construction:** Initially, all dataset vectors are stored in memory or on disk to construct the index.
@@ -419,7 +419,7 @@ Similarity scores: [0.50257071 0.45584231 0.26726124]
 ```
 --- 
 
-### **Inverted Index** 
+### Inverted Index
 An Inverted Index is a data structure used primarily in information retrieval systems, such as search engines, to efficiently map content to its location in a database, document, or set of documents. It enables quick full-text searches by maintaining a mapping from content terms to their occurrences in the dataset.
    - #### **How It Works**
      - **Tokenization:** The process starts with tokenizing the text data. Tokenization involves breaking down text into individual tokens, typically words or terms.
@@ -486,7 +486,7 @@ orange: [2]
 
 --- 
 
-### **Locality-Sensitive Hashing (LSH)** 
+### Locality-Sensitive Hashing (LSH)
 Locality-sensitive hashing (LSH) is a technique used to efficiently find approximate nearest neighbors in high-dimensional data. This method is particularly useful when dealing with large datasets where the exact nearest neighbor search would be too slow. LSH aims to hash similar items into the same buckets with high probability, which makes searching faster.
   - #### **Key Concepts**
     - **Locality Preservation:** LSH ensures that items that are close to each other in high-dimensional space are likely to be in the same bucket after hashing.
@@ -686,7 +686,7 @@ print("\nReconstructed Vectors:\n", reconstructed_vectors)
 --- 
 
 
-### **Tree-Based Indexing in ANN:** 
+### Tree-Based Indexing in ANN
 Tree-based indexing techniques are critical for efficiently managing and querying high-dimensional data. These structures organize data points hierarchically, allowing quick search and retrieval operations. The primary types of tree-based indexing methods used in Approximate Nearest Neighbor (ANN) search include K-D Tree, Ball Tree, and R-Tree. Each of these trees has unique characteristics and applications, as detailed below.
   - #### 1. **K-D Tree (K-Dimensional Tree)**
     A K-D Tree is a binary tree that organizes points in a k-dimensional space. It is particularly effective for low-dimensional data but can suffer from inefficiencies as the dimensionality increases.
@@ -721,8 +721,8 @@ dist, ind = tree.query(query, k=2)
 print("Distances:", dist)
 print("Indices:", ind)
  ```
-  - #### 2. **Ball Tree**
-    A Ball Tree is a binary tree that organizes points in a k-dimensional space by enclosing them in hyperspheres (balls). It is well-suited for high-dimensional data and can handle non-Euclidean distance metrics effectively.
+#### 2. Ball Tree
+A Ball Tree is a binary tree that organizes points in a k-dimensional space by enclosing them in hyperspheres (balls). It is well-suited for high-dimensional data and can handle non-Euclidean distance metrics effectively.
    - #### **Construction**
      - **Ball Creation:** At each level of the tree, data points are grouped into two subsets, each enclosed within a ball. The split is made by selecting a point (usually the centroid) and partitioning the points based on their distances to this point.
      - **Recursive Partitioning:** The process is recursively applied to the subsets, creating a hierarchical structure of balls.
@@ -762,7 +762,7 @@ print("Distance to nearest neighbor:", dist[0][0])
 
 --- 
 
-### **Random Projection in ANN** 
+### Random Projection in ANN
 Random projection is a dimensionality reduction technique used to approximate the distances between points in high-dimensional space. It is especially useful in Approximate Nearest Neighbor (ANN) search, where finding exact nearest neighbors in high-dimensional datasets can be computationally infeasible. By reducing the dimensionality while preserving the relative distances, random projection balances accuracy and efficiency.
   - #### **Key Concepts**
      - **Dimensionality Reduction** Random projection reduces the number of dimensions of the dataset, which helps in managing the computational complexity and improving the efficiency of ANN search.
@@ -832,7 +832,7 @@ Nearest Neighbor: [1 2 3 4]
 
 --- 
 
-### **Graph-based Indexing for ANN Search:** 
+### Graph-based Indexing for ANN Search
 Graph-based indexing is an advanced technique for performing Approximate Nearest Neighbor (ANN) searches in high-dimensional spaces. This approach constructs a graph where data points are nodes, and edges represent the proximity or similarity between these points. Graph-based indexing efficiently addresses the limitations of traditional methods, such as tree-based or hashing methods, especially in handling high-dimensional data.
   - #### **Key Concepts**
      - **Graph Construction:** Nodes (data points) are connected based on proximity, forming a graph that represents the dataset's structure.
@@ -842,8 +842,8 @@ Graph-based indexing is an advanced technique for performing Approximate Nearest
      - **High Efficiency:** Fast query responses due to optimized traversal of the graph.
      - **Scalability:** Capable of handling large datasets and high-dimensional spaces.
      - **Accuracy:** Often provides better approximations compared to other methods, striking a balance between speed and accuracy.
-  - #### 1. **HNSW**
-    Hierarchical Navigable Small World (HNSW) is an advanced graph-based algorithm for Approximate Nearest Neighbor (ANN) search, designed to handle high-dimensional and large-scale datasets efficiently. HNSW constructs a multi-layered graph, where each layer contains a subset of nodes connected in a small-world network structure, allowing fast and accurate nearest neighbor searches.
+   #### 1. HNSW
+   Hierarchical Navigable Small World (HNSW) is an advanced graph-based algorithm for Approximate Nearest Neighbor (ANN) search, designed to handle high-dimensional and large-scale datasets efficiently. HNSW constructs a multi-layered graph, where each layer contains a subset of nodes connected in a small-world network structure, allowing fast and accurate nearest neighbor searches.
     - #### **Key Concepts**
       - **Small-World Network:** HNSW leverages the properties of small-world networks, where most nodes can be reached from every other by a small number of steps. This significantly reduces search time.
       - **Hierarchical Structure:** The algorithm builds multiple layers of graphs. The top layers are sparsely connected and contain fewer nodes, while the bottom layers are densely connected and contain more nodes.
@@ -890,8 +890,8 @@ Nearest neighbors: [[2588 7881 4298 1877 5270 6926 4005 1598 3829 9343]]
 Distances: [[14.286862 14.975046 15.01863  15.024027 15.081305 15.204177 15.286852
   15.358801 15.378472 15.497097]]
 ```
-  - #### 2. **Vamana Indexing**
-    Vamana is a graph-based algorithm designed for efficient Approximate Nearest Neighbor (ANN) search, particularly in high-dimensional spaces. It constructs a navigable small-world graph to enable quick and accurate searches, making it suitable for large-scale datasets.
+#### 2. Vamana Indexing
+   Vamana is a graph-based algorithm designed for efficient Approximate Nearest Neighbor (ANN) search, particularly in high-dimensional spaces. It constructs a navigable small-world graph to enable quick and accurate searches, making it suitable for large-scale datasets.
     - #### **Key Concepts**
       - **Navigable Small-World Graph:** Vamana leverages small-world properties where nodes are connected in such a way that any node can be reached from any other node within a few steps.
       - **Greedy Search:** Utilizes a greedy search approach to traverse the graph, efficiently finding the nearest neighbors by following the closest links at each step.
@@ -937,6 +937,8 @@ Composite indexing in Approximate Nearest Neighbor (ANN) search involves combini
   - **IVF + PQ:** Uses inverted indexing for initial clustering (IVF) and product quantization (PQ) for efficient search within clusters.
   - **LSH + KDTree:** Applies locality-sensitive hashing (LSH) for fast candidate selection and KDTree for accurate nearest neighbor refinement.
   - **HNSW + IVF:** Utilizes hierarchical navigable small world (HNSW) graphs for quick navigation and inverted file (IVF) for detailed search within clusters.
+
+--- 
 
 ### Comparision between Different Indexing Technique
 

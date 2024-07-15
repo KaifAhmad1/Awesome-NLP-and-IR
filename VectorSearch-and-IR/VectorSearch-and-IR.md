@@ -129,49 +129,59 @@ $$EMD(P, Q) = \inf_{\gamma} \int_{X \times Y} d(x,y) \, d\gamma(x,y)$$
 
 --- 
 
-- ### **Nearest Neighbor Search**:
-Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
-   - **Example:** In a recommendation system, nearest neighbor search helps find users with similar preferences, enabling the system to suggest products or services that align with a user's tastes. For instance, Netflix recommends movies by identifying viewers with similar viewing habits and suggesting what others with similar preferences have enjoyed.
+### Nearest Neighbor Search
 
-- ### **High-Dimensional Data:**
+Nearest neighbor search is a fundamental technique used to identify the closest data points to a given query point within a dataset. It is essential in various applications such as recommendation systems, image and video retrieval, and machine learning classification tasks.
+
+- **Example:** In a recommendation system, nearest neighbor search helps find users with similar preferences, enabling the system to suggest products or services that align with a user's tastes. For instance, Netflix recommends movies by identifying viewers with similar viewing habits and suggesting what others with similar preferences have enjoyed.
+
+### High-Dimensional Data
+
 High-dimensional data refers to datasets with a large number of features or dimensions, such as text data represented by word embeddings or image data characterized by pixel values. Analyzing and managing high-dimensional data presents several challenges:
-  - #### 1. **Increased Computational Complexity:**
-The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
-  - #### 2. **Data Sparsity:**
-As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
-  - #### 3. **Overfitting:**
-With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
+
+1. **Increased Computational Complexity:** The number of calculations required increases exponentially with the number of dimensions, leading to significant computational costs.
+2. **Data Sparsity:** As dimensions increase, data points become sparse, making it difficult to draw meaningful comparisons.
+3. **Overfitting:** With a large number of features, models may capture noise rather than underlying patterns, resulting in overfitting.
 
 - **For Example:** In image search, each image can be represented as a high-dimensional vector. Comparing these vectors directly is computationally intensive due to the vast number of dimensions involved.
 
-- ### **Curse of Dimensionality:**
+### Curse of Dimensionality
+
 The curse of dimensionality, a term coined by `Richard Bellman`, describes the various phenomena that arise when analyzing data in high-dimensional spaces. As the number of dimensions increases:
-  - #### 1. **Distance Measures Become Less Meaningful:**
-In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
-  - #### 2. **Volume of Space Increases Exponentially:**
-The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
-  - #### 3. **Increased Noise and Redundancy:**
- Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
+
+1. **Distance Measures Become Less Meaningful:** In high-dimensional spaces, the distance between data points becomes more uniform, making it difficult to differentiate between the nearest and farthest neighbours.
+2. **Volume of Space Increases Exponentially:** The volume of the space grows exponentially with the number of dimensions, causing data points to become sparse and reducing statistical significance.
+3. **Increased Noise and Redundancy:** Higher dimensions can introduce more noise and redundant information, complicating the learning process and degrading the performance of algorithms.
+
 - **Example:** Consider a facial recognition system operating in high-dimensional space. The Euclidean distance between facial vectors becomes less effective, necessitating more advanced techniques to accurately measure similarity. This phenomenon illustrates the need for innovative solutions to manage high-dimensional data efficiently.
 
---- 
+---
 
-- ### **Linear Search:**
+### Linear Search
+
 Linear search is a straightforward method for finding a specific element in a vector (or array) by checking each element sequentially until the desired element is found or the end of the vector is reached. It operates in a vector space, which is essentially a one-dimensional array of elements.
-  - **Mathematical Explanation:** Given a vector $V = [v1, v2, ..., vn]$ and a target element $t$, the linear search algorithm checks each element $vi$ in $V$ sequentially:
-      - 1.  Start from the first element: $i = 1$
-      - 2.  Compare $t$ with $vi$.
-      - 3.  If $t = vi$, the search is successful, and the position i is returned.
-      - 4. If $t ≠ vi$, increment i and repeat steps 2-3 until $i = n$ or $t$ is found.
-- The Time Complexity of Linear Search is Linear $O(n)$ and the Space Complexity is Constant $O(1)$
-    - Advantages:
-       - 1. Linear search is straightforward to implement and understand.
-       - 2. Linear search does not require the dataset to be sorted or preprocessed in any way.
-       - 3. Linear search can be used on any type of dataset, regardless of structure or order.
-    - Limitations:
-      - 1. Linear search is inefficient for large datasets because it requires checking each element sequentially.
-      - 2. For large datasets, linear search can be very slow compared to other search algorithms KNN search or hash-based searches.
-```  Python 
+
+- **Mathematical Explanation:** Given a vector $V = [v_1, v_2, \ldots, v_n]$ and a target element $t$, the linear search algorithm checks each element $v_i$ in $V$ sequentially:
+  1. Start from the first element: $i = 1$
+  2. Compare $t$ with $v_i$.
+  3. If $t = v_i$, the search is successful, and the position $i$ is returned.
+  4. If $t \neq v_i$, increment $i$ and repeat steps 2-3 until $i = n$ or $t$ is found.
+
+- **Time Complexity:** Linear $O(n)$
+- **Space Complexity:** Constant $O(1)$
+
+#### Advantages:
+
+1. Linear search is straightforward to implement and understand.
+2. Linear search does not require the dataset to be sorted or preprocessed in any way.
+3. Linear search can be used on any type of dataset, regardless of structure or order.
+
+#### Limitations:
+
+1. Linear search is inefficient for large datasets because it requires checking each element sequentially.
+2. For large datasets, linear search can be very slow compared to other search algorithms like KNN search or hash-based searches.
+
+```python
 def linear_search(vector, target):
     for i in range(len(vector)):
         if vector[i] == target:
@@ -189,20 +199,20 @@ else:
 ```
 --- 
 
-- ### **Dimensionality Reduction:** 
-     - Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
-     - Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
-     - Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
+### Dimensionality Reduction
+   - Dimensionality reduction is a fundamental technique in data analysis and machine learning, aimed at transforming high-dimensional data into a lower-dimensional representation while preserving its essential characteristics. This process offers several advantages, including enhanced computational efficiency, improved model performance, and better visualization of complex datasets.
+   - Reducing dimensions helps address the Curse of Dimensionality by making data more interpretable and patterns more discernible. It also boosts computational efficiency by reducing complexity, leading to faster algorithms. Furthermore, it improves model performance by focusing on relevant features and mitigating overfitting.
+   - Dimensionality reduction techniques like PCA and t-SNE facilitate data visualization by projecting high-dimensional data into lower-dimensional spaces, making complex relationships easier to understand.
   
-- ### **Principal Component Analysis:**
+### Principal Component Analysis
 PCA is a widely used technique for linear dimensionality reduction. It aims to find the directions, or principal components, in which the data varies the most and projects the data onto these components to obtain a lower-dimensional representation.
   - At its core, PCA seeks to transform high-dimensional data into a lower-dimensional form while preserving the most important information. It achieves this by identifying the directions in which the data varies the most, known as the principal components, and projecting the data onto these components.
-- #### **Mathematical Foundation:**
+#### Mathematical Foundation
    - **Centering the Data:** PCA begins by centering the data, which involves subtracting the mean vector $Xmean$ from each sample.
    - **Covariance Matrix:** Next, it computes the covariance matrix $C$ of the centered data. This matrix quantifies the relationships between different features and how they vary together.
    - **Eigen Decomposition:** PCA then proceeds to compute the eigenvectors and eigenvalues of the covariance matrix. These eigenvectors represent the principal components, and the corresponding eigenvalues indicate the amount of variance explained by each component.
 
-- #### **Steps in PCA:** 
+#### Steps in PCA
   - 1. **Standardization:** Center the data by subtracting the mean vector from each sample.
   - 2. **Covariance Matrix Computation:** Compute the covariance matrix of the centered data.
   - 3. **Eigen Decomposition:** Compute the eigenvectors and eigenvalues of the covariance matrix.
@@ -243,36 +253,36 @@ X_transformed = np.dot(X_centered, top_k_eigenvectors)
       - 3. Requires standardized data.
       - 4. Captures variance, not necessarily the most important features for all tasks.
 
-- ### **t-Distributed Stochastic Neighbor Embedding (t-SNE)**
+### t-Distributed Stochastic Neighbor Embedding (t-SNE)
 t-SNE is a machine learning algorithm primarily used for dimensionality reduction and visualizing high-dimensional data. It is a non-linear technique particularly well-suited for embedding high-dimensional data into a low-dimensional space (typically 2D or 3D) while aiming to preserve the local structure and similarities within the data. Developed by Geoffrey Hinton and Laurens van der Maaten in 2008, t-SNE has gained immense popularity due to its ability to produce high-quality visualizations and uncover hidden patterns and clusters in complex datasets.
-  - #### **Key Concepts**
-    - #### 1. **Dimensionality Reduction:**
-      This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
-    - #### 2. **Stochastic Neighbor Embedding:**
-      This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
-    - #### 3. **t-Distribution:**
-      Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
+ #### Key Concepts
+   #### 1. Dimensionality Reduction
+   This means reducing the number of variables in the data. t-SNE reduces data from high-dimensional space to a 2D or 3D space, making it easier to plot and visually inspect.
+   #### 2. Stochastic Neighbor Embedding
+   This idea models the probability distribution of pairs of high-dimensional objects. Nearby points in high-dimensional space remain close in the low-dimensional space, and distant points stay far apart.
+   #### 3. t-Distribution
+   Unlike linear techniques like PCA (Principal Component Analysis), t-SNE is non-linear. It uses a heavy-tailed t-distribution in the low-dimensional space to prevent points from clumping together.
 
-  - #### **How t-SNE Works**
-    - #### 1. **Pairwise Similarities:**
-      t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
+#### How t-SNE Works
+   #### 1. Pairwise Similarities
+   t-SNE starts by calculating how similar each pair of points is in the high-dimensional space. It measures the Euclidean distance between points and converts these distances into probabilities that represent similarities.
 
   The similarity $p_{ij}$ between two points $x_i$ and $x_j$ is calculated as:
   $$p_{ij} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}$$
   Here, $\sigma_i$ is the variance of the Gaussian distribution centered at $x_i$.
   
-   - #### 2. **Joint Probabilities:**
-     These probabilities are symmetrical to ensure that the similarity between point $A$ and point $B$ is the same as between point B and point A.
+  #### 2. Joint Probabilities
+   These probabilities are symmetrical to ensure that the similarity between point $A$ and point $B$ is the same as between point B and point A.
 
   The joint probability $P_{ij}$ is:
   $$P_{ij} = \frac{p_{ij} + p_{ji}}{2N}$$
   Here, $N$ is the number of data points.
 
-   - #### 3. **Low-Dimensional Mapping:**
-     Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
+  #### 3. Low-Dimensional Mapping
+ Points are initially placed randomly in a low-dimensional space. t-SNE then adjusts their positions to minimize the difference between the high-dimensional and low-dimensional similarities.
 
-   - #### 4. **Gradient Descent:**
-     Positions are adjusted using an optimization method called gradient descent. This minimizes the KL divergence between the two probability distributions (high-dimensional and low-dimensional).
+ #### 4. Gradient Descent
+ Positions are adjusted using an optimization method called gradient descent. This minimizes the KL divergence between the two probability distributions (high-dimensional and low-dimensional).
   The Kullback-Leibler divergence $KL(P \parallel Q)$ is:
   $$KL(P \parallel Q) = \sum_{i \neq j} P_{ij} \log\left(\frac{P_{ij}}{Q_{ij}}\right)$$
 
@@ -280,8 +290,6 @@ t-SNE is a machine learning algorithm primarily used for dimensionality reductio
   $$Q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l} (1 + \|y_k - y_l\|^2)^{-1}}$$
 
   The gradient descent algorithm updates the positions $y_i$ to minimize $KL(P \parallel Q)$, ensuring that the low-dimensional representation maintains the structure of the high-dimensional data as closely as possible.
-
-
 
 
 ``` python 

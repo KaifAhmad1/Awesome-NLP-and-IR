@@ -214,6 +214,7 @@ Awesome-NLP-and-IR
 - [Vector Search](VectorSearch-and-IR/VectorSearch-and-IR.md#vector-search)
   - [Vector Representation in ML](VectorSearch-and-IR/VectorSearch-and-IR.md#vector-representation-in-ml)
   - [Distance Metrics](VectorSearch-and-IR/VectorSearch-and-IR.md#distance-metrics)
+      - [Dot Product](VectorSearch-and-IR/VectorSearch-and-IR.md#dot-product-metrics)
       - [Euclidean Distance](VectorSearch-and-IR/VectorSearch-and-IR.md#euclidean-distance)
       - [Manhattan Distance](VectorSearch-and-IR/VectorSearch-and-IR.md#manhattan-distance)
       - [Cosine Similarity](VectorSearch-and-IR/VectorSearch-and-IR.md#cosine-similarity)

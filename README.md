@@ -173,6 +173,7 @@ Awesome-NLP-and-IR
   - [Efficient Structure Design](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#efficient-structure-design)
       - [Mixture-of-Experts (MoE)](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#mixture-of-experts)
       - [Switch Transformers](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#switch-transformers)
+      - [Differences between MoE and Switch Transformers](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#key-differences-between-mixture-of-experts-and-switch-transformers)
   - [Efficient Attention Mechanisms](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#efficient-attention-mechanisms)
       - [Multi Query Attention (MQA)](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#multi-query-attention-mqa)
       - [Group Query Attention (GQA)](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#group-query-attention-gqa)

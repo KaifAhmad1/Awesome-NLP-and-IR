@@ -16,73 +16,93 @@
      - #### 3. **Audio and Video Data:**
        - **Audio Vectors:** Deep learning models like VGGish convert audio signals into vectors that capture the essential characteristics of the sound.
        - **Video Vectors:** Similar to images, videos are processed frame by frame or using 3D CNNs to generate vectors representing the video content.
+         
   ---
-  - ### **Distance Metrics:**
-  Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
-    - #### 1. **Euclidean Distance:**
-         Measures the straight-line distance between two points in Euclidean space.
-          $$d(v, u) = \sqrt{\sum_{i=1}^{n} (v_i - u_i)^2}$$
-        -  For vectors $V = [1, 2]$ and $U = [4, 6]$, the Euclidean distance is $√((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5$.
-           - **Advantages:**
-             - Intuitive and easy to compute.
-             - Well-suited for small, low-dimensional datasets.
-           - **Limitations:**
-             - Sensitive to differences in magnitude and scaling.
-             - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
-    - #### 2. **Manhattan Distance:**
-        Measures the distance between two points along axes at right angles, also known as L1 or taxicab distance.
-         $$d(v, u) = \sum_{i=1}^{n} |v_i - u_i|$$
-        -  For vectors $V = [1, 2]$ and $U = [4, 6]$, the Manhattan distance is $|4-1| + |6-2| = 3 + 4 = 7$.
-           - **Advantages:**
-             - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.
-           - **Limitations:**
-             - Can be less intuitive for non-grid-based data.
-             - Sensitive to scale, like Euclidean distance.
+### Distance Metrics
 
-    - #### 3. **Cosine Similarity:**
-      Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
-         $$\cos(\theta) = \frac{v \cdot u}{\|v\| \|u\|}$$
-        -  For vectors $V = [1, 2]$ and $U = [2, 3]$, the cosine similarity is $$\cos(\theta) = \frac{1 \cdot 2 + 2 \cdot 3}{\sqrt{1^2 + 2^2} \cdot \sqrt{2^2 + 3^2}} = \frac{8}{\sqrt{5} \cdot \sqrt{13}} \approx 0.98$$
-           - **Advantages:**
-             - Useful for high-dimensional data, such as text data represented as word vectors.
-             - Ignores magnitude, focusing on the direction of the vectors.
-           - **Limitations:**
-             - Ignores magnitude, which can be a drawback if magnitude differences are important.
-             - Requires non-zero vectors to compute.
-    - #### 4. **Jaccard Similarity:**
-      Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
-        $$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
-        -  For sets $A = {1, 2, 3}$ and $B = {2, 3, 4}$, the Jaccard similarity is $$J(A, B) = \frac{| \{2, 3\} |}{| \{1, 2, 3, 4\} |} = \frac{2}{4} = 0.5$$
-           - **Advantages:**
-             - Handles binary or categorical data well.
-             - Simple interpretation and calculation.
-           - **Limitations:**
-             - Not suitable for continuous data.
-             - Can be less informative for datasets with many common elements.
-    - #### 5. **Hamming Distance:**
-      Measures the number of positions at which the corresponding elements of two binary vectors are different.
-         $$H(v, u) = \sum (v_i \neq u_i)$$
-        -  For binary vectors $V = [1, 0, 1]$ and $U = [0, 1, 1]$, the Hamming distance is $(1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2$.
-           - **Advantages:**
-             - Effective for error detection and correction in binary data.
-             - Simple and fast to compute.
-           - **Limitations:**
-             - Only applicable to binary vectors.
-             - Not useful for continuous or non-binary categorical data.
-    - #### 6. **Earth Mover's Distance (EMD):**
-       Measures the minimum amount of `work` needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
-         $$EMD(P, Q) = \inf_{\gamma} \int_{X \times Y} d(x,y) \, d\gamma(x,y)$$
-        -  Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution $𝑃$ has points $[1,2]$ and $𝑄$ has points $[2,3]$, EMD would calculate the minimal transportation cost.
-           - **Advantages:**
-             - Provides a meaningful metric for comparing distributions, taking into account the underlying geometry.
-             - Applicable to various types of data, including images and histograms.
-           - **Limitations:**
-             - Computationally intensive, especially for large datasets.
-             - Requires solving an optimization problem, which can be complex.
+Distance metrics are used to quantify the similarity or dissimilarity between vectors. Different metrics are suited for different types of data and applications.
+
+#### 1. Dot Product Metric
+Measures the similarity between two vectors by taking the dot product of the vectors.
+$$v \cdot u = \sum_{i=1}^{n} v_i \cdot u_i$$
+- For vectors $V = [1, 2]$ and $U = [3, 4]$, the dot product is $1 \cdot 3 + 2 \cdot 4 = 3 + 8 = 11$.
+  ##### Advantages
+    - Simple and fast to compute.
+    - Useful in various applications, including machine learning and signal processing.
+  ##### Limitations
+    - Does not provide a bounded similarity score.
+    - Can be influenced by the magnitudes of the vectors.
+
+#### 2. Euclidean Distance
+Measures the straight-line distance between two points in Euclidean space.
+$$d(v, u) = \sqrt{\sum_{i=1}^{n} (v_i - u_i)^2}$$
+- For vectors $V = [1, 2]$ and $U = [4, 6]$, the Euclidean distance is $√((4-1)^2 + (6-2)^2) = √(9 + 16) = √25 = 5$.
+  ##### Advantages
+    - Intuitive and easy to compute.
+    - Well-suited for small, low-dimensional datasets.
+  ##### Limitations
+    - Sensitive to differences in magnitude and scaling.
+    - Not suitable for high-dimensional spaces due to the curse of dimensionality, where distances become less meaningful.
+
+#### 3. Manhattan Distance
+Measures the distance between two points along axes at right angles, also known as L1 or taxicab distance.
+$$d(v, u) = \sum_{i=1}^{n} |v_i - u_i|$$
+- For vectors $V = [1, 2]$ and $U = [4, 6]$, the Manhattan distance is $|4-1| + |6-2| = 3 + 4 = 7$.
+  ##### Advantages
+    - Robust to outliers and useful in grid-based pathfinding problems, such as robotics and game design.
+  ##### Limitations
+    - Can be less intuitive for non-grid-based data.
+    - Sensitive to scale, like Euclidean distance.
+
+#### 4. Cosine Similarity
+Measures the cosine of the angle between two vectors, indicating their similarity in terms of direction rather than magnitude.
+$$\cos(\theta) = \frac{v \cdot u}{\|v\| \|u\|}$$
+- For vectors $V = [1, 2]$ and $U = [2, 3]$, the cosine similarity is 
+$$\cos(\theta) = \frac{1 \cdot 2 + 2 \cdot 3}{\sqrt{1^2 + 2^2} \cdot \sqrt{2^2 + 3^2}} = \frac{8}{\sqrt{5} \cdot \sqrt{13}} \approx 0.98$$
+  ##### Advantages
+    - Useful for high-dimensional data, such as text data represented as word vectors.
+    - Ignores magnitude, focusing on the direction of the vectors.
+  ##### Limitations
+    - Ignores magnitude, which can be a drawback if magnitude differences are important.
+    - Requires non-zero vectors to compute.
+
+#### 5. Jaccard Similarity
+Measures the similarity between finite sets by considering the size of the intersection divided by the size of the union of the sets.
+$$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
+- For sets $A = \{1, 2, 3\}$ and $B = \{2, 3, 4\}$, the Jaccard similarity is 
+$$J(A, B) = \frac{| \{2, 3\} |}{| \{1, 2, 3, 4\} |} = \frac{2}{4} = 0.5$$
+  ##### Advantages
+    - Handles binary or categorical data well.
+    - Simple interpretation and calculation.
+  ##### Limitations
+    - Not suitable for continuous data.
+    - Can be less informative for datasets with many common elements.
+
+#### 6. Hamming Distance
+Measures the number of positions at which the corresponding elements of two binary vectors are different.
+$$H(v, u) = \sum (v_i \neq u_i)$$
+- For binary vectors $V = [1, 0, 1]$ and $U = [0, 1, 1]$, the Hamming distance is $(1 ≠ 0) + (0 ≠ 1) + (1 = 1) = 2$.
+  ##### Advantages
+    - Effective for error detection and correction in binary data.
+    - Simple and fast to compute.
+  ##### Limitations
+    - Only applicable to binary vectors.
+    - Not useful for continuous or non-binary categorical data.
+
+#### 7. Earth Mover's Distance (EMD)
+Measures the minimum amount of 'work' needed to transform one distribution into another, often used in image retrieval. Also known as the Wasserstein distance.
+$$EMD(P, Q) = \inf_{\gamma} \int_{X \times Y} d(x,y) \, d\gamma(x,y)$$
+- Given two distributions of points, EMD calculates the cost of moving distributions to match each other. For instance, if distribution $𝑃$ has points $[1, 2]$ and $𝑄$ has points $[2, 3]$, EMD would calculate the minimal transportation cost.
+  ##### Advantages
+    - Provides a meaningful metric for comparing distributions, taking into account the underlying geometry.
+    - Applicable to various types of data, including images and histograms.
+  ##### Limitations
+    - Computationally intensive, especially for large datasets.
+    - Requires solving an optimization problem, which can be complex.
 
 ---
 
-  - ### **Vector Search Techniques:**
+### Vector Search Techniques
   Vector search involves finding vectors in a database that are similar to a given query vector. Techniques include:
    - #### 1. **Brute-Force Search:**
       - Computes similarity between the query vector and all vectors in the dataset.

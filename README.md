@@ -202,6 +202,7 @@ Awesome-NLP-and-IR
         - [Lookahead Decoding](RAG-and-RAG-Optimization/RAG-and-Optimization.md#lookahead-decoding)
       - [Graph-Level Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#graph-level-optimization)
         - [Kernel Fusion](RAG-and-RAG-Optimization/RAG-and-Optimization.md#kernel-fusion)
+        - [Layer Fusion](RAG-and-RAG-Optimization/RAG-and-Optimization.md#layer-fusion)
   - [Challenges and Solutions in System-Level Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#challenges-and-solutions-in-system-level-optimization)
       - [Memory Management](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#memory-management)
       - [Continuous Batching](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#continuous-batching)

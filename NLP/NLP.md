@@ -2478,4 +2478,7 @@ Transformers have become a dominant architecture in the field of natural languag
 6. **Encoding categorical data: Is there yet anything ‘hotter’ than one-hot encoding** [:link:](https://arxiv.org/pdf/2312.16930)
 7. **A Statistical Interpretation of Term Specificity and Its Application in Retrieval** by Karen et al. [:link:](https://www.emerald.com/insight/content/doi/10.1108/eb026526/full/html)
 8. **Okapi at TREC-3** by Stephen E et al. [:link:](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/okapi_trec3.pdf)
-
+9. **Efficient Estimation of Word Representations in Vector Space** by Tomas Mikolov et al. [:link:](https://arxiv.org/pdf/1301.3781)
+10. **GloVe: Global Vectors for Word Representation** by Christopher D. Manning et al. [:link:](https://nlp.stanford.edu/pubs/glove.pdf)
+11. **Enriching Word Vectors with Subword Information** by Christopher D. Manning et al. [:link:](https://arxiv.org/pdf/1607.04606)
+12. **Word Embeddings: A Survey** by Felipe Almeida et al. [:link:](https://arxiv.org/pdf/1901.09069)

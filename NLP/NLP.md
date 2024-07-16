@@ -2465,5 +2465,8 @@ Transformers have become a dominant architecture in the field of natural languag
 
 
 
-### References 
 
+
+### References
+
+1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)

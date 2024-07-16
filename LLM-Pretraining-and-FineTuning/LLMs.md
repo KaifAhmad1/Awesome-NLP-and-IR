@@ -1301,4 +1301,6 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 | **Robustness**           | High                                              | High                                                | High                                               | High                                                  | High                                                 | High                                                 |
 
 
-## Reference 
+## References 
+1. **A Survey of Large Language Models** by Wayne Xin Zhao et al. [:link:](https://arxiv.org/pdf/2303.18223)
+

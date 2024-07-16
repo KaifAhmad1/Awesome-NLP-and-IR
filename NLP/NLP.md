@@ -2467,13 +2467,11 @@ Transformers have become a dominant architecture in the field of natural languag
 
 
 
-### References
+
+## References
 
 1. **Japanese and Korean Voice Search** by Mike Schuster et al. [:link:](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf)
-1. **Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1804.10959)
-1. **SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1808.06226)
-1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)
-1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)
-
-
-1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)
+2. **Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1804.10959)
+3. **SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1808.06226)
+4. **Scaling Hidden Markov Language Models** by Justin T. Chiu et al. [:link:](https://arxiv.org/pdf/2011.04640v1)
+5. **Exploring Conditional Random Fields for NLP Applications** [:link:](https://www.hyperscience.com/blog/exploring-conditional-random-fields-for-nlp-applications/)

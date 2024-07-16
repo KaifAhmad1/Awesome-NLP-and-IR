@@ -2476,4 +2476,6 @@ Transformers have become a dominant architecture in the field of natural languag
 4. **Scaling Hidden Markov Language Models** by Justin T. Chiu et al. [:link:](https://arxiv.org/pdf/2011.04640v1)
 5. **Exploring Conditional Random Fields for NLP Applications** [:link:](https://www.hyperscience.com/blog/exploring-conditional-random-fields-for-nlp-applications/)
 6. **Encoding categorical data: Is there yet anything ‘hotter’ than one-hot encoding** [:link:](https://arxiv.org/pdf/2312.16930)
-7. 
+7. **A Statistical Interpretation of Term Specificity and Its Application in Retrieval** by Karen et al. [:link:](https://www.emerald.com/insight/content/doi/10.1108/eb026526/full/html)
+8. **Okapi at TREC-3** by Stephen E et al. [:link:](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/okapi_trec3.pdf)
+

@@ -2469,4 +2469,11 @@ Transformers have become a dominant architecture in the field of natural languag
 
 ### References
 
+1. **Japanese and Korean Voice Search** by Mike Schuster et al. [:link:](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf)
+1. **Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1804.10959)
+1. **SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1808.06226)
+1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)
+1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)
+
+
 1. **Attention is All You Need** by Ashish Vaswani et al. [:link:](https://arxiv.org/pdf/1706.03762)

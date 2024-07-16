@@ -2475,3 +2475,5 @@ Transformers have become a dominant architecture in the field of natural languag
 3. **SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing** by Taku Kudo et al. [:link:](https://arxiv.org/pdf/1808.06226)
 4. **Scaling Hidden Markov Language Models** by Justin T. Chiu et al. [:link:](https://arxiv.org/pdf/2011.04640v1)
 5. **Exploring Conditional Random Fields for NLP Applications** [:link:](https://www.hyperscience.com/blog/exploring-conditional-random-fields-for-nlp-applications/)
+6. **Encoding categorical data: Is there yet anything ‘hotter’ than one-hot encoding** [:link:](https://arxiv.org/pdf/2312.16930)
+7. 

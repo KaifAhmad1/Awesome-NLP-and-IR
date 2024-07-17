@@ -1304,4 +1304,5 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 ## References 
 1. **A Survey of Large Language Models** by Wayne Xin Zhao et al. [:link:](https://arxiv.org/pdf/2303.18223)
 2. **Attention Is All You Need** by Ashish Vaswani∗ et al. [:link:](https://arxiv.org/pdf/1706.03762)
+3. **A Survey on Self-supervised Learning: Algorithms, Applications, and Future Trends** by Jie Gui et al. [:link:](https://arxiv.org/pdf/2301.05712)
 

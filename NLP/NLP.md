@@ -2490,4 +2490,5 @@ Transformers have become a dominant architecture in the field of natural languag
 18. **Neural Information Retrieval: A Literature Review** by Ye Zhang∗ et al. [:link:](https://arxiv.org/pdf/1611.06792)
 19. **Recurrent Neural Networks and Long Short-Term Memory Networks: Tutorial and Survey** by Benyamin Ghojogh and Ali Ghodsi et al. [:link:](https://arxiv.org/pdf/2304.11461)
 20. **Attention Is All You Need** by Ashish Vaswani∗ et al. [:link:](https://arxiv.org/pdf/1706.03762)
+21. **Attention Is All You Need** by Yoshua Bengio et al. [:link:](https://arxiv.org/pdf/1206.5538)
 

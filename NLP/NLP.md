@@ -2468,7 +2468,6 @@ Transformers have become a dominant architecture in the field of natural languag
 
 
 
-
 ## References
 
 1. **Japanese and Korean Voice Search** by Mike Schuster et al. [:link:](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf)
@@ -2489,5 +2488,6 @@ Transformers have become a dominant architecture in the field of natural languag
 16. **SPLADE v2: Sparse Lexical and Expansion Model for Information Retrieval** by Stanford et al. [:link:](https://arxiv.org/pdf/2109.10086)
 17. **Recent Trends in Deep Learning Based Natural Language Processing** by Tom Young et al. [:link:](https://arxiv.org/pdf/1708.02709)
 18. **Neural Information Retrieval: A Literature Review** by Ye Zhang∗ et al. [:link:](https://arxiv.org/pdf/1611.06792)
-
+19. **Recurrent Neural Networks and Long Short-Term Memory Networks: Tutorial and Survey** by Benyamin Ghojogh and Ali Ghodsi et al. [:link:](https://arxiv.org/pdf/2304.11461)
+20. **Attention Is All You Need** by Ashish Vaswani∗ et al. [:link:](https://arxiv.org/pdf/1706.03762)
 

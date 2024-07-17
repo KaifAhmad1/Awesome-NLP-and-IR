@@ -2487,5 +2487,7 @@ Transformers have become a dominant architecture in the field of natural languag
 14. **BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding** by Google AI et al. [:link:](https://arxiv.org/pdf/1810.04805)
 15. **SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking** by Stanford et al. [:link:](https://arxiv.org/abs/2107.05720)
 16. **SPLADE v2: Sparse Lexical and Expansion Model for Information Retrieval** by Stanford et al. [:link:](https://arxiv.org/pdf/2109.10086)
+17. **Recent Trends in Deep Learning Based Natural Language Processing** by Tom Young et al. [:link:](https://arxiv.org/pdf/1708.02709)
+18. **Neural Information Retrieval: A Literature Review** by Ye Zhang∗ et al. [:link:](https://arxiv.org/pdf/1611.06792)
 
 

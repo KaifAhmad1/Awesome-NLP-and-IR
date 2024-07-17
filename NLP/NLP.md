@@ -6,12 +6,13 @@
    - **For Example**
       - `Artificial Intelligence` becomes `artificial intelligence`
       - `Data Science` becomes `data science`
-        
-    ``` Python
-         text = "Machine Learning is FUN!"
-         lowercased_text = text.lower()
-         print(lowercased_text)  # Output: "machine learning is fun!" 
-    ```
+
+     
+``` Python
+text = "Machine Learning is FUN!"
+lowercased_text = text.lower()
+print(lowercased_text)  # Output: "machine learning is fun!" 
+ ```
     
  ---
 ### Contraction Mapping
@@ -2484,5 +2485,7 @@ Transformers have become a dominant architecture in the field of natural languag
 12. **Word Embeddings: A Survey** by Felipe Almeida et al. [:link:](https://arxiv.org/pdf/1901.09069)
 13. **Deep contextualized word representations** by Matthew E. Peters et al. [:link:](https://arxiv.org/pdf/1802.05365)
 14. **BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding** by Google AI et al. [:link:](https://arxiv.org/pdf/1810.04805)
+15. **SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking** by Stanford et al. [:link:](https://arxiv.org/abs/2107.05720)
+16. **SPLADE v2: Sparse Lexical and Expansion Model for Information Retrieval** by Stanford et al. [:link:](https://arxiv.org/pdf/2109.10086)
 
 

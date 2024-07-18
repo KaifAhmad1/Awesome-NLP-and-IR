@@ -912,3 +912,5 @@ Improving the performance and energy efficiency of hardware accelerators used in
   Develop algorithms that leverage specific hardware features, such as FPGAs (Field-Programmable Gate Arrays).
   - **Benefit**: Enhances performance by ensuring algorithms are designed to take full advantage of the capabilities of the hardware, particularly for memory-intensive tasks.
 
+
+## References 

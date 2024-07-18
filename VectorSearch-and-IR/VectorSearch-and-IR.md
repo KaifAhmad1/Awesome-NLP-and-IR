@@ -982,3 +982,5 @@ Composite indexing in Approximate Nearest Neighbor (ANN) search involves combini
 
 1. **A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge** by Yikun Han et al. [:link:](https://arxiv.org/pdf/2310.11703)
 2. **Information Retrieval: Recent Advances and Beyond** by Kailash Hambarde et al. [:link:](https://arxiv.org/pdf/2301.08801)
+3. **Approximate Nearest Neighbor Search in High Dimensions** by Alexandr Andoni et al. [:link:](https://arxiv.org/pdf/1806.09823)
+4. 

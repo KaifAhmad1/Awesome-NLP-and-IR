@@ -987,3 +987,5 @@ Composite indexing in Approximate Nearest Neighbor (ANN) search involves combini
 5. **Similarity Search in High Dimensions via Hashing** by Stanford University et al. [:link:](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Gionis.pdf)
 6. **Competitive Quantization for Approximate Nearest Neighbor Search** by Ezgi Can Ozan et al. [:link:](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7539664)
 7. **Constructing Tree-based Index for Efficient and Effective Dense Retrieval** by Haitao Li et al. [:link:](https://arxiv.org/pdf/2304.11943)
+8. **Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs** by Yu. A. Malkov et al. [:link:](https://arxiv.org/pdf/1603.09320)
+9. **DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node** by Suhas Jayaram Subramanya∗ et al. [:link:](https://proceedings.neurips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf)

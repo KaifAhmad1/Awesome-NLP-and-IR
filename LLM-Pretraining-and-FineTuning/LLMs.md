@@ -1302,6 +1302,7 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 
 
 ## References 
+
 1. **A Survey of Large Language Models** by Wayne Xin Zhao et al. [:link:](https://arxiv.org/pdf/2303.18223)
 2. **Attention Is All You Need** by Ashish Vaswani∗ et al. [:link:](https://arxiv.org/pdf/1706.03762)
 3. **A Survey on Self-supervised Learning: Algorithms, Applications, and Future Trends** by Jie Gui et al. [:link:](https://arxiv.org/pdf/2301.05712)
@@ -1311,5 +1312,8 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 7. **ADALORA: ADAPTIVE BUDGET ALLOCATION FOR PARAMETER-EFFICIENT FINE-TUNING** by Qingru Zhang et al. [:link:](https://arxiv.org/pdf/2303.10512)
 8. **DoRA: Weight-Decomposed Low-Rank Adaptation** by Shih-Yang Liu et al. [:link:](https://arxiv.org/pdf/2402.09353)
 9. **LORA-FA: MEMORY-EFFICIENT LOW-RANK ADAPTATION FOR LARGE LANGUAGE MODELS FINE-TUNING** by Longteng Zhang et al. [:link:](https://arxiv.org/pdf/2308.03303)
-10. **LORA-FA: MEMORY-EFFICIENT LOW-RANK ADAPTATION FOR LARGE LANGUAGE MODELS FINE-TUNING** by Longteng Zhang et al. [:link:](https://arxiv.org/pdf/2308.03303)
+10. **HyperTuning: Toward Adapting Large Language Models without Back-propagation** by Jason Phang et al. [:link:](https://arxiv.org/pdf/2211.12485)
+11. **Fine-Tuning Language Models with Just Forward Passes** by Sadhika Malladi∗ et al. [:link:](https://arxiv.org/pdf/2305.17333)
+12. **QLORA: Efficient Finetuning of Quantized LLMs** by Tim Dettmers∗ et al. [:link:](https://arxiv.org/pdf/2305.14314)
+13. **Let the Expert Stick to His Last: Expert-Specialized Fine-Tuning for Sparse Architectural Large Language Models** by Zihan Wang et al. [:link:](https://arxiv.org/pdf/2407.01906)
 

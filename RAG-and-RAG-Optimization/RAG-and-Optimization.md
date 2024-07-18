@@ -617,4 +617,6 @@ Areas of potential development and exploration for enhancing RAG systems.
 2. **A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models** by Wenqi Fan et al. [:link:](https://arxiv.org/pdf/2405.06211)
 3. **Retrieval-Augmented Generation for AI-Generated Content: A Survey** by Penghao Zhao∗ et al. [:link:](https://arxiv.org/pdf/2402.19473)
 4. **Searching for Best Practices in Retrieval-Augmented Generation** by Xiaohua Wang et al. [:link:](https://arxiv.org/pdf/2407.01219)
-
+5. **Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity** by Soyeong Jeong et al. [:link:](https://arxiv.org/pdf/2403.14403)
+6. **Corrective Retrieval Augmented Generation** by Shi-Qi Yan et al. [:link:](https://arxiv.org/pdf/2401.15884)
+7. **SELF-RAG: LEARNING TO RETRIEVE, GENERATE, AND CRITIQUE THROUGH SELF-REFLECTION** by Akari Asai et al. [:link:](https://arxiv.org/pdf/2310.11511)

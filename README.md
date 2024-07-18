@@ -111,6 +111,10 @@ Awesome-NLP-and-IR
   - [Key Components of Transformer Architecture](NLP/NLP.md#key-components-of-transformer-architecture)
   - [Transformer Architectures: A Detailed Comparison](NLP/NLP.md#transformer-architectures-a-detailed-comparison)
 
+- [References](NLP/NLP.md#references)
+
+
+
 ### Large Language Models (LLMs)
 
 - [Architecture](LLM-Pretraining-and-FineTuning/LLMs.md#architecture)
@@ -161,6 +165,9 @@ Awesome-NLP-and-IR
       - [Kahneman-Tversky Optimization (KTO)](LLM-Pretraining-and-FineTuning/LLMs.md#kahneman-tversky-optimization-kto)
       - [Odds Ratio Preference Optimization (ORPO)](LLM-Pretraining-and-FineTuning/LLMs.md#odds-ratio-preference-optimization-orpo)
       - [Alignment Techniques Comparison](LLM-Pretraining-and-FineTuning/LLMs.md#alignment-techniques-comparison)
+
+- [References](LLM-Pretraining-and-FineTuning/LLMs.md#references)
+
 
 ### LLM Efficiency
 
@@ -215,6 +222,8 @@ Awesome-NLP-and-IR
       - [Scheduling Strategies](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#scheduling-strategies)
       - [Distributed Systems Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#distributed-systems-optimization)
       - [Hardware Accelerator Design](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#hardware-accelerator-design)
+    
+- [References](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#references)
 
 ### Vector Search and Information Retrieval
 
@@ -247,6 +256,8 @@ Awesome-NLP-and-IR
       - [LSH Forest](VectorSearch-and-IR/VectorSearch-and-IR.md#lsh-forest)
       - [Composite Indexing in ANN](VectorSearch-and-IR/VectorSearch-and-IR.md#composite-indexing-in-ann)
   - [Comparision between Different Indexing Techniques](VectorSearch-and-IR/VectorSearch-and-IR.md#comparision-between-different-indexing-techniques)
+
+- [References](VectorSearch-and-IR/VectorSearch-and-IR.md#references)
 
 ### Retrieval Augmented Generation, RAG Optimization, and Best Practices
 
@@ -293,6 +304,7 @@ Awesome-NLP-and-IR
     - [Tools and Platforms for Optimization](RAG-and-RAG-Optimization/RAG-and-Optimization.md#tools-and-platforms-for-optimization)
     - [Recommendations for Implementing RAG Systems](RAG-and-RAG-Optimization/RAG-and-Optimization.md#recommendations-for-implementing-rag-systems)
 
+- [References](RAG-and-RAG-Optimization/RAG-and-Optimization.md#references)
 
 
 ### 🤝 Contributions

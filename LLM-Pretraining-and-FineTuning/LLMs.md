@@ -1306,4 +1306,10 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 2. **Attention Is All You Need** by Ashish Vaswani∗ et al. [:link:](https://arxiv.org/pdf/1706.03762)
 3. **A Survey on Self-supervised Learning: Algorithms, Applications, and Future Trends** by Jie Gui et al. [:link:](https://arxiv.org/pdf/2301.05712)
 4. **Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey** by Zeyu Han  et al. [:link:](https://arxiv.org/pdf/2403.14608)
+5. **LoRA: Low-Rank Adaptation of Large Language Models** by Edward J. Hu et al. [:link:](https://arxiv.org/pdf/2106.09685)
+6. **DyLoRA: Parameter-Efficient Tuning of Pretrained Models using Dynamic Search-Free Low Rank Adaptation** by Mojtaba Valipour et al. [:link:](https://arxiv.org/pdf/2210.07558)
+7. **ADALORA: ADAPTIVE BUDGET ALLOCATION FOR PARAMETER-EFFICIENT FINE-TUNING** by Qingru Zhang et al. [:link:](https://arxiv.org/pdf/2303.10512)
+8. **DoRA: Weight-Decomposed Low-Rank Adaptation** by Shih-Yang Liu et al. [:link:](https://arxiv.org/pdf/2402.09353)
+9. **LORA-FA: MEMORY-EFFICIENT LOW-RANK ADAPTATION FOR LARGE LANGUAGE MODELS FINE-TUNING** by Longteng Zhang et al. [:link:](https://arxiv.org/pdf/2308.03303)
+10. **LORA-FA: MEMORY-EFFICIENT LOW-RANK ADAPTATION FOR LARGE LANGUAGE MODELS FINE-TUNING** by Longteng Zhang et al. [:link:](https://arxiv.org/pdf/2308.03303)
 

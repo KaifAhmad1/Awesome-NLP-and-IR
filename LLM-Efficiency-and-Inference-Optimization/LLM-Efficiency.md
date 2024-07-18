@@ -917,4 +917,6 @@ Improving the performance and energy efficiency of hardware accelerators used in
 1. **Efficient Large Language Models: A Survey** by Zhongwei Wan∗ et al. [:link:](https://arxiv.org/pdf/2312.03863)
 2. **A Survey on Efficient Inference for Large Language Models** by Zixuan Zhou* et al. [:link:](https://arxiv.org/pdf/2404.14294)
 3. **OUTRAGEOUSLY LARGE NEURAL NETWORKS: THE SPARSELY-GATED MIXTURE-OF-EXPERTS LAYER** by Noam Shazeer et al. [:link:](https://arxiv.org/pdf/1701.06538)
-3. **Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity** by William Fedus∗ et al. [:link:](https://arxiv.org/pdf/2101.03961)
+4. **Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity** by William Fedus∗ et al. [:link:](https://arxiv.org/pdf/2101.03961)
+5. **Efficient Transformers: A Survey** by Yi Tay et al. [:link:](https://arxiv.org/pdf/2009.06732)
+6. **Long-Short Transformer: Efficient Transformers for Language and Vision** by Chen Zhu et al. [:link:](https://arxiv.org/pdf/2107.02192)

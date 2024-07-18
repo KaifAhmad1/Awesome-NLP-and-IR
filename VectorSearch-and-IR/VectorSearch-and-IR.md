@@ -976,3 +976,9 @@ Composite indexing in Approximate Nearest Neighbor (ANN) search involves combini
 | **Advantages**                 | Simple, accurate                    | Efficient for sparse data         | Fast approximate search              | Good balance of accuracy and efficiency | Reduces data size, improves search speed | Efficient for low to moderate dimensions | High accuracy and efficiency           | Improved accuracy over single LSH     | Combines strengths of multiple techniques |
 | **Disadvantages**              | Slow for large datasets             | Requires manual keyword assignment | Lower accuracy, space-intensive      | Complex to implement                   | Loss of accuracy due to quantization  | Performance degrades in high dimensions | Complex to build and maintain          | High memory usage, complex implementation | Most complex to implement and manage   |
 | **Optimization Techniques**    | None                                | Compression, pruning              | Optimized hashing, multi-probe LSH   | Advanced quantization techniques, multi-codebooks | Optimized clustering algorithms        | Balanced trees, advanced partitioning schemes | Efficient graph traversal algorithms, shortcuts | Optimized hashing, multiple hash tables | Combining best practices from individual techniques |
+
+
+## References 
+
+1. **A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge** by Yikun Han et al. [:link:](https://arxiv.org/pdf/2310.11703)
+2. **Information Retrieval: Recent Advances and Beyond** by Kailash Hambarde et al. [:link:](https://arxiv.org/pdf/2301.08801)

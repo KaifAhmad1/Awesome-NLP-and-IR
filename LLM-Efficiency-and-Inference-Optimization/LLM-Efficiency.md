@@ -922,4 +922,4 @@ Improving the performance and energy efficiency of hardware accelerators used in
 6. **Long-Short Transformer: Efficient Transformers for Language and Vision** by Chen Zhu et al. [:link:](https://arxiv.org/pdf/2107.02192)
 7. **Mamba: Linear-Time Sequence Modeling with Selective State Spaces** by Albert Gu et al. [:link:](https://arxiv.org/pdf/2312.00752)
 8. **RWKV: Reinventing RNNs for the Transformer Era** by Bo Peng et al. [:link:](https://arxiv.org/pdf/2305.13048)
-9. 
+9. **xLSTM: Extended Long Short-Term Memory** by Maximilian Beck et al. [:link:](https://arxiv.org/pdf/2405.04517)

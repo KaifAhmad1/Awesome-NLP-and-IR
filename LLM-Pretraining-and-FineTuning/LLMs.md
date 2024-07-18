@@ -1320,5 +1320,7 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 15. **ReFT: Representation Finetuning for Language Models** by Zhengxuan Wu∗ et al. [:link:](https://arxiv.org/pdf/2404.03592)
 16. **RRHF: Rank Responses to Align Language Models with Human Feedback without tears** by Zheng Yuan et al. [:link:](https://arxiv.org/pdf/2304.05302)
 17. **RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback** by Harrison Lee et al. [:link:](https://arxiv.org/pdf/2309.00267)
-17. **RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback** by Harrison Lee et al. [:link:](https://arxiv.org/pdf/2309.00267)
-
+18. **Direct Preference Optimization: Your Language Model is Secretly a Reward Model** by Rafael Rafailov et al. [:link:](https://arxiv.org/pdf/2309.00267)
+19. **A General Theoretical Paradigm to Understand Learning from Human Preferences** by Mohammad Gheshlaghi Azar et al. [:link:](https://arxiv.org/pdf/2309.00267)
+20. **KTO: Model Alignment as Prospect Theoretic Optimization** by Kawin Ethayarajh et al. [:link:](https://arxiv.org/pdf/2402.01306)
+21. **ORPO: Monolithic Preference Optimization without Reference Model** by Jiwoo Hong et al. [:link:](https://arxiv.org/pdf/2403.07691)

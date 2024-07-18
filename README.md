@@ -1,5 +1,9 @@
 # 🚀 Awesome NLP and IR
 
+<div align="left">
+    <a href="https://awesome.re"><img src="https://awesome.re/badge.svg"/></a>
+</div>
+
 Welcome to your ultimate resource hub for concepts and papers related to:
 
 ### 📘 Topics Covered

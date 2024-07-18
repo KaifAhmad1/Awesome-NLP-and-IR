@@ -920,3 +920,6 @@ Improving the performance and energy efficiency of hardware accelerators used in
 4. **Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity** by William Fedus∗ et al. [:link:](https://arxiv.org/pdf/2101.03961)
 5. **Efficient Transformers: A Survey** by Yi Tay et al. [:link:](https://arxiv.org/pdf/2009.06732)
 6. **Long-Short Transformer: Efficient Transformers for Language and Vision** by Chen Zhu et al. [:link:](https://arxiv.org/pdf/2107.02192)
+7. **Mamba: Linear-Time Sequence Modeling with Selective State Spaces** by Albert Gu et al. [:link:](https://arxiv.org/pdf/2312.00752)
+8. **RWKV: Reinventing RNNs for the Transformer Era** by Bo Peng et al. [:link:](https://arxiv.org/pdf/2305.13048)
+9. 

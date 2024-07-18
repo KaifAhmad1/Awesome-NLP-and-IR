@@ -616,4 +616,5 @@ Areas of potential development and exploration for enhancing RAG systems.
 1. **Retrieval-Augmented Generation for Large Language Models: A Survey** by Yunfan Gao et al. [:link:](https://arxiv.org/pdf/2312.10997)
 2. **A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models** by Wenqi Fan et al. [:link:](https://arxiv.org/pdf/2405.06211)
 3. **Retrieval-Augmented Generation for AI-Generated Content: A Survey** by Penghao Zhao∗ et al. [:link:](https://arxiv.org/pdf/2402.19473)
+4. **Searching for Best Practices in Retrieval-Augmented Generation** by Xiaohua Wang et al. [:link:](https://arxiv.org/pdf/2407.01219)
 

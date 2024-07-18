@@ -983,4 +983,7 @@ Composite indexing in Approximate Nearest Neighbor (ANN) search involves combini
 1. **A Comprehensive Survey on Vector Database: Storage and Retrieval Technique, Challenge** by Yikun Han et al. [:link:](https://arxiv.org/pdf/2310.11703)
 2. **Information Retrieval: Recent Advances and Beyond** by Kailash Hambarde et al. [:link:](https://arxiv.org/pdf/2301.08801)
 3. **Approximate Nearest Neighbor Search in High Dimensions** by Alexandr Andoni et al. [:link:](https://arxiv.org/pdf/1806.09823)
-4. 
+4. **Beyond the Inverted Index** by Zhi-Hong Deng et al. [:link:](https://arxiv.org/pdf/1908.04517)
+5. **Similarity Search in High Dimensions via Hashing** by Stanford University et al. [:link:](https://www.cs.princeton.edu/courses/archive/spring13/cos598C/Gionis.pdf)
+6. **Competitive Quantization for Approximate Nearest Neighbor Search** by Ezgi Can Ozan et al. [:link:](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7539664)
+7. **Constructing Tree-based Index for Efficient and Effective Dense Retrieval** by Haitao Li et al. [:link:](https://arxiv.org/pdf/2304.11943)

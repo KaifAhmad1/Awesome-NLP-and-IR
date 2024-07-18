@@ -1316,4 +1316,6 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 11. **Fine-Tuning Language Models with Just Forward Passes** by Sadhika Malladi∗ et al. [:link:](https://arxiv.org/pdf/2305.17333)
 12. **QLORA: Efficient Finetuning of Quantized LLMs** by Tim Dettmers∗ et al. [:link:](https://arxiv.org/pdf/2305.14314)
 13. **Let the Expert Stick to His Last: Expert-Specialized Fine-Tuning for Sparse Architectural Large Language Models** by Zihan Wang et al. [:link:](https://arxiv.org/pdf/2407.01906)
+14. **Sparse Matrix in Large Language Model Fine-tuning** by Haoze He∗ et al. [:link:](https://arxiv.org/pdf/2405.15525v1)
+15. **ReFT: Representation Finetuning for Language Models** by Zhengxuan Wu∗ et al. [:link:](https://arxiv.org/pdf/2404.03592)
 

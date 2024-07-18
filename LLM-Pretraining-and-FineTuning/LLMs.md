@@ -1318,4 +1318,7 @@ $$\mathcal{L}(\theta) = \mathbb{E}\_{(x, y\_w, y\_l) \sim D} \left[ \log \frac{\
 13. **Let the Expert Stick to His Last: Expert-Specialized Fine-Tuning for Sparse Architectural Large Language Models** by Zihan Wang et al. [:link:](https://arxiv.org/pdf/2407.01906)
 14. **Sparse Matrix in Large Language Model Fine-tuning** by Haoze He∗ et al. [:link:](https://arxiv.org/pdf/2405.15525v1)
 15. **ReFT: Representation Finetuning for Language Models** by Zhengxuan Wu∗ et al. [:link:](https://arxiv.org/pdf/2404.03592)
+16. **RRHF: Rank Responses to Align Language Models with Human Feedback without tears** by Zheng Yuan et al. [:link:](https://arxiv.org/pdf/2304.05302)
+17. **RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback** by Harrison Lee et al. [:link:](https://arxiv.org/pdf/2309.00267)
+17. **RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback** by Harrison Lee et al. [:link:](https://arxiv.org/pdf/2309.00267)
 

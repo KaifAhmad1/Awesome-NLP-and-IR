@@ -9,7 +9,7 @@
 - **Retriever Model:** Searches and ranks relevant documents or passages from a large external knowledge base.
 - **Generative Model:** Uses transformer-based architectures to generate coherent and contextually appropriate responses, informed by the retrieved information.
 
-### Benefits of Retrieval-Augmented Generation (RAG):
+### Benefits of RAG
 
 - **Improved Accuracy:** By grounding generative models in retrieved factual information, RAG significantly enhances the accuracy and reliability of outputs, reducing the likelihood of generating incorrect or hallucinated content.
 - **Enhanced Relevance:** The retrieval mechanism ensures that generated responses are contextually appropriate and tailored to the input query, thereby improving the relevance and coherence of the output.

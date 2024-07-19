@@ -985,3 +985,5 @@ Improving the performance and energy efficiency of hardware accelerators used in
 10. **Funnel-Transformer: Filtering out Sequential Redundancy for Efficient Language Processing** by Zihang Dai et al. [:link:](https://arxiv.org/pdf/2006.03236)
 11. **Fast Inference from Transformers via Speculative Decoding** by Yaniv Leviathan et al. [:link:](https://arxiv.org/pdf/2211.17192)
 12. **Break the Sequential Dependency of LLM Inference Using LOOKAHEAD DECODING** by Yichao Fu et al. [:link:](https://arxiv.org/pdf/2402.02057)
+13. **BitNet: Scaling 1-bit Transformers for Large Language Models** by Hongyu Wang et al. [:link:](https://arxiv.org/pdf/2310.11453)
+14. **Q-Sparse: All Large Language Models can be Fully Sparsely-Activated** by Hongyu Wang et al. [:link:](https://arxiv.org/pdf/2407.10969)

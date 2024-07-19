@@ -519,17 +519,76 @@ BitNet was evaluated on a range of autoregressive language models, from 125 mill
 
 Sparsification increases the sparsity of model parameters or activations to reduce computational complexity:
 
-- **Weight Pruning:**
-  - Removes less critical weights from the model, reducing memory footprint and computational overhead during inference.
+##### Q-Sparse: Enhancing Efficiency in Large Language Models
+Q-Sparse is a novel approach designed to improve the efficiency of large language models (LLMs). By enabling full sparsity in the model's activations, Q-Sparse allows significant reductions in computational and memory requirements, making LLMs more practical for various applications.
+
+##### Key Benefits
+
+1. **Efficiency Gains**
+   - **Reduced Computational Cost**: By focusing on the most significant activations, Q-Sparse reduces the number of calculations needed during inference.
+   - **Lower Memory Usage**: Storing and processing fewer activations means less memory is required.
+
+2. **Maintained Performance**
+   - Despite the reduced computational load, models utilizing Q-Sparse achieve performance levels comparable to their fully dense counterparts.
+
+3. **Versatile Application**
+   - **Training Scenarios**: Q-Sparse can be applied when training from scratch, during continued training, or while fine-tuning pre-trained models.
+   - **Model Types**: Effective with both full-precision and highly quantized models (e.g., BitNet b1.58).
+
+##### How Q-Sparse Works
+
+Q-Sparse improves efficiency through three main mechanisms: Top-K Sparsification, the Straight-Through Estimator (STE), and Squared ReLU Activation.
+
+##### 1. Top-K Sparsification
+
+- **Concept**: Selects and processes only the top K most significant activations from the input tensor.
+- **Mechanism**:
+  - **Mask Tensor**: A mask tensor identifies the top K activations based on their significance.
+  - **Sparse Computation**: Only the selected activations are used in subsequent calculations, while non-significant activations are ignored.
+- **Benefit**: By reducing the number of activations that need to be processed, computational load and data transfer requirements are significantly lowered.
+
+##### 2. Straight-Through Estimator (STE)
+
+- **Concept**: Allows gradients to flow through sparse layers during backpropagation as if the model were fully dense.
+- **Mechanism**:
+  - **Gradient Propagation**: Gradients are propagated through the sparse layers without alteration, ensuring that all parameters are effectively updated during training.
+- **Benefit**: This prevents vanishing gradient issues and ensures the sparse model is trained effectively.
+
+##### 3. Squared ReLU Activation
+
+- **Concept**: Enhances sparsity by squaring the output of ReLU activations.
+- **Mechanism**:
+  - **ReLU Activation**: Standard ReLU is applied to the input tensor.
+  - **Squared Output**: The output of the ReLU activation is then squared.
+- **Benefit**: Squaring the output further reduces the number of non-zero activations, increasing sparsity and efficiency.
+
+##### Practical Applications
+
+Q-Sparse can be utilized in various training scenarios to enhance model efficiency.
+
+##### 1. Training from Scratch
+
+- **Application**: Q-Sparse can be incorporated from the initial training phase.
+- **Benefit**: The model learns to utilize sparse representations from the beginning, optimizing efficiency from the start.
+
+##### 2. Continue-Training and Fine-Tuning
+
+- **Application**: Existing pre-trained models can adopt Q-Sparse for continued training or fine-tuning.
+- **Benefit**: Enhances the efficiency of pre-trained models without the need to start training from scratch.
+
+##### Weight Pruning
+Removes less critical weights from the model, reducing memory footprint and computational overhead during inference.
   - **Techniques:**
     - **Structured Pruning:** Removes entire units or channels from neural networks based on importance criteria, optimizing model efficiency without sacrificing performance.
     - **Unstructured Pruning:** Targets individual weights based on magnitude or relevance, suitable for fine-grained optimization of LLMs with diverse architecture designs.
 
-- **Sparse Attention:**
-  - Reduces computational overhead in attention mechanisms by limiting the number of tokens attended to at each step.
+##### Sparse Attention
+Reduces computational overhead in attention mechanisms by limiting the number of tokens attended to at each step.
   - **Techniques:**
     - **Bigbird:** Introduces sparse attention patterns combined with global and local context models, optimizing processing efficiency for large-scale document analysis and sequence modeling.
     - **Longformer:** Extends sparse attention mechanisms to handle sequences with thousands of tokens, enabling efficient processing of documents and structured data with reduced computational resources.
+
+--- 
 
 #### Pruning
 

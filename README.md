@@ -214,6 +214,7 @@ Awesome-NLP-and-IR
         - [Autoregressive Decoding](RAG-and-RAG-Optimization/RAG-and-Optimization.md#autoregressive-decoding)
         - [Speculative Decoding](RAG-and-RAG-Optimization/RAG-and-Optimization.md#speculative-decoding)
         - [Lookahead Decoding](RAG-and-RAG-Optimization/RAG-and-Optimization.md#lookahead-decoding)
+        - [Multitoken Prediction](RAG-and-RAG-Optimization/RAG-and-Optimization.md#multi-token-prediction)
       - [Graph-Level Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#graph-level-optimization)
         - [Kernel Fusion](RAG-and-RAG-Optimization/RAG-and-Optimization.md#kernel-fusion)
         - [Layer Fusion](RAG-and-RAG-Optimization/RAG-and-Optimization.md#layer-fusion)

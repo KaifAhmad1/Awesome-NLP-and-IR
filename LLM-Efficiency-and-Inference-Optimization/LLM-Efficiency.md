@@ -1049,3 +1049,5 @@ Improving the performance and energy efficiency of hardware accelerators used in
 12. **Break the Sequential Dependency of LLM Inference Using LOOKAHEAD DECODING** by Yichao Fu et al. [:link:](https://arxiv.org/pdf/2402.02057)
 13. **BitNet: Scaling 1-bit Transformers for Large Language Models** by Hongyu Wang et al. [:link:](https://arxiv.org/pdf/2310.11453)
 14. **Q-Sparse: All Large Language Models can be Fully Sparsely-Activated** by Hongyu Wang et al. [:link:](https://arxiv.org/pdf/2407.10969)
+15. **Better & Faster Large Language Models via Multi-token Prediction** by Fabian Gloeckle et al. [:link:](https://arxiv.org/pdf/2404.19737)
+

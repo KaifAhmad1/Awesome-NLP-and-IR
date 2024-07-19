@@ -202,6 +202,7 @@ Awesome-NLP-and-IR
       - [Quantization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#quantization)
           - [BitNet: 1-bit Quantization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#bitnet-1-bit-quantization)
       - [Sparsification](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#sparsification)
+          - [Q-Sparse](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#bitnet-1-bit-quantization)
       - [Pruning](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#pruning)
 - [System Level Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#system-level-optimization)
   - [Inference Engine Optimization](LLM-Efficiency-and-Inference-Optimization/LLM-Efficiency.md#inference-engine-optimization)

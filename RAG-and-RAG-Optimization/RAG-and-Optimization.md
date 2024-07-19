@@ -603,12 +603,6 @@ Recommended configurations for optimal performance and efficiency.
 - **Summarization**: Recomp or omission for reduced latency.
 - **Result**: Provides reduced latency with comparable performance to the best performance configuration.
 
-### Future Research Directions
-Areas of potential development and exploration for enhancing RAG systems.
-
-- **Cost-Effective Databases**: Develop cost-effective vector database construction methods to manage large-scale data efficiently, addressing the challenges of scalability and cost.
-- **Extended Multimodal Applications**: Extend RAG applications to include a broader range of data types and modalities, enhancing the system's versatility and applicability.
-- **Domain-Specific Optimizations**: Investigate optimizations tailored to specific domains to enhance the effectiveness of RAG systems, ensuring that they can adapt to various contexts and requirements.
 
 
 ## References 

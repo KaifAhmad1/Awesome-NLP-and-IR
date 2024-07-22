@@ -10,22 +10,22 @@ Large Language Models (LLMs) are a significant advancement in the field of natur
 
 The architecture of LLMs is typically based on the Transformer model, introduced by Vaswani et al. in 2017 in the paper "Attention is All You Need". The key components of this architecture are:
 
-- #### **1. Embedding Layer:**
+####  Embedding Layer
   Converts the input text into dense vectors of fixed size. Each word or token is mapped to a continuous vector space where similar words have similar representations.
 
-- #### **2. Self-Attention Mechanism:** 
+#### Self-Attention Mechanism
   Allows the model to weigh the importance of different parts of the input sequence, enabling it to capture long-range dependencies and relationships within the text.
 
-- #### **3. Multi-Head Attention:** 
+####  Multi-Head Attention
   Multiple attention heads allow the model to focus on different parts of the input simultaneously, enhancing its ability to understand context.
 
-- #### **4. Feed-forward Neural Networks:** 
+#### Feed-forward Neural Networks
   Applied to each position in the sequence independently, adding a layer of non-linearity to the model's transformations.
 
-- #### **5. Positional Encoding:** 
+#### Positional Encoding
   Since Transformers do not inherently capture the order of the sequence, positional encodings are added to the input embeddings to provide information about the position of each word in the sequence.
 
-- #### **6. Add & Norm:**
+#### Add & Norm
   Each sub-layer (e.g., self-attention and feed-forward layers) is followed by a residual connection around it and a layer normalization. This helps in stabilizing the training and allows the model to train deeper architectures.
 
 ---

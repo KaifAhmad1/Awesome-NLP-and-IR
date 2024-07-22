@@ -3,7 +3,11 @@ Large Language Models (LLMs) are a significant advancement in the field of natur
 
 ---
 
-### **Architecture:**
+### Architecture
+
+![Transformers Architecture](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/Tranformers.png)
+
+
 The architecture of LLMs is typically based on the Transformer model, introduced by Vaswani et al. in 2017 in the paper "Attention is All You Need". The key components of this architecture are:
 
 - #### **1. Embedding Layer:**
@@ -21,10 +25,7 @@ The architecture of LLMs is typically based on the Transformer model, introduced
 - #### **5. Positional Encoding:** 
   Since Transformers do not inherently capture the order of the sequence, positional encodings are added to the input embeddings to provide information about the position of each word in the sequence.
 
-- #### **6. Layer Normalization (Layer Norm):**
-  Normalizes the activations of the input to each sub-layer (e.g., self-attention and feed-forward layers), stabilizing and accelerating the training process.
-
-- #### **7. Add & Norm:**
+- #### **6. Add & Norm:**
   Each sub-layer (e.g., self-attention and feed-forward layers) is followed by a residual connection around it and a layer normalization. This helps in stabilizing the training and allows the model to train deeper architectures.
 
 ---

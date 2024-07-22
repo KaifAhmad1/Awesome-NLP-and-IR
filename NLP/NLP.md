@@ -2350,6 +2350,10 @@ print("Output:", y_pred)
 ### Transformers
 Transformers are a type of deep learning model introduced by Ashish Vaswani in the paper "Attention is All You Need" (2017). They are particularly powerful for handling sequential data, such as text, but unlike RNNs, they do not process data in a sequential manner. Instead, Transformers use self-attention mechanisms to model dependencies between all elements of the input sequence simultaneously, allowing for much greater parallelization during training.
 
+
+![Transformers Architecture](https://github.com/KaifAhmad1/Awesome-NLP-and-IR/blob/main/images/Tranformers.png)
+
+
 #### Secret Sauce: Self-Attention Mechanism
 Self-attention is a key component of the Transformer architecture, which enables the model to weigh the significance of different parts of the input sequence when processing each element. This mechanism helps the model capture relationships and dependencies between all elements in the sequence, regardless of their distance from each other.
 

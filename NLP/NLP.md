@@ -1211,7 +1211,7 @@ terms.: 0.440
 --- 
 ### Embedding\Dense Vectors
 
-In NLP, embedding is the process of mapping words or phrases into dense vectors in a lower-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like $[0.25, 0.8, -0.5, \ldots]$, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
+In NLP, embedding is the process of mapping words or phrases into dense vectors in a high-dimensional space. For instance, Word2Vec transforms the word `king` into a vector like $[0.25, 0.8, -0.5, \ldots]$, capturing its semantic meaning. Embeddings allow models to understand and work with the semantic relationships between words, enhancing tasks like text classification, sentiment analysis, and machine translation.
 
 #### Embeddings in Representation Learning
 
